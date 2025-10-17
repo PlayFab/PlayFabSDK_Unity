@@ -1,0 +1,34 @@
+namespace PlayFab.Interop
+{
+    [Interop.NativeTypeName("uint32_t")]
+    public enum PFUserOrigination : uint
+    {
+        Organic,
+        Steam,
+        Google,
+        Amazon,
+        Facebook,
+        Kongregate,
+        GamersFirst,
+        Unknown,
+        IOS,
+        LoadTest,
+        Android,
+        PSN,
+        GameCenter,
+        CustomId,
+        XboxLive,
+        Parse,
+        Twitch,
+        ServerCustomId,
+        NintendoSwitchDeviceId,
+        FacebookInstantGamesId,
+        OpenIdConnect,
+        Apple,
+        NintendoSwitchAccount,
+        GooglePlayGames,
+        XboxMobileStore,
+        King,
+        BattleNet,
+    }
+}

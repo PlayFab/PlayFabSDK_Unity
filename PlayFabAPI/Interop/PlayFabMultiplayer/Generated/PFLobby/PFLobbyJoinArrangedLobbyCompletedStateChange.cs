@@ -1,0 +1,19 @@
+using PlayFab.Interop;
+
+namespace PlayFab.Interop.Multiplayer
+{
+    [NativeTypeName("struct PFLobbyJoinArrangedLobbyCompletedStateChange : PFLobbyStateChange")]
+    public unsafe partial struct PFLobbyJoinArrangedLobbyCompletedStateChange
+    {
+        public PFLobbyStateChange __AnonymousBase_1;
+
+        public int result;
+
+        public PFEntityKey newMember;
+
+        public void* asyncContext;
+
+        [NativeTypeName("PFLobbyHandle")]
+        public PFLobby* lobby;
+    }
+}

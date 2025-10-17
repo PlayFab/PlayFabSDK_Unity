@@ -1,0 +1,52 @@
+{
+  "name": "microsoft.playfab.sdk",
+  "displayName": "PlayFab SDK",
+  "version": "2510.0.0",
+  "author": "Microsoft",
+  "unity": "6000.0",
+  "description": "PlayFab SDK is a package that contains projections for native PlayFab APIs.",
+  "keywords": [
+    "microsoft",
+    "playfab",
+    "gdk"
+  ],
+  "category": "Networking",
+  "dependencies": {
+    "com.unity.microsoft.gdk.discovery": "1.1.0"
+  },
+  "license": "See LICENSE.txt",
+  "documentationUrl": "https://github.com/PlayFab/PlayFabSDK_Unity/blob/main/README.md",
+  "repository": {
+    "url": "",
+    "type": "git"
+  },
+  "files": [
+    "package.json.meta",
+    "README.md",
+    "README.md.meta",
+    "LICENSE.txt",
+    "LICENSE.txt.meta",
+    "PlayFabAPI",
+    "PlayFabAPI.meta",
+    "PlayFabTools",
+    "PlayFabTools.meta",
+    "Samples~"
+  ],
+  "samples": [
+    {
+      "displayName": "PlayFab Login",
+      "description": "This test demonstrates how to initialize PlayFab SDK and login",
+      "path": "Samples~/Login Sample"
+    },
+    {
+      "displayName": "PlayFab Game Save",
+      "description": "This test demonstrates how to sync and upload with PlayFab's game save system",
+      "path": "Samples~/Game Save Sample"
+    },
+    {
+      "displayName": "PlayFab Party",
+      "description": "This test suite verifies Party functionality",
+      "path": "Samples~/PlayFabParty"
+    }
+  ]
+}

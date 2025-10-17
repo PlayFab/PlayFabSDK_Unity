@@ -1,0 +1,73 @@
+﻿/*
+ * PlayFab Unity SDK
+ *
+ * Copyright (c) Microsoft Corporation
+ *
+ * MIT License
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this
+ * software and associated documentation files (the "Software"), to deal in the Software
+ * without restriction, including without limitation the rights to use, copy, modify, merge,
+ * publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons
+ * to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or
+ * substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+ * PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+ * FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ */
+
+namespace PlayFab.Multiplayer
+{
+    using System;
+
+    /// <summary>
+    /// A member of a match result.
+    /// </summary>
+    public struct MatchUser
+    {
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MatchUser" /> struct.
+        /// </summary>
+        /// <param name="localUser">
+        /// The local user to join to the ticket.
+        /// </param>
+        /// <param name="localUserJsonAttributesJSON">
+        /// The array of local user attribute strings. There should be one attribute string for each local user. Each attribute
+        /// string should either be an empty string or a serialized JSON object. For example,
+        /// <c>{"player_color":"blue","player_role":"tank"}</c>.
+        /// </param>
+        /// <param name="teamId">
+        /// The team ID assigned to this match member. May be empty if the matchmaking queue doesn't use team rules.
+        /// </param>
+        public MatchUser(PFPlayerEntity localUser, string localUserJsonAttributesJSON, string teamId = "")
+        {
+            this.LocalUser = localUser;
+            this.TeamId = teamId;
+            this.LocalUserJsonAttributesJSON = localUserJsonAttributesJSON;
+        }
+
+        /// <summary>
+        /// The local user to join to the ticket.
+        /// </summary>
+        public PFPlayerEntity LocalUser { get; set; }
+
+        /// <summary>
+        /// The team ID assigned to this match member. May be empty if the matchmaking queue doesn't use team rules.
+        /// </summary>
+        public string TeamId { get; set; }
+
+        /// <summary>
+        /// The local user attributes as JSON string. There should be one attribute string for each local user. Each attribute
+        /// string should either be an empty string or a serialized JSON object. For example,
+        /// <c>{"player_color":"blue","player_role":"tank"}</c>.
+        /// </summary>
+        public string LocalUserJsonAttributesJSON { get; set; }
+    }
+}

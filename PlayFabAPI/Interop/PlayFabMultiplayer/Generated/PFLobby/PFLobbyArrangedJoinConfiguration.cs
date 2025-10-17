@@ -1,0 +1,23 @@
+using PlayFab.Interop;
+
+namespace PlayFab.Interop.Multiplayer
+{
+    public unsafe partial struct PFLobbyArrangedJoinConfiguration
+    {
+        [NativeTypeName("uint32_t")]
+        public uint maxMemberCount;
+
+        public PFLobbyOwnerMigrationPolicy ownerMigrationPolicy;
+
+        public PFLobbyAccessPolicy accessPolicy;
+
+        [NativeTypeName("uint32_t")]
+        public uint memberPropertyCount;
+
+        [NativeTypeName("const char *const *")]
+        public sbyte** memberPropertyKeys;
+
+        [NativeTypeName("const char *const *")]
+        public sbyte** memberPropertyValues;
+    }
+}
