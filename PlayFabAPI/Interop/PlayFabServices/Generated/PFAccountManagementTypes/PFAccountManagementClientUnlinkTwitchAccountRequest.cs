@@ -1,6 +1,6 @@
 namespace PlayFab.Interop
 {
-    public unsafe partial struct PFAccountManagementLinkTwitchAccountRequest
+    public unsafe partial struct PFAccountManagementClientUnlinkTwitchAccountRequest
     {
         [NativeTypeName("const char *")]
         public sbyte* accessToken;
@@ -10,8 +10,5 @@ namespace PlayFab.Interop
 
         [NativeTypeName("uint32_t")]
         public uint customTagsCount;
-
-        [NativeTypeName("const bool *")]
-        public byte* forceLink;
     }
 }

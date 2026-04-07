@@ -14,6 +14,9 @@ namespace PlayFab.Interop
         [NativeTypeName("const char *")]
         public sbyte* partyId;
 
+        [NativeTypeName("const char *")]
+        public sbyte* playFabId;
+
         [NativeTypeName("const char *const *")]
         public sbyte** preferredRegions;
 

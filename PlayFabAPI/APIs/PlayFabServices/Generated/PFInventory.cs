@@ -181,27 +181,6 @@ namespace PlayFab
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX || UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX || UNITY_SERVER
         /// <summary>
-        /// Gets the access tokens.
-        /// </summary>
-        /// <param name="request">Populated request object.</param>
-        /// <returns>A task which will provide the result code for this API operation and a PFInventoryGetMicrosoftStoreAccessTokensResponse.</returns>
-        /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
-        /// Gets the access tokens for Microsoft Store authentication.
-        ///
-        /// When the asynchronous task is complete, call <see cref="PFInventoryGetMicrosoftStoreAccessTokensGetResultSize"/>
-        /// and <see cref="PFInventoryGetMicrosoftStoreAccessTokensGetResult"/> to get the result.
-        /// </remarks>
-        public async Task<PFResult<PFInventoryGetMicrosoftStoreAccessTokensResponse>> InventoryGetMicrosoftStoreAccessTokensAsync(
-            PFInventoryGetMicrosoftStoreAccessTokensRequest request
-        )
-        {
-            return await InteropWrapper.Services.PFInventory.PFInventoryGetMicrosoftStoreAccessTokensAsync(InteropHandle, request);
-        }
-#endif
-
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX || UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX || UNITY_SERVER
-        /// <summary>
         /// Get transaction history for a player. Up to 250 Events can be returned at once. You can use continuation
         /// tokens to paginate through results that return greater than the limit. Getting transaction history
         /// has a lower RPS limit than getting a Player's inventory with Player Entities having a limit of 30
@@ -288,7 +267,8 @@ namespace PlayFab
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX || UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX || UNITY_SERVER
         /// <summary>
-        /// Redeem items.
+        /// Redeem items from the Microsoft Store. Supported entitlement types are Developer Manager Consumable
+        /// and Durable.
         /// </summary>
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFInventoryRedeemMicrosoftStoreInventoryItemsResponse.</returns>

@@ -7,5 +7,11 @@ namespace PlayFab.Interop
 
         [NativeTypeName("uint32_t")]
         public uint leaderboardDefinitionsCount;
+
+        [NativeTypeName("int32_t")]
+        public int pageSize;
+
+        [NativeTypeName("const char *")]
+        public sbyte* skipToken;
     }
 }

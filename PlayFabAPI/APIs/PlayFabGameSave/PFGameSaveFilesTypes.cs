@@ -38,7 +38,7 @@ namespace PlayFab
     /// <summary>
     /// Options to use when initializing the game save system.
     /// </summary>
-    public enum PFGameSaveInitOptions : uint
+    public enum PFGameSaveInitOptions : ulong
     {
         /// <summary>
         /// Other options might be added in future release

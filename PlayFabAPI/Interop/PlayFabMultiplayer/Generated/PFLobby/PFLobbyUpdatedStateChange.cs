@@ -45,5 +45,7 @@ namespace PlayFab.Interop.Multiplayer
         public sbyte** updatedServerPropertyKeys;
 
         public byte serverConnectionStatusUpdated;
+
+        public byte restrictInvitesToLobbyOwnerUpdated;
     }
 }

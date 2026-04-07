@@ -16,6 +16,9 @@ namespace PlayFab.Interop
         [NativeTypeName("const char *")]
         public sbyte* stackId;
 
+        [NativeTypeName("const time_t *")]
+        public long* startDate;
+
         [NativeTypeName("const char *")]
         public sbyte* type;
     }

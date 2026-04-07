@@ -2507,9 +2507,9 @@ namespace PlayFab
     }
 
     /// <summary>
-    /// PFAccountManagementLinkTwitchAccountRequest data model.
+    /// PFAccountManagementClientLinkTwitchAccountRequest data model.
     /// </summary>
-    public struct PFAccountManagementLinkTwitchAccountRequest
+    public struct PFAccountManagementClientLinkTwitchAccountRequest
     {
         /// <summary>
         /// Valid token issued by Twitch.
@@ -2527,7 +2527,7 @@ namespace PlayFab
         /// </summary>
         public bool? ForceLink;
 
-        internal unsafe static void ToInterop(PFAccountManagementLinkTwitchAccountRequest self, Interop.PFAccountManagementLinkTwitchAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
+        internal unsafe static void ToInterop(PFAccountManagementClientLinkTwitchAccountRequest self, Interop.PFAccountManagementClientLinkTwitchAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
 
@@ -2860,9 +2860,9 @@ namespace PlayFab
     }
 
     /// <summary>
-    /// PFAccountManagementUnlinkFacebookAccountRequest data model.
+    /// PFAccountManagementClientUnlinkFacebookAccountRequest data model.
     /// </summary>
-    public struct PFAccountManagementUnlinkFacebookAccountRequest
+    public struct PFAccountManagementClientUnlinkFacebookAccountRequest
     {
         /// <summary>
         /// (Optional) The optional custom tags associated with the request (e.g. build number, external trace
@@ -2870,7 +2870,7 @@ namespace PlayFab
         /// </summary>
         public Dictionary<string, string>? CustomTags;
 
-        internal unsafe static void ToInterop(PFAccountManagementUnlinkFacebookAccountRequest self, Interop.PFAccountManagementUnlinkFacebookAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
+        internal unsafe static void ToInterop(PFAccountManagementClientUnlinkFacebookAccountRequest self, Interop.PFAccountManagementClientUnlinkFacebookAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
 
@@ -2885,9 +2885,9 @@ namespace PlayFab
     }
 
     /// <summary>
-    /// PFAccountManagementUnlinkFacebookInstantGamesIdRequest data model.
+    /// PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest data model.
     /// </summary>
-    public struct PFAccountManagementUnlinkFacebookInstantGamesIdRequest
+    public struct PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest
     {
         /// <summary>
         /// (Optional) The optional custom tags associated with the request (e.g. build number, external trace
@@ -2901,7 +2901,7 @@ namespace PlayFab
         /// </summary>
         public string? FacebookInstantGamesId;
 
-        internal unsafe static void ToInterop(PFAccountManagementUnlinkFacebookInstantGamesIdRequest self, Interop.PFAccountManagementUnlinkFacebookInstantGamesIdRequest* interop, InteropWrapper.DisposableBuffer buffer)
+        internal unsafe static void ToInterop(PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest self, Interop.PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
 
@@ -3201,9 +3201,9 @@ namespace PlayFab
     }
 
     /// <summary>
-    /// PFAccountManagementUnlinkTwitchAccountRequest data model.
+    /// PFAccountManagementClientUnlinkTwitchAccountRequest data model.
     /// </summary>
-    public struct PFAccountManagementUnlinkTwitchAccountRequest
+    public struct PFAccountManagementClientUnlinkTwitchAccountRequest
     {
         /// <summary>
         /// (Optional) Valid token issued by Twitch. Used to specify which twitch account to unlink from the
@@ -3217,7 +3217,7 @@ namespace PlayFab
         /// </summary>
         public Dictionary<string, string>? CustomTags;
 
-        internal unsafe static void ToInterop(PFAccountManagementUnlinkTwitchAccountRequest self, Interop.PFAccountManagementUnlinkTwitchAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
+        internal unsafe static void ToInterop(PFAccountManagementClientUnlinkTwitchAccountRequest self, Interop.PFAccountManagementClientUnlinkTwitchAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
 
@@ -3413,8 +3413,8 @@ namespace PlayFab
 
     /// <summary>
     /// PFAccountManagementBanUsersRequest data model. The existence of each user will not be verified. When
-    /// banning by IP or MAC address, multiple players may be affected, so use this feature with caution.
-    /// Returns information about the new bans.
+    /// banning by IP, multiple players may be affected, so use this feature with caution. Returns information
+    /// about the new bans.
     /// </summary>
     public struct PFAccountManagementBanUsersRequest
     {

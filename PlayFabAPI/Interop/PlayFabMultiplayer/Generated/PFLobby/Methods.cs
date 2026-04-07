@@ -64,6 +64,9 @@ namespace PlayFab.Interop.Multiplayer
         public static extern int PFLobbyGetMembershipLock([NativeTypeName("PFLobbyHandle")] PFLobby* lobby, PFLobbyMembershipLock* lockState);
 
         [DllImport(PlayFabMultiplayerLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int PFLobbyGetRestrictInvitesToLobbyOwner([NativeTypeName("PFLobbyHandle")] PFLobby* lobby, [NativeTypeName("bool *")] byte* restrictInvitesToLobbyOwner);
+
+        [DllImport(PlayFabMultiplayerLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         public static extern int PFLobbyGetConnectionString([NativeTypeName("PFLobbyHandle")] PFLobby* lobby, [NativeTypeName("const char **")] sbyte** connectionString);
 
         [DllImport(PlayFabMultiplayerLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
@@ -139,10 +142,13 @@ namespace PlayFab.Interop.Multiplayer
 
 
         [DllImport(PlayFabMultiplayerLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+        public static extern int PFMultiplayerJoinLobbyWithEntityHandle([NativeTypeName("PFMultiplayerHandle")] PFMultiplayer* handle, [NativeTypeName("PFEntityHandle")] IntPtr newMember, [NativeTypeName("const char *")] sbyte* connectionString, [NativeTypeName("const PFLobbyJoinConfiguration *")] PFLobbyJoinConfiguration* configuration, void* asyncContext, [NativeTypeName("PFLobbyHandle *")] PFLobby** lobby);
+
+        [DllImport(PlayFabMultiplayerLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         public static extern int PFMultiplayerConnectToLobby([NativeTypeName("PFMultiplayerHandle")] PFMultiplayer* handle, [NativeTypeName("const PFEntityKey *")] PFEntityKey* newMember, [NativeTypeName("const char *")] sbyte* lobbyId, void* asyncContext, [NativeTypeName("PFLobbyHandle *")] PFLobby** lobby);
 
         [DllImport(PlayFabMultiplayerLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        public static extern int PFMultiplayerJoinLobbyWithEntityHandle([NativeTypeName("PFMultiplayerHandle")] PFMultiplayer* handle, [NativeTypeName("PFEntityHandle")] IntPtr newMember, [NativeTypeName("const char *")] sbyte* connectionString, [NativeTypeName("const PFLobbyJoinConfiguration *")] PFLobbyJoinConfiguration* configuration, void* asyncContext, [NativeTypeName("PFLobbyHandle *")] PFLobby** lobby);
+        public static extern int PFMultiplayerConnectToLobbyWithEntityHandle([NativeTypeName("PFMultiplayerHandle")] PFMultiplayer* handle, [NativeTypeName("PFEntityHandle")] IntPtr newMember, [NativeTypeName("const char *")] sbyte* lobbyId, void* asyncContext, [NativeTypeName("PFLobbyHandle *")] PFLobby** lobby);
 
 
         [DllImport(PlayFabMultiplayerLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

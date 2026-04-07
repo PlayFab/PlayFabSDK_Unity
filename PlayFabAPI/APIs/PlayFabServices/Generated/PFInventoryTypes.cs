@@ -885,6 +885,11 @@ namespace PlayFab
         public string? StackId;
 
         /// <summary>
+        /// (Optional) Only used for subscriptions. The date of when the item started in UTC.
+        /// </summary>
+        public long? StartDate;
+
+        /// <summary>
         /// (Optional) The type of the item. This should correspond to the item type in the catalog.
         /// </summary>
         public string? Type;
@@ -901,6 +906,8 @@ namespace PlayFab
             Id = (interop.id == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.id);
 
             StackId = (interop.stackId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.stackId);
+
+            StartDate = (interop.startDate == null) ? null : *interop.startDate;
 
             Type = (interop.type == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.type);
 
@@ -933,6 +940,11 @@ namespace PlayFab
             if (self.StackId != null)
             {
                 InteropWrapper.WrapperHelpers.StringToInterop(self.StackId, &interop->stackId, buffer);
+            }
+
+            if (self.StartDate != null)
+            {
+                *interop->startDate = self.StartDate.Value;
             }
 
             if (self.Type != null)
@@ -1616,59 +1628,6 @@ namespace PlayFab
         {
 
             OperationStatus = (interop.operationStatus == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.operationStatus);
-
-        }
-            
-    }
-
-    /// <summary>
-    /// PFInventoryGetMicrosoftStoreAccessTokensRequest data model. Gets the access tokens for Microsoft
-    /// Store authentication.
-    /// </summary>
-    public struct PFInventoryGetMicrosoftStoreAccessTokensRequest
-    {
-        /// <summary>
-        /// (Optional) The optional custom tags associated with the request (e.g. build number, external trace
-        /// identifiers, etc.).
-        /// </summary>
-        public Dictionary<string, string>? CustomTags;
-
-        internal unsafe static void ToInterop(PFInventoryGetMicrosoftStoreAccessTokensRequest self, Interop.PFInventoryGetMicrosoftStoreAccessTokensRequest* interop, InteropWrapper.DisposableBuffer buffer)
-        {
-            *interop = default;
-
-            if (self.CustomTags != null)
-            {
-                InteropWrapper.WrapperHelpers.DictionaryToStringInterop(self.CustomTags, &interop->customTags, buffer);
-                interop->customTagsCount = (uint)self.CustomTags.Count;
-            }
-
-        }
-            
-    }
-
-    /// <summary>
-    /// PFInventoryGetMicrosoftStoreAccessTokensResponse data model.
-    /// </summary>
-    public struct PFInventoryGetMicrosoftStoreAccessTokensResponse
-    {
-        /// <summary>
-        /// (Optional) The collections access token for calling https://onestore.microsoft.com/b2b/keys/create/collections
-        /// to obtain a CollectionsIdKey for the user.
-        /// </summary>
-        public string? CollectionsAccessToken;
-
-        /// <summary>
-        /// The date the collections access token expires.
-        /// </summary>
-        public long CollectionsAccessTokenExpirationDate;
-
-        internal unsafe PFInventoryGetMicrosoftStoreAccessTokensResponse(Interop.PFInventoryGetMicrosoftStoreAccessTokensResponse interop)
-        {
-
-            CollectionsAccessToken = (interop.collectionsAccessToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.collectionsAccessToken);
-
-            CollectionsAccessTokenExpirationDate = interop.collectionsAccessTokenExpirationDate;
 
         }
             
@@ -2581,6 +2540,11 @@ namespace PlayFab
     public struct PFInventoryRedemptionSuccess
     {
         /// <summary>
+        /// (Optional) The timestamp for when the redeem expired.
+        /// </summary>
+        public long? ExpirationTimestamp;
+
+        /// <summary>
         /// (Optional) The Marketplace Alternate ID being redeemed.
         /// </summary>
         public string? MarketplaceAlternateId;
@@ -2598,6 +2562,8 @@ namespace PlayFab
         internal unsafe PFInventoryRedemptionSuccess(Interop.PFInventoryRedemptionSuccess interop)
         {
 
+            ExpirationTimestamp = (interop.expirationTimestamp == null) ? null : *interop.expirationTimestamp;
+
             MarketplaceAlternateId = (interop.marketplaceAlternateId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.marketplaceAlternateId);
 
             MarketplaceTransactionId = (interop.marketplaceTransactionId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.marketplaceTransactionId);
@@ -2609,6 +2575,11 @@ namespace PlayFab
         internal unsafe static void ToInterop(PFInventoryRedemptionSuccess self, Interop.PFInventoryRedemptionSuccess* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
+
+            if (self.ExpirationTimestamp != null)
+            {
+                *interop->expirationTimestamp = self.ExpirationTimestamp.Value;
+            }
 
             if (self.MarketplaceAlternateId != null)
             {
@@ -2803,11 +2774,6 @@ namespace PlayFab
         public string? CollectionId;
 
         /// <summary>
-        /// (Optional) The OneStore Collections Id Key used for AAD authentication.
-        /// </summary>
-        public string? CollectionsIdKey;
-
-        /// <summary>
         /// (Optional) The optional custom tags associated with the request (e.g. build number, external trace
         /// identifiers, etc.).
         /// </summary>
@@ -2833,11 +2799,6 @@ namespace PlayFab
             if (self.CollectionId != null)
             {
                 InteropWrapper.WrapperHelpers.StringToInterop(self.CollectionId, &interop->collectionId, buffer);
-            }
-
-            if (self.CollectionsIdKey != null)
-            {
-                InteropWrapper.WrapperHelpers.StringToInterop(self.CollectionsIdKey, &interop->collectionsIdKey, buffer);
             }
 
             if (self.CustomTags != null)

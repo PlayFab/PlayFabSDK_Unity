@@ -1124,7 +1124,7 @@ namespace PlayFab
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFPlayerEntity.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationLoginWithXboxGetResult"/>
         /// to get the result.
         /// </remarks>
@@ -1149,7 +1149,7 @@ namespace PlayFab
         /// <param name="loginHandlerContext">Context provided to the PFLocalUserLoginHandler.</param>
         /// <returns>The result for this API operation. The async result will be returned to the PlayFab SDK internally.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationLoginWithXboxGetResult"/>
         /// to get the result.
         /// </remarks>

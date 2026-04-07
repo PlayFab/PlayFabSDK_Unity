@@ -96,7 +96,11 @@ namespace PlayFab
         Standard_D4ds_v5 = Interop.PFMultiplayerServerAzureVmSize.Standard_D4ds_v5,
         Standard_D8ds_v5 = Interop.PFMultiplayerServerAzureVmSize.Standard_D8ds_v5,
         Standard_D16ds_v5 = Interop.PFMultiplayerServerAzureVmSize.Standard_D16ds_v5,
-        Standard_D32ds_v5 = Interop.PFMultiplayerServerAzureVmSize.Standard_D32ds_v5
+        Standard_D32ds_v5 = Interop.PFMultiplayerServerAzureVmSize.Standard_D32ds_v5,
+        Standard_D2ds_v6 = Interop.PFMultiplayerServerAzureVmSize.Standard_D2ds_v6,
+        Standard_D4ds_v6 = Interop.PFMultiplayerServerAzureVmSize.Standard_D4ds_v6,
+        Standard_D8ds_v6 = Interop.PFMultiplayerServerAzureVmSize.Standard_D8ds_v6,
+        Standard_D16ds_v6 = Interop.PFMultiplayerServerAzureVmSize.Standard_D16ds_v6
     }
 
     /// <summary>
