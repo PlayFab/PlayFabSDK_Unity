@@ -21,11 +21,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCloudScriptExecuteEntityCloudScriptGetResultSize"/>
         /// and <see cref="PFCloudScriptExecuteEntityCloudScriptGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCloudScriptExecuteCloudScriptResult>> CloudScriptExecuteEntityCloudScriptAsync(
+        public Task<PFResult<PFCloudScriptExecuteCloudScriptResult>> CloudScriptExecuteEntityCloudScriptAsync(
             PFCloudScriptExecuteEntityCloudScriptRequest request
         )
         {
-            return await InteropWrapper.Services.PFCloudScript.PFCloudScriptExecuteEntityCloudScriptAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCloudScript.PFCloudScriptExecuteEntityCloudScriptAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -43,11 +43,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCloudScriptExecuteFunctionGetResultSize"/>
         /// and <see cref="PFCloudScriptExecuteFunctionGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCloudScriptExecuteFunctionResult>> CloudScriptExecuteFunctionAsync(
+        public Task<PFResult<PFCloudScriptExecuteFunctionResult>> CloudScriptExecuteFunctionAsync(
             PFCloudScriptExecuteFunctionRequest request
         )
         {
-            return await InteropWrapper.Services.PFCloudScript.PFCloudScriptExecuteFunctionAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCloudScript.PFCloudScriptExecuteFunctionAsync(InteropHandle, request);
         }
     }
 
@@ -64,11 +64,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCloudScriptClientExecuteCloudScriptGetResultSize"/>
         /// and <see cref="PFCloudScriptClientExecuteCloudScriptGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCloudScriptExecuteCloudScriptResult>> CloudScriptClientExecuteCloudScriptAsync(
+        public Task<PFResult<PFCloudScriptExecuteCloudScriptResult>> CloudScriptClientExecuteCloudScriptAsync(
             PFCloudScriptExecuteCloudScriptRequest request
         )
         {
-            return await InteropWrapper.Services.PFCloudScript.PFCloudScriptClientExecuteCloudScriptAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCloudScript.PFCloudScriptClientExecuteCloudScriptAsync(InteropHandle, request);
         }
     }
 
@@ -85,11 +85,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCloudScriptServerExecuteCloudScriptGetResultSize"/>
         /// and <see cref="PFCloudScriptServerExecuteCloudScriptGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCloudScriptExecuteCloudScriptResult>> CloudScriptServerExecuteCloudScriptAsync(
+        public Task<PFResult<PFCloudScriptExecuteCloudScriptResult>> CloudScriptServerExecuteCloudScriptAsync(
             PFCloudScriptExecuteCloudScriptServerRequest request
         )
         {
-            return await InteropWrapper.Services.PFCloudScript.PFCloudScriptServerExecuteCloudScriptAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCloudScript.PFCloudScriptServerExecuteCloudScriptAsync(InteropHandle, request);
         }
     }
 }

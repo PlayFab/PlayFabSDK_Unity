@@ -794,7 +794,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -824,7 +823,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -854,7 +852,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -896,7 +893,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -926,7 +922,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -968,7 +963,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -998,7 +992,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1028,7 +1021,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1106,7 +1098,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1160,7 +1151,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1190,7 +1180,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1232,7 +1221,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1262,7 +1250,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1292,7 +1279,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1346,7 +1332,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1376,7 +1361,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1418,7 +1402,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1448,7 +1431,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1526,7 +1508,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1566,7 +1547,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1681,7 +1661,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1723,7 +1702,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1765,7 +1743,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2091,7 +2068,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2145,7 +2121,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2197,7 +2172,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2244,7 +2218,6 @@ namespace PlayFab
             interop->secondsToRecharge = self.SecondsToRecharge;
 
         }
-            
     }
 
     /// <summary>
@@ -2415,7 +2388,6 @@ namespace PlayFab
             interop->showValuesToDate = InteropWrapper.WrapperHelpers.BoolToInterop(self.ShowValuesToDate);
 
         }
-            
     }
 
     /// <summary>
@@ -2466,7 +2438,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2520,7 +2491,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2586,7 +2556,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2664,7 +2633,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2757,7 +2725,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2831,7 +2798,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2873,7 +2839,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2921,7 +2886,6 @@ namespace PlayFab
             interop->version = self.Version;
 
         }
-            
     }
 
     /// <summary>
@@ -2951,7 +2915,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3004,7 +2967,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3277,7 +3239,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3455,7 +3416,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3498,7 +3458,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3547,7 +3506,6 @@ namespace PlayFab
             interop->version = self.Version;
 
         }
-            
     }
 
     /// <summary>
@@ -3753,7 +3711,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3792,7 +3749,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3836,7 +3792,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3926,7 +3881,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
 }

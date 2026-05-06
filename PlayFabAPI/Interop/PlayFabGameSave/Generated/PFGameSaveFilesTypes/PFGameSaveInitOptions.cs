@@ -1,7 +1,7 @@
 namespace PlayFab.Interop
 {
-    [Interop.NativeTypeName("uint32_t")]
-    public enum PFGameSaveInitOptions : uint
+    [NativeTypeName("uint64_t")]
+    public enum PFGameSaveInitOptions : ulong
     {
         None = 0x00,
     }

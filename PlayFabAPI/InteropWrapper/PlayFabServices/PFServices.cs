@@ -40,13 +40,6 @@ namespace PlayFab.InteropWrapper.Services
         /// <returns>Result code for this API operation.</returns>
         public static PFResult PFServicesInitialize()
         {
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT
-            var hr = Interop.Methods.XGameRuntimeInitialize();
-            if (HRESULT.Failed(hr))
-            {
-                return new(hr);
-            }
-#endif
             var result = Interop.Methods.PFServicesInitialize(AsyncHelpers.DefaultQueue.handle.intPtr);
             return new(result);
         }
@@ -73,9 +66,6 @@ namespace PlayFab.InteropWrapper.Services
 
                     hr = Interop.Methods.XAsyncGetStatus(asyncBlock, WrapperHelpers.BoolToInterop(false));
 
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT
-                    Interop.Methods.XGameRuntimeUninitialize();
-#endif
                     completionSource.SetResult(new(hr));
                 });
 

@@ -21,11 +21,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogCreateDraftItemGetResultSize"/>
         /// and <see cref="PFCatalogCreateDraftItemGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogCreateDraftItemResponse>> CatalogCreateDraftItemAsync(
+        public Task<PFResult<PFCatalogCreateDraftItemResponse>> CatalogCreateDraftItemAsync(
             PFCatalogCreateDraftItemRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogCreateDraftItemAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogCreateDraftItemAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -45,11 +45,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogCreateUploadUrlsGetResultSize"/>
         /// and <see cref="PFCatalogCreateUploadUrlsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogCreateUploadUrlsResponse>> CatalogCreateUploadUrlsAsync(
+        public Task<PFResult<PFCatalogCreateUploadUrlsResponse>> CatalogCreateUploadUrlsAsync(
             PFCatalogCreateUploadUrlsRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogCreateUploadUrlsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogCreateUploadUrlsAsync(InteropHandle, request);
         }
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_SERVER
@@ -64,11 +64,11 @@ namespace PlayFab
         /// the async result will be E_PF_PROFILE_DOES_NOT_EXIST or any of the global PlayFab Service errors.
         /// See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> CatalogDeleteEntityItemReviewsAsync(
+        public Task<PFResult> CatalogDeleteEntityItemReviewsAsync(
             PFCatalogDeleteEntityItemReviewsRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogDeleteEntityItemReviewsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogDeleteEntityItemReviewsAsync(InteropHandle, request);
         }
 #endif
 
@@ -83,11 +83,11 @@ namespace PlayFab
         /// the async result will be E_PF_DATABASE_THROUGHPUT_EXCEEDED, E_PF_ITEM_NOT_FOUND or any of the global
         /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> CatalogDeleteItemAsync(
+        public Task<PFResult> CatalogDeleteItemAsync(
             PFCatalogDeleteItemRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogDeleteItemAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogDeleteItemAsync(InteropHandle, request);
         }
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_SERVER
@@ -103,11 +103,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetCatalogConfigGetResultSize"/>
         /// and <see cref="PFCatalogGetCatalogConfigGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetCatalogConfigResponse>> CatalogGetCatalogConfigAsync(
+        public Task<PFResult<PFCatalogGetCatalogConfigResponse>> CatalogGetCatalogConfigAsync(
             PFCatalogGetCatalogConfigRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetCatalogConfigAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetCatalogConfigAsync(InteropHandle, request);
         }
 #endif
 
@@ -124,11 +124,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetDraftItemGetResultSize"/> and
         /// <see cref="PFCatalogGetDraftItemGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetDraftItemResponse>> CatalogGetDraftItemAsync(
+        public Task<PFResult<PFCatalogGetDraftItemResponse>> CatalogGetDraftItemAsync(
             PFCatalogGetDraftItemRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetDraftItemAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetDraftItemAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -143,11 +143,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetDraftItemsGetResultSize"/> and
         /// <see cref="PFCatalogGetDraftItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetDraftItemsResponse>> CatalogGetDraftItemsAsync(
+        public Task<PFResult<PFCatalogGetDraftItemsResponse>> CatalogGetDraftItemsAsync(
             PFCatalogGetDraftItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetDraftItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetDraftItemsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -163,11 +163,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetEntityDraftItemsGetResultSize"/>
         /// and <see cref="PFCatalogGetEntityDraftItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetEntityDraftItemsResponse>> CatalogGetEntityDraftItemsAsync(
+        public Task<PFResult<PFCatalogGetEntityDraftItemsResponse>> CatalogGetEntityDraftItemsAsync(
             PFCatalogGetEntityDraftItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetEntityDraftItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetEntityDraftItemsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -181,11 +181,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetEntityItemReviewGetResultSize"/>
         /// and <see cref="PFCatalogGetEntityItemReviewGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetEntityItemReviewResponse>> CatalogGetEntityItemReviewAsync(
+        public Task<PFResult<PFCatalogGetEntityItemReviewResponse>> CatalogGetEntityItemReviewAsync(
             PFCatalogGetEntityItemReviewRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetEntityItemReviewAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetEntityItemReviewAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -200,11 +200,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetItemGetResultSize"/> and <see
         /// cref="PFCatalogGetItemGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetItemResponse>> CatalogGetItemAsync(
+        public Task<PFResult<PFCatalogGetItemResponse>> CatalogGetItemAsync(
             PFCatalogGetItemRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetItemAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetItemAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -222,11 +222,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetItemContainersGetResultSize"/>
         /// and <see cref="PFCatalogGetItemContainersGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetItemContainersResponse>> CatalogGetItemContainersAsync(
+        public Task<PFResult<PFCatalogGetItemContainersResponse>> CatalogGetItemContainersAsync(
             PFCatalogGetItemContainersRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetItemContainersAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetItemContainersAsync(InteropHandle, request);
         }
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_SERVER
@@ -241,11 +241,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetItemModerationStateGetResultSize"/>
         /// and <see cref="PFCatalogGetItemModerationStateGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetItemModerationStateResponse>> CatalogGetItemModerationStateAsync(
+        public Task<PFResult<PFCatalogGetItemModerationStateResponse>> CatalogGetItemModerationStateAsync(
             PFCatalogGetItemModerationStateRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetItemModerationStateAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetItemModerationStateAsync(InteropHandle, request);
         }
 #endif
 
@@ -259,11 +259,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetItemPublishStatusGetResultSize"/>
         /// and <see cref="PFCatalogGetItemPublishStatusGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetItemPublishStatusResponse>> CatalogGetItemPublishStatusAsync(
+        public Task<PFResult<PFCatalogGetItemPublishStatusResponse>> CatalogGetItemPublishStatusAsync(
             PFCatalogGetItemPublishStatusRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetItemPublishStatusAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetItemPublishStatusAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -277,11 +277,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetItemReviewsGetResultSize"/> and
         /// <see cref="PFCatalogGetItemReviewsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetItemReviewsResponse>> CatalogGetItemReviewsAsync(
+        public Task<PFResult<PFCatalogGetItemReviewsResponse>> CatalogGetItemReviewsAsync(
             PFCatalogGetItemReviewsRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetItemReviewsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetItemReviewsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -295,11 +295,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetItemReviewSummaryGetResultSize"/>
         /// and <see cref="PFCatalogGetItemReviewSummaryGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetItemReviewSummaryResponse>> CatalogGetItemReviewSummaryAsync(
+        public Task<PFResult<PFCatalogGetItemReviewSummaryResponse>> CatalogGetItemReviewSummaryAsync(
             PFCatalogGetItemReviewSummaryRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetItemReviewSummaryAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetItemReviewSummaryAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -314,11 +314,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogGetItemsGetResultSize"/> and <see
         /// cref="PFCatalogGetItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogGetItemsResponse>> CatalogGetItemsAsync(
+        public Task<PFResult<PFCatalogGetItemsResponse>> CatalogGetItemsAsync(
             PFCatalogGetItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogGetItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogGetItemsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -336,11 +336,11 @@ namespace PlayFab
         /// the async result will be E_PF_DATABASE_THROUGHPUT_EXCEEDED, E_PF_ITEM_NOT_FOUND or any of the global
         /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> CatalogPublishDraftItemAsync(
+        public Task<PFResult> CatalogPublishDraftItemAsync(
             PFCatalogPublishDraftItemRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogPublishDraftItemAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogPublishDraftItemAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -354,11 +354,11 @@ namespace PlayFab
         /// the async result will be E_PF_DATABASE_THROUGHPUT_EXCEEDED, E_PF_ITEM_NOT_FOUND or any of the global
         /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> CatalogReportItemAsync(
+        public Task<PFResult> CatalogReportItemAsync(
             PFCatalogReportItemRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogReportItemAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogReportItemAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -374,11 +374,11 @@ namespace PlayFab
         /// the async result will be E_PF_DATABASE_THROUGHPUT_EXCEEDED or any of the global PlayFab Service errors.
         /// See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> CatalogReportItemReviewAsync(
+        public Task<PFResult> CatalogReportItemReviewAsync(
             PFCatalogReportItemReviewRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogReportItemReviewAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogReportItemReviewAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -393,11 +393,11 @@ namespace PlayFab
         /// the async result will be E_PF_DATABASE_THROUGHPUT_EXCEEDED, E_PF_ITEM_NOT_FOUND or any of the global
         /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> CatalogReviewItemAsync(
+        public Task<PFResult> CatalogReviewItemAsync(
             PFCatalogReviewItemRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogReviewItemAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogReviewItemAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -413,11 +413,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogSearchItemsGetResultSize"/> and
         /// <see cref="PFCatalogSearchItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogSearchItemsResponse>> CatalogSearchItemsAsync(
+        public Task<PFResult<PFCatalogSearchItemsResponse>> CatalogSearchItemsAsync(
             PFCatalogSearchItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogSearchItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogSearchItemsAsync(InteropHandle, request);
         }
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_SERVER
@@ -433,11 +433,11 @@ namespace PlayFab
         /// the async result will be E_PF_DATABASE_THROUGHPUT_EXCEEDED, E_PF_ITEM_NOT_FOUND or any of the global
         /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> CatalogSetItemModerationStateAsync(
+        public Task<PFResult> CatalogSetItemModerationStateAsync(
             PFCatalogSetItemModerationStateRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogSetItemModerationStateAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogSetItemModerationStateAsync(InteropHandle, request);
         }
 #endif
 
@@ -452,11 +452,11 @@ namespace PlayFab
         /// the async result will be E_PF_DATABASE_THROUGHPUT_EXCEEDED or any of the global PlayFab Service errors.
         /// See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> CatalogSubmitItemReviewVoteAsync(
+        public Task<PFResult> CatalogSubmitItemReviewVoteAsync(
             PFCatalogSubmitItemReviewVoteRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogSubmitItemReviewVoteAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogSubmitItemReviewVoteAsync(InteropHandle, request);
         }
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_SERVER
@@ -474,11 +474,11 @@ namespace PlayFab
         /// the async result will be E_PF_DATABASE_THROUGHPUT_EXCEEDED, E_PF_ITEM_NOT_FOUND or any of the global
         /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> CatalogTakedownItemReviewsAsync(
+        public Task<PFResult> CatalogTakedownItemReviewsAsync(
             PFCatalogTakedownItemReviewsRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogTakedownItemReviewsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogTakedownItemReviewsAsync(InteropHandle, request);
         }
 #endif
 
@@ -497,11 +497,11 @@ namespace PlayFab
         /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
         /// on error handling.
         /// </remarks>
-        public async Task<PFResult> CatalogUpdateCatalogConfigAsync(
+        public Task<PFResult> CatalogUpdateCatalogConfigAsync(
             PFCatalogUpdateCatalogConfigRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogUpdateCatalogConfigAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogUpdateCatalogConfigAsync(InteropHandle, request);
         }
 #endif
 
@@ -516,11 +516,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFCatalogUpdateDraftItemGetResultSize"/>
         /// and <see cref="PFCatalogUpdateDraftItemGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFCatalogUpdateDraftItemResponse>> CatalogUpdateDraftItemAsync(
+        public Task<PFResult<PFCatalogUpdateDraftItemResponse>> CatalogUpdateDraftItemAsync(
             PFCatalogUpdateDraftItemRequest request
         )
         {
-            return await InteropWrapper.Services.PFCatalog.PFCatalogUpdateDraftItemAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFCatalog.PFCatalogUpdateDraftItemAsync(InteropHandle, request);
         }
     }
 }

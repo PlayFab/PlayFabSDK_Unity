@@ -54,8 +54,7 @@ namespace PlayFab.InteropWrapper.Core
                 if (HRESULT.Failed(hr)) return hr;
 
                 using DisposableBuffer disposableBuffer = new();
-                sbyte* apiEndpointInterop;
-                WrapperHelpers.StringToInterop(apiEndpoint, &apiEndpointInterop, disposableBuffer);
+                sbyte* apiEndpointInterop = (sbyte*)disposableBuffer.AddBuffer((int)apiEndpointSize);
 
                 hr = Interop.Methods.PFServiceConfigGetAPIEndpoint(handle.Handle, apiEndpointSize, apiEndpointInterop, null);
                 apiEndpoint = new(apiEndpointInterop);
@@ -76,8 +75,7 @@ namespace PlayFab.InteropWrapper.Core
                 if (HRESULT.Failed(hr)) return hr;
 
                 using DisposableBuffer disposableBuffer = new();
-                sbyte* titleIdInterop;
-                WrapperHelpers.StringToInterop(titleId, &titleIdInterop, disposableBuffer);
+                sbyte* titleIdInterop = (sbyte*)disposableBuffer.AddBuffer((int)titleIdSize);
 
                 hr = Interop.Methods.PFServiceConfigGetTitleId(handle.Handle, titleIdSize, titleIdInterop, null);
                 titleId = new(titleIdInterop);

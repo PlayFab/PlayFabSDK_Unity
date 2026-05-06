@@ -93,7 +93,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -148,7 +147,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -202,7 +200,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -302,7 +299,6 @@ namespace PlayFab
             Revision = interop.revision;
 
         }
-            
     }
 
     /// <summary>
@@ -386,7 +382,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -475,7 +470,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -542,7 +536,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -597,7 +590,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -652,7 +644,6 @@ namespace PlayFab
             FunctionResultTooLarge = (interop.functionResultTooLarge == null) ? null : InteropWrapper.WrapperHelpers.InteropToBool(*interop.functionResultTooLarge);
 
         }
-            
     }
 
 }

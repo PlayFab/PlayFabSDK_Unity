@@ -80,7 +80,6 @@ namespace PlayFab
             interop->resetInterval = (Interop.PFResetInterval)self.ResetInterval;
 
         }
-            
     }
 
 }

@@ -2,11 +2,11 @@ namespace PlayFab.Interop
 {
     public unsafe partial struct PFStatisticsListStatisticDefinitionsResponse
     {
-        [NativeTypeName("const struct PFStringDictionaryEntry *")]
-        public PFStringDictionaryEntry* customTags;
+        [NativeTypeName("int32_t")]
+        public int pageSize;
 
-        [NativeTypeName("uint32_t")]
-        public uint customTagsCount;
+        [NativeTypeName("const char *")]
+        public sbyte* skipToken;
 
         [NativeTypeName("const PFStatisticsStatisticDefinition *const *")]
         public PFStatisticsStatisticDefinition** statisticDefinitions;

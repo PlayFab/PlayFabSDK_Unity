@@ -11,7 +11,9 @@ namespace PlayFab
 
         public PFResult<PFTitleEntity> Duplicate()
         {
-            return Duplicate<PFTitleEntity>();
+            var result = InteropWrapper.Core.PFEntity.PFEntityDuplicateHandle(InteropHandle);
+            if (result.Failed()) return new PFResult<PFTitleEntity>(result.HResult);
+            return new PFResult<PFTitleEntity>(new PFTitleEntity(result.Result), result.HResult);
         }
     }
 }

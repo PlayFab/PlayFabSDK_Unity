@@ -1,6 +1,6 @@
 namespace PlayFab.Interop
 {
-    public unsafe partial struct PFAccountManagementUnlinkFacebookInstantGamesIdRequest
+    public unsafe partial struct PFAccountManagementServerAddOrUpdateContactEmailRequest
     {
         [NativeTypeName("const struct PFStringDictionaryEntry *")]
         public PFStringDictionaryEntry* customTags;
@@ -9,6 +9,9 @@ namespace PlayFab.Interop
         public uint customTagsCount;
 
         [NativeTypeName("const char *")]
-        public sbyte* facebookInstantGamesId;
+        public sbyte* emailAddress;
+
+        [NativeTypeName("const char *")]
+        public sbyte* playFabId;
     }
 }

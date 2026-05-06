@@ -21,12 +21,12 @@ namespace PlayFab.Tools
         /// </summary>
         public static readonly string[] RequiredGdkBinaries = new string[]
         {
-            "libHttpClient.GDK.dll",
+            "libHttpClient.dll",
             "Party.dll",
-            "PlayFabCore.GDK.dll",
-            "PlayFabGameSave.GDK.dll",
-            "PlayFabMultiplayerGDK.dll",
-            "PlayFabServices.GDK.dll",
+            "PlayFabCore.dll",
+            "PlayFabGameSave.dll",
+            "PlayFabMultiplayer.dll",
+            "PlayFabServices.dll",
             "XCurl.dll",
             "XGameRuntime.Thunks.dll",
             "xgameruntime.dll"

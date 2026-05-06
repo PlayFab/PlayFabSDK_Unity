@@ -18,11 +18,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFEventsWriteEventsGetResultSize"/> and <see
         /// cref="PFEventsWriteEventsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFEventsWriteEventsResponse>> EventsWriteEventsAsync(
+        public Task<PFResult<PFEventsWriteEventsResponse>> EventsWriteEventsAsync(
             PFEventsWriteEventsRequest request
         )
         {
-            return await InteropWrapper.Core.PFEvents.PFEventsWriteEventsAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFEvents.PFEventsWriteEventsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -41,11 +41,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFEventsWriteTelemetryEventsGetResultSize"/>
         /// and <see cref="PFEventsWriteTelemetryEventsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFEventsWriteEventsResponse>> EventsWriteTelemetryEventsAsync(
+        public Task<PFResult<PFEventsWriteEventsResponse>> EventsWriteTelemetryEventsAsync(
             PFEventsWriteEventsRequest request
         )
         {
-            return await InteropWrapper.Core.PFEvents.PFEventsWriteTelemetryEventsAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFEvents.PFEventsWriteTelemetryEventsAsync(InteropHandle, request);
         }
     }
 }

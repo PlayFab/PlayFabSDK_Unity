@@ -20,11 +20,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementClientDeletePlayerCustomPropertiesGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementClientDeletePlayerCustomPropertiesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementClientDeletePlayerCustomPropertiesResult>> PlayerDataManagementClientDeletePlayerCustomPropertiesAsync(
+        public Task<PFResult<PFPlayerDataManagementClientDeletePlayerCustomPropertiesResult>> PlayerDataManagementClientDeletePlayerCustomPropertiesAsync(
             PFPlayerDataManagementClientDeletePlayerCustomPropertiesRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientDeletePlayerCustomPropertiesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientDeletePlayerCustomPropertiesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -39,11 +39,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementClientGetPlayerCustomPropertyGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementClientGetPlayerCustomPropertyGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementClientGetPlayerCustomPropertyResult>> PlayerDataManagementClientGetPlayerCustomPropertyAsync(
+        public Task<PFResult<PFPlayerDataManagementClientGetPlayerCustomPropertyResult>> PlayerDataManagementClientGetPlayerCustomPropertyAsync(
             PFPlayerDataManagementClientGetPlayerCustomPropertyRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientGetPlayerCustomPropertyAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientGetPlayerCustomPropertyAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -62,11 +62,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementClientGetUserDataGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementClientGetUserDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementClientGetUserDataResult>> PlayerDataManagementClientGetUserDataAsync(
+        public Task<PFResult<PFPlayerDataManagementClientGetUserDataResult>> PlayerDataManagementClientGetUserDataAsync(
             PFPlayerDataManagementGetUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientGetUserDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientGetUserDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -83,11 +83,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementClientGetUserPublisherDataGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementClientGetUserPublisherDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementClientGetUserDataResult>> PlayerDataManagementClientGetUserPublisherDataAsync(
+        public Task<PFResult<PFPlayerDataManagementClientGetUserDataResult>> PlayerDataManagementClientGetUserPublisherDataAsync(
             PFPlayerDataManagementGetUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientGetUserPublisherDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientGetUserPublisherDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -104,11 +104,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementClientGetUserPublisherReadOnlyDataGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementClientGetUserPublisherReadOnlyDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementClientGetUserDataResult>> PlayerDataManagementClientGetUserPublisherReadOnlyDataAsync(
+        public Task<PFResult<PFPlayerDataManagementClientGetUserDataResult>> PlayerDataManagementClientGetUserPublisherReadOnlyDataAsync(
             PFPlayerDataManagementGetUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientGetUserPublisherReadOnlyDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientGetUserPublisherReadOnlyDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -127,11 +127,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementClientGetUserReadOnlyDataGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementClientGetUserReadOnlyDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementClientGetUserDataResult>> PlayerDataManagementClientGetUserReadOnlyDataAsync(
+        public Task<PFResult<PFPlayerDataManagementClientGetUserDataResult>> PlayerDataManagementClientGetUserReadOnlyDataAsync(
             PFPlayerDataManagementGetUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientGetUserReadOnlyDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientGetUserReadOnlyDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -145,11 +145,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementClientListPlayerCustomPropertiesGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementClientListPlayerCustomPropertiesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementClientListPlayerCustomPropertiesResult>> PlayerDataManagementClientListPlayerCustomPropertiesAsync(
+        public Task<PFResult<PFPlayerDataManagementClientListPlayerCustomPropertiesResult>> PlayerDataManagementClientListPlayerCustomPropertiesAsync(
             
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientListPlayerCustomPropertiesAsync(InteropHandle);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientListPlayerCustomPropertiesAsync(InteropHandle);
         }
 
         /// <summary>
@@ -167,11 +167,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementClientUpdatePlayerCustomPropertiesGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementClientUpdatePlayerCustomPropertiesResult>> PlayerDataManagementClientUpdatePlayerCustomPropertiesAsync(
+        public Task<PFResult<PFPlayerDataManagementClientUpdatePlayerCustomPropertiesResult>> PlayerDataManagementClientUpdatePlayerCustomPropertiesAsync(
             PFPlayerDataManagementClientUpdatePlayerCustomPropertiesRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientUpdatePlayerCustomPropertiesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientUpdatePlayerCustomPropertiesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -191,11 +191,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementClientUpdateUserDataGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementClientUpdateUserDataAsync(
+        public Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementClientUpdateUserDataAsync(
             PFPlayerDataManagementClientUpdateUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientUpdateUserDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientUpdateUserDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -215,11 +215,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementClientUpdateUserPublisherDataGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementClientUpdateUserPublisherDataAsync(
+        public Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementClientUpdateUserPublisherDataAsync(
             PFPlayerDataManagementClientUpdateUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientUpdateUserPublisherDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementClientUpdateUserPublisherDataAsync(InteropHandle, request);
         }
     }
 
@@ -238,11 +238,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerDeletePlayerCustomPropertiesGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementServerDeletePlayerCustomPropertiesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementServerDeletePlayerCustomPropertiesResult>> PlayerDataManagementServerDeletePlayerCustomPropertiesAsync(
+        public Task<PFResult<PFPlayerDataManagementServerDeletePlayerCustomPropertiesResult>> PlayerDataManagementServerDeletePlayerCustomPropertiesAsync(
             PFPlayerDataManagementServerDeletePlayerCustomPropertiesRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerDeletePlayerCustomPropertiesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerDeletePlayerCustomPropertiesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -257,11 +257,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerGetPlayerCustomPropertyGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementServerGetPlayerCustomPropertyGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementServerGetPlayerCustomPropertyResult>> PlayerDataManagementServerGetPlayerCustomPropertyAsync(
+        public Task<PFResult<PFPlayerDataManagementServerGetPlayerCustomPropertyResult>> PlayerDataManagementServerGetPlayerCustomPropertyAsync(
             PFPlayerDataManagementServerGetPlayerCustomPropertyRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetPlayerCustomPropertyAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetPlayerCustomPropertyAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -279,11 +279,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerGetUserDataGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementServerGetUserDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserDataAsync(
+        public Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserDataAsync(
             PFPlayerDataManagementGetUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -301,11 +301,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerGetUserInternalDataGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementServerGetUserInternalDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserInternalDataAsync(
+        public Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserInternalDataAsync(
             PFPlayerDataManagementGetUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserInternalDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserInternalDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -323,11 +323,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerGetUserPublisherDataGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementServerGetUserPublisherDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserPublisherDataAsync(
+        public Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserPublisherDataAsync(
             PFPlayerDataManagementGetUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserPublisherDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserPublisherDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -345,11 +345,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerGetUserPublisherInternalDataGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementServerGetUserPublisherInternalDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserPublisherInternalDataAsync(
+        public Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserPublisherInternalDataAsync(
             PFPlayerDataManagementGetUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserPublisherInternalDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserPublisherInternalDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -367,11 +367,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerGetUserPublisherReadOnlyDataGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementServerGetUserPublisherReadOnlyDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserPublisherReadOnlyDataAsync(
+        public Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserPublisherReadOnlyDataAsync(
             PFPlayerDataManagementGetUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserPublisherReadOnlyDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserPublisherReadOnlyDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -389,11 +389,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerGetUserReadOnlyDataGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementServerGetUserReadOnlyDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserReadOnlyDataAsync(
+        public Task<PFResult<PFPlayerDataManagementServerGetUserDataResult>> PlayerDataManagementServerGetUserReadOnlyDataAsync(
             PFPlayerDataManagementGetUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserReadOnlyDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerGetUserReadOnlyDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -408,11 +408,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerListPlayerCustomPropertiesGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementServerListPlayerCustomPropertiesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementServerListPlayerCustomPropertiesResult>> PlayerDataManagementServerListPlayerCustomPropertiesAsync(
+        public Task<PFResult<PFPlayerDataManagementServerListPlayerCustomPropertiesResult>> PlayerDataManagementServerListPlayerCustomPropertiesAsync(
             PFPlayerDataManagementListPlayerCustomPropertiesRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerListPlayerCustomPropertiesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerListPlayerCustomPropertiesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -430,11 +430,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerUpdatePlayerCustomPropertiesGetResultSize"/>
         /// and <see cref="PFPlayerDataManagementServerUpdatePlayerCustomPropertiesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementServerUpdatePlayerCustomPropertiesResult>> PlayerDataManagementServerUpdatePlayerCustomPropertiesAsync(
+        public Task<PFResult<PFPlayerDataManagementServerUpdatePlayerCustomPropertiesResult>> PlayerDataManagementServerUpdatePlayerCustomPropertiesAsync(
             PFPlayerDataManagementServerUpdatePlayerCustomPropertiesRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdatePlayerCustomPropertiesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdatePlayerCustomPropertiesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -453,11 +453,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerUpdateUserDataGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserDataAsync(
+        public Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserDataAsync(
             PFPlayerDataManagementServerUpdateUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -476,11 +476,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerUpdateUserInternalDataGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserInternalDataAsync(
+        public Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserInternalDataAsync(
             PFPlayerDataManagementUpdateUserInternalDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserInternalDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserInternalDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -499,11 +499,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerUpdateUserPublisherDataGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserPublisherDataAsync(
+        public Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserPublisherDataAsync(
             PFPlayerDataManagementServerUpdateUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserPublisherDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserPublisherDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -522,11 +522,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerUpdateUserPublisherInternalDataGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserPublisherInternalDataAsync(
+        public Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserPublisherInternalDataAsync(
             PFPlayerDataManagementUpdateUserInternalDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserPublisherInternalDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserPublisherInternalDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -545,11 +545,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerUpdateUserPublisherReadOnlyDataGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserPublisherReadOnlyDataAsync(
+        public Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserPublisherReadOnlyDataAsync(
             PFPlayerDataManagementServerUpdateUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserPublisherReadOnlyDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserPublisherReadOnlyDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -568,11 +568,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlayerDataManagementServerUpdateUserReadOnlyDataGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserReadOnlyDataAsync(
+        public Task<PFResult<PFPlayerDataManagementUpdateUserDataResult>> PlayerDataManagementServerUpdateUserReadOnlyDataAsync(
             PFPlayerDataManagementServerUpdateUserDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserReadOnlyDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlayerDataManagement.PFPlayerDataManagementServerUpdateUserReadOnlyDataAsync(InteropHandle, request);
         }
     }
 }

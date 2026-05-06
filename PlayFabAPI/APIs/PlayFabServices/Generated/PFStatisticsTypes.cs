@@ -805,6 +805,16 @@ namespace PlayFab
         /// </summary>
         public Dictionary<string, string>? CustomTags;
 
+        /// <summary>
+        /// (Optional) The page size for the request.
+        /// </summary>
+        public int? PageSize;
+
+        /// <summary>
+        /// (Optional) The skip token for the paged request.
+        /// </summary>
+        public string? SkipToken;
+
         internal unsafe static void ToInterop(PFStatisticsListStatisticDefinitionsRequest self, Interop.PFStatisticsListStatisticDefinitionsRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
@@ -813,6 +823,16 @@ namespace PlayFab
             {
                 InteropWrapper.WrapperHelpers.DictionaryToStringInterop(self.CustomTags, &interop->customTags, buffer);
                 interop->customTagsCount = (uint)self.CustomTags.Count;
+            }
+
+            if (self.PageSize != null)
+            {
+                *interop->pageSize = self.PageSize.Value;
+            }
+
+            if (self.SkipToken != null)
+            {
+                InteropWrapper.WrapperHelpers.StringToInterop(self.SkipToken, &interop->skipToken, buffer);
             }
 
         }
@@ -978,10 +998,14 @@ namespace PlayFab
     public struct PFStatisticsListStatisticDefinitionsResponse
     {
         /// <summary>
-        /// (Optional) The optional custom tags associated with the request (e.g. build number, external trace
-        /// identifiers, etc.).
+        /// The page size on the response.
         /// </summary>
-        public Dictionary<string, string>? CustomTags;
+        public int PageSize;
+
+        /// <summary>
+        /// (Optional) The skip token for the paged response.
+        /// </summary>
+        public string? SkipToken;
 
         /// <summary>
         /// (Optional) List of statistic definitions for the title.
@@ -991,7 +1015,9 @@ namespace PlayFab
         internal unsafe PFStatisticsListStatisticDefinitionsResponse(Interop.PFStatisticsListStatisticDefinitionsResponse interop)
         {
 
-            CustomTags = (interop.customTags == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.customTags, interop.customTagsCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), InteropWrapper.WrapperHelpers.InteropToString(pair.value)));
+            PageSize = interop.pageSize;
+
+            SkipToken = (interop.skipToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.skipToken);
 
             StatisticDefinitions = (interop.statisticDefinitions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.statisticDefinitions, interop.statisticDefinitionsCount, elem => new PFStatisticsStatisticDefinition(elem));
 
@@ -1062,7 +1088,7 @@ namespace PlayFab
     {
         /// <summary>
         /// (Optional) Arbitrary metadata to store along side the statistic, will be returned by all Leaderboard
-        /// APIs. Must be less than 50 UTF8 encoded characters.
+        /// APIs.
         /// </summary>
         public string? Metadata;
 
@@ -1146,8 +1172,7 @@ namespace PlayFab
         public PFStatisticsStatisticUpdate[] Statistics;
 
         /// <summary>
-        /// (Optional) Optional transactionId of this update which can be used to ensure idempotence. Using this
-        /// field is still in testing stage.
+        /// (Optional) Optional transactionId of this update which can be used to ensure idempotence.
         /// </summary>
         public string? TransactionId;
 

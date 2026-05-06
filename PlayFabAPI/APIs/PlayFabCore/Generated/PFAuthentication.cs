@@ -21,11 +21,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationValidateEntityTokenGetResultSize"/>
         /// and <see cref="PFAuthenticationValidateEntityTokenGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAuthenticationValidateEntityTokenResponse>> AuthenticationValidateEntityTokenAsync(
+        public Task<PFResult<PFAuthenticationValidateEntityTokenResponse>> AuthenticationValidateEntityTokenAsync(
             PFAuthenticationValidateEntityTokenRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationValidateEntityTokenAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationValidateEntityTokenAsync(InteropHandle, request);
         }
 #endif
     }
@@ -40,11 +40,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithAppleAsync(
+        public Task<PFResult> AuthenticationReLoginWithAppleAsync(
             PFAuthenticationLoginWithAppleRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithAppleAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithAppleAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -74,11 +74,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithBattleNetAsync(
+        public Task<PFResult> AuthenticationReLoginWithBattleNetAsync(
             PFAuthenticationLoginWithBattleNetRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithBattleNetAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithBattleNetAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -108,11 +108,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithCustomIDAsync(
+        public Task<PFResult> AuthenticationReLoginWithCustomIDAsync(
             PFAuthenticationLoginWithCustomIDRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithCustomIDAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithCustomIDAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -142,11 +142,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithFacebookAsync(
+        public Task<PFResult> AuthenticationReLoginWithFacebookAsync(
             PFAuthenticationLoginWithFacebookRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithFacebookAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithFacebookAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -176,11 +176,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithGameCenterAsync(
+        public Task<PFResult> AuthenticationReLoginWithGameCenterAsync(
             PFAuthenticationLoginWithGameCenterRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithGameCenterAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithGameCenterAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -210,11 +210,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithGoogleAccountAsync(
+        public Task<PFResult> AuthenticationReLoginWithGoogleAccountAsync(
             PFAuthenticationLoginWithGoogleAccountRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithGoogleAccountAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithGoogleAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -244,11 +244,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithGooglePlayGamesServicesAsync(
+        public Task<PFResult> AuthenticationReLoginWithGooglePlayGamesServicesAsync(
             PFAuthenticationLoginWithGooglePlayGamesServicesRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithGooglePlayGamesServicesAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithGooglePlayGamesServicesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -278,11 +278,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithNintendoServiceAccountAsync(
+        public Task<PFResult> AuthenticationReLoginWithNintendoServiceAccountAsync(
             PFAuthenticationLoginWithNintendoServiceAccountRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithNintendoServiceAccountAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithNintendoServiceAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -312,11 +312,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithOpenIdConnectAsync(
+        public Task<PFResult> AuthenticationReLoginWithOpenIdConnectAsync(
             PFAuthenticationLoginWithOpenIdConnectRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithOpenIdConnectAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithOpenIdConnectAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -346,11 +346,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithPSNAsync(
+        public Task<PFResult> AuthenticationReLoginWithPSNAsync(
             PFAuthenticationLoginWithPSNRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithPSNAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithPSNAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -380,11 +380,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithSteamAsync(
+        public Task<PFResult> AuthenticationReLoginWithSteamAsync(
             PFAuthenticationLoginWithSteamRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithSteamAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithSteamAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -414,11 +414,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithXboxAsync(
+        public Task<PFResult> AuthenticationReLoginWithXboxAsync(
             PFAuthenticationLoginWithXboxRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithXboxAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithXboxAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -457,11 +457,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AuthenticationDeleteAsync(
+        public Task<PFResult> AuthenticationDeleteAsync(
             PFAuthenticationDeleteRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationDeleteAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationDeleteAsync(InteropHandle, request);
         }
     }
 
@@ -483,7 +483,7 @@ namespace PlayFab
             PFAuthenticationLoginWithAppleRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithAppleAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithAppleAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -528,7 +528,7 @@ namespace PlayFab
             PFAuthenticationLoginWithBattleNetRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithBattleNetAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithBattleNetAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -580,7 +580,7 @@ namespace PlayFab
             PFAuthenticationLoginWithCustomIDRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithCustomIDAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithCustomIDAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -646,7 +646,7 @@ namespace PlayFab
             PFAuthenticationLoginWithFacebookRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithFacebookAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithFacebookAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -718,7 +718,7 @@ namespace PlayFab
             PFAuthenticationLoginWithGameCenterRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithGameCenterAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithGameCenterAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -791,7 +791,7 @@ namespace PlayFab
             PFAuthenticationLoginWithGoogleAccountRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithGoogleAccountAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithGoogleAccountAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -862,7 +862,7 @@ namespace PlayFab
             PFAuthenticationLoginWithGooglePlayGamesServicesRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithGooglePlayGamesServicesAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithGooglePlayGamesServicesAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -918,7 +918,7 @@ namespace PlayFab
             PFAuthenticationLoginWithNintendoServiceAccountRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithNintendoServiceAccountAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithNintendoServiceAccountAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -964,7 +964,7 @@ namespace PlayFab
             PFAuthenticationLoginWithOpenIdConnectRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithOpenIdConnectAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithOpenIdConnectAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -1016,7 +1016,7 @@ namespace PlayFab
             PFAuthenticationLoginWithPSNRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithPSNAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithPSNAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -1077,7 +1077,7 @@ namespace PlayFab
             PFAuthenticationLoginWithSteamRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithSteamAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithSteamAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -1124,7 +1124,7 @@ namespace PlayFab
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFPlayerEntity.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationLoginWithXboxGetResult"/>
         /// to get the result.
         /// </remarks>
@@ -1132,7 +1132,7 @@ namespace PlayFab
             PFAuthenticationLoginWithXboxRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithXboxAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithXboxAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }
@@ -1149,7 +1149,7 @@ namespace PlayFab
         /// <param name="loginHandlerContext">Context provided to the PFLocalUserLoginHandler.</param>
         /// <returns>The result for this API operation. The async result will be returned to the PlayFab SDK internally.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationLoginWithXboxGetResult"/>
         /// to get the result.
         /// </remarks>
@@ -1184,12 +1184,12 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationServerLoginWithAndroidDeviceIDGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithAndroidDeviceIDAsync(
+        public Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithAndroidDeviceIDAsync(
             string secretKey,
             PFAuthenticationServerLoginWithAndroidDeviceIDRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithAndroidDeviceIDAsync(InteropHandle, secretKey, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithAndroidDeviceIDAsync(InteropHandle, secretKey, request);
         }
 
         /// <summary>
@@ -1204,12 +1204,12 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationServerLoginWithBattleNetGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithBattleNetAsync(
+        public Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithBattleNetAsync(
             string secretKey,
             PFAuthenticationServerLoginWithBattleNetRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithBattleNetAsync(InteropHandle, secretKey, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithBattleNetAsync(InteropHandle, secretKey, request);
         }
 
         /// <summary>
@@ -1230,12 +1230,12 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationServerLoginWithCustomIDGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithCustomIDAsync(
+        public Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithCustomIDAsync(
             string secretKey,
             PFAuthenticationServerLoginWithCustomIDRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithCustomIDAsync(InteropHandle, secretKey, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithCustomIDAsync(InteropHandle, secretKey, request);
         }
 
         /// <summary>
@@ -1258,12 +1258,12 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationServerLoginWithIOSDeviceIDGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithIOSDeviceIDAsync(
+        public Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithIOSDeviceIDAsync(
             string secretKey,
             PFAuthenticationServerLoginWithIOSDeviceIDRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithIOSDeviceIDAsync(InteropHandle, secretKey, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithIOSDeviceIDAsync(InteropHandle, secretKey, request);
         }
 
         /// <summary>
@@ -1284,12 +1284,12 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationServerLoginWithPSNGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithPSNAsync(
+        public Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithPSNAsync(
             string secretKey,
             PFAuthenticationServerLoginWithPSNRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithPSNAsync(InteropHandle, secretKey, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithPSNAsync(InteropHandle, secretKey, request);
         }
 
         /// <summary>
@@ -1304,12 +1304,12 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationServerLoginWithServerCustomIdGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithServerCustomIdAsync(
+        public Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithServerCustomIdAsync(
             string secretKey,
             PFAuthenticationLoginWithServerCustomIdRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithServerCustomIdAsync(InteropHandle, secretKey, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithServerCustomIdAsync(InteropHandle, secretKey, request);
         }
 
         /// <summary>
@@ -1331,12 +1331,12 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationServerLoginWithSteamIdGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithSteamIdAsync(
+        public Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithSteamIdAsync(
             string secretKey,
             PFAuthenticationLoginWithSteamIdRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithSteamIdAsync(InteropHandle, secretKey, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithSteamIdAsync(InteropHandle, secretKey, request);
         }
 
         /// <summary>
@@ -1356,12 +1356,12 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationServerLoginWithXboxGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithXboxAsync(
+        public Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithXboxAsync(
             string secretKey,
             PFAuthenticationServerLoginWithXboxRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithXboxAsync(InteropHandle, secretKey, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithXboxAsync(InteropHandle, secretKey, request);
         }
 
         /// <summary>
@@ -1381,12 +1381,12 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationServerLoginWithXboxIdGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithXboxIdAsync(
+        public Task<PFResult<(PFAuthenticationEntityTokenResponse entityResponse, PFAuthenticationLoginResult loginResult)>> AuthenticationServerLoginWithXboxIdAsync(
             string secretKey,
             PFAuthenticationLoginWithXboxIdRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithXboxIdAsync(InteropHandle, secretKey, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationServerLoginWithXboxIdAsync(InteropHandle, secretKey, request);
         }
     }
 }

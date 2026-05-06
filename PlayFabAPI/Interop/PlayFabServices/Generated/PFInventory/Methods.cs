@@ -95,18 +95,6 @@ namespace PlayFab.Interop
 
         [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         [return: NativeTypeName("HRESULT")]
-        public static extern int PFInventoryGetMicrosoftStoreAccessTokensAsync([NativeTypeName("PFEntityHandle")] IntPtr entityHandle, [NativeTypeName("const PFInventoryGetMicrosoftStoreAccessTokensRequest *")] PFInventoryGetMicrosoftStoreAccessTokensRequest* request, XAsyncBlock* async);
-
-        [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        [return: NativeTypeName("HRESULT")]
-        public static extern int PFInventoryGetMicrosoftStoreAccessTokensGetResultSize(XAsyncBlock* async, [NativeTypeName("size_t *")] ulong* bufferSize);
-
-        [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        [return: NativeTypeName("HRESULT")]
-        public static extern int PFInventoryGetMicrosoftStoreAccessTokensGetResult(XAsyncBlock* async, [NativeTypeName("size_t")] ulong bufferSize, void* buffer, PFInventoryGetMicrosoftStoreAccessTokensResponse** result, [NativeTypeName("size_t *")] ulong* bufferUsed);
-
-        [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
-        [return: NativeTypeName("HRESULT")]
         public static extern int PFInventoryGetTransactionHistoryAsync([NativeTypeName("PFEntityHandle")] IntPtr entityHandle, [NativeTypeName("const PFInventoryGetTransactionHistoryRequest *")] PFInventoryGetTransactionHistoryRequest* request, XAsyncBlock* async);
 
         [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]

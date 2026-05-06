@@ -1823,6 +1823,18 @@ namespace PlayFab.Interop
         [NativeTypeName("#define E_PF_PRECONDITION_FAILED MAKE_E_HC(0x57ccL)")]
         public const int E_PF_PRECONDITION_FAILED = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57cc))));
 
+        [NativeTypeName("#define E_PF_CANNOT_ENABLE_ANONYMOUS_PLAYER_CREATION MAKE_E_HC(0x57d4L)")]
+        public const int E_PF_CANNOT_ENABLE_ANONYMOUS_PLAYER_CREATION = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57d4))));
+
+        [NativeTypeName("#define E_PF_PARENT_CUSTOMER_ACCOUNT_NOT_FOUND MAKE_E_HC(0x57d5L)")]
+        public const int E_PF_PARENT_CUSTOMER_ACCOUNT_NOT_FOUND = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57d5))));
+
+        [NativeTypeName("#define E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER MAKE_E_HC(0x57d7L)")]
+        public const int E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57d7))));
+
+        [NativeTypeName("#define E_PF_AZURE_SUBSCRIPTION_NOT_ELIGIBLE_FOR_LINKING MAKE_E_HC(0x57d8L)")]
+        public const int E_PF_AZURE_SUBSCRIPTION_NOT_ELIGIBLE_FOR_LINKING = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57d8))));
+
         [NativeTypeName("#define E_PF_MATCHMAKING_ENTITY_INVALID MAKE_E_HC(0x5646L)")]
         public const int E_PF_MATCHMAKING_ENTITY_INVALID = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x5646))));
 
@@ -1954,6 +1966,9 @@ namespace PlayFab.Interop
 
         [NativeTypeName("#define E_PF_INVALID_CATALOG_ITEM_CONFIGURATION MAKE_E_HC(0x5711L)")]
         public const int E_PF_INVALID_CATALOG_ITEM_CONFIGURATION = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x5711))));
+
+        [NativeTypeName("#define E_PF_LEGACY_ECONOMY_DISABLED MAKE_E_HC(0x57dbL)")]
+        public const int E_PF_LEGACY_ECONOMY_DISABLED = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57db))));
 
         [NativeTypeName("#define E_PF_EXPORT_INVALID_STATUS_UPDATE MAKE_E_HC(0x5671L)")]
         public const int E_PF_EXPORT_INVALID_STATUS_UPDATE = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x5671))));
@@ -2168,6 +2183,9 @@ namespace PlayFab.Interop
         [NativeTypeName("#define E_PF_EXPERIMENTATION_LEGACY_EXPERIMENT_INVALID_OPERATION MAKE_E_HC(0x57a0L)")]
         public const int E_PF_EXPERIMENTATION_LEGACY_EXPERIMENT_INVALID_OPERATION = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57a0))));
 
+        [NativeTypeName("#define E_PF_EXPERIMENTATION_EXPERIMENT_STOP_FAILED MAKE_E_HC(0x57d9L)")]
+        public const int E_PF_EXPERIMENTATION_EXPERIMENT_STOP_FAILED = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57d9))));
+
         [NativeTypeName("#define E_PF_MAX_ACTION_DEPTH_EXCEEDED MAKE_E_HC(0x56b7L)")]
         public const int E_PF_MAX_ACTION_DEPTH_EXCEEDED = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x56b7))));
 
@@ -2219,8 +2237,8 @@ namespace PlayFab.Interop
         [NativeTypeName("#define E_PF_ANALYTICS_SEGMENT_COUNT_OVER_LIMIT MAKE_E_HC(0x56c7L)")]
         public const int E_PF_ANALYTICS_SEGMENT_COUNT_OVER_LIMIT = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x56c7))));
 
-        [NativeTypeName("#define E_PF_GET_PLAYERS_IN_SEGMENT_DEPRECATED MAKE_E_HC(0x57cdL)")]
-        public const int E_PF_GET_PLAYERS_IN_SEGMENT_DEPRECATED = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57cd))));
+        [NativeTypeName("#define E_PF_GET_PLAYERS_IN_SEGMENT_RETIRED MAKE_E_HC(0x57dcL)")]
+        public const int E_PF_GET_PLAYERS_IN_SEGMENT_RETIRED = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57dc))));
 
         [NativeTypeName("#define E_PF_SNAPSHOT_NOT_FOUND MAKE_E_HC(0x56c8L)")]
         public const int E_PF_SNAPSHOT_NOT_FOUND = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x56c8))));
@@ -2756,6 +2774,9 @@ namespace PlayFab.Interop
         [NativeTypeName("#define E_PF_GAME_SAVE_MANIFEST_NOT_ELIGIBLE_FOR_ROLLBACK MAKE_E_HC(0x57c7L)")]
         public const int E_PF_GAME_SAVE_MANIFEST_NOT_ELIGIBLE_FOR_ROLLBACK = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57c7))));
 
+        [NativeTypeName("#define E_PF_GAME_SAVE_TITLE_CLIENT_ANONYMOUS_ACCOUNT_CREATION_NOT_DISABLED MAKE_E_HC(0x57d6L)")]
+        public const int E_PF_GAME_SAVE_TITLE_CLIENT_ANONYMOUS_ACCOUNT_CREATION_NOT_DISABLED = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57d6))));
+
         [NativeTypeName("#define E_PF_STATE_SHARE_FORBIDDEN MAKE_E_HC(0x5769L)")]
         public const int E_PF_STATE_SHARE_FORBIDDEN = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x5769))));
 
@@ -2827,6 +2848,12 @@ namespace PlayFab.Interop
 
         [NativeTypeName("#define E_PF_PLAY_FAB_ERROR_EVENT_NOT_SUPPORTED_FOR_ENTITY_TYPE MAKE_E_HC(0x57d2L)")]
         public const int E_PF_PLAY_FAB_ERROR_EVENT_NOT_SUPPORTED_FOR_ENTITY_TYPE = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57d2))));
+
+        [NativeTypeName("#define E_PF_METADATA_LENGTH_EXCEEDED MAKE_E_HC(0x57daL)")]
+        public const int E_PF_METADATA_LENGTH_EXCEEDED = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57da))));
+
+        [NativeTypeName("#define E_PF_MAX_QUERYABLE_VERSIONS_EXCEEDED MAKE_E_HC(0x57ddL)")]
+        public const int E_PF_MAX_QUERYABLE_VERSIONS_EXCEEDED = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57dd))));
 
         [NativeTypeName("#define E_PF_STORE_METRICS_REQUEST_INVALID_INPUT MAKE_E_HC(0x57caL)")]
         public const int E_PF_STORE_METRICS_REQUEST_INVALID_INPUT = unchecked((int)(((uint)(1) << 31) | ((uint)(2339) << 16) | ((uint)(0x57ca))));

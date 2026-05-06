@@ -23,11 +23,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFTitleDataManagementClientGetPublisherDataGetResultSize"/>
         /// and <see cref="PFTitleDataManagementClientGetPublisherDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFTitleDataManagementGetPublisherDataResult>> TitleDataManagementClientGetPublisherDataAsync(
+        public Task<PFResult<PFTitleDataManagementGetPublisherDataResult>> TitleDataManagementClientGetPublisherDataAsync(
             PFTitleDataManagementGetPublisherDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementClientGetPublisherDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementClientGetPublisherDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -42,11 +42,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFTitleDataManagementClientGetTimeGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFTitleDataManagementGetTimeResult>> TitleDataManagementClientGetTimeAsync(
+        public Task<PFResult<PFTitleDataManagementGetTimeResult>> TitleDataManagementClientGetTimeAsync(
             
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementClientGetTimeAsync(InteropHandle);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementClientGetTimeAsync(InteropHandle);
         }
 
         /// <summary>
@@ -67,11 +67,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFTitleDataManagementClientGetTitleDataGetResultSize"/>
         /// and <see cref="PFTitleDataManagementClientGetTitleDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFTitleDataManagementGetTitleDataResult>> TitleDataManagementClientGetTitleDataAsync(
+        public Task<PFResult<PFTitleDataManagementGetTitleDataResult>> TitleDataManagementClientGetTitleDataAsync(
             PFTitleDataManagementGetTitleDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementClientGetTitleDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementClientGetTitleDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -84,11 +84,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFTitleDataManagementClientGetTitleNewsGetResultSize"/>
         /// and <see cref="PFTitleDataManagementClientGetTitleNewsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFTitleDataManagementGetTitleNewsResult>> TitleDataManagementClientGetTitleNewsAsync(
+        public Task<PFResult<PFTitleDataManagementGetTitleNewsResult>> TitleDataManagementClientGetTitleNewsAsync(
             PFTitleDataManagementGetTitleNewsRequest request
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementClientGetTitleNewsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementClientGetTitleNewsAsync(InteropHandle, request);
         }
     }
 
@@ -110,11 +110,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFTitleDataManagementServerGetPublisherDataGetResultSize"/>
         /// and <see cref="PFTitleDataManagementServerGetPublisherDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFTitleDataManagementGetPublisherDataResult>> TitleDataManagementServerGetPublisherDataAsync(
+        public Task<PFResult<PFTitleDataManagementGetPublisherDataResult>> TitleDataManagementServerGetPublisherDataAsync(
             PFTitleDataManagementGetPublisherDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerGetPublisherDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerGetPublisherDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -129,11 +129,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFTitleDataManagementServerGetTimeGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFTitleDataManagementGetTimeResult>> TitleDataManagementServerGetTimeAsync(
+        public Task<PFResult<PFTitleDataManagementGetTimeResult>> TitleDataManagementServerGetTimeAsync(
             
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerGetTimeAsync(InteropHandle);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerGetTimeAsync(InteropHandle);
         }
 
         /// <summary>
@@ -154,11 +154,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFTitleDataManagementServerGetTitleDataGetResultSize"/>
         /// and <see cref="PFTitleDataManagementServerGetTitleDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFTitleDataManagementGetTitleDataResult>> TitleDataManagementServerGetTitleDataAsync(
+        public Task<PFResult<PFTitleDataManagementGetTitleDataResult>> TitleDataManagementServerGetTitleDataAsync(
             PFTitleDataManagementGetTitleDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerGetTitleDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerGetTitleDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -176,11 +176,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFTitleDataManagementServerGetTitleInternalDataGetResultSize"/>
         /// and <see cref="PFTitleDataManagementServerGetTitleInternalDataGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFTitleDataManagementGetTitleDataResult>> TitleDataManagementServerGetTitleInternalDataAsync(
+        public Task<PFResult<PFTitleDataManagementGetTitleDataResult>> TitleDataManagementServerGetTitleInternalDataAsync(
             PFTitleDataManagementGetTitleDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerGetTitleInternalDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerGetTitleInternalDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -193,11 +193,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFTitleDataManagementServerGetTitleNewsGetResultSize"/>
         /// and <see cref="PFTitleDataManagementServerGetTitleNewsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFTitleDataManagementGetTitleNewsResult>> TitleDataManagementServerGetTitleNewsAsync(
+        public Task<PFResult<PFTitleDataManagementGetTitleNewsResult>> TitleDataManagementServerGetTitleNewsAsync(
             PFTitleDataManagementGetTitleNewsRequest request
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerGetTitleNewsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerGetTitleNewsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -218,11 +218,11 @@ namespace PlayFab
         /// the async result will be E_PF_PUBLISHER_NOT_SET or any of the global PlayFab Service errors. See doc
         /// page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> TitleDataManagementServerSetPublisherDataAsync(
+        public Task<PFResult> TitleDataManagementServerSetPublisherDataAsync(
             PFTitleDataManagementSetPublisherDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerSetPublisherDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerSetPublisherDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -243,11 +243,11 @@ namespace PlayFab
         /// the async result will be E_PF_DATA_LENGTH_EXCEEDED, E_PF_TOO_MANY_KEYS or any of the global PlayFab
         /// Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> TitleDataManagementServerSetTitleDataAsync(
+        public Task<PFResult> TitleDataManagementServerSetTitleDataAsync(
             PFTitleDataManagementSetTitleDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerSetTitleDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerSetTitleDataAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -267,11 +267,11 @@ namespace PlayFab
         /// the async result will be E_PF_DATA_LENGTH_EXCEEDED, E_PF_TOO_MANY_KEYS or any of the global PlayFab
         /// Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> TitleDataManagementServerSetTitleInternalDataAsync(
+        public Task<PFResult> TitleDataManagementServerSetTitleInternalDataAsync(
             PFTitleDataManagementSetTitleDataRequest request
         )
         {
-            return await InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerSetTitleInternalDataAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFTitleDataManagement.PFTitleDataManagementServerSetTitleInternalDataAsync(InteropHandle, request);
         }
     }
 }

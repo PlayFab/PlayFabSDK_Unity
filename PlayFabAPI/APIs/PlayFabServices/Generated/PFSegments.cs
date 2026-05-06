@@ -16,11 +16,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFSegmentsClientGetPlayerSegmentsGetResultSize"/>
         /// and <see cref="PFSegmentsClientGetPlayerSegmentsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFSegmentsGetPlayerSegmentsResult>> SegmentsClientGetPlayerSegmentsAsync(
+        public Task<PFResult<PFSegmentsGetPlayerSegmentsResult>> SegmentsClientGetPlayerSegmentsAsync(
             
         )
         {
-            return await InteropWrapper.Services.PFSegments.PFSegmentsClientGetPlayerSegmentsAsync(InteropHandle);
+            return InteropWrapper.Services.PFSegments.PFSegmentsClientGetPlayerSegmentsAsync(InteropHandle);
         }
 
         /// <summary>
@@ -37,11 +37,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFSegmentsClientGetPlayerTagsGetResultSize"/>
         /// and <see cref="PFSegmentsClientGetPlayerTagsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFSegmentsGetPlayerTagsResult>> SegmentsClientGetPlayerTagsAsync(
+        public Task<PFResult<PFSegmentsGetPlayerTagsResult>> SegmentsClientGetPlayerTagsAsync(
             PFSegmentsGetPlayerTagsRequest request
         )
         {
-            return await InteropWrapper.Services.PFSegments.PFSegmentsClientGetPlayerTagsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFSegments.PFSegmentsClientGetPlayerTagsAsync(InteropHandle, request);
         }
     }
 
@@ -64,11 +64,11 @@ namespace PlayFab
         /// the async result will be E_PF_PLAYER_TAG_COUNT_LIMIT_EXCEEDED or any of the global PlayFab Service
         /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> SegmentsServerAddPlayerTagAsync(
+        public Task<PFResult> SegmentsServerAddPlayerTagAsync(
             PFSegmentsAddPlayerTagRequest request
         )
         {
-            return await InteropWrapper.Services.PFSegments.PFSegmentsServerAddPlayerTagAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFSegments.PFSegmentsServerAddPlayerTagAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -84,11 +84,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFSegmentsServerGetAllSegmentsGetResultSize"/>
         /// and <see cref="PFSegmentsServerGetAllSegmentsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFSegmentsGetAllSegmentsResult>> SegmentsServerGetAllSegmentsAsync(
+        public Task<PFResult<PFSegmentsGetAllSegmentsResult>> SegmentsServerGetAllSegmentsAsync(
             
         )
         {
-            return await InteropWrapper.Services.PFSegments.PFSegmentsServerGetAllSegmentsAsync(InteropHandle);
+            return InteropWrapper.Services.PFSegments.PFSegmentsServerGetAllSegmentsAsync(InteropHandle);
         }
 
         /// <summary>
@@ -103,42 +103,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFSegmentsServerGetPlayerSegmentsGetResultSize"/>
         /// and <see cref="PFSegmentsServerGetPlayerSegmentsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFSegmentsGetPlayerSegmentsResult>> SegmentsServerGetPlayerSegmentsAsync(
+        public Task<PFResult<PFSegmentsGetPlayerSegmentsResult>> SegmentsServerGetPlayerSegmentsAsync(
             PFSegmentsGetPlayersSegmentsRequest request
         )
         {
-            return await InteropWrapper.Services.PFSegments.PFSegmentsServerGetPlayerSegmentsAsync(InteropHandle, request);
-        }
-
-        /// <summary>
-        /// Allows for paging through all players in a given segment. This API creates a snapshot of all player
-        /// profiles that match the segment definition at the time of its creation and lives through the Total
-        /// Seconds to Live, refreshing its life span on each subsequent use of the Continuation Token. Profiles
-        /// that change during the course of paging will not be reflected in the results. AB Test segments are
-        /// currently not supported by this operation. NOTE: This API is limited to being called 30 times in one
-        /// minute. You will be returned an error if you exceed this threshold.
-        /// </summary>
-        /// <param name="request">Populated request object.</param>
-        /// <returns>A task which will provide the result code for this API operation and a PFSegmentsGetPlayersInSegmentResult.</returns>
-        /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
-        /// Initial request must contain at least a Segment ID. Subsequent requests must contain the Segment
-        /// ID as well as the Continuation Token. Failure to send the Continuation Token will result in a new
-        /// player segment list being generated. Each time the Continuation Token is passed in the length of the
-        /// Total Seconds to Live is refreshed. If too much time passes between requests to the point that a subsequent
-        /// request is past the Total Seconds to Live an error will be returned and paging will be terminated.
-        /// This API is resource intensive and should not be used in scenarios which might generate high request
-        /// volumes. Only one request to this API at a time should be made per title. Concurrent requests to the
-        /// API may be rejected with the APIConcurrentRequestLimitExceeded error. See also ServerGetAllSegmentsAsync.
-        ///
-        /// When the asynchronous task is complete, call <see cref="PFSegmentsServerGetPlayersInSegmentGetResultSize"/>
-        /// and <see cref="PFSegmentsServerGetPlayersInSegmentGetResult"/> to get the result.
-        /// </remarks>
-        public async Task<PFResult<PFSegmentsGetPlayersInSegmentResult>> SegmentsServerGetPlayersInSegmentAsync(
-            PFSegmentsGetPlayersInSegmentRequest request
-        )
-        {
-            return await InteropWrapper.Services.PFSegments.PFSegmentsServerGetPlayersInSegmentAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFSegments.PFSegmentsServerGetPlayerSegmentsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -155,11 +124,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFSegmentsServerGetPlayerTagsGetResultSize"/>
         /// and <see cref="PFSegmentsServerGetPlayerTagsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFSegmentsGetPlayerTagsResult>> SegmentsServerGetPlayerTagsAsync(
+        public Task<PFResult<PFSegmentsGetPlayerTagsResult>> SegmentsServerGetPlayerTagsAsync(
             PFSegmentsGetPlayerTagsRequest request
         )
         {
-            return await InteropWrapper.Services.PFSegments.PFSegmentsServerGetPlayerTagsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFSegments.PFSegmentsServerGetPlayerTagsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -178,11 +147,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> SegmentsServerRemovePlayerTagAsync(
+        public Task<PFResult> SegmentsServerRemovePlayerTagAsync(
             PFSegmentsRemovePlayerTagRequest request
         )
         {
-            return await InteropWrapper.Services.PFSegments.PFSegmentsServerRemovePlayerTagAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFSegments.PFSegmentsServerRemovePlayerTagAsync(InteropHandle, request);
         }
     }
 }

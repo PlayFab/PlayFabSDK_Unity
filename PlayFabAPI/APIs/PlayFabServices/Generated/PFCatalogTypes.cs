@@ -110,7 +110,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -205,7 +204,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -247,7 +245,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -315,7 +312,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -354,7 +350,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -410,7 +405,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -441,7 +435,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -496,7 +489,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -527,7 +519,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -581,7 +572,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -683,11 +673,15 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
-    /// PFCatalogRealMoneyPriceDetails data model.
+    /// PFCatalogRealMoneyPriceDetails data model. The multi-currency unit price, in real money, of the item
+    /// that was redeemed within an individual marketplace. Each property is a dictionary where the key is
+    /// the three-letter currency code as defined in ISO 4217, and the value is the currency amount in the
+    /// smallest unit (e.g. cents, pence, etc.) in accordance with ISO 4217. Example: If the product price
+    /// in USD is $1.39, the dictionary entry would be: ["USD"] = 139. Currently, only United States Dollar
+    /// (USD) is supported.
     /// </summary>
     public struct PFCatalogRealMoneyPriceDetails
     {
@@ -809,7 +803,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -853,7 +846,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -886,7 +878,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -941,7 +932,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -972,7 +962,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1003,7 +992,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1062,7 +1050,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1456,7 +1443,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1500,7 +1486,6 @@ namespace PlayFab
             interop->publish = InteropWrapper.WrapperHelpers.BoolToInterop(self.Publish);
 
         }
-            
     }
 
     /// <summary>
@@ -1519,7 +1504,6 @@ namespace PlayFab
             Item = (interop.item == null) ? null : new(*interop.item);
 
         }
-            
     }
 
     /// <summary>
@@ -1549,7 +1533,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1588,7 +1571,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1642,7 +1624,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1661,7 +1642,6 @@ namespace PlayFab
             UploadUrls = (interop.uploadUrls == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.uploadUrls, interop.uploadUrlsCount, elem => new PFCatalogUploadUrlMetadata(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1697,7 +1677,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1754,7 +1733,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1779,7 +1757,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1825,7 +1802,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1868,7 +1844,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1910,7 +1885,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1956,7 +1930,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1988,7 +1961,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2018,7 +1990,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2049,7 +2020,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2093,7 +2063,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2254,7 +2223,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2273,7 +2241,6 @@ namespace PlayFab
             Config = (interop.config == null) ? null : new(*interop.config);
 
         }
-            
     }
 
     /// <summary>
@@ -2330,7 +2297,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2349,7 +2315,6 @@ namespace PlayFab
             Item = (interop.item == null) ? null : new(*interop.item);
 
         }
-            
     }
 
     /// <summary>
@@ -2428,7 +2393,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2454,7 +2418,6 @@ namespace PlayFab
             Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -2519,7 +2482,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2545,7 +2507,6 @@ namespace PlayFab
             Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -2602,7 +2563,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2768,7 +2728,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2787,7 +2746,6 @@ namespace PlayFab
             Review = (interop.review == null) ? null : new(*interop.review);
 
         }
-            
     }
 
     /// <summary>
@@ -2844,7 +2802,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2863,7 +2820,6 @@ namespace PlayFab
             Item = (interop.item == null) ? null : new(*interop.item);
 
         }
-            
     }
 
     /// <summary>
@@ -2939,7 +2895,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2965,7 +2920,6 @@ namespace PlayFab
             ContinuationToken = (interop.continuationToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.continuationToken);
 
         }
-            
     }
 
     /// <summary>
@@ -3011,7 +2965,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3030,7 +2983,6 @@ namespace PlayFab
             State = (interop.state == null) ? null : new(*interop.state);
 
         }
-            
     }
 
     /// <summary>
@@ -3087,7 +3039,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3113,7 +3064,6 @@ namespace PlayFab
             StatusMessage = (interop.statusMessage == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.statusMessage);
 
         }
-            
     }
 
     /// <summary>
@@ -3187,7 +3137,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3213,7 +3162,6 @@ namespace PlayFab
             Reviews = (interop.reviews == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.reviews, interop.reviewsCount, elem => new PFCatalogReview(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -3259,7 +3207,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3299,7 +3246,6 @@ namespace PlayFab
             ReviewsCount = interop.reviewsCount;
 
         }
-            
     }
 
     /// <summary>
@@ -3357,7 +3303,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3376,7 +3321,6 @@ namespace PlayFab
             Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -3447,7 +3391,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3524,7 +3467,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3612,7 +3554,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3680,7 +3621,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3723,7 +3663,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3840,7 +3779,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3866,7 +3804,6 @@ namespace PlayFab
             Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -3932,7 +3869,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -4009,7 +3945,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -4064,7 +3999,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -4102,7 +4036,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -4138,7 +4071,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -4181,7 +4113,6 @@ namespace PlayFab
             interop->publish = InteropWrapper.WrapperHelpers.BoolToInterop(self.Publish);
 
         }
-            
     }
 
     /// <summary>
@@ -4200,7 +4131,6 @@ namespace PlayFab
             Item = (interop.item == null) ? null : new(*interop.item);
 
         }
-            
     }
 
 }

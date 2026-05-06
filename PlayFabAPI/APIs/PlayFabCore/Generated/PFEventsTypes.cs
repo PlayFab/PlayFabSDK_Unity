@@ -122,7 +122,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -155,7 +154,6 @@ namespace PlayFab
             interop->eventsCount = (uint)self.Events.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -175,7 +173,6 @@ namespace PlayFab
             AssignedEventIds = (interop.assignedEventIds == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.assignedEventIds, interop.assignedEventIdsCount);
 
         }
-            
     }
 
 }

@@ -55,7 +55,6 @@ namespace PlayFab
             interop->platform = (Interop.PFPushNotificationPlatform)self.Platform;
 
         }
-            
     }
 
     /// <summary>
@@ -137,7 +136,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Title, &interop->title, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -226,7 +224,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -266,7 +263,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Recipient, &interop->recipient, buffer);
 
         }
-            
     }
 
 }

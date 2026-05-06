@@ -1921,7 +1921,7 @@ namespace PlayFab.InteropWrapper.Core
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a (PFEntityHandle entity, PFAuthenticationLoginResult loginResult).</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// When the asynchronous task is complete, call <see cref="PFAuthenticationLoginWithXboxGetResult"/>
         /// to get the result.
         /// </remarks>

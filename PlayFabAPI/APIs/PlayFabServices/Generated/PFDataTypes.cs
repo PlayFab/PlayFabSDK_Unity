@@ -58,7 +58,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -84,7 +83,6 @@ namespace PlayFab
             ProfileVersion = interop.profileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -136,7 +134,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -162,7 +159,6 @@ namespace PlayFab
             ProfileVersion = interop.profileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -211,7 +207,6 @@ namespace PlayFab
             interop->profileVersion = self.ProfileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -283,7 +278,6 @@ namespace PlayFab
             interop->size = self.Size;
 
         }
-            
     }
 
     /// <summary>
@@ -316,7 +310,6 @@ namespace PlayFab
             ProfileVersion = interop.profileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -351,7 +344,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Entity, interop->entity, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -384,7 +376,6 @@ namespace PlayFab
             ProfileVersion = interop.profileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -428,7 +419,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -482,7 +472,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -515,7 +504,6 @@ namespace PlayFab
             ProfileVersion = interop.profileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -569,7 +557,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -611,7 +598,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -644,7 +630,6 @@ namespace PlayFab
             UploadDetails = (interop.uploadDetails == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.uploadDetails, interop.uploadDetailsCount, elem => new PFDataInitiateFileUploadMetadata(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -712,7 +697,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.ObjectName, &interop->objectName, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -770,7 +754,6 @@ namespace PlayFab
             interop->objectsCount = (uint)self.Objects.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -824,7 +807,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -850,7 +832,6 @@ namespace PlayFab
             SetResults = (interop.setResults == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.setResults, interop.setResultsCount, elem => new PFDataSetObjectInfo(elem));
 
         }
-            
     }
 
 }

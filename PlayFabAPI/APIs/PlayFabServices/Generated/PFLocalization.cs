@@ -18,11 +18,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFLocalizationGetLanguageListGetResultSize"/>
         /// and <see cref="PFLocalizationGetLanguageListGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFLocalizationGetLanguageListResponse>> LocalizationGetLanguageListAsync(
+        public Task<PFResult<PFLocalizationGetLanguageListResponse>> LocalizationGetLanguageListAsync(
             PFLocalizationGetLanguageListRequest request
         )
         {
-            return await InteropWrapper.Services.PFLocalization.PFLocalizationGetLanguageListAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFLocalization.PFLocalizationGetLanguageListAsync(InteropHandle, request);
         }
 #endif
     }

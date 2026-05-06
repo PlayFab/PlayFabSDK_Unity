@@ -29,9 +29,9 @@ namespace PlayFab
             PFAuthenticationGetEntityRequest request
         )
         {
-            PFResult<PFEntityHandle> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationGetEntityAsync(InteropHandle, request);
+            PFResult<PFEntityHandle> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationGetEntityAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
-                                   : new(new PFEntity(result.Result) as PFPlayerEntity, result.HResult);
+                                   : new(new PFPlayerEntity(result.Result, null), result.HResult);
         }
 
 #if MICROSOFT_GDK_SUPPORT
@@ -43,11 +43,11 @@ namespace PlayFab
         /// <remarks>
         /// If successful, the cached EntityToken for the PFEntityHandle will be updated in place.
         /// </remarks>
-        public async Task<PFResult> AuthenticationReLoginWithXUserAsync(
+        public Task<PFResult> AuthenticationReLoginWithXUserAsync(
             PFAuthenticationLoginWithXUserRequest request
         )
         {
-            return await InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithXUserAsync(InteropHandle, request);
+            return InteropWrapper.Core.PFAuthentication.PFAuthenticationReLoginWithXUserAsync(InteropHandle, request);
         }
 #endif
     }
@@ -76,7 +76,7 @@ namespace PlayFab
             PFAuthenticationGetEntityRequest request
         )
         {
-            PFResult<PFEntityHandle> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationGetEntityAsync(InteropHandle, request);
+            PFResult<PFEntityHandle> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationGetEntityAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new(result.Result), result.HResult);
         }
@@ -103,9 +103,9 @@ namespace PlayFab
             PFAuthenticationGetEntityRequest request
         ) where TEntity : PFEntity
         {
-            PFResult<PFEntityHandle> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationGetEntityAsync(InteropHandle, request);
+            PFResult<PFEntityHandle> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationGetEntityAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
-                                   : new(new PFEntity(result.Result) as TEntity, result.HResult);
+                                   : new((TEntity)System.Activator.CreateInstance(typeof(TEntity), result.Result), result.HResult);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace PlayFab
             PFAuthenticationAuthenticateCustomIdRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, bool newlyCreated)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationAuthenticateGameServerWithCustomIdAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, bool newlyCreated)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationAuthenticateGameServerWithCustomIdAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new((new PFGameServerEntity(result.Result.entity), result.Result.newlyCreated), result.HResult);
         }
@@ -152,7 +152,7 @@ namespace PlayFab
             PFAuthenticationGetEntityRequest request
         )
         {
-            PFResult<PFEntityHandle> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationGetEntityWithSecretKeyAsync(InteropHandle, secretKey, request);
+            PFResult<PFEntityHandle> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationGetEntityWithSecretKeyAsync(InteropHandle, secretKey, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new(result.Result), result.HResult);
         }
@@ -177,9 +177,9 @@ namespace PlayFab
             PFAuthenticationGetEntityRequest request
         ) where TEntity : PFEntity
         {
-            PFResult<PFEntityHandle> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationGetEntityWithSecretKeyAsync(InteropHandle, secretKey, request);
+            PFResult<PFEntityHandle> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationGetEntityWithSecretKeyAsync(InteropHandle, secretKey, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
-                                   : new(new PFEntity(result.Result) as TEntity, result.HResult);
+                                   : new((TEntity)System.Activator.CreateInstance(typeof(TEntity), result.Result), result.HResult);
         }
 
 #if MICROSOFT_GDK_SUPPORT
@@ -201,7 +201,7 @@ namespace PlayFab
             PFAuthenticationLoginWithXUserRequest request
         )
         {
-            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithXUserAsync(InteropHandle, request);
+            PFResult<(PFEntityHandle entity, PFAuthenticationLoginResult loginResult)> result = await InteropWrapper.Core.PFAuthentication.PFAuthenticationLoginWithXUserAsync(InteropHandle, request).ConfigureAwait(false);
             return result.Failed() ? new(result.HResult)
                                    : new(new PFPlayerEntity(result.Result.entity, result.Result.loginResult), result.HResult);
         }

@@ -31,7 +31,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -50,7 +49,6 @@ namespace PlayFab
             LanguageList = (interop.languageList == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.languageList, interop.languageListCount);
 
         }
-            
     }
 
 }

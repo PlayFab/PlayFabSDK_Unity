@@ -68,7 +68,6 @@ namespace PlayFab
             interop->needsAttribution = InteropWrapper.WrapperHelpers.BoolToInterop(self.NeedsAttribution);
 
         }
-            
     }
 
     /// <summary>
@@ -122,7 +121,6 @@ namespace PlayFab
             TreatmentAssignment = (interop.treatmentAssignment == null) ? null : new(*interop.treatmentAssignment);
 
         }
-            
     }
 
     /// <summary>
@@ -185,7 +183,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -245,7 +242,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -311,7 +307,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -394,7 +389,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -506,7 +500,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -593,7 +586,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -666,7 +658,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.ServerAuthCode, &interop->serverAuthCode, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -726,7 +717,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -795,7 +785,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -881,7 +870,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -962,7 +950,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1027,7 +1014,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.XboxToken, &interop->xboxToken, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1107,7 +1093,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1157,7 +1142,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1213,7 +1197,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1291,7 +1274,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1364,7 +1346,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.RedirectUri, &interop->redirectUri, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1424,7 +1405,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.ServerCustomId, &interop->serverCustomId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1480,7 +1460,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.SteamId, &interop->steamId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1535,7 +1514,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.XboxToken, &interop->xboxToken, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1596,7 +1574,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.XboxId, &interop->xboxId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1630,7 +1607,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1685,7 +1661,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1711,7 +1686,6 @@ namespace PlayFab
             NewlyCreated = InteropWrapper.WrapperHelpers.InteropToBool(interop.newlyCreated);
 
         }
-            
     }
 
     /// <summary>
@@ -1746,7 +1720,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Entity, interop->entity, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1787,7 +1760,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1820,7 +1792,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.EntityToken, &interop->entityToken, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1867,7 +1838,6 @@ namespace PlayFab
             Lineage = (interop.lineage == null) ? null : new(*interop.lineage);
 
         }
-            
     }
 
 }

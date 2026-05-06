@@ -11,7 +11,9 @@ namespace PlayFab
 
         public PFResult<PFGameServerEntity> Duplicate()
         {
-            return Duplicate<PFGameServerEntity>();
+            var result = InteropWrapper.Core.PFEntity.PFEntityDuplicateHandle(InteropHandle);
+            if (result.Failed()) return new PFResult<PFGameServerEntity>(result.HResult);
+            return new PFResult<PFGameServerEntity>(new PFGameServerEntity(result.Result), result.HResult);
         }
     }
 }
