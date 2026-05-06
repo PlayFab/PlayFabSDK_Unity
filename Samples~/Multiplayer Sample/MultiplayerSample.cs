@@ -52,6 +52,10 @@ public class MultiplayerSample : MonoBehaviour
     /// </summary>
     private bool _cleanedUp = false;
 
+#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT)
+    private bool _xGameRuntimeInitialized = false;
+#endif
+
     /// <summary>
     /// The event processor component that drives PlayFabMultiplayer state-change processing
     /// each frame. It is added dynamically so no prefab setup is required.
@@ -153,6 +157,20 @@ public class MultiplayerSample : MonoBehaviour
     private bool InitializePlayFabServices()
     {
         Debug.Log("Step 1: Initializing PlayFab Services...");
+
+#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT)
+        if (!_xGameRuntimeInitialized)
+        {
+            int xGameRuntimeResult = PlayFab.XGameRuntime.Initialize();
+            if (HRESULT.Failed(xGameRuntimeResult))
+            {
+                Debug.LogError($"Failed to initialize XGameRuntime: 0x{xGameRuntimeResult:X8}");
+                return false;
+            }
+
+            _xGameRuntimeInitialized = true;
+        }
+#endif
 
         PFResult initResult = PFServices.Initialize();
 
@@ -748,6 +766,15 @@ public class MultiplayerSample : MonoBehaviour
         {
             Debug.Log("PlayFab services uninitialized successfully");
         }
+
+#if UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
+        if (_xGameRuntimeInitialized)
+        {
+            PlayFab.XGameRuntime.Uninitialize();
+            _xGameRuntimeInitialized = false;
+            Debug.Log("XGameRuntime uninitialized successfully");
+        }
+#endif
 #endif
 
         Debug.Log("=== Cleanup Complete ===");

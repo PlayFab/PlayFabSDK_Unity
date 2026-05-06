@@ -59,6 +59,10 @@ namespace PartyTestApp
 
         public string TitleId;
 
+#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE)
+        private bool _xGameRuntimeInitialized;
+#endif
+
         private enum PlayFabMultiplayerManagerMessageType : sbyte
         {
             Unset = 0,
@@ -76,6 +80,12 @@ namespace PartyTestApp
         private async Task<bool> TryInitServices(bool failOnAlreadyInitialized = false)
         {
             Debug.Log("Initializing PlayFab services...");
+            if (!EnsureRuntimeInitialized())
+            {
+                await Cleanup();
+                return false;
+            }
+
             var initResult = PFServices.Initialize();
             if (CheckFailed(initResult, "Failed to initialize services"))
             {
@@ -146,6 +156,8 @@ namespace PartyTestApp
             {
                 Debug.LogWarning("Uninitialized Services");
             }
+
+            UninitializeRuntime();
             return;
         }
 
@@ -258,19 +270,61 @@ namespace PartyTestApp
         }
 
         public void InitializeRuntime()
-        {            
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
-        Int32 hr = SDK.XGameRuntimeInitialize();
-        if (hr == 0)
         {
+            EnsureRuntimeInitialized();
+        }
+
+        private bool EnsureRuntimeInitialized()
+        {
+#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE)
+            if (_xGameRuntimeInitialized)
+            {
+                return true;
+            }
+
+#if UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
+            int hr = PlayFab.XGameRuntime.Initialize();
+#else
+            int hr = SDK.XGameRuntimeInitialize();
+#endif
+            if (HRESULT.Failed(hr))
+            {
+                Debug.LogError($"Failed to initialize XGameRuntime: 0x{hr:X8}");
+                return false;
+            }
+
+            _xGameRuntimeInitialized = true;
+
+#if MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE
             int hResult = SDK.CreateDefaultTaskQueue();
             if (HR.FAILED(hResult))
             {
                 Debug.Log($"FAILED: XTaskQueueCreate, HResult: 0x{hResult:X}");
-                return;
+                UninitializeRuntime();
+                return false;
             }
             StartCoroutine(DispatchGDKTaskQueue());
+#endif
+            Debug.LogWarning("Initialized XGameRuntime");
+#endif
+            return true;
         }
+
+        private void UninitializeRuntime()
+        {
+#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE)
+            if (!_xGameRuntimeInitialized)
+            {
+                return;
+            }
+
+#if UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
+            PlayFab.XGameRuntime.Uninitialize();
+#else
+            SDK.XGameRuntimeUninitialize();
+#endif
+            _xGameRuntimeInitialized = false;
+            Debug.LogWarning("Uninitialized XGameRuntime");
 #endif
         }
 
@@ -399,9 +453,11 @@ namespace PartyTestApp
 #endif
             if (Input.GetButtonDown("XButton"))
             {
-                InitializeRuntime();
-                AddUser();
-                PlayFabMultiplayerManager.Get().LogLevel = PlayFabMultiplayerManager.LogLevelType.Verbose;
+                if (EnsureRuntimeInitialized())
+                {
+                    AddUser();
+                    PlayFabMultiplayerManager.Get().LogLevel = PlayFabMultiplayerManager.LogLevelType.Verbose;
+                }
             }
             else if (Input.GetButtonDown("YButton"))
             {

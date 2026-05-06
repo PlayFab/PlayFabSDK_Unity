@@ -42,6 +42,10 @@ public class LoginSample : MonoBehaviour
 
     private bool _cleanedUp = false;
 
+#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT)
+    private bool _xGameRuntimeInitialized = false;
+#endif
+
     async void Start()
     {
         Debug.Log("=== PlayFab Login Sample Started ===");
@@ -103,6 +107,20 @@ public class LoginSample : MonoBehaviour
     private bool InitializePlayFabServices()
     {
         Debug.Log("Step 1: Initializing PlayFab Services...");
+
+#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT)
+        if (!_xGameRuntimeInitialized)
+        {
+            int xGameRuntimeResult = PlayFab.XGameRuntime.Initialize();
+            if (HRESULT.Failed(xGameRuntimeResult))
+            {
+                Debug.LogError($"Failed to initialize XGameRuntime: 0x{xGameRuntimeResult:X8}");
+                return false;
+            }
+
+            _xGameRuntimeInitialized = true;
+        }
+#endif
 
         // Initialize the PlayFab Core services
         // This sets up internal state needed for all PlayFab operations
@@ -331,6 +349,15 @@ public class LoginSample : MonoBehaviour
         {
             Debug.Log("PlayFab services uninitialized successfully");
         }
+
+#if UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
+        if (_xGameRuntimeInitialized)
+        {
+            PlayFab.XGameRuntime.Uninitialize();
+            _xGameRuntimeInitialized = false;
+            Debug.Log("XGameRuntime uninitialized successfully");
+        }
+#endif
 #endif
 
         Debug.Log("=== Cleanup Complete ===");

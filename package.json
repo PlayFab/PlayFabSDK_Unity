@@ -23,9 +23,7 @@
   "files": [
     "package.json.meta",
     "README.md",
-    "README.md.meta",
     "LICENSE.txt",
-    "LICENSE.txt.meta",
     "PlayFabAPI",
     "PlayFabAPI.meta",
     "PlayFabTools",
