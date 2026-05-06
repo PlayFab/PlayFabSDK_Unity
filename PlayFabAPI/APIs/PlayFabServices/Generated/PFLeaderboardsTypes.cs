@@ -425,6 +425,7 @@ namespace PlayFab
 
             if (self.ExternalFriendSources != null)
             {
+                interop->externalFriendSources = (Interop.PFExternalFriendSources*)buffer.AddBuffer(sizeof(Interop.PFExternalFriendSources));
                 *interop->externalFriendSources = (Interop.PFExternalFriendSources)self.ExternalFriendSources.Value;
             }
 
@@ -432,6 +433,7 @@ namespace PlayFab
 
             if (self.Version != null)
             {
+                interop->version = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->version = self.Version.Value;
             }
 
@@ -623,11 +625,13 @@ namespace PlayFab
 
             if (self.StartingPosition != null)
             {
+                interop->startingPosition = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->startingPosition = self.StartingPosition.Value;
             }
 
             if (self.Version != null)
             {
+                interop->version = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->version = self.Version.Value;
             }
 
@@ -692,6 +696,7 @@ namespace PlayFab
 
             if (self.Version != null)
             {
+                interop->version = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->version = self.Version.Value;
             }
 
@@ -849,6 +854,7 @@ namespace PlayFab
 
             if (self.Version != null)
             {
+                interop->version = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->version = self.Version.Value;
             }
 
@@ -937,6 +943,7 @@ namespace PlayFab
 
             if (self.PageSize != null)
             {
+                interop->pageSize = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->pageSize = self.PageSize.Value;
             }
 
@@ -1042,6 +1049,7 @@ namespace PlayFab
 
             if (self.LastResetTime != null)
             {
+                interop->lastResetTime = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->lastResetTime = self.LastResetTime.Value;
             }
 
@@ -1179,6 +1187,7 @@ namespace PlayFab
 
             if (self.SizeLimit != null)
             {
+                interop->sizeLimit = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->sizeLimit = self.SizeLimit.Value;
             }
 

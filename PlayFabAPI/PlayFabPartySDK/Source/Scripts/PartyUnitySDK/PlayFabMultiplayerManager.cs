@@ -163,7 +163,7 @@ namespace PlayFab.Party
             if (_playFabMultiplayerManagerState >= _InternalPlayFabMultiplayerManagerState.Initialized)
             {
                 ProcessQueuedOperations();
-                 ProcessStateChanges();
+                ProcessStateChanges();
                 if (_platformPolicyProvider != null)
                 {
                     _platformPolicyProvider.ProcessStateChanges();

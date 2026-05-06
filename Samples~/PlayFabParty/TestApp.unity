@@ -2230,7 +2230,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1687376086940299675, guid: fec5eaf2950dc044b8b3af489b7efc6d, type: 3}
       propertyPath: TitleId
-      value: 
+      value:
       objectReference: {fileID: 0}
     - target: {fileID: 1687376086940299675, guid: fec5eaf2950dc044b8b3af489b7efc6d, type: 3}
       propertyPath: LogLevel

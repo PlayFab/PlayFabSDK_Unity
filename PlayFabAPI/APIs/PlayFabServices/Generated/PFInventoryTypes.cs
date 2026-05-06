@@ -195,6 +195,7 @@ namespace PlayFab
 
             if (self.Amount != null)
             {
+                interop->amount = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->amount = self.Amount.Value;
             }
 
@@ -211,6 +212,7 @@ namespace PlayFab
 
             if (self.DurationInSeconds != null)
             {
+                interop->durationInSeconds = (double*)buffer.AddBuffer(sizeof(double));
                 *interop->durationInSeconds = self.DurationInSeconds.Value;
             }
 
@@ -491,11 +493,13 @@ namespace PlayFab
 
             if (self.Amount != null)
             {
+                interop->amount = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->amount = self.Amount.Value;
             }
 
             if (self.DurationInSeconds != null)
             {
+                interop->durationInSeconds = (double*)buffer.AddBuffer(sizeof(double));
                 *interop->durationInSeconds = self.DurationInSeconds.Value;
             }
 
@@ -661,6 +665,7 @@ namespace PlayFab
 
             if (self.Amount != null)
             {
+                interop->amount = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->amount = self.Amount.Value;
             }
 
@@ -668,6 +673,7 @@ namespace PlayFab
 
             if (self.DurationInSeconds != null)
             {
+                interop->durationInSeconds = (double*)buffer.AddBuffer(sizeof(double));
                 *interop->durationInSeconds = self.DurationInSeconds.Value;
             }
 
@@ -742,6 +748,7 @@ namespace PlayFab
 
             if (self.Amount != null)
             {
+                interop->amount = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->amount = self.Amount.Value;
             }
 
@@ -749,6 +756,7 @@ namespace PlayFab
 
             if (self.DurationInSeconds != null)
             {
+                interop->durationInSeconds = (double*)buffer.AddBuffer(sizeof(double));
                 *interop->durationInSeconds = self.DurationInSeconds.Value;
             }
 
@@ -813,6 +821,7 @@ namespace PlayFab
 
             if (self.Amount != null)
             {
+                interop->amount = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->amount = self.Amount.Value;
             }
 
@@ -905,6 +914,7 @@ namespace PlayFab
 
             if (self.Amount != null)
             {
+                interop->amount = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->amount = self.Amount.Value;
             }
 
@@ -915,6 +925,7 @@ namespace PlayFab
 
             if (self.ExpirationDate != null)
             {
+                interop->expirationDate = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->expirationDate = self.ExpirationDate.Value;
             }
 
@@ -930,6 +941,7 @@ namespace PlayFab
 
             if (self.StartDate != null)
             {
+                interop->startDate = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->startDate = self.StartDate.Value;
             }
 
@@ -1791,11 +1803,13 @@ namespace PlayFab
 
             if (self.Amount != null)
             {
+                interop->amount = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->amount = self.Amount.Value;
             }
 
             if (self.DurationInSeconds != null)
             {
+                interop->durationInSeconds = (double*)buffer.AddBuffer(sizeof(double));
                 *interop->durationInSeconds = self.DurationInSeconds.Value;
             }
 
@@ -2280,6 +2294,7 @@ namespace PlayFab
 
             if (self.Amount != null)
             {
+                interop->amount = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->amount = self.Amount.Value;
             }
 
@@ -2298,6 +2313,7 @@ namespace PlayFab
 
             if (self.DurationInSeconds != null)
             {
+                interop->durationInSeconds = (double*)buffer.AddBuffer(sizeof(double));
                 *interop->durationInSeconds = self.DurationInSeconds.Value;
             }
 
@@ -2540,6 +2556,7 @@ namespace PlayFab
 
             if (self.ExpirationTimestamp != null)
             {
+                interop->expirationTimestamp = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->expirationTimestamp = self.ExpirationTimestamp.Value;
             }
 
@@ -3143,6 +3160,7 @@ namespace PlayFab
 
             if (self.Amount != null)
             {
+                interop->amount = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->amount = self.Amount.Value;
             }
 
@@ -3161,6 +3179,7 @@ namespace PlayFab
 
             if (self.DurationInSeconds != null)
             {
+                interop->durationInSeconds = (double*)buffer.AddBuffer(sizeof(double));
                 *interop->durationInSeconds = self.DurationInSeconds.Value;
             }
 
@@ -3297,6 +3316,7 @@ namespace PlayFab
 
             if (self.Amount != null)
             {
+                interop->amount = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->amount = self.Amount.Value;
             }
 

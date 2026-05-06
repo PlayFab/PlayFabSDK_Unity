@@ -45,6 +45,7 @@ namespace PlayFab
 
             if (self.ExpectedPropertiesVersion != null)
             {
+                interop->expectedPropertiesVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedPropertiesVersion = self.ExpectedPropertiesVersion.Value;
             }
 
@@ -237,6 +238,7 @@ namespace PlayFab
 
             if (self.IfChangedFromDataVersion != null)
             {
+                interop->ifChangedFromDataVersion = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->ifChangedFromDataVersion = self.IfChangedFromDataVersion.Value;
             }
 
@@ -380,6 +382,7 @@ namespace PlayFab
 
             if (self.ExpectedPropertiesVersion != null)
             {
+                interop->expectedPropertiesVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedPropertiesVersion = self.ExpectedPropertiesVersion.Value;
             }
 
@@ -466,6 +469,7 @@ namespace PlayFab
 
             if (self.Permission != null)
             {
+                interop->permission = (Interop.PFUserDataPermission*)buffer.AddBuffer(sizeof(Interop.PFUserDataPermission));
                 *interop->permission = (Interop.PFUserDataPermission)self.Permission.Value;
             }
 
@@ -533,6 +537,7 @@ namespace PlayFab
 
             if (self.ExpectedPropertiesVersion != null)
             {
+                interop->expectedPropertiesVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedPropertiesVersion = self.ExpectedPropertiesVersion.Value;
             }
 
@@ -765,6 +770,7 @@ namespace PlayFab
 
             if (self.ExpectedPropertiesVersion != null)
             {
+                interop->expectedPropertiesVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedPropertiesVersion = self.ExpectedPropertiesVersion.Value;
             }
 
@@ -864,6 +870,7 @@ namespace PlayFab
 
             if (self.Permission != null)
             {
+                interop->permission = (Interop.PFUserDataPermission*)buffer.AddBuffer(sizeof(Interop.PFUserDataPermission));
                 *interop->permission = (Interop.PFUserDataPermission)self.Permission.Value;
             }
 

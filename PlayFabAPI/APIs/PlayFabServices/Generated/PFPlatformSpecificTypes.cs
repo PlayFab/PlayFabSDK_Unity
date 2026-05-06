@@ -47,6 +47,7 @@ namespace PlayFab
 
             if (self.SendPushNotificationConfirmation != null)
             {
+                interop->sendPushNotificationConfirmation = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->sendPushNotificationConfirmation = InteropWrapper.WrapperHelpers.BoolToInterop(self.SendPushNotificationConfirmation.Value);
             }
 
@@ -89,6 +90,7 @@ namespace PlayFab
 
             if (self.SendPushNotificationConfirmation != null)
             {
+                interop->sendPushNotificationConfirmation = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->sendPushNotificationConfirmation = InteropWrapper.WrapperHelpers.BoolToInterop(self.SendPushNotificationConfirmation.Value);
             }
 

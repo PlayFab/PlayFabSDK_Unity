@@ -582,6 +582,7 @@ namespace PlayFab
 
             if (self.SetEmail != null)
             {
+                interop->setEmail = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->setEmail = InteropWrapper.WrapperHelpers.BoolToInterop(self.SetEmail.Value);
             }
 
@@ -856,6 +857,7 @@ namespace PlayFab
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -946,6 +948,7 @@ namespace PlayFab
 
             if (self.TicketIsServiceSpecific != null)
             {
+                interop->ticketIsServiceSpecific = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->ticketIsServiceSpecific = InteropWrapper.WrapperHelpers.BoolToInterop(self.TicketIsServiceSpecific.Value);
             }
 
@@ -1340,6 +1343,7 @@ namespace PlayFab
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -1657,6 +1661,7 @@ namespace PlayFab
 
             if (self.TokenExpiration != null)
             {
+                interop->tokenExpiration = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->tokenExpiration = self.TokenExpiration.Value;
             }
 

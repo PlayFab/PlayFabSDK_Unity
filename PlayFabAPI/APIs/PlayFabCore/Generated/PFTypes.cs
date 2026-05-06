@@ -753,6 +753,7 @@ namespace PlayFab
 
             if (self.Expiration != null)
             {
+                interop->expiration = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->expiration = self.Expiration.Value;
             }
 
@@ -773,11 +774,13 @@ namespace PlayFab
 
             if (self.PurchaseDate != null)
             {
+                interop->purchaseDate = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->purchaseDate = self.PurchaseDate.Value;
             }
 
             if (self.RemainingUses != null)
             {
+                interop->remainingUses = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->remainingUses = self.RemainingUses.Value;
             }
 
@@ -790,6 +793,7 @@ namespace PlayFab
 
             if (self.UsesIncrementedBy != null)
             {
+                interop->usesIncrementedBy = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->usesIncrementedBy = self.UsesIncrementedBy.Value;
             }
 
@@ -1484,6 +1488,7 @@ namespace PlayFab
 
             if (self.SteamActivationStatus != null)
             {
+                interop->steamActivationStatus = (Interop.PFTitleActivationStatus*)buffer.AddBuffer(sizeof(Interop.PFTitleActivationStatus));
                 *interop->steamActivationStatus = (Interop.PFTitleActivationStatus)self.SteamActivationStatus.Value;
             }
 
@@ -1494,6 +1499,7 @@ namespace PlayFab
 
             if (self.SteamCurrency != null)
             {
+                interop->steamCurrency = (Interop.PFCurrency*)buffer.AddBuffer(sizeof(Interop.PFCurrency));
                 *interop->steamCurrency = (Interop.PFCurrency)self.SteamCurrency.Value;
             }
 
@@ -1636,21 +1642,25 @@ namespace PlayFab
 
             if (self.FirstLogin != null)
             {
+                interop->firstLogin = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->firstLogin = self.FirstLogin.Value;
             }
 
             if (self.isBanned != null)
             {
+                interop->isBanned = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->isBanned = InteropWrapper.WrapperHelpers.BoolToInterop(self.isBanned.Value);
             }
 
             if (self.LastLogin != null)
             {
+                interop->lastLogin = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->lastLogin = self.LastLogin.Value;
             }
 
             if (self.Origination != null)
             {
+                interop->origination = (Interop.PFUserOrigination*)buffer.AddBuffer(sizeof(Interop.PFUserOrigination));
                 *interop->origination = (Interop.PFUserOrigination)self.Origination.Value;
             }
 
@@ -2163,6 +2173,7 @@ namespace PlayFab
 
             if (self.Permission != null)
             {
+                interop->permission = (Interop.PFUserDataPermission*)buffer.AddBuffer(sizeof(Interop.PFUserDataPermission));
                 *interop->permission = (Interop.PFUserDataPermission)self.Permission.Value;
             }
 
@@ -2487,6 +2498,7 @@ namespace PlayFab
 
             if (self.VerificationStatus != null)
             {
+                interop->verificationStatus = (Interop.PFEmailVerificationStatus*)buffer.AddBuffer(sizeof(Interop.PFEmailVerificationStatus));
                 *interop->verificationStatus = (Interop.PFEmailVerificationStatus)self.VerificationStatus.Value;
             }
 
@@ -2542,6 +2554,7 @@ namespace PlayFab
 
             if (self.Platform != null)
             {
+                interop->platform = (Interop.PFLoginIdentityProvider*)buffer.AddBuffer(sizeof(Interop.PFLoginIdentityProvider));
                 *interop->platform = (Interop.PFLoginIdentityProvider)self.Platform.Value;
             }
 
@@ -2614,21 +2627,25 @@ namespace PlayFab
 
             if (self.ContinentCode != null)
             {
+                interop->continentCode = (Interop.PFContinentCode*)buffer.AddBuffer(sizeof(Interop.PFContinentCode));
                 *interop->continentCode = (Interop.PFContinentCode)self.ContinentCode.Value;
             }
 
             if (self.CountryCode != null)
             {
+                interop->countryCode = (Interop.PFCountryCode*)buffer.AddBuffer(sizeof(Interop.PFCountryCode));
                 *interop->countryCode = (Interop.PFCountryCode)self.CountryCode.Value;
             }
 
             if (self.Latitude != null)
             {
+                interop->latitude = (double*)buffer.AddBuffer(sizeof(double));
                 *interop->latitude = self.Latitude.Value;
             }
 
             if (self.Longitude != null)
             {
+                interop->longitude = (double*)buffer.AddBuffer(sizeof(double));
                 *interop->longitude = self.Longitude.Value;
             }
 
@@ -2706,6 +2723,7 @@ namespace PlayFab
 
             if (self.Status != null)
             {
+                interop->status = (Interop.PFSubscriptionProviderStatus*)buffer.AddBuffer(sizeof(Interop.PFSubscriptionProviderStatus));
                 *interop->status = (Interop.PFSubscriptionProviderStatus)self.Status.Value;
             }
 
@@ -2788,6 +2806,7 @@ namespace PlayFab
 
             if (self.OverrideExpiration != null)
             {
+                interop->overrideExpiration = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->overrideExpiration = self.OverrideExpiration.Value;
             }
 
@@ -2835,6 +2854,7 @@ namespace PlayFab
 
             if (self.Platform != null)
             {
+                interop->platform = (Interop.PFPushNotificationPlatform*)buffer.AddBuffer(sizeof(Interop.PFPushNotificationPlatform));
                 *interop->platform = (Interop.PFPushNotificationPlatform)self.Platform.Value;
             }
 
@@ -3141,6 +3161,7 @@ namespace PlayFab
 
             if (self.BannedUntil != null)
             {
+                interop->bannedUntil = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->bannedUntil = self.BannedUntil.Value;
             }
 
@@ -3152,6 +3173,7 @@ namespace PlayFab
 
             if (self.Created != null)
             {
+                interop->created = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->created = self.Created.Value;
             }
 
@@ -3168,6 +3190,7 @@ namespace PlayFab
 
             if (self.LastLogin != null)
             {
+                interop->lastLogin = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->lastLogin = self.LastLogin.Value;
             }
 
@@ -3191,6 +3214,7 @@ namespace PlayFab
 
             if (self.Origination != null)
             {
+                interop->origination = (Interop.PFLoginIdentityProvider*)buffer.AddBuffer(sizeof(Interop.PFLoginIdentityProvider));
                 *interop->origination = (Interop.PFLoginIdentityProvider)self.Origination.Value;
             }
 
@@ -3229,6 +3253,7 @@ namespace PlayFab
 
             if (self.TotalValueToDateInUSD != null)
             {
+                interop->totalValueToDateInUSD = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->totalValueToDateInUSD = self.TotalValueToDateInUSD.Value;
             }
 

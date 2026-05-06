@@ -145,6 +145,7 @@ namespace PlayFab
 
             if (self.Count != null)
             {
+                interop->count = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->count = self.Count.Value;
             }
 

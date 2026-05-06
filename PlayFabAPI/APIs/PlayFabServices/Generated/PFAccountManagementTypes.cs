@@ -1101,6 +1101,7 @@ namespace PlayFab
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -1194,6 +1195,7 @@ namespace PlayFab
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -1655,6 +1657,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -1702,6 +1705,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -1744,6 +1748,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -1787,6 +1792,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -1849,6 +1855,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -1891,6 +1898,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -1952,6 +1960,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2017,6 +2026,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2065,6 +2075,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2123,6 +2134,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2174,6 +2186,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2217,6 +2230,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2259,6 +2273,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2311,6 +2326,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2365,11 +2381,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -2423,6 +2441,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2430,6 +2449,7 @@ namespace PlayFab
 
             if (self.TicketIsServiceSpecific != null)
             {
+                interop->ticketIsServiceSpecific = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->ticketIsServiceSpecific = InteropWrapper.WrapperHelpers.BoolToInterop(self.TicketIsServiceSpecific.Value);
             }
 
@@ -2471,6 +2491,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2513,6 +2534,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -3290,6 +3312,7 @@ namespace PlayFab
 
             if (self.DurationInHours != null)
             {
+                interop->durationInHours = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->durationInHours = self.DurationInHours.Value;
             }
 
@@ -3307,6 +3330,7 @@ namespace PlayFab
 
             if (self.UserFamilyType != null)
             {
+                interop->userFamilyType = (Interop.PFAccountManagementUserFamilyType*)buffer.AddBuffer(sizeof(Interop.PFAccountManagementUserFamilyType));
                 *interop->userFamilyType = (Interop.PFAccountManagementUserFamilyType)self.UserFamilyType.Value;
             }
 
@@ -3427,11 +3451,13 @@ namespace PlayFab
 
             if (self.Created != null)
             {
+                interop->created = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->created = self.Created.Value;
             }
 
             if (self.Expires != null)
             {
+                interop->expires = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->expires = self.Expires.Value;
             }
 
@@ -3703,6 +3729,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -3753,6 +3780,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -3802,6 +3830,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -3851,6 +3880,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -3912,11 +3942,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -3971,11 +4003,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -4024,6 +4058,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -4072,6 +4107,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -4121,6 +4157,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -4631,6 +4668,7 @@ namespace PlayFab
 
             if (self.Active != null)
             {
+                interop->active = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->active = InteropWrapper.WrapperHelpers.BoolToInterop(self.Active.Value);
             }
 
@@ -4638,6 +4676,7 @@ namespace PlayFab
 
             if (self.Expires != null)
             {
+                interop->expires = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->expires = self.Expires.Value;
             }
 
@@ -4648,6 +4687,7 @@ namespace PlayFab
 
             if (self.Permanent != null)
             {
+                interop->permanent = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->permanent = InteropWrapper.WrapperHelpers.BoolToInterop(self.Permanent.Value);
             }
 
@@ -4658,6 +4698,7 @@ namespace PlayFab
 
             if (self.UserFamilyType != null)
             {
+                interop->userFamilyType = (Interop.PFAccountManagementUserFamilyType*)buffer.AddBuffer(sizeof(Interop.PFAccountManagementUserFamilyType));
                 *interop->userFamilyType = (Interop.PFAccountManagementUserFamilyType)self.UserFamilyType.Value;
             }
 
@@ -4823,6 +4864,7 @@ namespace PlayFab
 
             if (self.ExpectedVersion != null)
             {
+                interop->expectedVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedVersion = self.ExpectedVersion.Value;
             }
 

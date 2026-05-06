@@ -47,6 +47,7 @@ namespace PlayFab
 
             if (self.GCMDataOnly != null)
             {
+                interop->gCMDataOnly = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->gCMDataOnly = InteropWrapper.WrapperHelpers.BoolToInterop(self.GCMDataOnly.Value);
             }
 

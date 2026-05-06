@@ -209,6 +209,7 @@ namespace PlayFab
 
             if (self.CompressionLevel != null)
             {
+                interop->compressionLevel = (Interop.HCCompressionLevel*)buffer.AddBuffer(sizeof(Interop.HCCompressionLevel));
                 *interop->compressionLevel = (Interop.HCCompressionLevel)self.CompressionLevel.Value;
             }
 

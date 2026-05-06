@@ -137,6 +137,7 @@ namespace PlayFab
 
             if (self.ExternalPlatformFriends != null)
             {
+                interop->externalPlatformFriends = (Interop.PFFriendsExternalFriendSources*)buffer.AddBuffer(sizeof(Interop.PFFriendsExternalFriendSources));
                 *interop->externalPlatformFriends = (Interop.PFFriendsExternalFriendSources)self.ExternalPlatformFriends.Value;
             }
 
@@ -485,6 +486,7 @@ namespace PlayFab
 
             if (self.ExternalPlatformFriends != null)
             {
+                interop->externalPlatformFriends = (Interop.PFFriendsExternalFriendSources*)buffer.AddBuffer(sizeof(Interop.PFFriendsExternalFriendSources));
                 *interop->externalPlatformFriends = (Interop.PFFriendsExternalFriendSources)self.ExternalPlatformFriends.Value;
             }
 

@@ -146,6 +146,7 @@ namespace PlayFab
 
             if (self.PageSize != null)
             {
+                interop->pageSize = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->pageSize = self.PageSize.Value;
             }
 
@@ -155,7 +156,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -191,7 +191,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -224,7 +223,6 @@ namespace PlayFab
             BuildSelectionCriteria = (interop.buildSelectionCriteria == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.buildSelectionCriteria, interop.buildSelectionCriteriaCount, elem => new PFMultiplayerServerBuildSelectionCriterion(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -257,7 +255,6 @@ namespace PlayFab
             SkipToken = (interop.skipToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.skipToken);
 
         }
-            
     }
 
     /// <summary>
@@ -294,6 +291,7 @@ namespace PlayFab
 
             if (self.PageSize != null)
             {
+                interop->pageSize = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->pageSize = self.PageSize.Value;
             }
 
@@ -303,7 +301,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -357,7 +354,6 @@ namespace PlayFab
             interop->total = self.Total;
 
         }
-            
     }
 
     /// <summary>
@@ -394,7 +390,6 @@ namespace PlayFab
             interop->triggerThresholdPercentage = self.TriggerThresholdPercentage;
 
         }
-            
     }
 
     /// <summary>
@@ -444,11 +439,11 @@ namespace PlayFab
 
             if (self.RampDownSeconds != null)
             {
+                interop->rampDownSeconds = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->rampDownSeconds = self.RampDownSeconds.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -524,7 +519,6 @@ namespace PlayFab
             interop->targetStandby = self.TargetStandby;
 
         }
-            
     }
 
     /// <summary>
@@ -564,7 +558,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -671,6 +664,7 @@ namespace PlayFab
 
             if (self.MultiplayerServerCountPerVm != null)
             {
+                interop->multiplayerServerCountPerVm = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->multiplayerServerCountPerVm = self.MultiplayerServerCountPerVm.Value;
             }
 
@@ -694,11 +688,11 @@ namespace PlayFab
 
             if (self.VmSize != null)
             {
+                interop->vmSize = (Interop.PFMultiplayerServerAzureVmSize*)buffer.AddBuffer(sizeof(Interop.PFMultiplayerServerAzureVmSize));
                 *interop->vmSize = (Interop.PFMultiplayerServerAzureVmSize)self.VmSize.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -762,6 +756,7 @@ namespace PlayFab
 
             if (self.CreationTime != null)
             {
+                interop->creationTime = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->creationTime = self.CreationTime.Value;
             }
 
@@ -778,7 +773,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -811,7 +805,6 @@ namespace PlayFab
             SkipToken = (interop.skipToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.skipToken);
 
         }
-            
     }
 
     /// <summary>
@@ -850,6 +843,7 @@ namespace PlayFab
 
             if (self.IncludeAllRegions != null)
             {
+                interop->includeAllRegions = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->includeAllRegions = InteropWrapper.WrapperHelpers.BoolToInterop(self.IncludeAllRegions.Value);
             }
 
@@ -859,7 +853,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -901,7 +894,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -934,7 +926,6 @@ namespace PlayFab
             SkipToken = (interop.skipToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.skipToken);
 
         }
-            
     }
 
     /// <summary>
@@ -961,7 +952,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.AliasId, &interop->aliasId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1050,7 +1040,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.SessionId, &interop->sessionId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1080,7 +1069,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1125,7 +1113,6 @@ namespace PlayFab
             interop->protocol = (Interop.PFMultiplayerServerProtocolType)self.Protocol;
 
         }
-            
     }
 
     /// <summary>
@@ -1170,7 +1157,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.RoutingType, &interop->routingType, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1267,7 +1253,6 @@ namespace PlayFab
             VmId = (interop.vmId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.vmId);
 
         }
-            
     }
 
 }

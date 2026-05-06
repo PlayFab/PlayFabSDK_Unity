@@ -191,6 +191,7 @@ namespace PlayFab
 
             if (self.AutoAcceptOutstandingInvite != null)
             {
+                interop->autoAcceptOutstandingInvite = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->autoAcceptOutstandingInvite = InteropWrapper.WrapperHelpers.BoolToInterop(self.AutoAcceptOutstandingInvite.Value);
             }
 
@@ -814,6 +815,7 @@ namespace PlayFab
 
             if (self.AutoAcceptOutstandingApplication != null)
             {
+                interop->autoAcceptOutstandingApplication = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->autoAcceptOutstandingApplication = InteropWrapper.WrapperHelpers.BoolToInterop(self.AutoAcceptOutstandingApplication.Value);
             }
 
@@ -1844,6 +1846,7 @@ namespace PlayFab
 
             if (self.ExpectedProfileVersion != null)
             {
+                interop->expectedProfileVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedProfileVersion = self.ExpectedProfileVersion.Value;
             }
 
@@ -1941,6 +1944,7 @@ namespace PlayFab
 
             if (self.ExpectedProfileVersion != null)
             {
+                interop->expectedProfileVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedProfileVersion = self.ExpectedProfileVersion.Value;
             }
 

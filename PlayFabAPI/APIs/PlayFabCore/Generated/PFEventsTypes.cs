@@ -108,6 +108,7 @@ namespace PlayFab
 
             if (self.OriginalTimestamp != null)
             {
+                interop->originalTimestamp = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->originalTimestamp = self.OriginalTimestamp.Value;
             }
 

@@ -57,6 +57,7 @@ namespace PlayFab
 
             if (self.DataAsObject != null)
             {
+                interop->dataAsObject = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->dataAsObject = InteropWrapper.WrapperHelpers.BoolToInterop(self.DataAsObject.Value);
             }
 
@@ -67,7 +68,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -128,7 +128,6 @@ namespace PlayFab
             interop->size = self.Size;
 
         }
-            
     }
 
     /// <summary>
@@ -182,7 +181,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -260,7 +258,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Resource, &interop->resource, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -324,7 +321,6 @@ namespace PlayFab
             interop->version = self.Version;
 
         }
-            
     }
 
     /// <summary>
@@ -524,7 +520,6 @@ namespace PlayFab
             interop->versionNumber = self.VersionNumber;
 
         }
-            
     }
 
     /// <summary>
@@ -543,7 +538,6 @@ namespace PlayFab
             Profile = (interop.profile == null) ? null : new(*interop.profile);
 
         }
-            
     }
 
     /// <summary>
@@ -582,6 +576,7 @@ namespace PlayFab
 
             if (self.DataAsObject != null)
             {
+                interop->dataAsObject = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->dataAsObject = InteropWrapper.WrapperHelpers.BoolToInterop(self.DataAsObject.Value);
             }
 
@@ -589,7 +584,6 @@ namespace PlayFab
             interop->entitiesCount = (uint)self.Entities.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -608,7 +602,6 @@ namespace PlayFab
             Profiles = (interop.profiles == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.profiles, interop.profilesCount, elem => new PFProfilesEntityProfileBody(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -652,7 +645,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -678,7 +670,6 @@ namespace PlayFab
             TitlePlayerAccounts = (interop.titlePlayerAccounts == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.titlePlayerAccounts, interop.titlePlayerAccountsCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), new PFEntityKey(*pair.value)));
 
         }
-            
     }
 
     /// <summary>
@@ -727,6 +718,7 @@ namespace PlayFab
 
             if (self.ExpectedVersion != null)
             {
+                interop->expectedVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedVersion = self.ExpectedVersion.Value;
             }
 
@@ -736,7 +728,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -762,7 +753,6 @@ namespace PlayFab
             VersionNumber = (interop.versionNumber == null) ? null : *interop.versionNumber;
 
         }
-            
     }
 
     /// <summary>
@@ -805,7 +795,6 @@ namespace PlayFab
             interop->statementsCount = (uint)self.Statements.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -825,7 +814,6 @@ namespace PlayFab
             Permissions = (interop.permissions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.permissions, interop.permissionsCount, elem => new PFProfilesEntityPermissionStatement(elem));
 
         }
-            
     }
 
 }
