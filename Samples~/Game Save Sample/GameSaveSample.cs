@@ -14,14 +14,12 @@ public class GameSaveSample : MonoBehaviour
     [Tooltip("Your PlayFab Title ID - found in Game Manager on the PlayFab website")]
     public string TitleId = ""; // Replace with your actual Title ID
 
-#if !MICROSOFT_GDK_SUPPORT
     [Header("Game Saves Configuration")]
     [Tooltip("A unique identifier for a local user")]
     public string LocalUserId = "UnityGameSaveCustomId_Local";
 
     [Tooltip("A unique identifier for a player - tied to the LocalUserId")]
     public string CustomPlayerId = "UnityGameSaveCustomId";
-#endif
 
     // PlayFab Core/Services/GameSave APIs use an instance-based model.
     // This means you create and manage instances of these objects:
@@ -41,6 +39,11 @@ public class GameSaveSample : MonoBehaviour
     /// </summary>
     private string _gameSaveFolder;
 
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
+    private bool _xGameRuntimeInitialized = false;
+#endif
+    private bool _playFabCoreInitialized = false;
+
     async void Start()
     {
         Debug.Log("=== PlayFab Game Saves Sample Started ===");
@@ -52,13 +55,16 @@ public class GameSaveSample : MonoBehaviour
             return;
         }
 
-#if MICROSOFT_GDK_SUPPORT
-        int hr = Unity.XGamingRuntime.SDK.XGameRuntimeInitialize();
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
+        // Windows/GDK builds and Windows Editor Play Mode must initialize XGameRuntime before any PlayFab API.
+        int hr = PlayFab.XGameRuntime.Initialize();
         if (HRESULT.Failed(hr))
         {
-            Debug.LogError($"Failed to initialize XGameRuntime: {hr}");
+            Debug.LogError($"Failed to initialize XGameRuntime: 0x{hr:X8}");
             return;
         }
+
+        _xGameRuntimeInitialized = true;
 #elif UNITY_EDITOR
         Debug.LogError("Running in the Editor or on Desktop currently requires XUser auth during the Game Saves public preview.");
 #endif
@@ -135,11 +141,13 @@ public class GameSaveSample : MonoBehaviour
             if (initResult.HResult == HRESULT.E_PF_CORE_ALREADY_INITIALIZED)
             {
                 Debug.LogWarning("PlayFab Core were already initialized - continuing...");
+                _playFabCoreInitialized = true;
                 return true;
             }
             return false;
         }
 
+        _playFabCoreInitialized = true;
         Debug.Log("PlayFab Core initialized successfully");
         return true;
     }
@@ -541,20 +549,29 @@ public class GameSaveSample : MonoBehaviour
         }
 #endif
 
-        // Temporary workaround only for play-in-editor while the native uninitialize -> reinitialize flow has an issue with the default queue
-#if !UNITY_EDITOR
-        // Uninitialize PlayFab Core
-        Debug.Log("Uninitializing PlayFab Core...");
-        var uninitResult = await PFCore.UninitializeAsync();
-        
-        if (!CheckForError(uninitResult, "There was an issue uninitializing PlayFab Core, but continuing..."))
+        if (_playFabCoreInitialized)
         {
-            Debug.Log("PlayFab Core uninitialized successfully");
+            // Uninitialize PlayFab Core before uninitializing XGameRuntime.
+            Debug.Log("Uninitializing PlayFab Core...");
+            var uninitResult = await PFCore.UninitializeAsync();
+            if (!CheckForError(uninitResult, "There was an issue uninitializing PlayFab Core, but continuing..."))
+            {
+                Debug.Log("PlayFab Core uninitialized successfully");
+                _playFabCoreInitialized = false;
+            }
         }
-#endif
+        else
+        {
+            Debug.Log("PlayFab Core was not initialized; skipping PlayFab Core uninitialize.");
+        }
 
-#if MICROSOFT_GDK_SUPPORT
-        Unity.XGamingRuntime.SDK.XGameRuntimeUninitialize();
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
+        if (_xGameRuntimeInitialized)
+        {
+            PlayFab.XGameRuntime.Uninitialize();
+            _xGameRuntimeInitialized = false;
+            Debug.Log("XGameRuntime uninitialized successfully");
+        }
 #endif
 
         Debug.Log("=== Game Saves Cleanup Complete ===");

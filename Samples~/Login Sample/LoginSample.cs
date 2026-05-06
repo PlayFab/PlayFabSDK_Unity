@@ -42,9 +42,10 @@ public class LoginSample : MonoBehaviour
 
     private bool _cleanedUp = false;
 
-#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT)
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
     private bool _xGameRuntimeInitialized = false;
 #endif
+    private bool _playFabServicesInitialized = false;
 
     async void Start()
     {
@@ -108,7 +109,8 @@ public class LoginSample : MonoBehaviour
     {
         Debug.Log("Step 1: Initializing PlayFab Services...");
 
-#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT)
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
+        // Windows/GDK builds and Windows Editor Play Mode must initialize XGameRuntime before any PlayFab API.
         if (!_xGameRuntimeInitialized)
         {
             int xGameRuntimeResult = PlayFab.XGameRuntime.Initialize();
@@ -136,11 +138,13 @@ public class LoginSample : MonoBehaviour
                 initResult.HResult == HRESULT.E_PF_SERVICES_ALREADY_INITIALIZED)
             {
                 Debug.LogWarning("PlayFab services were already initialized - continuing...");
+                _playFabServicesInitialized = true;
                 return true;
             }
             return false;
         }
 
+        _playFabServicesInitialized = true;
         Debug.Log("PlayFab Services initialized successfully");
         return true;
     }
@@ -306,7 +310,6 @@ public class LoginSample : MonoBehaviour
     }
 #endif
 
-#pragma warning disable CS1998
     /// <summary>
     /// Logs out the player and cleans up all PlayFab resources.
     /// </summary>
@@ -337,20 +340,23 @@ public class LoginSample : MonoBehaviour
             _serviceConfig.Dispose();
             _serviceConfig = null;
         }
-
-// Temporary workaround only for play-in-editor while the native uninitialize -> reinitialize flow has an issue with the default queue
-#if !UNITY_EDITOR
-        // Uninitialize PlayFab services
-        // Call when you're done with PlayFab operations
-        Debug.Log("Uninitializing PlayFab services...");
-        var uninitResult = await PFServices.UninitializeAsync();
-        
-        if (!CheckForError(uninitResult, "There was an issue during cleanup, but continuing..."))
+        if (_playFabServicesInitialized)
         {
-            Debug.Log("PlayFab services uninitialized successfully");
+            // Uninitialize PlayFab services before uninitializing XGameRuntime.
+            Debug.Log("Uninitializing PlayFab services...");
+            var uninitResult = await PFServices.UninitializeAsync();
+            if (!CheckForError(uninitResult, "There was an issue during cleanup, but continuing..."))
+            {
+                Debug.Log("PlayFab services uninitialized successfully");
+                _playFabServicesInitialized = false;
+            }
+        }
+        else
+        {
+            Debug.Log("PlayFab services were not initialized; skipping PlayFab services uninitialize.");
         }
 
-#if UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
         if (_xGameRuntimeInitialized)
         {
             PlayFab.XGameRuntime.Uninitialize();
@@ -358,11 +364,9 @@ public class LoginSample : MonoBehaviour
             Debug.Log("XGameRuntime uninitialized successfully");
         }
 #endif
-#endif
 
         Debug.Log("=== Cleanup Complete ===");
     }
-#pragma warning restore CS1998
 
     /// <summary>
     /// Helper method to check for errors and log them appropriately.

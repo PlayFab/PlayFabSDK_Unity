@@ -12,19 +12,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 //using static UnityEditor.Experimental.GraphView.GraphView;
 
-#if !MICROSOFT_GDK_SUPPORT && (MICROSOFT_GAME_CORE || UNITY_GAMECORE)
-using UnityEngine.GameCore;
-using XGR = UnityEngine.GameCore;
-#endif
-
-#if MICROSOFT_GAME_CORE
-using XGamingRuntime;
-using XGR = XGamingRuntime;
-#endif
-
 #if MICROSOFT_GDK_SUPPORT
 using Unity.XGamingRuntime;
-using XGR = Unity.XGamingRuntime;
 #endif
 
 namespace PartyTestApp
@@ -33,16 +22,16 @@ namespace PartyTestApp
     {
         public InputField inputField;
 
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT
     private XUserHandle _xblLocalUserHandle;
 #endif
 
         private ulong _userId;
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT
     private XUserHandle _user;
 #endif
         private string _SCID;
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT
     private XblContextHandle _xblContext;
 #endif
         private byte[] _body;
@@ -59,9 +48,10 @@ namespace PartyTestApp
 
         public string TitleId;
 
-#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE)
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
         private bool _xGameRuntimeInitialized;
 #endif
+        private bool _playFabServicesInitialized;
 
         private enum PlayFabMultiplayerManagerMessageType : sbyte
         {
@@ -89,9 +79,11 @@ namespace PartyTestApp
             var initResult = PFServices.Initialize();
             if (CheckFailed(initResult, "Failed to initialize services"))
             {
-                if (initResult.HResult == HRESULT.E_PF_CORE_ALREADY_INITIALIZED)
+                if (initResult.HResult == HRESULT.E_PF_CORE_ALREADY_INITIALIZED ||
+                    initResult.HResult == HRESULT.E_PF_SERVICES_ALREADY_INITIALIZED)
                 {
                     Debug.LogWarning("PlayFab already initialized");
+                    _playFabServicesInitialized = true;
                     if (failOnAlreadyInitialized)
                     {
                         await Cleanup();
@@ -105,6 +97,7 @@ namespace PartyTestApp
                 }
             }
 
+            _playFabServicesInitialized = true;
             Debug.LogWarning("Initialized Services");
             return true;
         }
@@ -144,17 +137,25 @@ namespace PartyTestApp
                 _title = null;
             }
 
-            Debug.Log("Cleaning up PlayFab services...");
-            var result = await PFServices.UninitializeAsync();
-
-            if (HRESULT.Failed(result.HResult))
+            if (_playFabServicesInitialized)
             {
-                string errorCode = result.HResult.ToString("X8");
-                Debug.LogError($"Failed to uninitialize services: 0x{errorCode}");
+                Debug.Log("Cleaning up PlayFab services...");
+                var result = await PFServices.UninitializeAsync();
+
+                if (HRESULT.Failed(result.HResult))
+                {
+                    string errorCode = result.HResult.ToString("X8");
+                    Debug.LogError($"Failed to uninitialize services: 0x{errorCode}");
+                }
+                else
+                {
+                    _playFabServicesInitialized = false;
+                    Debug.LogWarning("Uninitialized Services");
+                }
             }
             else
             {
-                Debug.LogWarning("Uninitialized Services");
+                Debug.Log("PlayFab services were not initialized; skipping PlayFab services uninitialize.");
             }
 
             UninitializeRuntime();
@@ -221,7 +222,7 @@ namespace PartyTestApp
             var platformSpecificUserID = mpManager.LocalPlayer.PlatformSpecificUserId;
             var networkId = mpManager.NetworkId;
 
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT && !UNITY_EDITOR
             // Uncomment these lines if you want to test text to speech
             //mpManager.LocalPlayer.TextToSpeechMode = AccessibilityMode.PlatformDefault;
             //mpManager.LocalPlayer.SpeechToTextMode = AccessibilityMode.PlatformDefault;
@@ -276,17 +277,14 @@ namespace PartyTestApp
 
         private bool EnsureRuntimeInitialized()
         {
-#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE)
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
+            // Windows/GDK builds and Windows Editor Play Mode must initialize XGameRuntime before any PlayFab API.
             if (_xGameRuntimeInitialized)
             {
                 return true;
             }
 
-#if UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
             int hr = PlayFab.XGameRuntime.Initialize();
-#else
-            int hr = SDK.XGameRuntimeInitialize();
-#endif
             if (HRESULT.Failed(hr))
             {
                 Debug.LogError($"Failed to initialize XGameRuntime: 0x{hr:X8}");
@@ -295,7 +293,7 @@ namespace PartyTestApp
 
             _xGameRuntimeInitialized = true;
 
-#if MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE
+#if MICROSOFT_GDK_SUPPORT
             int hResult = SDK.CreateDefaultTaskQueue();
             if (HR.FAILED(hResult))
             {
@@ -312,17 +310,13 @@ namespace PartyTestApp
 
         private void UninitializeRuntime()
         {
-#if !UNITY_EDITOR && (UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE)
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
             if (!_xGameRuntimeInitialized)
             {
                 return;
             }
 
-#if UNITY_STANDALONE_WIN || MICROSOFT_GDK_SUPPORT
             PlayFab.XGameRuntime.Uninitialize();
-#else
-            SDK.XGameRuntimeUninitialize();
-#endif
             _xGameRuntimeInitialized = false;
             Debug.LogWarning("Uninitialized XGameRuntime");
 #endif
@@ -330,13 +324,13 @@ namespace PartyTestApp
 
         public void AddUser()
         {
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
-        XUserAddOptions options = XGR.XUserAddOptions.AddDefaultUserSilently; // could also allow guests, or silently
+#if MICROSOFT_GDK_SUPPORT
+        XUserAddOptions options = XUserAddOptions.AddDefaultUserSilently; // could also allow guests, or silently
         SDK.XUserAddAsync(options, AddUserComplete);
 #endif
         }
 
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT
     private void AddUserComplete(int hresult, XUserHandle userHandle)
     {
         var foo = hresult;
@@ -349,7 +343,7 @@ namespace PartyTestApp
     }
 #endif
 
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT
     private void SignInSilentlyComplete(int hresult, XUserHandle userHandle)
     {
         // retrieve some details about this user
@@ -448,9 +442,6 @@ namespace PartyTestApp
         // Update is called once per frame
         void Update()
         {
-#if !MICROSOFT_GDK_SUPPORT && !UNITY_EDITOR && (MICROSOFT_GAME_CORE || UNITY_GAMECORE)
-        SDK.XTaskQueueDispatch();
-#endif
             if (Input.GetButtonDown("XButton"))
             {
                 if (EnsureRuntimeInitialized())
@@ -489,7 +480,7 @@ namespace PartyTestApp
             }
         }
 
-#if MICROSOFT_GDK_SUPPORT && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT
        private static IEnumerator DispatchGDKTaskQueue()
         {
             while (true)
