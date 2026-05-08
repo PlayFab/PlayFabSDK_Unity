@@ -17,11 +17,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFExperimentationGetTreatmentAssignmentGetResultSize"/>
         /// and <see cref="PFExperimentationGetTreatmentAssignmentGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFExperimentationGetTreatmentAssignmentResult>> ExperimentationGetTreatmentAssignmentAsync(
+        public Task<PFResult<PFExperimentationGetTreatmentAssignmentResult>> ExperimentationGetTreatmentAssignmentAsync(
             PFExperimentationGetTreatmentAssignmentRequest request
         )
         {
-            return await InteropWrapper.Services.PFExperimentation.PFExperimentationGetTreatmentAssignmentAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFExperimentation.PFExperimentationGetTreatmentAssignmentAsync(InteropHandle, request);
         }
     }
 }

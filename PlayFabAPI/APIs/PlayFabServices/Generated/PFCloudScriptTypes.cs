@@ -79,21 +79,23 @@ namespace PlayFab
 
             if (self.GeneratePlayStreamEvent != null)
             {
+                interop->generatePlayStreamEvent = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->generatePlayStreamEvent = InteropWrapper.WrapperHelpers.BoolToInterop(self.GeneratePlayStreamEvent.Value);
             }
 
             if (self.RevisionSelection != null)
             {
+                interop->revisionSelection = (Interop.PFCloudScriptCloudScriptRevisionOption*)buffer.AddBuffer(sizeof(Interop.PFCloudScriptCloudScriptRevisionOption));
                 *interop->revisionSelection = (Interop.PFCloudScriptCloudScriptRevisionOption)self.RevisionSelection.Value;
             }
 
             if (self.SpecificRevision != null)
             {
+                interop->specificRevision = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->specificRevision = self.SpecificRevision.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -148,7 +150,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -202,7 +203,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -302,7 +302,6 @@ namespace PlayFab
             Revision = interop.revision;
 
         }
-            
     }
 
     /// <summary>
@@ -370,6 +369,7 @@ namespace PlayFab
 
             if (self.GeneratePlayStreamEvent != null)
             {
+                interop->generatePlayStreamEvent = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->generatePlayStreamEvent = InteropWrapper.WrapperHelpers.BoolToInterop(self.GeneratePlayStreamEvent.Value);
             }
 
@@ -377,16 +377,17 @@ namespace PlayFab
 
             if (self.RevisionSelection != null)
             {
+                interop->revisionSelection = (Interop.PFCloudScriptCloudScriptRevisionOption*)buffer.AddBuffer(sizeof(Interop.PFCloudScriptCloudScriptRevisionOption));
                 *interop->revisionSelection = (Interop.PFCloudScriptCloudScriptRevisionOption)self.RevisionSelection.Value;
             }
 
             if (self.SpecificRevision != null)
             {
+                interop->specificRevision = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->specificRevision = self.SpecificRevision.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -461,21 +462,23 @@ namespace PlayFab
 
             if (self.GeneratePlayStreamEvent != null)
             {
+                interop->generatePlayStreamEvent = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->generatePlayStreamEvent = InteropWrapper.WrapperHelpers.BoolToInterop(self.GeneratePlayStreamEvent.Value);
             }
 
             if (self.RevisionSelection != null)
             {
+                interop->revisionSelection = (Interop.PFCloudScriptCloudScriptRevisionOption*)buffer.AddBuffer(sizeof(Interop.PFCloudScriptCloudScriptRevisionOption));
                 *interop->revisionSelection = (Interop.PFCloudScriptCloudScriptRevisionOption)self.RevisionSelection.Value;
             }
 
             if (self.SpecificRevision != null)
             {
+                interop->specificRevision = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->specificRevision = self.SpecificRevision.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -538,11 +541,11 @@ namespace PlayFab
 
             if (self.GeneratePlayStreamEvent != null)
             {
+                interop->generatePlayStreamEvent = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->generatePlayStreamEvent = InteropWrapper.WrapperHelpers.BoolToInterop(self.GeneratePlayStreamEvent.Value);
             }
 
         }
-            
     }
 
     /// <summary>
@@ -597,7 +600,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -652,7 +654,6 @@ namespace PlayFab
             FunctionResultTooLarge = (interop.functionResultTooLarge == null) ? null : InteropWrapper.WrapperHelpers.InteropToBool(*interop.functionResultTooLarge);
 
         }
-            
     }
 
 }

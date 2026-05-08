@@ -43,7 +43,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -62,7 +61,6 @@ namespace PlayFab
             TreatmentAssignment = (interop.treatmentAssignment == null) ? null : new(*interop.treatmentAssignment);
 
         }
-            
     }
 
 }

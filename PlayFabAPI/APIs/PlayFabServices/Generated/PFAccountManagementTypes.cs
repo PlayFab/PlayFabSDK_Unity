@@ -50,7 +50,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.EmailAddress, &interop->emailAddress, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -96,7 +95,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Username, &interop->username, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -119,7 +117,6 @@ namespace PlayFab
             Username = (interop.username == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.username);
 
         }
-            
     }
 
     /// <summary>
@@ -175,7 +172,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -200,7 +196,6 @@ namespace PlayFab
             AccountInfo = (interop.accountInfo == null) ? null : new(*interop.accountInfo);
 
         }
-            
     }
 
     /// <summary>
@@ -244,7 +239,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -273,7 +267,6 @@ namespace PlayFab
             PlayFabId = (interop.playFabId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.playFabId);
 
         }
-            
     }
 
     /// <summary>
@@ -326,7 +319,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -346,7 +338,6 @@ namespace PlayFab
             PlayerProfile = (interop.playerProfile == null) ? null : new(*interop.playerProfile);
 
         }
-            
     }
 
     /// <summary>
@@ -368,7 +359,6 @@ namespace PlayFab
             interop->battleNetAccountIdsCount = (uint)self.BattleNetAccountIds.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -411,7 +401,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -431,7 +420,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementBattleNetAccountPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -453,7 +441,6 @@ namespace PlayFab
             interop->facebookIDsCount = (uint)self.FacebookIDs.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -496,7 +483,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -516,7 +502,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementFacebookPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -538,7 +523,6 @@ namespace PlayFab
             interop->facebookInstantGamesIdsCount = (uint)self.FacebookInstantGamesIds.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -581,7 +565,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -601,7 +584,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementFacebookInstantGamesPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -623,7 +605,6 @@ namespace PlayFab
             interop->gameCenterIDsCount = (uint)self.GameCenterIDs.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -666,7 +647,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -686,7 +666,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementGameCenterPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -708,7 +687,6 @@ namespace PlayFab
             interop->googleIDsCount = (uint)self.GoogleIDs.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -751,7 +729,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -771,7 +748,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementGooglePlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -793,7 +769,6 @@ namespace PlayFab
             interop->googlePlayGamesPlayerIDsCount = (uint)self.GooglePlayGamesPlayerIDs.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -836,7 +811,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -856,7 +830,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementGooglePlayGamesPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -878,7 +851,6 @@ namespace PlayFab
             interop->kongregateIDsCount = (uint)self.KongregateIDs.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -921,7 +893,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -941,7 +912,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementKongregatePlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -963,7 +933,6 @@ namespace PlayFab
             interop->nintendoAccountIdsCount = (uint)self.NintendoAccountIds.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -1006,7 +975,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1026,7 +994,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementNintendoServiceAccountPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1048,7 +1015,6 @@ namespace PlayFab
             interop->nintendoSwitchDeviceIdsCount = (uint)self.NintendoSwitchDeviceIds.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -1091,7 +1057,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1111,7 +1076,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementNintendoSwitchPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1137,6 +1101,7 @@ namespace PlayFab
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -1144,7 +1109,6 @@ namespace PlayFab
             interop->PSNAccountIDsCount = (uint)self.PSNAccountIDs.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -1187,7 +1151,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1207,7 +1170,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementPSNAccountPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1233,6 +1195,7 @@ namespace PlayFab
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -1240,7 +1203,6 @@ namespace PlayFab
             interop->PSNOnlineIDsCount = (uint)self.PSNOnlineIDs.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -1283,7 +1245,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1303,7 +1264,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementPSNOnlinePlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1328,7 +1288,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1371,7 +1330,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1391,7 +1349,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementSteamPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1413,7 +1370,6 @@ namespace PlayFab
             interop->steamNamesCount = (uint)self.SteamNames.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -1456,7 +1412,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1476,7 +1431,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementSteamNamePlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1498,7 +1452,6 @@ namespace PlayFab
             interop->twitchIdsCount = (uint)self.TwitchIds.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -1541,7 +1494,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1561,7 +1513,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementTwitchPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1593,7 +1544,6 @@ namespace PlayFab
             interop->xboxLiveAccountIDsCount = (uint)self.XboxLiveAccountIDs.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -1636,7 +1586,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1656,7 +1605,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementXboxLiveAccountPlayFabIdPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1709,6 +1657,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -1718,7 +1667,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1757,13 +1705,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             InteropWrapper.WrapperHelpers.StringToInterop(self.IdentityToken, &interop->identityToken, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1800,13 +1748,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             InteropWrapper.WrapperHelpers.StringToInterop(self.IdentityToken, &interop->identityToken, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1844,11 +1792,11 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1907,11 +1855,11 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1950,11 +1898,11 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2012,6 +1960,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2038,7 +1987,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2078,6 +2026,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2087,7 +2036,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2127,13 +2075,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             InteropWrapper.WrapperHelpers.StringToInterop(self.ServerAuthCode, &interop->serverAuthCode, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -2186,6 +2134,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2195,7 +2144,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2238,13 +2186,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             InteropWrapper.WrapperHelpers.StringToInterop(self.KongregateId, &interop->kongregateId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -2282,13 +2230,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             InteropWrapper.WrapperHelpers.StringToInterop(self.IdentityToken, &interop->identityToken, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -2325,13 +2273,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             InteropWrapper.WrapperHelpers.StringToInterop(self.NintendoSwitchDeviceId, &interop->nintendoSwitchDeviceId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -2378,13 +2326,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             InteropWrapper.WrapperHelpers.StringToInterop(self.IdToken, &interop->idToken, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -2433,18 +2381,19 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
             InteropWrapper.WrapperHelpers.StringToInterop(self.RedirectUri, &interop->redirectUri, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -2492,6 +2441,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2499,17 +2449,17 @@ namespace PlayFab
 
             if (self.TicketIsServiceSpecific != null)
             {
+                interop->ticketIsServiceSpecific = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->ticketIsServiceSpecific = InteropWrapper.WrapperHelpers.BoolToInterop(self.TicketIsServiceSpecific.Value);
             }
 
         }
-            
     }
 
     /// <summary>
-    /// PFAccountManagementLinkTwitchAccountRequest data model.
+    /// PFAccountManagementClientLinkTwitchAccountRequest data model.
     /// </summary>
-    public struct PFAccountManagementLinkTwitchAccountRequest
+    public struct PFAccountManagementClientLinkTwitchAccountRequest
     {
         /// <summary>
         /// Valid token issued by Twitch.
@@ -2527,7 +2477,7 @@ namespace PlayFab
         /// </summary>
         public bool? ForceLink;
 
-        internal unsafe static void ToInterop(PFAccountManagementLinkTwitchAccountRequest self, Interop.PFAccountManagementLinkTwitchAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
+        internal unsafe static void ToInterop(PFAccountManagementClientLinkTwitchAccountRequest self, Interop.PFAccountManagementClientLinkTwitchAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
 
@@ -2541,11 +2491,11 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2584,6 +2534,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -2592,7 +2543,6 @@ namespace PlayFab
 #endif
 
         }
-            
     }
 
     /// <summary>
@@ -2618,7 +2568,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2660,7 +2609,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.ReporteeId, &interop->reporteeId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -2681,7 +2629,6 @@ namespace PlayFab
             SubmissionsRemaining = interop.submissionsRemaining;
 
         }
-            
     }
 
     /// <summary>
@@ -2734,7 +2681,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.TitleId, &interop->titleId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -2770,7 +2716,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2795,7 +2740,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2820,7 +2764,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2856,13 +2799,12 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
-    /// PFAccountManagementUnlinkFacebookAccountRequest data model.
+    /// PFAccountManagementClientUnlinkFacebookAccountRequest data model.
     /// </summary>
-    public struct PFAccountManagementUnlinkFacebookAccountRequest
+    public struct PFAccountManagementClientUnlinkFacebookAccountRequest
     {
         /// <summary>
         /// (Optional) The optional custom tags associated with the request (e.g. build number, external trace
@@ -2870,7 +2812,7 @@ namespace PlayFab
         /// </summary>
         public Dictionary<string, string>? CustomTags;
 
-        internal unsafe static void ToInterop(PFAccountManagementUnlinkFacebookAccountRequest self, Interop.PFAccountManagementUnlinkFacebookAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
+        internal unsafe static void ToInterop(PFAccountManagementClientUnlinkFacebookAccountRequest self, Interop.PFAccountManagementClientUnlinkFacebookAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
 
@@ -2881,13 +2823,12 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
-    /// PFAccountManagementUnlinkFacebookInstantGamesIdRequest data model.
+    /// PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest data model.
     /// </summary>
-    public struct PFAccountManagementUnlinkFacebookInstantGamesIdRequest
+    public struct PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest
     {
         /// <summary>
         /// (Optional) The optional custom tags associated with the request (e.g. build number, external trace
@@ -2901,7 +2842,7 @@ namespace PlayFab
         /// </summary>
         public string? FacebookInstantGamesId;
 
-        internal unsafe static void ToInterop(PFAccountManagementUnlinkFacebookInstantGamesIdRequest self, Interop.PFAccountManagementUnlinkFacebookInstantGamesIdRequest* interop, InteropWrapper.DisposableBuffer buffer)
+        internal unsafe static void ToInterop(PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest self, Interop.PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
 
@@ -2917,7 +2858,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2942,7 +2882,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2967,7 +2906,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -2992,7 +2930,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3028,7 +2965,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3053,7 +2989,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3078,7 +3013,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3114,7 +3048,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3147,7 +3080,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3172,7 +3104,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3197,13 +3128,12 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
-    /// PFAccountManagementUnlinkTwitchAccountRequest data model.
+    /// PFAccountManagementClientUnlinkTwitchAccountRequest data model.
     /// </summary>
-    public struct PFAccountManagementUnlinkTwitchAccountRequest
+    public struct PFAccountManagementClientUnlinkTwitchAccountRequest
     {
         /// <summary>
         /// (Optional) Valid token issued by Twitch. Used to specify which twitch account to unlink from the
@@ -3217,7 +3147,7 @@ namespace PlayFab
         /// </summary>
         public Dictionary<string, string>? CustomTags;
 
-        internal unsafe static void ToInterop(PFAccountManagementUnlinkTwitchAccountRequest self, Interop.PFAccountManagementUnlinkTwitchAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
+        internal unsafe static void ToInterop(PFAccountManagementClientUnlinkTwitchAccountRequest self, Interop.PFAccountManagementClientUnlinkTwitchAccountRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
 
@@ -3233,7 +3163,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3258,7 +3187,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3278,7 +3206,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.ImageUrl, &interop->imageUrl, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -3312,7 +3239,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.DisplayName, &interop->displayName, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -3332,7 +3258,6 @@ namespace PlayFab
             DisplayName = (interop.displayName == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.displayName);
 
         }
-            
     }
 
     /// <summary>
@@ -3387,6 +3312,7 @@ namespace PlayFab
 
             if (self.DurationInHours != null)
             {
+                interop->durationInHours = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->durationInHours = self.DurationInHours.Value;
             }
 
@@ -3404,17 +3330,17 @@ namespace PlayFab
 
             if (self.UserFamilyType != null)
             {
+                interop->userFamilyType = (Interop.PFAccountManagementUserFamilyType*)buffer.AddBuffer(sizeof(Interop.PFAccountManagementUserFamilyType));
                 *interop->userFamilyType = (Interop.PFAccountManagementUserFamilyType)self.UserFamilyType.Value;
             }
 
         }
-            
     }
 
     /// <summary>
     /// PFAccountManagementBanUsersRequest data model. The existence of each user will not be verified. When
-    /// banning by IP or MAC address, multiple players may be affected, so use this feature with caution.
-    /// Returns information about the new bans.
+    /// banning by IP, multiple players may be affected, so use this feature with caution. Returns information
+    /// about the new bans.
     /// </summary>
     public struct PFAccountManagementBanUsersRequest
     {
@@ -3443,7 +3369,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3526,11 +3451,13 @@ namespace PlayFab
 
             if (self.Created != null)
             {
+                interop->created = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->created = self.Created.Value;
             }
 
             if (self.Expires != null)
             {
+                interop->expires = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->expires = self.Expires.Value;
             }
 
@@ -3555,7 +3482,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3574,7 +3500,6 @@ namespace PlayFab
             BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -3603,7 +3528,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -3625,7 +3549,6 @@ namespace PlayFab
             interop->playFabIDsCount = (uint)self.PlayFabIDs.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -3667,7 +3590,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -3687,7 +3609,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementServerCustomIDPlayFabIDPair(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -3711,7 +3632,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -3730,7 +3650,6 @@ namespace PlayFab
             UserInfo = (interop.userInfo == null) ? null : new(*interop.userInfo);
 
         }
-            
     }
 
     /// <summary>
@@ -3751,7 +3670,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -3770,7 +3688,6 @@ namespace PlayFab
             BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -3812,6 +3729,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -3820,7 +3738,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -3863,6 +3780,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -3871,7 +3789,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -3913,6 +3830,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -3921,7 +3839,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Subject, &interop->subject, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -3963,6 +3880,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -3971,7 +3889,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4025,11 +3942,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -4038,7 +3957,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.RedirectUri, &interop->redirectUri, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4085,11 +4003,13 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
             if (self.IssuerId != null)
             {
+                interop->issuerId = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->issuerId = self.IssuerId.Value;
             }
 
@@ -4098,7 +4018,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PSNUserId, &interop->PSNUserId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4139,6 +4058,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -4147,7 +4067,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.ServerCustomId, &interop->serverCustomId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4188,6 +4107,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -4196,7 +4116,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.SteamId, &interop->steamId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4238,6 +4157,7 @@ namespace PlayFab
 
             if (self.ForceLink != null)
             {
+                interop->forceLink = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->forceLink = InteropWrapper.WrapperHelpers.BoolToInterop(self.ForceLink.Value);
             }
 
@@ -4246,7 +4166,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.XboxToken, &interop->xboxToken, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4268,7 +4187,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4287,7 +4205,6 @@ namespace PlayFab
             BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -4310,7 +4227,6 @@ namespace PlayFab
             interop->banIdsCount = (uint)self.BanIds.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -4329,7 +4245,6 @@ namespace PlayFab
             BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -4384,7 +4299,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -4425,7 +4339,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4457,7 +4370,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4489,7 +4401,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4532,7 +4443,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4564,7 +4474,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4603,7 +4512,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.ServerCustomId, &interop->serverCustomId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4635,7 +4543,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4667,7 +4574,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4694,7 +4600,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -4763,6 +4668,7 @@ namespace PlayFab
 
             if (self.Active != null)
             {
+                interop->active = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->active = InteropWrapper.WrapperHelpers.BoolToInterop(self.Active.Value);
             }
 
@@ -4770,6 +4676,7 @@ namespace PlayFab
 
             if (self.Expires != null)
             {
+                interop->expires = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->expires = self.Expires.Value;
             }
 
@@ -4780,6 +4687,7 @@ namespace PlayFab
 
             if (self.Permanent != null)
             {
+                interop->permanent = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->permanent = InteropWrapper.WrapperHelpers.BoolToInterop(self.Permanent.Value);
             }
 
@@ -4790,11 +4698,11 @@ namespace PlayFab
 
             if (self.UserFamilyType != null)
             {
+                interop->userFamilyType = (Interop.PFAccountManagementUserFamilyType*)buffer.AddBuffer(sizeof(Interop.PFAccountManagementUserFamilyType));
                 *interop->userFamilyType = (Interop.PFAccountManagementUserFamilyType)self.UserFamilyType.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -4817,7 +4725,6 @@ namespace PlayFab
             interop->bansCount = (uint)self.Bans.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -4836,7 +4743,6 @@ namespace PlayFab
             BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -4887,7 +4793,6 @@ namespace PlayFab
             interop->xboxLiveIdsCount = (uint)self.XboxLiveIds.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -4907,7 +4812,6 @@ namespace PlayFab
             TitlePlayerAccounts = (interop.titlePlayerAccounts == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.titlePlayerAccounts, interop.titlePlayerAccountsCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), new PFEntityLineage(*pair.value)));
 
         }
-            
     }
 
     /// <summary>
@@ -4960,11 +4864,11 @@ namespace PlayFab
 
             if (self.ExpectedVersion != null)
             {
+                interop->expectedVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedVersion = self.ExpectedVersion.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -4990,7 +4894,6 @@ namespace PlayFab
             VersionNumber = (interop.versionNumber == null) ? null : *interop.versionNumber;
 
         }
-            
     }
 
 }

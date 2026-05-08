@@ -21,11 +21,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFMultiplayerServerListBuildAliasesGetResultSize"/>
         /// and <see cref="PFMultiplayerServerListBuildAliasesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFMultiplayerServerListBuildAliasesResponse>> MultiplayerServerListBuildAliasesAsync(
+        public Task<PFResult<PFMultiplayerServerListBuildAliasesResponse>> MultiplayerServerListBuildAliasesAsync(
             PFMultiplayerServerListBuildAliasesRequest request
         )
         {
-            return await InteropWrapper.Services.PFMultiplayerServer.PFMultiplayerServerListBuildAliasesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFMultiplayerServer.PFMultiplayerServerListBuildAliasesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -43,11 +43,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFMultiplayerServerListBuildSummariesV2GetResultSize"/>
         /// and <see cref="PFMultiplayerServerListBuildSummariesV2GetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFMultiplayerServerListBuildSummariesResponse>> MultiplayerServerListBuildSummariesV2Async(
+        public Task<PFResult<PFMultiplayerServerListBuildSummariesResponse>> MultiplayerServerListBuildSummariesV2Async(
             PFMultiplayerServerListBuildSummariesRequest request
         )
         {
-            return await InteropWrapper.Services.PFMultiplayerServer.PFMultiplayerServerListBuildSummariesV2Async(InteropHandle, request);
+            return InteropWrapper.Services.PFMultiplayerServer.PFMultiplayerServerListBuildSummariesV2Async(InteropHandle, request);
         }
 
         /// <summary>
@@ -63,11 +63,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFMultiplayerServerListQosServersForTitleGetResultSize"/>
         /// and <see cref="PFMultiplayerServerListQosServersForTitleGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFMultiplayerServerListQosServersForTitleResponse>> MultiplayerServerListQosServersForTitleAsync(
+        public Task<PFResult<PFMultiplayerServerListQosServersForTitleResponse>> MultiplayerServerListQosServersForTitleAsync(
             PFMultiplayerServerListQosServersForTitleRequest request
         )
         {
-            return await InteropWrapper.Services.PFMultiplayerServer.PFMultiplayerServerListQosServersForTitleAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFMultiplayerServer.PFMultiplayerServerListQosServersForTitleAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -84,11 +84,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFMultiplayerServerRequestMultiplayerServerGetResultSize"/>
         /// and <see cref="PFMultiplayerServerRequestMultiplayerServerGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFMultiplayerServerRequestMultiplayerServerResponse>> MultiplayerServerRequestMultiplayerServerAsync(
+        public Task<PFResult<PFMultiplayerServerRequestMultiplayerServerResponse>> MultiplayerServerRequestMultiplayerServerAsync(
             PFMultiplayerServerRequestMultiplayerServerRequest request
         )
         {
-            return await InteropWrapper.Services.PFMultiplayerServer.PFMultiplayerServerRequestMultiplayerServerAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFMultiplayerServer.PFMultiplayerServerRequestMultiplayerServerAsync(InteropHandle, request);
         }
     }
 }

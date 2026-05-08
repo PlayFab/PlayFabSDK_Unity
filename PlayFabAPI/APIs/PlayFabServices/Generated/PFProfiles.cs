@@ -23,11 +23,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFProfilesGetProfileGetResultSize"/> and
         /// <see cref="PFProfilesGetProfileGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFProfilesGetEntityProfileResponse>> ProfilesGetProfileAsync(
+        public Task<PFResult<PFProfilesGetEntityProfileResponse>> ProfilesGetProfileAsync(
             PFProfilesGetEntityProfileRequest request
         )
         {
-            return await InteropWrapper.Services.PFProfiles.PFProfilesGetProfileAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFProfiles.PFProfilesGetProfileAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -44,11 +44,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFProfilesGetProfilesGetResultSize"/> and
         /// <see cref="PFProfilesGetProfilesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFProfilesGetEntityProfilesResponse>> ProfilesGetProfilesAsync(
+        public Task<PFResult<PFProfilesGetEntityProfilesResponse>> ProfilesGetProfilesAsync(
             PFProfilesGetEntityProfilesRequest request
         )
         {
-            return await InteropWrapper.Services.PFProfiles.PFProfilesGetProfilesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFProfiles.PFProfilesGetProfilesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -64,11 +64,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsGetResultSize"/>
         /// and <see cref="PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse>> ProfilesGetTitlePlayersFromMasterPlayerAccountIdsAsync(
+        public Task<PFResult<PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsResponse>> ProfilesGetTitlePlayersFromMasterPlayerAccountIdsAsync(
             PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsRequest request
         )
         {
-            return await InteropWrapper.Services.PFProfiles.PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFProfiles.PFProfilesGetTitlePlayersFromMasterPlayerAccountIdsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -86,11 +86,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFProfilesSetProfileLanguageGetResultSize"/>
         /// and <see cref="PFProfilesSetProfileLanguageGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFProfilesSetProfileLanguageResponse>> ProfilesSetProfileLanguageAsync(
+        public Task<PFResult<PFProfilesSetProfileLanguageResponse>> ProfilesSetProfileLanguageAsync(
             PFProfilesSetProfileLanguageRequest request
         )
         {
-            return await InteropWrapper.Services.PFProfiles.PFProfilesSetProfileLanguageAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFProfiles.PFProfilesSetProfileLanguageAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -106,11 +106,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFProfilesSetProfilePolicyGetResultSize"/>
         /// and <see cref="PFProfilesSetProfilePolicyGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFProfilesSetEntityProfilePolicyResponse>> ProfilesSetProfilePolicyAsync(
+        public Task<PFResult<PFProfilesSetEntityProfilePolicyResponse>> ProfilesSetProfilePolicyAsync(
             PFProfilesSetEntityProfilePolicyRequest request
         )
         {
-            return await InteropWrapper.Services.PFProfiles.PFProfilesSetProfilePolicyAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFProfiles.PFProfilesSetProfilePolicyAsync(InteropHandle, request);
         }
     }
 }

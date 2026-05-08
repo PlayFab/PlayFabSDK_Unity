@@ -45,6 +45,7 @@ namespace PlayFab
 
             if (self.ExpectedPropertiesVersion != null)
             {
+                interop->expectedPropertiesVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedPropertiesVersion = self.ExpectedPropertiesVersion.Value;
             }
 
@@ -52,7 +53,6 @@ namespace PlayFab
             interop->propertyNamesCount = (uint)self.PropertyNames.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -91,7 +91,6 @@ namespace PlayFab
             interop->wasDeleted = InteropWrapper.WrapperHelpers.BoolToInterop(self.WasDeleted);
 
         }
-            
     }
 
     /// <summary>
@@ -118,7 +117,6 @@ namespace PlayFab
             PropertiesVersion = interop.propertiesVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -138,7 +136,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PropertyName, &interop->propertyName, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -180,7 +177,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -207,7 +203,6 @@ namespace PlayFab
             Property = (interop.property == null) ? null : new(*interop.property);
 
         }
-            
     }
 
     /// <summary>
@@ -243,6 +238,7 @@ namespace PlayFab
 
             if (self.IfChangedFromDataVersion != null)
             {
+                interop->ifChangedFromDataVersion = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->ifChangedFromDataVersion = self.IfChangedFromDataVersion.Value;
             }
 
@@ -258,7 +254,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -286,7 +281,6 @@ namespace PlayFab
             DataVersion = interop.dataVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -313,7 +307,6 @@ namespace PlayFab
             PropertiesVersion = interop.propertiesVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -349,7 +342,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Value.stringValue, &interop->value.stringValue, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -390,6 +382,7 @@ namespace PlayFab
 
             if (self.ExpectedPropertiesVersion != null)
             {
+                interop->expectedPropertiesVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedPropertiesVersion = self.ExpectedPropertiesVersion.Value;
             }
 
@@ -397,7 +390,6 @@ namespace PlayFab
             interop->propertiesCount = (uint)self.Properties.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -417,7 +409,6 @@ namespace PlayFab
             PropertiesVersion = interop.propertiesVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -478,11 +469,11 @@ namespace PlayFab
 
             if (self.Permission != null)
             {
+                interop->permission = (Interop.PFUserDataPermission*)buffer.AddBuffer(sizeof(Interop.PFUserDataPermission));
                 *interop->permission = (Interop.PFUserDataPermission)self.Permission.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -503,7 +494,6 @@ namespace PlayFab
             DataVersion = interop.dataVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -547,6 +537,7 @@ namespace PlayFab
 
             if (self.ExpectedPropertiesVersion != null)
             {
+                interop->expectedPropertiesVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedPropertiesVersion = self.ExpectedPropertiesVersion.Value;
             }
 
@@ -556,7 +547,6 @@ namespace PlayFab
             interop->propertyNamesCount = (uint)self.PropertyNames.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -590,7 +580,6 @@ namespace PlayFab
             PropertiesVersion = interop.propertiesVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -617,7 +606,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PropertyName, &interop->propertyName, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -651,7 +639,6 @@ namespace PlayFab
             Property = (interop.property == null) ? null : new(*interop.property);
 
         }
-            
     }
 
     /// <summary>
@@ -686,7 +673,6 @@ namespace PlayFab
             PlayFabId = (interop.playFabId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.playFabId);
 
         }
-            
     }
 
     /// <summary>
@@ -706,7 +692,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -740,7 +725,6 @@ namespace PlayFab
             PropertiesVersion = interop.propertiesVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -786,6 +770,7 @@ namespace PlayFab
 
             if (self.ExpectedPropertiesVersion != null)
             {
+                interop->expectedPropertiesVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedPropertiesVersion = self.ExpectedPropertiesVersion.Value;
             }
 
@@ -795,7 +780,6 @@ namespace PlayFab
             interop->propertiesCount = (uint)self.Properties.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -822,7 +806,6 @@ namespace PlayFab
             PropertiesVersion = interop.propertiesVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -887,13 +870,13 @@ namespace PlayFab
 
             if (self.Permission != null)
             {
+                interop->permission = (Interop.PFUserDataPermission*)buffer.AddBuffer(sizeof(Interop.PFUserDataPermission));
                 *interop->permission = (Interop.PFUserDataPermission)self.Permission.Value;
             }
 
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -953,7 +936,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
 }

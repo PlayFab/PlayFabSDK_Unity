@@ -20,11 +20,11 @@ namespace PlayFab
         /// the async result will be E_PF_PUSH_NOT_ENABLED_FOR_ACCOUNT, E_PF_PUSH_SERVICE_ERROR or any of the
         /// global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> PushNotificationsServerSendPushNotificationAsync(
+        public Task<PFResult> PushNotificationsServerSendPushNotificationAsync(
             PFPushNotificationsSendPushNotificationRequest request
         )
         {
-            return await InteropWrapper.Services.PFPushNotifications.PFPushNotificationsServerSendPushNotificationAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPushNotifications.PFPushNotificationsServerSendPushNotificationAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -41,11 +41,11 @@ namespace PlayFab
         /// E_PF_PUSH_SERVICE_ERROR or any of the global PlayFab Service errors. See doc page "Handling PlayFab
         /// Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> PushNotificationsServerSendPushNotificationFromTemplateAsync(
+        public Task<PFResult> PushNotificationsServerSendPushNotificationFromTemplateAsync(
             PFPushNotificationsSendPushNotificationFromTemplateRequest request
         )
         {
-            return await InteropWrapper.Services.PFPushNotifications.PFPushNotificationsServerSendPushNotificationFromTemplateAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPushNotifications.PFPushNotificationsServerSendPushNotificationFromTemplateAsync(InteropHandle, request);
         }
     }
 }

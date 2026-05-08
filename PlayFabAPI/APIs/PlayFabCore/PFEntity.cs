@@ -55,13 +55,6 @@ namespace PlayFab
             }
         }
 
-        protected PFResult<T> Duplicate<T>() where T : PFEntity
-        {
-            var result = InteropWrapper.Core.PFEntity.PFEntityDuplicateHandle(InteropHandle);
-            return result.Failed() ? new PFResult<T>(result.HResult)
-                                   : new PFResult<T>(new PFEntity(result.Result) as T, result.HResult);
-        }
-
         public Task<PFResult<PFEntityToken>> GetEntityTokenAsync()
         {
             return InteropWrapper.Core.PFEntity.PFEntityGetEntityTokenAsync(InteropHandle);

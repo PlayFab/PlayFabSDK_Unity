@@ -54,11 +54,11 @@ namespace PlayFab
 
             if (self.ProfileVersion != null)
             {
+                interop->profileVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->profileVersion = self.ProfileVersion.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -84,7 +84,6 @@ namespace PlayFab
             ProfileVersion = interop.profileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -132,11 +131,11 @@ namespace PlayFab
 
             if (self.ProfileVersion != null)
             {
+                interop->profileVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->profileVersion = self.ProfileVersion.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -162,7 +161,6 @@ namespace PlayFab
             ProfileVersion = interop.profileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -211,7 +209,6 @@ namespace PlayFab
             interop->profileVersion = self.ProfileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -283,7 +280,6 @@ namespace PlayFab
             interop->size = self.Size;
 
         }
-            
     }
 
     /// <summary>
@@ -316,7 +312,6 @@ namespace PlayFab
             ProfileVersion = interop.profileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -351,7 +346,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Entity, interop->entity, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -384,7 +378,6 @@ namespace PlayFab
             ProfileVersion = interop.profileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -424,11 +417,11 @@ namespace PlayFab
 
             if (self.EscapeObject != null)
             {
+                interop->escapeObject = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->escapeObject = InteropWrapper.WrapperHelpers.BoolToInterop(self.EscapeObject.Value);
             }
 
         }
-            
     }
 
     /// <summary>
@@ -482,7 +475,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -515,7 +507,6 @@ namespace PlayFab
             ProfileVersion = interop.profileVersion;
 
         }
-            
     }
 
     /// <summary>
@@ -565,11 +556,11 @@ namespace PlayFab
 
             if (self.ProfileVersion != null)
             {
+                interop->profileVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->profileVersion = self.ProfileVersion.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -611,7 +602,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -644,7 +634,6 @@ namespace PlayFab
             UploadDetails = (interop.uploadDetails == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.uploadDetails, interop.uploadDetailsCount, elem => new PFDataInitiateFileUploadMetadata(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -701,6 +690,7 @@ namespace PlayFab
 
             if (self.DeleteObject != null)
             {
+                interop->deleteObject = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->deleteObject = InteropWrapper.WrapperHelpers.BoolToInterop(self.DeleteObject.Value);
             }
 
@@ -712,7 +702,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.ObjectName, &interop->objectName, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -763,6 +752,7 @@ namespace PlayFab
 
             if (self.ExpectedProfileVersion != null)
             {
+                interop->expectedProfileVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedProfileVersion = self.ExpectedProfileVersion.Value;
             }
 
@@ -770,7 +760,6 @@ namespace PlayFab
             interop->objectsCount = (uint)self.Objects.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -820,11 +809,11 @@ namespace PlayFab
 
             if (self.SetResult != null)
             {
+                interop->setResult = (Interop.PFOperationTypes*)buffer.AddBuffer(sizeof(Interop.PFOperationTypes));
                 *interop->setResult = (Interop.PFOperationTypes)self.SetResult.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -850,7 +839,6 @@ namespace PlayFab
             SetResults = (interop.setResults == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.setResults, interop.setResultsCount, elem => new PFDataSetObjectInfo(elem));
 
         }
-            
     }
 
 }

@@ -7,9 +7,6 @@ namespace PlayFab.Interop
         [NativeTypeName("const char *")]
         public sbyte* collectionId;
 
-        [NativeTypeName("const char *")]
-        public sbyte* collectionsIdKey;
-
         [NativeTypeName("const struct PFStringDictionaryEntry *")]
         public PFStringDictionaryEntry* customTags;
 

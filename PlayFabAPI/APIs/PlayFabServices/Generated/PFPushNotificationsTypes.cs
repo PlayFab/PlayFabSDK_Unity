@@ -47,6 +47,7 @@ namespace PlayFab
 
             if (self.GCMDataOnly != null)
             {
+                interop->gCMDataOnly = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->gCMDataOnly = InteropWrapper.WrapperHelpers.BoolToInterop(self.GCMDataOnly.Value);
             }
 
@@ -55,7 +56,6 @@ namespace PlayFab
             interop->platform = (Interop.PFPushNotificationPlatform)self.Platform;
 
         }
-            
     }
 
     /// <summary>
@@ -137,7 +137,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Title, &interop->title, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -226,7 +225,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -266,7 +264,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Recipient, &interop->recipient, buffer);
 
         }
-            
     }
 
 }

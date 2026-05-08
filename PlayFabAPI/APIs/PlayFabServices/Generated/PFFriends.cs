@@ -21,11 +21,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFFriendsClientAddFriendGetResult"/> to get
         /// the result.
         /// </remarks>
-        public async Task<PFResult<PFFriendsAddFriendResult>> FriendsClientAddFriendAsync(
+        public Task<PFResult<PFFriendsAddFriendResult>> FriendsClientAddFriendAsync(
             PFFriendsClientAddFriendRequest request
         )
         {
-            return await InteropWrapper.Services.PFFriends.PFFriendsClientAddFriendAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFFriends.PFFriendsClientAddFriendAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -42,11 +42,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFFriendsClientGetFriendsListGetResultSize"/>
         /// and <see cref="PFFriendsClientGetFriendsListGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFFriendsGetFriendsListResult>> FriendsClientGetFriendsListAsync(
+        public Task<PFResult<PFFriendsGetFriendsListResult>> FriendsClientGetFriendsListAsync(
             PFFriendsClientGetFriendsListRequest request
         )
         {
-            return await InteropWrapper.Services.PFFriends.PFFriendsClientGetFriendsListAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFFriends.PFFriendsClientGetFriendsListAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -62,11 +62,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> FriendsClientRemoveFriendAsync(
+        public Task<PFResult> FriendsClientRemoveFriendAsync(
             PFFriendsClientRemoveFriendRequest request
         )
         {
-            return await InteropWrapper.Services.PFFriends.PFFriendsClientRemoveFriendAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFFriends.PFFriendsClientRemoveFriendAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -85,11 +85,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> FriendsClientSetFriendTagsAsync(
+        public Task<PFResult> FriendsClientSetFriendTagsAsync(
             PFFriendsClientSetFriendTagsRequest request
         )
         {
-            return await InteropWrapper.Services.PFFriends.PFFriendsClientSetFriendTagsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFFriends.PFFriendsClientSetFriendTagsAsync(InteropHandle, request);
         }
     }
 
@@ -109,11 +109,11 @@ namespace PlayFab
         /// the async result will be E_PF_USERS_ALREADY_FRIENDS or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> FriendsServerAddFriendAsync(
+        public Task<PFResult> FriendsServerAddFriendAsync(
             PFFriendsServerAddFriendRequest request
         )
         {
-            return await InteropWrapper.Services.PFFriends.PFFriendsServerAddFriendAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFFriends.PFFriendsServerAddFriendAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -130,11 +130,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFFriendsServerGetFriendsListGetResultSize"/>
         /// and <see cref="PFFriendsServerGetFriendsListGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFFriendsGetFriendsListResult>> FriendsServerGetFriendsListAsync(
+        public Task<PFResult<PFFriendsGetFriendsListResult>> FriendsServerGetFriendsListAsync(
             PFFriendsServerGetFriendsListRequest request
         )
         {
-            return await InteropWrapper.Services.PFFriends.PFFriendsServerGetFriendsListAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFFriends.PFFriendsServerGetFriendsListAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -150,11 +150,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_FOUND or any of the global PlayFab Service errors. See doc
         /// page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> FriendsServerRemoveFriendAsync(
+        public Task<PFResult> FriendsServerRemoveFriendAsync(
             PFFriendsServerRemoveFriendRequest request
         )
         {
-            return await InteropWrapper.Services.PFFriends.PFFriendsServerRemoveFriendAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFFriends.PFFriendsServerRemoveFriendAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -173,11 +173,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> FriendsServerSetFriendTagsAsync(
+        public Task<PFResult> FriendsServerSetFriendTagsAsync(
             PFFriendsServerSetFriendTagsRequest request
         )
         {
-            return await InteropWrapper.Services.PFFriends.PFFriendsServerSetFriendTagsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFFriends.PFFriendsServerSetFriendTagsAsync(InteropHandle, request);
         }
     }
 }

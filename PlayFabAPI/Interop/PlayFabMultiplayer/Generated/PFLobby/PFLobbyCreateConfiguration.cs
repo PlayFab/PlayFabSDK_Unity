@@ -28,5 +28,7 @@ namespace PlayFab.Interop.Multiplayer
 
         [NativeTypeName("const char *const *")]
         public sbyte** lobbyPropertyValues;
+
+        public byte restrictInvitesToLobbyOwner;
     }
 }

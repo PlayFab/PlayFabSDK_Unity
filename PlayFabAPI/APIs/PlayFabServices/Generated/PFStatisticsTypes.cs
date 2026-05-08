@@ -53,7 +53,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Name, &interop->name, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -80,7 +79,6 @@ namespace PlayFab
             interop->eventType = (Interop.PFEventType)self.EventType;
 
         }
-            
     }
 
     /// <summary>
@@ -111,7 +109,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -202,7 +199,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -234,7 +230,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Name, &interop->name, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -261,7 +256,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Name, &interop->name, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -305,7 +299,6 @@ namespace PlayFab
             interop->statisticsCount = (uint)self.Statistics.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -324,7 +317,6 @@ namespace PlayFab
             Entity = (interop.entity == null) ? null : new(*interop.entity);
 
         }
-            
     }
 
     /// <summary>
@@ -356,7 +348,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Name, &interop->name, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -448,7 +439,6 @@ namespace PlayFab
             VersionConfiguration = (interop.versionConfiguration == null) ? null : new(*interop.versionConfiguration);
 
         }
-            
     }
 
     /// <summary>
@@ -496,7 +486,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -527,7 +516,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -591,7 +579,6 @@ namespace PlayFab
             interop->version = self.Version;
 
         }
-            
     }
 
     /// <summary>
@@ -624,7 +611,6 @@ namespace PlayFab
             Statistics = (interop.statistics == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.statistics, interop.statisticsCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), new PFStatisticsEntityStatisticValue(*pair.value)));
 
         }
-            
     }
 
     /// <summary>
@@ -669,7 +655,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -713,7 +698,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -740,7 +724,6 @@ namespace PlayFab
             EntitiesStatistics = (interop.entitiesStatistics == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.entitiesStatistics, interop.entitiesStatisticsCount, elem => new PFStatisticsEntityStatistics(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -772,7 +755,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Name, &interop->name, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -791,7 +773,6 @@ namespace PlayFab
             Version = interop.version;
 
         }
-            
     }
 
     /// <summary>
@@ -805,6 +786,16 @@ namespace PlayFab
         /// </summary>
         public Dictionary<string, string>? CustomTags;
 
+        /// <summary>
+        /// (Optional) The page size for the request.
+        /// </summary>
+        public int? PageSize;
+
+        /// <summary>
+        /// (Optional) The skip token for the paged request.
+        /// </summary>
+        public string? SkipToken;
+
         internal unsafe static void ToInterop(PFStatisticsListStatisticDefinitionsRequest self, Interop.PFStatisticsListStatisticDefinitionsRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
@@ -815,8 +806,18 @@ namespace PlayFab
                 interop->customTagsCount = (uint)self.CustomTags.Count;
             }
 
+            if (self.PageSize != null)
+            {
+                interop->pageSize = (int*)buffer.AddBuffer(sizeof(int));
+                *interop->pageSize = self.PageSize.Value;
+            }
+
+            if (self.SkipToken != null)
+            {
+                InteropWrapper.WrapperHelpers.StringToInterop(self.SkipToken, &interop->skipToken, buffer);
+            }
+
         }
-            
     }
 
     /// <summary>
@@ -946,6 +947,7 @@ namespace PlayFab
 
             if (self.LastResetTime != null)
             {
+                interop->lastResetTime = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->lastResetTime = self.LastResetTime.Value;
             }
 
@@ -969,7 +971,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -978,10 +979,14 @@ namespace PlayFab
     public struct PFStatisticsListStatisticDefinitionsResponse
     {
         /// <summary>
-        /// (Optional) The optional custom tags associated with the request (e.g. build number, external trace
-        /// identifiers, etc.).
+        /// The page size on the response.
         /// </summary>
-        public Dictionary<string, string>? CustomTags;
+        public int PageSize;
+
+        /// <summary>
+        /// (Optional) The skip token for the paged response.
+        /// </summary>
+        public string? SkipToken;
 
         /// <summary>
         /// (Optional) List of statistic definitions for the title.
@@ -991,12 +996,13 @@ namespace PlayFab
         internal unsafe PFStatisticsListStatisticDefinitionsResponse(Interop.PFStatisticsListStatisticDefinitionsResponse interop)
         {
 
-            CustomTags = (interop.customTags == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.customTags, interop.customTagsCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), InteropWrapper.WrapperHelpers.InteropToString(pair.value)));
+            PageSize = interop.pageSize;
+
+            SkipToken = (interop.skipToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.skipToken);
 
             StatisticDefinitions = (interop.statisticDefinitions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.statisticDefinitions, interop.statisticDefinitionsCount, elem => new PFStatisticsStatisticDefinition(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1052,7 +1058,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1062,7 +1067,7 @@ namespace PlayFab
     {
         /// <summary>
         /// (Optional) Arbitrary metadata to store along side the statistic, will be returned by all Leaderboard
-        /// APIs. Must be less than 50 UTF8 encoded characters.
+        /// APIs.
         /// </summary>
         public string? Metadata;
 
@@ -1117,11 +1122,11 @@ namespace PlayFab
 
             if (self.Version != null)
             {
+                interop->version = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->version = self.Version.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1146,8 +1151,7 @@ namespace PlayFab
         public PFStatisticsStatisticUpdate[] Statistics;
 
         /// <summary>
-        /// (Optional) Optional transactionId of this update which can be used to ensure idempotence. Using this
-        /// field is still in testing stage.
+        /// (Optional) Optional transactionId of this update which can be used to ensure idempotence.
         /// </summary>
         public string? TransactionId;
 
@@ -1176,7 +1180,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1209,7 +1212,6 @@ namespace PlayFab
             Statistics = (interop.statistics == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.statistics, interop.statisticsCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), new PFStatisticsEntityStatisticValue(*pair.value)));
 
         }
-            
     }
 
 }

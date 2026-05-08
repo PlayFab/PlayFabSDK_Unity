@@ -47,11 +47,11 @@ namespace PlayFab
 
             if (self.SendPushNotificationConfirmation != null)
             {
+                interop->sendPushNotificationConfirmation = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->sendPushNotificationConfirmation = InteropWrapper.WrapperHelpers.BoolToInterop(self.SendPushNotificationConfirmation.Value);
             }
 
         }
-            
     }
 
     /// <summary>
@@ -90,11 +90,11 @@ namespace PlayFab
 
             if (self.SendPushNotificationConfirmation != null)
             {
+                interop->sendPushNotificationConfirmation = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->sendPushNotificationConfirmation = InteropWrapper.WrapperHelpers.BoolToInterop(self.SendPushNotificationConfirmation.Value);
             }
 
         }
-            
     }
 
     /// <summary>
@@ -139,7 +139,6 @@ namespace PlayFab
             interop->result = InteropWrapper.WrapperHelpers.BoolToInterop(self.Result);
 
         }
-            
     }
 
     /// <summary>
@@ -160,7 +159,6 @@ namespace PlayFab
             interop->achievementsCount = (uint)self.Achievements.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -179,7 +177,6 @@ namespace PlayFab
             AchievementResults = (interop.achievementResults == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.achievementResults, interop.achievementResultsCount, elem => new PFPlatformSpecificAwardSteamAchievementItem(elem));
 
         }
-            
     }
 
 }

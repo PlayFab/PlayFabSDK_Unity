@@ -20,11 +20,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFDataAbortFileUploadsGetResultSize"/> and
         /// <see cref="PFDataAbortFileUploadsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFDataAbortFileUploadsResponse>> DataAbortFileUploadsAsync(
+        public Task<PFResult<PFDataAbortFileUploadsResponse>> DataAbortFileUploadsAsync(
             PFDataAbortFileUploadsRequest request
         )
         {
-            return await InteropWrapper.Services.PFData.PFDataAbortFileUploadsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFData.PFDataAbortFileUploadsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -40,11 +40,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFDataDeleteFilesGetResultSize"/> and <see
         /// cref="PFDataDeleteFilesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFDataDeleteFilesResponse>> DataDeleteFilesAsync(
+        public Task<PFResult<PFDataDeleteFilesResponse>> DataDeleteFilesAsync(
             PFDataDeleteFilesRequest request
         )
         {
-            return await InteropWrapper.Services.PFData.PFDataDeleteFilesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFData.PFDataDeleteFilesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -61,11 +61,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFDataFinalizeFileUploadsGetResultSize"/>
         /// and <see cref="PFDataFinalizeFileUploadsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFDataFinalizeFileUploadsResponse>> DataFinalizeFileUploadsAsync(
+        public Task<PFResult<PFDataFinalizeFileUploadsResponse>> DataFinalizeFileUploadsAsync(
             PFDataFinalizeFileUploadsRequest request
         )
         {
-            return await InteropWrapper.Services.PFData.PFDataFinalizeFileUploadsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFData.PFDataFinalizeFileUploadsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -83,11 +83,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFDataGetFilesGetResultSize"/> and <see cref="PFDataGetFilesGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFDataGetFilesResponse>> DataGetFilesAsync(
+        public Task<PFResult<PFDataGetFilesResponse>> DataGetFilesAsync(
             PFDataGetFilesRequest request
         )
         {
-            return await InteropWrapper.Services.PFData.PFDataGetFilesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFData.PFDataGetFilesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -102,11 +102,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFDataGetObjectsGetResultSize"/> and <see
         /// cref="PFDataGetObjectsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFDataGetObjectsResponse>> DataGetObjectsAsync(
+        public Task<PFResult<PFDataGetObjectsResponse>> DataGetObjectsAsync(
             PFDataGetObjectsRequest request
         )
         {
-            return await InteropWrapper.Services.PFData.PFDataGetObjectsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFData.PFDataGetObjectsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -123,11 +123,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFDataInitiateFileUploadsGetResultSize"/>
         /// and <see cref="PFDataInitiateFileUploadsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFDataInitiateFileUploadsResponse>> DataInitiateFileUploadsAsync(
+        public Task<PFResult<PFDataInitiateFileUploadsResponse>> DataInitiateFileUploadsAsync(
             PFDataInitiateFileUploadsRequest request
         )
         {
-            return await InteropWrapper.Services.PFData.PFDataInitiateFileUploadsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFData.PFDataInitiateFileUploadsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -146,11 +146,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFDataSetObjectsGetResultSize"/> and <see
         /// cref="PFDataSetObjectsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFDataSetObjectsResponse>> DataSetObjectsAsync(
+        public Task<PFResult<PFDataSetObjectsResponse>> DataSetObjectsAsync(
             PFDataSetObjectsRequest request
         )
         {
-            return await InteropWrapper.Services.PFData.PFDataSetObjectsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFData.PFDataSetObjectsAsync(InteropHandle, request);
         }
     }
 }

@@ -7,26 +7,24 @@ namespace PlayFab
 {
     public partial class PFEntity
     {
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX || UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX || UNITY_SERVER
         /// <summary>
         /// Retrieves the title player accounts associated with the given XUIDs.
         /// </summary>
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFAccountManagementGetTitlePlayersFromProviderIDsResponse.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// Given a collection of Xbox IDs (XUIDs), returns all title player accounts.
         ///
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementGetTitlePlayersFromXboxLiveIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementGetTitlePlayersFromXboxLiveIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetTitlePlayersFromProviderIDsResponse>> AccountManagementGetTitlePlayersFromXboxLiveIDsAsync(
+        public Task<PFResult<PFAccountManagementGetTitlePlayersFromProviderIDsResponse>> AccountManagementGetTitlePlayersFromXboxLiveIDsAsync(
             PFAccountManagementGetTitlePlayersFromXboxLiveIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementGetTitlePlayersFromXboxLiveIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementGetTitlePlayersFromXboxLiveIDsAsync(InteropHandle, request);
         }
-#endif
 
         /// <summary>
         /// Update the display name of the entity
@@ -41,11 +39,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementSetDisplayNameGetResultSize"/>
         /// and <see cref="PFAccountManagementSetDisplayNameGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementSetDisplayNameResponse>> AccountManagementSetDisplayNameAsync(
+        public Task<PFResult<PFAccountManagementSetDisplayNameResponse>> AccountManagementSetDisplayNameAsync(
             PFAccountManagementSetDisplayNameRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementSetDisplayNameAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementSetDisplayNameAsync(InteropHandle, request);
         }
     }
 
@@ -65,11 +63,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientAddOrUpdateContactEmailAsync(
+        public Task<PFResult> AccountManagementClientAddOrUpdateContactEmailAsync(
             PFAccountManagementAddOrUpdateContactEmailRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientAddOrUpdateContactEmailAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientAddOrUpdateContactEmailAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -85,11 +83,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientAddUsernamePasswordGetResultSize"/>
         /// and <see cref="PFAccountManagementClientAddUsernamePasswordGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementAddUsernamePasswordResult>> AccountManagementClientAddUsernamePasswordAsync(
+        public Task<PFResult<PFAccountManagementAddUsernamePasswordResult>> AccountManagementClientAddUsernamePasswordAsync(
             PFAccountManagementAddUsernamePasswordRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientAddUsernamePasswordAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientAddUsernamePasswordAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -102,11 +100,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetAccountInfoGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetAccountInfoGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetAccountInfoResult>> AccountManagementClientGetAccountInfoAsync(
+        public Task<PFResult<PFAccountManagementGetAccountInfoResult>> AccountManagementClientGetAccountInfoAsync(
             PFAccountManagementGetAccountInfoRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetAccountInfoAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetAccountInfoAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -119,11 +117,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayerCombinedInfoGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayerCombinedInfoGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayerCombinedInfoResult>> AccountManagementClientGetPlayerCombinedInfoAsync(
+        public Task<PFResult<PFAccountManagementGetPlayerCombinedInfoResult>> AccountManagementClientGetPlayerCombinedInfoAsync(
             PFAccountManagementGetPlayerCombinedInfoRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayerCombinedInfoAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayerCombinedInfoAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -142,11 +140,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayerProfileGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayerProfileGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayerProfileResult>> AccountManagementClientGetPlayerProfileAsync(
+        public Task<PFResult<PFAccountManagementGetPlayerProfileResult>> AccountManagementClientGetPlayerProfileAsync(
             PFAccountManagementGetPlayerProfileRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayerProfileAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayerProfileAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -160,11 +158,11 @@ namespace PlayFab
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromBattleNetAccountIdsGetResult"/> to get the
         /// result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromBattleNetAccountIdsResult>> AccountManagementClientGetPlayFabIDsFromBattleNetAccountIdsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromBattleNetAccountIdsResult>> AccountManagementClientGetPlayFabIDsFromBattleNetAccountIdsAsync(
             PFAccountManagementGetPlayFabIDsFromBattleNetAccountIdsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromBattleNetAccountIdsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromBattleNetAccountIdsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -177,11 +175,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromFacebookIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromFacebookIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromFacebookIDsResult>> AccountManagementClientGetPlayFabIDsFromFacebookIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromFacebookIDsResult>> AccountManagementClientGetPlayFabIDsFromFacebookIDsAsync(
             PFAccountManagementGetPlayFabIDsFromFacebookIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromFacebookIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromFacebookIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -195,11 +193,11 @@ namespace PlayFab
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromFacebookInstantGamesIdsGetResult"/> to get
         /// the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult>> AccountManagementClientGetPlayFabIDsFromFacebookInstantGamesIdsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult>> AccountManagementClientGetPlayFabIDsFromFacebookInstantGamesIdsAsync(
             PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromFacebookInstantGamesIdsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromFacebookInstantGamesIdsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -213,11 +211,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromGameCenterIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromGameCenterIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromGameCenterIDsResult>> AccountManagementClientGetPlayFabIDsFromGameCenterIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromGameCenterIDsResult>> AccountManagementClientGetPlayFabIDsFromGameCenterIDsAsync(
             PFAccountManagementGetPlayFabIDsFromGameCenterIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromGameCenterIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromGameCenterIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -231,11 +229,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromGoogleIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromGoogleIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromGoogleIDsResult>> AccountManagementClientGetPlayFabIDsFromGoogleIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromGoogleIDsResult>> AccountManagementClientGetPlayFabIDsFromGoogleIDsAsync(
             PFAccountManagementGetPlayFabIDsFromGoogleIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromGoogleIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromGoogleIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -251,11 +249,11 @@ namespace PlayFab
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsGetResult"/> to get
         /// the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult>> AccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult>> AccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsAsync(
             PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromGooglePlayGamesPlayerIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -270,11 +268,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromKongregateIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromKongregateIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromKongregateIDsResult>> AccountManagementClientGetPlayFabIDsFromKongregateIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromKongregateIDsResult>> AccountManagementClientGetPlayFabIDsFromKongregateIDsAsync(
             PFAccountManagementGetPlayFabIDsFromKongregateIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromKongregateIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromKongregateIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -288,11 +286,11 @@ namespace PlayFab
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsGetResult"/> to
         /// get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult>> AccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult>> AccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsAsync(
             PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromNintendoServiceAccountIdsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -306,11 +304,11 @@ namespace PlayFab
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromNintendoSwitchDeviceIdsGetResult"/> to get
         /// the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult>> AccountManagementClientGetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult>> AccountManagementClientGetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(
             PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -323,11 +321,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromPSNAccountIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromPSNAccountIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult>> AccountManagementClientGetPlayFabIDsFromPSNAccountIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult>> AccountManagementClientGetPlayFabIDsFromPSNAccountIDsAsync(
             PFAccountManagementGetPlayFabIDsFromPSNAccountIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromPSNAccountIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromPSNAccountIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -340,11 +338,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromPSNOnlineIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromPSNOnlineIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromPSNOnlineIDsResult>> AccountManagementClientGetPlayFabIDsFromPSNOnlineIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromPSNOnlineIDsResult>> AccountManagementClientGetPlayFabIDsFromPSNOnlineIDsAsync(
             PFAccountManagementGetPlayFabIDsFromPSNOnlineIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromPSNOnlineIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromPSNOnlineIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -358,11 +356,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromSteamIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromSteamIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromSteamIDsResult>> AccountManagementClientGetPlayFabIDsFromSteamIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromSteamIDsResult>> AccountManagementClientGetPlayFabIDsFromSteamIDsAsync(
             PFAccountManagementGetPlayFabIDsFromSteamIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromSteamIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromSteamIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -376,11 +374,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromSteamNamesGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromSteamNamesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromSteamNamesResult>> AccountManagementClientGetPlayFabIDsFromSteamNamesAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromSteamNamesResult>> AccountManagementClientGetPlayFabIDsFromSteamNamesAsync(
             PFAccountManagementGetPlayFabIDsFromSteamNamesRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromSteamNamesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromSteamNamesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -394,11 +392,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromTwitchIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromTwitchIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromTwitchIDsResult>> AccountManagementClientGetPlayFabIDsFromTwitchIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromTwitchIDsResult>> AccountManagementClientGetPlayFabIDsFromTwitchIDsAsync(
             PFAccountManagementGetPlayFabIDsFromTwitchIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromTwitchIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromTwitchIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -407,15 +405,15 @@ namespace PlayFab
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromXboxLiveIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromXboxLiveIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult>> AccountManagementClientGetPlayFabIDsFromXboxLiveIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult>> AccountManagementClientGetPlayFabIDsFromXboxLiveIDsAsync(
             PFAccountManagementGetPlayFabIDsFromXboxLiveIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromXboxLiveIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientGetPlayFabIDsFromXboxLiveIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -428,14 +426,15 @@ namespace PlayFab
         /// See also ClientLoginWithAndroidDeviceIDAsync, ClientUnlinkAndroidDeviceIDAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_LINKED_DEVICE_ALREADY_CLAIMED or any of the global PlayFab Service errors.
-        /// See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_LINKED_DEVICE_ALREADY_CLAIMED
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkAndroidDeviceIDAsync(
+        public Task<PFResult> AccountManagementClientLinkAndroidDeviceIDAsync(
             PFAccountManagementLinkAndroidDeviceIDRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkAndroidDeviceIDAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkAndroidDeviceIDAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -448,15 +447,16 @@ namespace PlayFab
         /// See also ClientLoginWithAppleAsync, ClientUnlinkAppleAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_APPLE_NOT_ENABLED_FOR_TITLE, E_PF_INVALID_IDENTITY_PROVIDER_ID, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED,
-        /// E_PF_TOKEN_SIGNING_KEY_NOT_FOUND or any of the global PlayFab Service errors. See doc page "Handling
-        /// PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_APPLE_NOT_ENABLED_FOR_TITLE,
+        /// E_PF_INVALID_IDENTITY_PROVIDER_ID, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED, E_PF_TOKEN_SIGNING_KEY_NOT_FOUND
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkAppleAsync(
+        public Task<PFResult> AccountManagementClientLinkAppleAsync(
             PFAccountManagementLinkAppleRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkAppleAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkAppleAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -473,11 +473,11 @@ namespace PlayFab
         /// E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED, E_PF_TOKEN_SIGNING_KEY_NOT_FOUND or any of the global PlayFab
         /// Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkBattleNetAccountAsync(
+        public Task<PFResult> AccountManagementClientLinkBattleNetAccountAsync(
             PFAccountManagementClientLinkBattleNetAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkBattleNetAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkBattleNetAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -490,14 +490,15 @@ namespace PlayFab
         /// See also ClientLoginWithCustomIDAsync, ClientUnlinkCustomIDAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED or any of the global PlayFab Service
-        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkCustomIDAsync(
+        public Task<PFResult> AccountManagementClientLinkCustomIDAsync(
             PFAccountManagementLinkCustomIDRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkCustomIDAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkCustomIDAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -518,15 +519,16 @@ namespace PlayFab
         /// Title ID. See also ClientLoginWithFacebookAsync, ClientUnlinkFacebookAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_NOT_FOUND, E_PF_FACEBOOK_API_ERROR,
-        /// E_PF_INVALID_FACEBOOK_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service
-        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_ACCOUNT_NOT_FOUND,
+        /// E_PF_FACEBOOK_API_ERROR, E_PF_INVALID_FACEBOOK_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of
+        /// the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
+        /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkFacebookAccountAsync(
+        public Task<PFResult> AccountManagementClientLinkFacebookAccountAsync(
             PFAccountManagementLinkFacebookAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkFacebookAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkFacebookAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -539,15 +541,15 @@ namespace PlayFab
         /// See also ClientLoginWithFacebookInstantGamesIdAsync, ClientUnlinkFacebookInstantGamesIdAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_FACEBOOK_INSTANT_GAMES_AUTH_NOT_CONFIGURED_FOR_TITLE, E_PF_INVALID_FACEBOOK_INSTANT_GAMES_SIGNATURE,
-        /// E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED or any of the global PlayFab Service errors. See doc page "Handling
-        /// PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_FACEBOOK_INSTANT_GAMES_AUTH_NOT_CONFIGURED_FOR_TITLE,
+        /// E_PF_INVALID_FACEBOOK_INSTANT_GAMES_SIGNATURE, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED or any of the
+        /// global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkFacebookInstantGamesIdAsync(
+        public Task<PFResult> AccountManagementClientLinkFacebookInstantGamesIdAsync(
             PFAccountManagementLinkFacebookInstantGamesIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkFacebookInstantGamesIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkFacebookInstantGamesIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -564,15 +566,15 @@ namespace PlayFab
         /// See also ClientUnlinkGameCenterAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_GAME_CENTER_AUTHENTICATION_FAILED, E_PF_INVALID_GAME_CENTER_AUTH_REQUEST,
-        /// E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service errors. See doc page "Handling
-        /// PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_GAME_CENTER_AUTHENTICATION_FAILED,
+        /// E_PF_INVALID_GAME_CENTER_AUTH_REQUEST, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab
+        /// Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkGameCenterAccountAsync(
+        public Task<PFResult> AccountManagementClientLinkGameCenterAccountAsync(
             PFAccountManagementLinkGameCenterAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkGameCenterAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkGameCenterAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -587,16 +589,16 @@ namespace PlayFab
         /// ClientUnlinkGoogleAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_GOOGLE_O_AUTH_ERROR, E_PF_GOOGLE_O_AUTH_NO_ID_TOKEN_INCLUDED_IN_RESPONSE,
-        /// E_PF_GOOGLE_O_AUTH_NOT_CONFIGURED_FOR_TITLE, E_PF_INVALID_GOOGLE_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED
-        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
-        /// on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_GOOGLE_O_AUTH_ERROR,
+        /// E_PF_GOOGLE_O_AUTH_NO_ID_TOKEN_INCLUDED_IN_RESPONSE, E_PF_GOOGLE_O_AUTH_NOT_CONFIGURED_FOR_TITLE,
+        /// E_PF_INVALID_GOOGLE_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service
+        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkGoogleAccountAsync(
+        public Task<PFResult> AccountManagementClientLinkGoogleAccountAsync(
             PFAccountManagementLinkGoogleAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkGoogleAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkGoogleAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -612,16 +614,16 @@ namespace PlayFab
         /// ClientUnlinkGooglePlayGamesServicesAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_GOOGLE_O_AUTH_ERROR, E_PF_GOOGLE_O_AUTH_NOT_CONFIGURED_FOR_TITLE,
-        /// E_PF_INVALID_GOOGLE_PLAY_GAMES_SERVER_AUTH_CODE, E_PF_INVALID_GOOGLE_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED
-        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
-        /// on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_GOOGLE_O_AUTH_ERROR,
+        /// E_PF_GOOGLE_O_AUTH_NOT_CONFIGURED_FOR_TITLE, E_PF_INVALID_GOOGLE_PLAY_GAMES_SERVER_AUTH_CODE, E_PF_INVALID_GOOGLE_TOKEN,
+        /// E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service errors. See doc page "Handling
+        /// PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkGooglePlayGamesServicesAccountAsync(
+        public Task<PFResult> AccountManagementClientLinkGooglePlayGamesServicesAccountAsync(
             PFAccountManagementLinkGooglePlayGamesServicesAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkGooglePlayGamesServicesAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkGooglePlayGamesServicesAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -634,14 +636,15 @@ namespace PlayFab
         /// See also ClientLoginWithIOSDeviceIDAsync, ClientUnlinkIOSDeviceIDAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_LINKED_DEVICE_ALREADY_CLAIMED or any of the global PlayFab Service errors.
-        /// See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_LINKED_DEVICE_ALREADY_CLAIMED
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkIOSDeviceIDAsync(
+        public Task<PFResult> AccountManagementClientLinkIOSDeviceIDAsync(
             PFAccountManagementLinkIOSDeviceIDRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkIOSDeviceIDAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkIOSDeviceIDAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -654,15 +657,15 @@ namespace PlayFab
         /// See also ClientLoginWithKongregateAsync, ClientUnlinkKongregateAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_FEATURE_NOT_CONFIGURED_FOR_TITLE, E_PF_INVALID_KONGREGATE_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED
-        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
-        /// on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_FEATURE_NOT_CONFIGURED_FOR_TITLE,
+        /// E_PF_INVALID_KONGREGATE_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service
+        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkKongregateAsync(
+        public Task<PFResult> AccountManagementClientLinkKongregateAsync(
             PFAccountManagementLinkKongregateAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkKongregateAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkKongregateAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -675,15 +678,15 @@ namespace PlayFab
         /// See also ClientLoginWithNintendoServiceAccountAsync, ClientUnlinkNintendoServiceAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_INVALID_IDENTITY_PROVIDER_ID, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED,
-        /// E_PF_NINTENDO_SWITCH_NOT_ENABLED_FOR_TITLE or any of the global PlayFab Service errors. See doc page
-        /// "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_INVALID_IDENTITY_PROVIDER_ID,
+        /// E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED, E_PF_NINTENDO_SWITCH_NOT_ENABLED_FOR_TITLE or any of the global
+        /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkNintendoServiceAccountAsync(
+        public Task<PFResult> AccountManagementClientLinkNintendoServiceAccountAsync(
             PFAccountManagementClientLinkNintendoServiceAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkNintendoServiceAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkNintendoServiceAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -696,14 +699,15 @@ namespace PlayFab
         /// See also ClientLoginWithNintendoSwitchDeviceIdAsync, ClientUnlinkNintendoSwitchDeviceIdAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED or any of the global PlayFab Service
-        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkNintendoSwitchDeviceIdAsync(
+        public Task<PFResult> AccountManagementClientLinkNintendoSwitchDeviceIdAsync(
             PFAccountManagementClientLinkNintendoSwitchDeviceIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkNintendoSwitchDeviceIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkNintendoSwitchDeviceIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -717,15 +721,15 @@ namespace PlayFab
         /// See also ClientLoginWithOpenIdConnectAsync, ClientUnlinkOpenIdConnectAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_INVALID_IDENTITY_PROVIDER_ID, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED
-        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
-        /// on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_INVALID_IDENTITY_PROVIDER_ID,
+        /// E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED or any of the global PlayFab Service errors. See doc page "Handling
+        /// PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkOpenIdConnectAsync(
+        public Task<PFResult> AccountManagementClientLinkOpenIdConnectAsync(
             PFAccountManagementLinkOpenIdConnectRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkOpenIdConnectAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkOpenIdConnectAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -739,15 +743,16 @@ namespace PlayFab
         /// See also ClientLoginWithPSNAsync, ClientUnlinkPSNAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_INVALID_PSN_AUTH_CODE, E_PF_INVALID_PSN_AUTH_CODE,
-        /// E_PF_INVALID_PSN_ISSUER_ID, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED, E_PF_PSN_INACCESSIBLE or any of the
-        /// global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_INVALID_PSN_AUTH_CODE,
+        /// E_PF_INVALID_PSN_AUTH_CODE, E_PF_INVALID_PSN_ISSUER_ID, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED, E_PF_PSN_INACCESSIBLE
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkPSNAccountAsync(
+        public Task<PFResult> AccountManagementClientLinkPSNAccountAsync(
             PFAccountManagementClientLinkPSNAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkPSNAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkPSNAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -766,15 +771,16 @@ namespace PlayFab
         /// See also ClientLoginWithSteamAsync, ClientUnlinkSteamAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_INVALID_STEAM_TICKET, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED,
-        /// E_PF_STEAM_NOT_ENABLED_FOR_TITLE, E_PF_STEAM_USER_NOT_FOUND or any of the global PlayFab Service errors.
-        /// See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_INVALID_STEAM_TICKET,
+        /// E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED, E_PF_STEAM_NOT_ENABLED_FOR_TITLE, E_PF_STEAM_USER_NOT_FOUND or
+        /// any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkSteamAccountAsync(
+        public Task<PFResult> AccountManagementClientLinkSteamAccountAsync(
             PFAccountManagementLinkSteamAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkSteamAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkSteamAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -787,15 +793,16 @@ namespace PlayFab
         /// See also ClientLoginWithTwitchAsync, ClientUnlinkTwitchAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_FEATURE_NOT_CONFIGURED_FOR_TITLE, E_PF_INVALID_TWITCH_TOKEN,
-        /// E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED, E_PF_TWITCH_RESPONSE_ERROR or any of the global PlayFab Service
-        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_FEATURE_NOT_CONFIGURED_FOR_TITLE,
+        /// E_PF_INVALID_TWITCH_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED, E_PF_TWITCH_RESPONSE_ERROR or any
+        /// of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
+        /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkTwitchAsync(
-            PFAccountManagementLinkTwitchAccountRequest request
+        public Task<PFResult> AccountManagementClientLinkTwitchAsync(
+            PFAccountManagementClientLinkTwitchAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkTwitchAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkTwitchAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -804,7 +811,7 @@ namespace PlayFab
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// See also ClientLoginWithXboxAsync, ClientUnlinkXboxAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
@@ -812,11 +819,11 @@ namespace PlayFab
         /// E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service errors. See doc page "Handling
         /// PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientLinkXboxAccountAsync(
+        public Task<PFResult> AccountManagementClientLinkXboxAccountAsync(
             PFAccountManagementClientLinkXboxAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkXboxAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientLinkXboxAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -832,11 +839,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientRemoveContactEmailAsync(
+        public Task<PFResult> AccountManagementClientRemoveContactEmailAsync(
             PFAccountManagementRemoveContactEmailRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientRemoveContactEmailAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientRemoveContactEmailAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -850,11 +857,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientReportPlayerGetResult"/>
         /// to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementReportPlayerClientResult>> AccountManagementClientReportPlayerAsync(
+        public Task<PFResult<PFAccountManagementReportPlayerClientResult>> AccountManagementClientReportPlayerAsync(
             PFAccountManagementReportPlayerClientRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientReportPlayerAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientReportPlayerAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -870,11 +877,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED, E_PF_DEVICE_NOT_LINKED or any of the global PlayFab
         /// Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkAndroidDeviceIDAsync(
+        public Task<PFResult> AccountManagementClientUnlinkAndroidDeviceIDAsync(
             PFAccountManagementUnlinkAndroidDeviceIDRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkAndroidDeviceIDAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkAndroidDeviceIDAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -890,11 +897,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED, E_PF_APPLE_NOT_ENABLED_FOR_TITLE or any of the global
         /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkAppleAsync(
+        public Task<PFResult> AccountManagementClientUnlinkAppleAsync(
             PFAccountManagementUnlinkAppleRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkAppleAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkAppleAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -911,11 +918,11 @@ namespace PlayFab
         /// the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkBattleNetAccountAsync(
+        public Task<PFResult> AccountManagementClientUnlinkBattleNetAccountAsync(
             PFAccountManagementClientUnlinkBattleNetAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkBattleNetAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkBattleNetAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -931,11 +938,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED, E_PF_CUSTOM_ID_NOT_LINKED or any of the global PlayFab
         /// Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkCustomIDAsync(
+        public Task<PFResult> AccountManagementClientUnlinkCustomIDAsync(
             PFAccountManagementUnlinkCustomIDRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkCustomIDAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkCustomIDAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -951,11 +958,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkFacebookAccountAsync(
-            PFAccountManagementUnlinkFacebookAccountRequest request
+        public Task<PFResult> AccountManagementClientUnlinkFacebookAccountAsync(
+            PFAccountManagementClientUnlinkFacebookAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkFacebookAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkFacebookAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -972,11 +979,11 @@ namespace PlayFab
         /// of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkFacebookInstantGamesIdAsync(
-            PFAccountManagementUnlinkFacebookInstantGamesIdRequest request
+        public Task<PFResult> AccountManagementClientUnlinkFacebookInstantGamesIdAsync(
+            PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkFacebookInstantGamesIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkFacebookInstantGamesIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -992,11 +999,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkGameCenterAccountAsync(
+        public Task<PFResult> AccountManagementClientUnlinkGameCenterAccountAsync(
             PFAccountManagementUnlinkGameCenterAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkGameCenterAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkGameCenterAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1012,11 +1019,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkGoogleAccountAsync(
+        public Task<PFResult> AccountManagementClientUnlinkGoogleAccountAsync(
             PFAccountManagementUnlinkGoogleAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkGoogleAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkGoogleAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1032,11 +1039,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkGooglePlayGamesServicesAccountAsync(
+        public Task<PFResult> AccountManagementClientUnlinkGooglePlayGamesServicesAccountAsync(
             PFAccountManagementUnlinkGooglePlayGamesServicesAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkGooglePlayGamesServicesAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkGooglePlayGamesServicesAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1052,11 +1059,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED, E_PF_DEVICE_NOT_LINKED or any of the global PlayFab
         /// Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkIOSDeviceIDAsync(
+        public Task<PFResult> AccountManagementClientUnlinkIOSDeviceIDAsync(
             PFAccountManagementUnlinkIOSDeviceIDRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkIOSDeviceIDAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkIOSDeviceIDAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1072,11 +1079,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkKongregateAsync(
+        public Task<PFResult> AccountManagementClientUnlinkKongregateAsync(
             PFAccountManagementUnlinkKongregateAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkKongregateAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkKongregateAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1093,11 +1100,11 @@ namespace PlayFab
         /// of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkNintendoServiceAccountAsync(
+        public Task<PFResult> AccountManagementClientUnlinkNintendoServiceAccountAsync(
             PFAccountManagementClientUnlinkNintendoServiceAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkNintendoServiceAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkNintendoServiceAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1114,11 +1121,11 @@ namespace PlayFab
         /// of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkNintendoSwitchDeviceIdAsync(
+        public Task<PFResult> AccountManagementClientUnlinkNintendoSwitchDeviceIdAsync(
             PFAccountManagementClientUnlinkNintendoSwitchDeviceIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkNintendoSwitchDeviceIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkNintendoSwitchDeviceIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1135,11 +1142,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkOpenIdConnectAsync(
+        public Task<PFResult> AccountManagementClientUnlinkOpenIdConnectAsync(
             PFAccountManagementUnlinkOpenIdConnectRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkOpenIdConnectAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkOpenIdConnectAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1155,11 +1162,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkPSNAccountAsync(
+        public Task<PFResult> AccountManagementClientUnlinkPSNAccountAsync(
             PFAccountManagementClientUnlinkPSNAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkPSNAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkPSNAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1175,11 +1182,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkSteamAccountAsync(
+        public Task<PFResult> AccountManagementClientUnlinkSteamAccountAsync(
             PFAccountManagementUnlinkSteamAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkSteamAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkSteamAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1196,11 +1203,11 @@ namespace PlayFab
         /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
         /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkTwitchAsync(
-            PFAccountManagementUnlinkTwitchAccountRequest request
+        public Task<PFResult> AccountManagementClientUnlinkTwitchAsync(
+            PFAccountManagementClientUnlinkTwitchAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkTwitchAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkTwitchAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1209,18 +1216,18 @@ namespace PlayFab
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// See also ClientLinkXboxAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED, E_PF_INVALID_XBOX_LIVE_TOKEN or any of the global
         /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUnlinkXboxAccountAsync(
+        public Task<PFResult> AccountManagementClientUnlinkXboxAccountAsync(
             PFAccountManagementClientUnlinkXboxAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkXboxAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUnlinkXboxAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1234,11 +1241,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientUpdateAvatarUrlAsync(
+        public Task<PFResult> AccountManagementClientUpdateAvatarUrlAsync(
             PFAccountManagementClientUpdateAvatarUrlRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUpdateAvatarUrlAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUpdateAvatarUrlAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1255,35 +1262,35 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientUpdateUserTitleDisplayNameGetResultSize"/>
         /// and <see cref="PFAccountManagementClientUpdateUserTitleDisplayNameGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementUpdateUserTitleDisplayNameResult>> AccountManagementClientUpdateUserTitleDisplayNameAsync(
+        public Task<PFResult<PFAccountManagementUpdateUserTitleDisplayNameResult>> AccountManagementClientUpdateUserTitleDisplayNameAsync(
             PFAccountManagementUpdateUserTitleDisplayNameRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUpdateUserTitleDisplayNameAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientUpdateUserTitleDisplayNameAsync(InteropHandle, request);
         }
     }
 
     public partial class PFTitleEntity
     {
         /// <summary>
-        /// Bans users by PlayFab ID with optional IP address, or MAC address for the provided game.
+        /// Bans users by PlayFab ID with optional IP address for the provided game.
         /// </summary>
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFAccountManagementBanUsersResult.</returns>
         /// <remarks>
         /// This API is available on Windows, Linux, and macOS.
-        /// The existence of each user will not be verified. When banning by IP or MAC address, multiple players
-        /// may be affected, so use this feature with caution. Returns information about the new bans. See also
-        /// ServerGetUserBansAsync, ServerRevokeAllBansForUserAsync, ServerRevokeBansAsync, ServerUpdateBansAsync.
+        /// The existence of each user will not be verified. When banning by IP, multiple players may be affected,
+        /// so use this feature with caution. Returns information about the new bans. See also ServerGetUserBansAsync,
+        /// ServerRevokeAllBansForUserAsync, ServerRevokeBansAsync, ServerUpdateBansAsync.
         ///
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerBanUsersGetResultSize"/>
         /// and <see cref="PFAccountManagementServerBanUsersGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementBanUsersResult>> AccountManagementServerBanUsersAsync(
+        public Task<PFResult<PFAccountManagementBanUsersResult>> AccountManagementServerBanUsersAsync(
             PFAccountManagementBanUsersRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerBanUsersAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerBanUsersAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1307,11 +1314,11 @@ namespace PlayFab
         /// the async result will be E_PF_API_NOT_ENABLED_FOR_GAME_SERVER_ACCESS or any of the global PlayFab
         /// Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerDeletePlayerAsync(
+        public Task<PFResult> AccountManagementServerDeletePlayerAsync(
             PFAccountManagementDeletePlayerRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerDeletePlayerAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerDeletePlayerAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1325,11 +1332,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetPlayerCombinedInfoGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetPlayerCombinedInfoGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayerCombinedInfoResult>> AccountManagementServerGetPlayerCombinedInfoAsync(
+        public Task<PFResult<PFAccountManagementGetPlayerCombinedInfoResult>> AccountManagementServerGetPlayerCombinedInfoAsync(
             PFAccountManagementGetPlayerCombinedInfoRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayerCombinedInfoAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayerCombinedInfoAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1348,11 +1355,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetPlayerProfileGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetPlayerProfileGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayerProfileResult>> AccountManagementServerGetPlayerProfileAsync(
+        public Task<PFResult<PFAccountManagementGetPlayerProfileResult>> AccountManagementServerGetPlayerProfileAsync(
             PFAccountManagementGetPlayerProfileRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayerProfileAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayerProfileAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1366,11 +1373,11 @@ namespace PlayFab
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromBattleNetAccountIdsGetResult"/> to get the
         /// result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromBattleNetAccountIdsResult>> AccountManagementServerGetPlayFabIDsFromBattleNetAccountIdsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromBattleNetAccountIdsResult>> AccountManagementServerGetPlayFabIDsFromBattleNetAccountIdsAsync(
             PFAccountManagementGetPlayFabIDsFromBattleNetAccountIdsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromBattleNetAccountIdsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromBattleNetAccountIdsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1383,11 +1390,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetPlayFabIDsFromFacebookIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromFacebookIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromFacebookIDsResult>> AccountManagementServerGetPlayFabIDsFromFacebookIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromFacebookIDsResult>> AccountManagementServerGetPlayFabIDsFromFacebookIDsAsync(
             PFAccountManagementGetPlayFabIDsFromFacebookIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromFacebookIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromFacebookIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1401,11 +1408,11 @@ namespace PlayFab
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIdsGetResult"/> to get
         /// the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult>> AccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIdsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult>> AccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIdsAsync(
             PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIdsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromFacebookInstantGamesIdsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1419,11 +1426,11 @@ namespace PlayFab
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsGetResult"/> to
         /// get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult>> AccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult>> AccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsAsync(
             PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromNintendoServiceAccountIdsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1437,11 +1444,11 @@ namespace PlayFab
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIdsGetResult"/> to get
         /// the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult>> AccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult>> AccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(
             PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromNintendoSwitchDeviceIdsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1454,11 +1461,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetPlayFabIDsFromPSNAccountIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromPSNAccountIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult>> AccountManagementServerGetPlayFabIDsFromPSNAccountIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult>> AccountManagementServerGetPlayFabIDsFromPSNAccountIDsAsync(
             PFAccountManagementGetPlayFabIDsFromPSNAccountIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromPSNAccountIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromPSNAccountIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1471,11 +1478,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetPlayFabIDsFromPSNOnlineIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromPSNOnlineIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromPSNOnlineIDsResult>> AccountManagementServerGetPlayFabIDsFromPSNOnlineIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromPSNOnlineIDsResult>> AccountManagementServerGetPlayFabIDsFromPSNOnlineIDsAsync(
             PFAccountManagementGetPlayFabIDsFromPSNOnlineIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromPSNOnlineIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromPSNOnlineIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1489,11 +1496,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetPlayFabIDsFromSteamIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromSteamIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromSteamIDsResult>> AccountManagementServerGetPlayFabIDsFromSteamIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromSteamIDsResult>> AccountManagementServerGetPlayFabIDsFromSteamIDsAsync(
             PFAccountManagementGetPlayFabIDsFromSteamIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromSteamIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromSteamIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1507,11 +1514,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetPlayFabIDsFromSteamNamesGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromSteamNamesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromSteamNamesResult>> AccountManagementServerGetPlayFabIDsFromSteamNamesAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromSteamNamesResult>> AccountManagementServerGetPlayFabIDsFromSteamNamesAsync(
             PFAccountManagementGetPlayFabIDsFromSteamNamesRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromSteamNamesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromSteamNamesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1525,11 +1532,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetPlayFabIDsFromTwitchIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromTwitchIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromTwitchIDsResult>> AccountManagementServerGetPlayFabIDsFromTwitchIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromTwitchIDsResult>> AccountManagementServerGetPlayFabIDsFromTwitchIDsAsync(
             PFAccountManagementGetPlayFabIDsFromTwitchIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromTwitchIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromTwitchIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1542,11 +1549,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetPlayFabIDsFromXboxLiveIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetPlayFabIDsFromXboxLiveIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult>> AccountManagementServerGetPlayFabIDsFromXboxLiveIDsAsync(
+        public Task<PFResult<PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult>> AccountManagementServerGetPlayFabIDsFromXboxLiveIDsAsync(
             PFAccountManagementGetPlayFabIDsFromXboxLiveIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromXboxLiveIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetPlayFabIDsFromXboxLiveIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1559,11 +1566,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetServerCustomIDsFromPlayFabIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetServerCustomIDsFromPlayFabIDsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetServerCustomIDsFromPlayFabIDsResult>> AccountManagementServerGetServerCustomIDsFromPlayFabIDsAsync(
+        public Task<PFResult<PFAccountManagementGetServerCustomIDsFromPlayFabIDsResult>> AccountManagementServerGetServerCustomIDsFromPlayFabIDsAsync(
             PFAccountManagementGetServerCustomIDsFromPlayFabIDsRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetServerCustomIDsFromPlayFabIDsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetServerCustomIDsFromPlayFabIDsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1582,11 +1589,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetUserAccountInfoGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetUserAccountInfoGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetUserAccountInfoResult>> AccountManagementServerGetUserAccountInfoAsync(
+        public Task<PFResult<PFAccountManagementGetUserAccountInfoResult>> AccountManagementServerGetUserAccountInfoAsync(
             PFAccountManagementGetUserAccountInfoRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetUserAccountInfoAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetUserAccountInfoAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1602,11 +1609,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerGetUserBansGetResultSize"/>
         /// and <see cref="PFAccountManagementServerGetUserBansGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementGetUserBansResult>> AccountManagementServerGetUserBansAsync(
+        public Task<PFResult<PFAccountManagementGetUserBansResult>> AccountManagementServerGetUserBansAsync(
             PFAccountManagementGetUserBansRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetUserBansAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerGetUserBansAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1623,11 +1630,11 @@ namespace PlayFab
         /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
         /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerLinkBattleNetAccountAsync(
+        public Task<PFResult> AccountManagementServerLinkBattleNetAccountAsync(
             PFAccountManagementServerLinkBattleNetAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkBattleNetAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkBattleNetAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1644,11 +1651,11 @@ namespace PlayFab
         /// E_PF_NINTENDO_SWITCH_NOT_ENABLED_FOR_TITLE or any of the global PlayFab Service errors. See doc page
         /// "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerLinkNintendoServiceAccountAsync(
+        public Task<PFResult> AccountManagementServerLinkNintendoServiceAccountAsync(
             PFAccountManagementServerLinkNintendoServiceAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkNintendoServiceAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkNintendoServiceAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1666,11 +1673,11 @@ namespace PlayFab
         /// E_PF_NINTENDO_SWITCH_NOT_ENABLED_FOR_TITLE or any of the global PlayFab Service errors. See doc page
         /// "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerLinkNintendoServiceAccountSubjectAsync(
+        public Task<PFResult> AccountManagementServerLinkNintendoServiceAccountSubjectAsync(
             PFAccountManagementLinkNintendoServiceAccountSubjectRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkNintendoServiceAccountSubjectAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkNintendoServiceAccountSubjectAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1686,11 +1693,11 @@ namespace PlayFab
         /// the async result will be E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service
         /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerLinkNintendoSwitchDeviceIdAsync(
+        public Task<PFResult> AccountManagementServerLinkNintendoSwitchDeviceIdAsync(
             PFAccountManagementServerLinkNintendoSwitchDeviceIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkNintendoSwitchDeviceIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkNintendoSwitchDeviceIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1709,11 +1716,11 @@ namespace PlayFab
         /// E_PF_REQUEST_VIEW_CONSTRAINT_PARAMS_NOT_ALLOWED or any of the global PlayFab Service errors. See doc
         /// page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerLinkPSNAccountAsync(
+        public Task<PFResult> AccountManagementServerLinkPSNAccountAsync(
             PFAccountManagementServerLinkPSNAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkPSNAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkPSNAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1730,11 +1737,11 @@ namespace PlayFab
         /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
         /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerLinkPSNIdAsync(
+        public Task<PFResult> AccountManagementServerLinkPSNIdAsync(
             PFAccountManagementLinkPSNIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkPSNIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkPSNIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1749,11 +1756,11 @@ namespace PlayFab
         /// the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerLinkServerCustomIdAsync(
+        public Task<PFResult> AccountManagementServerLinkServerCustomIdAsync(
             PFAccountManagementLinkServerCustomIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkServerCustomIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkServerCustomIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1770,11 +1777,11 @@ namespace PlayFab
         /// E_PF_STEAM_NOT_ENABLED_FOR_TITLE, E_PF_STEAM_USER_NOT_FOUND or any of the global PlayFab Service errors.
         /// See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerLinkSteamIdAsync(
+        public Task<PFResult> AccountManagementServerLinkSteamIdAsync(
             PFAccountManagementLinkSteamIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkSteamIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkSteamIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1791,11 +1798,11 @@ namespace PlayFab
         /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
         /// on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerLinkXboxAccountAsync(
+        public Task<PFResult> AccountManagementServerLinkXboxAccountAsync(
             PFAccountManagementServerLinkXboxAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkXboxAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerLinkXboxAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1812,11 +1819,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerRevokeAllBansForUserGetResultSize"/>
         /// and <see cref="PFAccountManagementServerRevokeAllBansForUserGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementRevokeAllBansForUserResult>> AccountManagementServerRevokeAllBansForUserAsync(
+        public Task<PFResult<PFAccountManagementRevokeAllBansForUserResult>> AccountManagementServerRevokeAllBansForUserAsync(
             PFAccountManagementRevokeAllBansForUserRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerRevokeAllBansForUserAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerRevokeAllBansForUserAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1833,11 +1840,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerRevokeBansGetResultSize"/>
         /// and <see cref="PFAccountManagementServerRevokeBansGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementRevokeBansResult>> AccountManagementServerRevokeBansAsync(
+        public Task<PFResult<PFAccountManagementRevokeBansResult>> AccountManagementServerRevokeBansAsync(
             PFAccountManagementRevokeBansRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerRevokeBansAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerRevokeBansAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1858,11 +1865,11 @@ namespace PlayFab
         /// of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerSendCustomAccountRecoveryEmailAsync(
+        public Task<PFResult> AccountManagementServerSendCustomAccountRecoveryEmailAsync(
             PFAccountManagementSendCustomAccountRecoveryEmailRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerSendCustomAccountRecoveryEmailAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerSendCustomAccountRecoveryEmailAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1880,11 +1887,11 @@ namespace PlayFab
         /// E_PF_NO_CONTACT_EMAIL_ADDRESS_FOUND, E_PF_SMTP_ADDON_NOT_ENABLED or any of the global PlayFab Service
         /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerSendEmailFromTemplateAsync(
+        public Task<PFResult> AccountManagementServerSendEmailFromTemplateAsync(
             PFAccountManagementSendEmailFromTemplateRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerSendEmailFromTemplateAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerSendEmailFromTemplateAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1901,11 +1908,11 @@ namespace PlayFab
         /// the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerUnlinkBattleNetAccountAsync(
+        public Task<PFResult> AccountManagementServerUnlinkBattleNetAccountAsync(
             PFAccountManagementServerUnlinkBattleNetAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkBattleNetAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkBattleNetAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1922,11 +1929,11 @@ namespace PlayFab
         /// of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerUnlinkNintendoServiceAccountAsync(
+        public Task<PFResult> AccountManagementServerUnlinkNintendoServiceAccountAsync(
             PFAccountManagementServerUnlinkNintendoServiceAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkNintendoServiceAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkNintendoServiceAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1943,11 +1950,11 @@ namespace PlayFab
         /// of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerUnlinkNintendoSwitchDeviceIdAsync(
+        public Task<PFResult> AccountManagementServerUnlinkNintendoSwitchDeviceIdAsync(
             PFAccountManagementServerUnlinkNintendoSwitchDeviceIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkNintendoSwitchDeviceIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkNintendoSwitchDeviceIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1963,11 +1970,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerUnlinkPSNAccountAsync(
+        public Task<PFResult> AccountManagementServerUnlinkPSNAccountAsync(
             PFAccountManagementServerUnlinkPSNAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkPSNAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkPSNAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -1983,11 +1990,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED, E_PF_IDENTIFIER_NOT_LINKED or any of the global
         /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerUnlinkServerCustomIdAsync(
+        public Task<PFResult> AccountManagementServerUnlinkServerCustomIdAsync(
             PFAccountManagementUnlinkServerCustomIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkServerCustomIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkServerCustomIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -2003,11 +2010,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerUnlinkSteamIdAsync(
+        public Task<PFResult> AccountManagementServerUnlinkSteamIdAsync(
             PFAccountManagementUnlinkSteamIdRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkSteamIdAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkSteamIdAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -2023,11 +2030,11 @@ namespace PlayFab
         /// the async result will be E_PF_ACCOUNT_NOT_LINKED, E_PF_INVALID_XBOX_LIVE_TOKEN or any of the global
         /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerUnlinkXboxAccountAsync(
+        public Task<PFResult> AccountManagementServerUnlinkXboxAccountAsync(
             PFAccountManagementServerUnlinkXboxAccountRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkXboxAccountAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUnlinkXboxAccountAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -2041,11 +2048,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementServerUpdateAvatarUrlAsync(
+        public Task<PFResult> AccountManagementServerUpdateAvatarUrlAsync(
             PFAccountManagementServerUpdateAvatarUrlRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUpdateAvatarUrlAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUpdateAvatarUrlAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -2062,11 +2069,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerUpdateBansGetResultSize"/>
         /// and <see cref="PFAccountManagementServerUpdateBansGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFAccountManagementUpdateBansResult>> AccountManagementServerUpdateBansAsync(
+        public Task<PFResult<PFAccountManagementUpdateBansResult>> AccountManagementServerUpdateBansAsync(
             PFAccountManagementUpdateBansRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUpdateBansAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementServerUpdateBansAsync(InteropHandle, request);
         }
     }
 
@@ -2090,11 +2097,11 @@ namespace PlayFab
         /// E_PF_SMTP_ADDON_NOT_ENABLED or any of the global PlayFab Service errors. See doc page "Handling PlayFab
         /// Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> AccountManagementClientSendAccountRecoveryEmailAsync(
+        public Task<PFResult> AccountManagementClientSendAccountRecoveryEmailAsync(
             PFAccountManagementSendAccountRecoveryEmailRequest request
         )
         {
-            return await InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientSendAccountRecoveryEmailAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFAccountManagement.PFAccountManagementClientSendAccountRecoveryEmailAsync(InteropHandle, request);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace PartyCSharpSDK.Interop
 #elif (UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX)
         const string ThunkDllName = "PlayFabPartyMacOS";
 #else
-        const string ThunkDllName = "PartyWin";
+        const string ThunkDllName = "Party";
 #endif
 
         //PartyInitialize(

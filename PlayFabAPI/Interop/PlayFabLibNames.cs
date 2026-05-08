@@ -4,10 +4,10 @@ namespace PlayFab.Interop
     {
         private const string XGameRuntimeLibName = "XGameRuntime.Thunks";
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT
-        private const string LibHttpClientLibName = "libHttpClient.GDK";
-        private const string PlayFabCoreLibName = "PlayFabCore.GDK";
-        private const string PlayFabServicesLibName = "PlayFabServices.GDK";
-        private const string PlayFabGameSaveLibName = "PlayFabGameSave.GDK";
+        private const string LibHttpClientLibName = "libHttpClient";
+        private const string PlayFabCoreLibName = "PlayFabCore";
+        private const string PlayFabServicesLibName = "PlayFabServices";
+        private const string PlayFabGameSaveLibName = "PlayFabGameSave";
 #elif UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX
         private const string LibHttpClientLibName = "libHttpClient.Linux.so";
         private const string PlayFabCoreLibName = "PlayFabCore.Linux.so";

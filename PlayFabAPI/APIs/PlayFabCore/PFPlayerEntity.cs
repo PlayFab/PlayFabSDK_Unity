@@ -14,13 +14,10 @@ namespace PlayFab
 
         public PFResult<PFPlayerEntity> Duplicate()
         {
-            var result = Duplicate<PFPlayerEntity>();
-            if (result.Succeeded())
-            {
-                result.Result.LoginResult = LoginResult;
-            }
-
-            return result;
+            var result = InteropWrapper.Core.PFEntity.PFEntityDuplicateHandle(InteropHandle);
+            if (result.Failed()) return new PFResult<PFPlayerEntity>(result.HResult);
+            var duplicated = new PFPlayerEntity(result.Result, LoginResult);
+            return new PFResult<PFPlayerEntity>(duplicated, result.HResult);
         }
     }
 }

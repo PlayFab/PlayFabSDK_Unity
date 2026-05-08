@@ -542,77 +542,10 @@ namespace PlayFab.InteropWrapper.Services
         }
 
         /// <summary>
-        /// Gets the access tokens.
-        /// </summary>
-        /// <param name="entityHandle">PFEntityHandle to use for authentication.</param>
-        /// <param name="request">Populated request object.</param>
-        /// <returns>A task which will provide the result code for this API operation and a PFInventoryGetMicrosoftStoreAccessTokensResponse.</returns>
-        /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
-        /// Gets the access tokens for Microsoft Store authentication.
-        ///
-        /// When the asynchronous task is complete, call <see cref="PFInventoryGetMicrosoftStoreAccessTokensGetResultSize"/>
-        /// and <see cref="PFInventoryGetMicrosoftStoreAccessTokensGetResult"/> to get the result.
-        /// </remarks>
-        public static Task<PFResult<PFInventoryGetMicrosoftStoreAccessTokensResponse>> PFInventoryGetMicrosoftStoreAccessTokensAsync(
-            PFEntityHandle entityHandle,
-            PFInventoryGetMicrosoftStoreAccessTokensRequest request
-        )
-        {
-            TaskCompletionSource<PFResult<PFInventoryGetMicrosoftStoreAccessTokensResponse>> completionSource = new();
-
-            unsafe
-            {
-                Interop.XAsyncBlockPtr asyncBlock = AsyncHelpers.WrapAsyncBlock(AsyncHelpers.DefaultQueue.handle, (Interop.XAsyncBlockPtr block) =>
-                {
-                    int hr;
-                    Interop.XAsyncBlock* asyncBlock = (Interop.XAsyncBlock*)block.Handle;
-
-                    ulong bufferSize;
-                    hr = Interop.Methods.PFInventoryGetMicrosoftStoreAccessTokensGetResultSize(asyncBlock, &bufferSize);
-
-                    if (HRESULT.Failed(hr))
-                    {
-                        completionSource.SetResult(new(hr));
-                        return;
-                    }
-
-                    using DisposableBuffer disposableBuffer = new();
-                    void* buffer = disposableBuffer.AddBuffer((int)bufferSize).ToPointer();
-                    Interop.PFInventoryGetMicrosoftStoreAccessTokensResponse* result = null;
-
-                    hr = Interop.Methods.PFInventoryGetMicrosoftStoreAccessTokensGetResult(asyncBlock, bufferSize, buffer, &result, null);
-
-                    if (HRESULT.Failed(hr))
-                    {
-                        completionSource.SetResult(new(hr));
-                        return;
-                    }
-
-                    completionSource.SetResult(new(new(*result), hr));
-                });
-
-                using DisposableBuffer disposableBuffer = new();
-                Interop.PFInventoryGetMicrosoftStoreAccessTokensRequest* requestInterop = stackalloc Interop.PFInventoryGetMicrosoftStoreAccessTokensRequest[1];
-                PFInventoryGetMicrosoftStoreAccessTokensRequest.ToInterop(request, requestInterop, disposableBuffer);
-
-                int hr = Interop.Methods.PFInventoryGetMicrosoftStoreAccessTokensAsync(entityHandle.Handle, requestInterop, (Interop.XAsyncBlock*)asyncBlock.Handle);
-
-                if (HRESULT.Failed(hr))
-                {
-                    completionSource.SetResult(new(hr));
-                    AsyncHelpers.CleanupAsyncBlock(asyncBlock);
-                }
-            }
-
-            return completionSource.Task;
-        }
-
-        /// <summary>
-        /// Get transaction history for a player. Up to 250 Events can be returned at once. You can use continuation
-        /// tokens to paginate through results that return greater than the limit. Getting transaction history
-        /// has a lower RPS limit than getting a Player's inventory with Player Entities having a limit of 30
-        /// requests in 300 seconds.
+        /// Get transaction history for a player. Up to 50 Events can be returned at once (or 250 with response
+        /// compression enabled). You can use continuation tokens to paginate through results that return greater
+        /// than the limit. Getting transaction history has a lower RPS limit than getting a Player's inventory
+        /// with Player Entities having a limit of 30 requests in 300 seconds.
         /// </summary>
         /// <param name="entityHandle">PFEntityHandle to use for authentication.</param>
         /// <param name="request">Populated request object.</param>
@@ -881,7 +814,8 @@ namespace PlayFab.InteropWrapper.Services
         }
 
         /// <summary>
-        /// Redeem items.
+        /// Redeem items from the Microsoft Store. Supported entitlement types are Developer Manager Consumable
+        /// and Durable.
         /// </summary>
         /// <param name="entityHandle">PFEntityHandle to use for authentication.</param>
         /// <param name="request">Populated request object.</param>

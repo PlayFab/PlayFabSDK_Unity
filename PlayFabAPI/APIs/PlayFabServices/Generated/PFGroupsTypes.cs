@@ -49,7 +49,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -96,7 +95,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -152,7 +150,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -194,6 +191,7 @@ namespace PlayFab
 
             if (self.AutoAcceptOutstandingInvite != null)
             {
+                interop->autoAcceptOutstandingInvite = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->autoAcceptOutstandingInvite = InteropWrapper.WrapperHelpers.BoolToInterop(self.AutoAcceptOutstandingInvite.Value);
             }
 
@@ -213,7 +211,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -265,7 +262,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -298,7 +294,6 @@ namespace PlayFab
             Group = (interop.group == null) ? null : new(*interop.group);
 
         }
-            
     }
 
     /// <summary>
@@ -342,7 +337,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -406,7 +400,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.OriginRoleId, &interop->originRoleId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -450,7 +443,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.GroupName, &interop->groupName, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -511,7 +503,6 @@ namespace PlayFab
             Roles = (interop.roles == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.roles, interop.rolesCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), InteropWrapper.WrapperHelpers.InteropToString(pair.value)));
 
         }
-            
     }
 
     /// <summary>
@@ -563,7 +554,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.RoleName, &interop->roleName, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -596,7 +586,6 @@ namespace PlayFab
             RoleName = (interop.roleName == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.roleName);
 
         }
-            
     }
 
     /// <summary>
@@ -632,7 +621,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -675,7 +663,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -722,7 +709,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -783,7 +769,6 @@ namespace PlayFab
             Roles = (interop.roles == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.roles, interop.rolesCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), InteropWrapper.WrapperHelpers.InteropToString(pair.value)));
 
         }
-            
     }
 
     /// <summary>
@@ -830,6 +815,7 @@ namespace PlayFab
 
             if (self.AutoAcceptOutstandingApplication != null)
             {
+                interop->autoAcceptOutstandingApplication = (byte*)buffer.AddBuffer(sizeof(byte));
                 *interop->autoAcceptOutstandingApplication = InteropWrapper.WrapperHelpers.BoolToInterop(self.AutoAcceptOutstandingApplication.Value);
             }
 
@@ -851,7 +837,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -898,7 +883,6 @@ namespace PlayFab
             RoleId = (interop.roleId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.roleId);
 
         }
-            
     }
 
     /// <summary>
@@ -952,7 +936,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -971,7 +954,6 @@ namespace PlayFab
             IsMember = InteropWrapper.WrapperHelpers.InteropToBool(interop.isMember);
 
         }
-            
     }
 
     /// <summary>
@@ -1006,7 +988,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1059,7 +1040,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1078,7 +1058,6 @@ namespace PlayFab
             Applications = (interop.applications == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.applications, interop.applicationsCount, elem => new PFGroupsGroupApplication(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1112,7 +1091,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1153,7 +1131,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1172,7 +1149,6 @@ namespace PlayFab
             BlockedEntities = (interop.blockedEntities == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.blockedEntities, interop.blockedEntitiesCount, elem => new PFGroupsGroupBlock(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1207,7 +1183,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1285,7 +1260,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1304,7 +1278,6 @@ namespace PlayFab
             Invitations = (interop.invitations == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.invitations, interop.invitationsCount, elem => new PFGroupsGroupInvitation(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1339,7 +1312,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1394,7 +1366,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1413,7 +1384,6 @@ namespace PlayFab
             Members = (interop.members == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.members, interop.membersCount, elem => new PFGroupsEntityMemberRole(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1452,7 +1422,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1494,7 +1463,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1559,7 +1527,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1578,7 +1545,6 @@ namespace PlayFab
             Groups = (interop.groups == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.groups, interop.groupsCount, elem => new PFGroupsGroupWithRoles(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1617,7 +1583,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1643,7 +1608,6 @@ namespace PlayFab
             Invitations = (interop.invitations == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.invitations, interop.invitationsCount, elem => new PFGroupsGroupInvitation(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -1687,7 +1651,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1732,7 +1695,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1784,7 +1746,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1826,7 +1787,6 @@ namespace PlayFab
             PFEntityKey.ToInterop(self.Group, interop->group, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1886,6 +1846,7 @@ namespace PlayFab
 
             if (self.ExpectedProfileVersion != null)
             {
+                interop->expectedProfileVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedProfileVersion = self.ExpectedProfileVersion.Value;
             }
 
@@ -1903,7 +1864,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1936,7 +1896,6 @@ namespace PlayFab
             SetResult = (interop.setResult == null) ? null : (PFOperationTypes?)(*interop.setResult);
 
         }
-            
     }
 
     /// <summary>
@@ -1985,6 +1944,7 @@ namespace PlayFab
 
             if (self.ExpectedProfileVersion != null)
             {
+                interop->expectedProfileVersion = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->expectedProfileVersion = self.ExpectedProfileVersion.Value;
             }
 
@@ -1999,7 +1959,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.RoleName, &interop->roleName, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -2032,7 +1991,6 @@ namespace PlayFab
             SetResult = (interop.setResult == null) ? null : (PFOperationTypes?)(*interop.setResult);
 
         }
-            
     }
 
 }

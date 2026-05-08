@@ -303,7 +303,7 @@ namespace PlayFab.Interop
 
         [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         [return: NativeTypeName("HRESULT")]
-        public static extern int PFAccountManagementClientLinkTwitchAsync([NativeTypeName("PFEntityHandle")] IntPtr entityHandle, [NativeTypeName("const PFAccountManagementLinkTwitchAccountRequest *")] PFAccountManagementLinkTwitchAccountRequest* request, XAsyncBlock* async);
+        public static extern int PFAccountManagementClientLinkTwitchAsync([NativeTypeName("PFEntityHandle")] IntPtr entityHandle, [NativeTypeName("const PFAccountManagementClientLinkTwitchAccountRequest *")] PFAccountManagementClientLinkTwitchAccountRequest* request, XAsyncBlock* async);
 
         [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         [return: NativeTypeName("HRESULT")]
@@ -343,11 +343,11 @@ namespace PlayFab.Interop
 
         [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         [return: NativeTypeName("HRESULT")]
-        public static extern int PFAccountManagementClientUnlinkFacebookAccountAsync([NativeTypeName("PFEntityHandle")] IntPtr entityHandle, [NativeTypeName("const PFAccountManagementUnlinkFacebookAccountRequest *")] PFAccountManagementUnlinkFacebookAccountRequest* request, XAsyncBlock* async);
+        public static extern int PFAccountManagementClientUnlinkFacebookAccountAsync([NativeTypeName("PFEntityHandle")] IntPtr entityHandle, [NativeTypeName("const PFAccountManagementClientUnlinkFacebookAccountRequest *")] PFAccountManagementClientUnlinkFacebookAccountRequest* request, XAsyncBlock* async);
 
         [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         [return: NativeTypeName("HRESULT")]
-        public static extern int PFAccountManagementClientUnlinkFacebookInstantGamesIdAsync([NativeTypeName("PFEntityHandle")] IntPtr entityHandle, [NativeTypeName("const PFAccountManagementUnlinkFacebookInstantGamesIdRequest *")] PFAccountManagementUnlinkFacebookInstantGamesIdRequest* request, XAsyncBlock* async);
+        public static extern int PFAccountManagementClientUnlinkFacebookInstantGamesIdAsync([NativeTypeName("PFEntityHandle")] IntPtr entityHandle, [NativeTypeName("const PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest *")] PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest* request, XAsyncBlock* async);
 
         [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         [return: NativeTypeName("HRESULT")]
@@ -391,7 +391,7 @@ namespace PlayFab.Interop
 
         [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         [return: NativeTypeName("HRESULT")]
-        public static extern int PFAccountManagementClientUnlinkTwitchAsync([NativeTypeName("PFEntityHandle")] IntPtr entityHandle, [NativeTypeName("const PFAccountManagementUnlinkTwitchAccountRequest *")] PFAccountManagementUnlinkTwitchAccountRequest* request, XAsyncBlock* async);
+        public static extern int PFAccountManagementClientUnlinkTwitchAsync([NativeTypeName("PFEntityHandle")] IntPtr entityHandle, [NativeTypeName("const PFAccountManagementClientUnlinkTwitchAccountRequest *")] PFAccountManagementClientUnlinkTwitchAccountRequest* request, XAsyncBlock* async);
 
         [DllImport(PlayFabServicesLibName, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         [return: NativeTypeName("HRESULT")]

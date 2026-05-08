@@ -72,7 +72,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -91,7 +90,6 @@ namespace PlayFab
             Created = InteropWrapper.WrapperHelpers.InteropToBool(interop.created);
 
         }
-            
     }
 
     /// <summary>
@@ -139,6 +137,7 @@ namespace PlayFab
 
             if (self.ExternalPlatformFriends != null)
             {
+                interop->externalPlatformFriends = (Interop.PFFriendsExternalFriendSources*)buffer.AddBuffer(sizeof(Interop.PFFriendsExternalFriendSources));
                 *interop->externalPlatformFriends = (Interop.PFFriendsExternalFriendSources)self.ExternalPlatformFriends.Value;
             }
 
@@ -153,7 +152,6 @@ namespace PlayFab
 #endif
 
         }
-            
     }
 
     /// <summary>
@@ -303,7 +301,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -313,7 +310,9 @@ namespace PlayFab
     /// also plays this game will be included. Note: If the user authenticated with AuthenticationToken when
     /// calling LoginWithFacebook, instead of AccessToken, an empty list will be returned. For Xbox Live,
     /// user has to have logged into the Xbox Live recently, and only friends who also play this game will
-    /// be included.
+    /// be included. Xbox Live friends include all users the caller is following, regardless of whether those
+    /// users follow the caller back. This differs from FindFriendLobbies, which only considers mutual Xbox
+    /// Live friends (where both users follow each other).
     /// </summary>
     public struct PFFriendsGetFriendsListResult
     {
@@ -328,7 +327,6 @@ namespace PlayFab
             Friends = (interop.friends == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.friends, interop.friendsCount, elem => new PFFriendsFriendInfo(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -348,7 +346,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.FriendPlayFabId, &interop->friendPlayFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -379,7 +376,6 @@ namespace PlayFab
             interop->tagsCount = (uint)self.Tags.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -439,7 +435,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -474,6 +469,8 @@ namespace PlayFab
 
         /// <summary>
         /// (Optional) Xbox token if Xbox friends should be included. Requires Xbox be configured on PlayFab.
+        /// When provided, all Xbox Live users the caller is following are included regardless of whether they
+        /// follow the caller back.
         /// </summary>
         public string? XboxToken;
 
@@ -489,6 +486,7 @@ namespace PlayFab
 
             if (self.ExternalPlatformFriends != null)
             {
+                interop->externalPlatformFriends = (Interop.PFFriendsExternalFriendSources*)buffer.AddBuffer(sizeof(Interop.PFFriendsExternalFriendSources));
                 *interop->externalPlatformFriends = (Interop.PFFriendsExternalFriendSources)self.ExternalPlatformFriends.Value;
             }
 
@@ -506,7 +504,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -533,7 +530,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.PlayFabId, &interop->playFabId, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -571,7 +567,6 @@ namespace PlayFab
             interop->tagsCount = (uint)self.Tags.Length;
 
         }
-            
     }
 
 }

@@ -64,7 +64,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.LinkedStatisticName, &interop->linkedStatisticName, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -114,7 +113,6 @@ namespace PlayFab
             interop->sortDirection = (Interop.PFLeaderboardsLeaderboardSortDirection)self.SortDirection;
 
         }
-            
     }
 
     /// <summary>
@@ -150,7 +148,6 @@ namespace PlayFab
             interop->rankLimit = self.RankLimit;
 
         }
-            
     }
 
     /// <summary>
@@ -177,7 +174,6 @@ namespace PlayFab
             interop->eventType = (Interop.PFEventType)self.EventType;
 
         }
-            
     }
 
     /// <summary>
@@ -221,7 +217,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -300,7 +295,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -332,7 +326,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Name, &interop->name, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -375,7 +368,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Name, &interop->name, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -433,6 +425,7 @@ namespace PlayFab
 
             if (self.ExternalFriendSources != null)
             {
+                interop->externalFriendSources = (Interop.PFExternalFriendSources*)buffer.AddBuffer(sizeof(Interop.PFExternalFriendSources));
                 *interop->externalFriendSources = (Interop.PFExternalFriendSources)self.ExternalFriendSources.Value;
             }
 
@@ -440,6 +433,7 @@ namespace PlayFab
 
             if (self.Version != null)
             {
+                interop->version = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->version = self.Version.Value;
             }
 
@@ -449,7 +443,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -536,7 +529,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -584,7 +576,6 @@ namespace PlayFab
             Version = interop.version;
 
         }
-            
     }
 
     /// <summary>
@@ -634,16 +625,17 @@ namespace PlayFab
 
             if (self.StartingPosition != null)
             {
+                interop->startingPosition = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->startingPosition = self.StartingPosition.Value;
             }
 
             if (self.Version != null)
             {
+                interop->version = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->version = self.Version.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -704,11 +696,11 @@ namespace PlayFab
 
             if (self.Version != null)
             {
+                interop->version = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->version = self.Version.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -740,7 +732,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Name, &interop->name, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -817,7 +808,6 @@ namespace PlayFab
             VersionConfiguration = new(*interop.versionConfiguration);
 
         }
-            
     }
 
     /// <summary>
@@ -864,11 +854,11 @@ namespace PlayFab
 
             if (self.Version != null)
             {
+                interop->version = (uint*)buffer.AddBuffer(sizeof(uint));
                 *interop->version = self.Version.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -900,7 +890,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.Name, &interop->name, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -919,7 +908,6 @@ namespace PlayFab
             Version = interop.version;
 
         }
-            
     }
 
     /// <summary>
@@ -933,6 +921,16 @@ namespace PlayFab
         /// </summary>
         public Dictionary<string, string>? CustomTags;
 
+        /// <summary>
+        /// (Optional) The page size for the request.
+        /// </summary>
+        public int? PageSize;
+
+        /// <summary>
+        /// (Optional) The skip token for the paged request.
+        /// </summary>
+        public string? SkipToken;
+
         internal unsafe static void ToInterop(PFLeaderboardsListLeaderboardDefinitionsRequest self, Interop.PFLeaderboardsListLeaderboardDefinitionsRequest* interop, InteropWrapper.DisposableBuffer buffer)
         {
             *interop = default;
@@ -943,8 +941,18 @@ namespace PlayFab
                 interop->customTagsCount = (uint)self.CustomTags.Count;
             }
 
+            if (self.PageSize != null)
+            {
+                interop->pageSize = (int*)buffer.AddBuffer(sizeof(int));
+                *interop->pageSize = self.PageSize.Value;
+            }
+
+            if (self.SkipToken != null)
+            {
+                InteropWrapper.WrapperHelpers.StringToInterop(self.SkipToken, &interop->skipToken, buffer);
+            }
+
         }
-            
     }
 
     /// <summary>
@@ -1041,6 +1049,7 @@ namespace PlayFab
 
             if (self.LastResetTime != null)
             {
+                interop->lastResetTime = (long*)buffer.AddBuffer(sizeof(long));
                 *interop->lastResetTime = self.LastResetTime.Value;
             }
 
@@ -1054,7 +1063,6 @@ namespace PlayFab
             PFVersionConfiguration.ToInterop(self.VersionConfiguration, interop->versionConfiguration, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1067,13 +1075,26 @@ namespace PlayFab
         /// </summary>
         public PFLeaderboardsLeaderboardDefinition[]? LeaderboardDefinitions;
 
+        /// <summary>
+        /// The page size on the response.
+        /// </summary>
+        public int PageSize;
+
+        /// <summary>
+        /// (Optional) The skip token for the paged response.
+        /// </summary>
+        public string? SkipToken;
+
         internal unsafe PFLeaderboardsListLeaderboardDefinitionsResponse(Interop.PFLeaderboardsListLeaderboardDefinitionsResponse interop)
         {
 
             LeaderboardDefinitions = (interop.leaderboardDefinitions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.leaderboardDefinitions, interop.leaderboardDefinitionsCount, elem => new PFLeaderboardsLeaderboardDefinition(elem));
 
+            PageSize = interop.pageSize;
+
+            SkipToken = (interop.skipToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.skipToken);
+
         }
-            
     }
 
     /// <summary>
@@ -1112,7 +1133,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.StatisticName, &interop->statisticName, buffer);
 
         }
-            
     }
 
     /// <summary>
@@ -1167,6 +1187,7 @@ namespace PlayFab
 
             if (self.SizeLimit != null)
             {
+                interop->sizeLimit = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->sizeLimit = self.SizeLimit.Value;
             }
 
@@ -1177,7 +1198,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1192,7 +1212,7 @@ namespace PlayFab
 
         /// <summary>
         /// (Optional) Arbitrary metadata to store along side the leaderboard entry, will be returned by all
-        /// Leaderboard APIs. Must be less than 50 UTF8 encoded characters.
+        /// Leaderboard APIs.
         /// </summary>
         public string? Metadata;
 
@@ -1231,7 +1251,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -1274,7 +1293,6 @@ namespace PlayFab
             InteropWrapper.WrapperHelpers.StringToInterop(self.LeaderboardName, &interop->leaderboardName, buffer);
 
         }
-            
     }
 
 }

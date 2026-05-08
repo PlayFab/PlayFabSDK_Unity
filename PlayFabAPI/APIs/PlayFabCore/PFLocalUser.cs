@@ -179,7 +179,7 @@ namespace PlayFab
         /// </remarks>
         public async Task<PFResult> LoginAsync(bool createAccount)
         {
-            var loginResult = await InteropWrapper.Core.PFLocalUser.PFLocalUserLoginAsync(InteropHandle, createAccount);
+            var loginResult = await InteropWrapper.Core.PFLocalUser.PFLocalUserLoginAsync(InteropHandle, createAccount).ConfigureAwait(false);
             if (loginResult.Failed())
             {
                 return new(loginResult.HResult);

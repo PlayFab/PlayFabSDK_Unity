@@ -32,7 +32,6 @@ namespace PlayFab
             interop->keysCount = (uint)self.Keys.Length;
 
         }
-            
     }
 
     /// <summary>
@@ -51,7 +50,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.data, interop.dataCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), InteropWrapper.WrapperHelpers.InteropToString(pair.value)));
 
         }
-            
     }
 
     /// <summary>
@@ -71,7 +69,6 @@ namespace PlayFab
             Time = interop.time;
 
         }
-            
     }
 
     /// <summary>
@@ -112,7 +109,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -131,7 +127,6 @@ namespace PlayFab
             Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.data, interop.dataCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), InteropWrapper.WrapperHelpers.InteropToString(pair.value)));
 
         }
-            
     }
 
     /// <summary>
@@ -150,11 +145,11 @@ namespace PlayFab
 
             if (self.Count != null)
             {
+                interop->count = (int*)buffer.AddBuffer(sizeof(int));
                 *interop->count = self.Count.Value;
             }
 
         }
-            
     }
 
     /// <summary>
@@ -217,7 +212,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -236,7 +230,6 @@ namespace PlayFab
             News = (interop.news == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.news, interop.newsCount, elem => new PFTitleDataManagementTitleNewsItem(elem));
 
         }
-            
     }
 
     /// <summary>
@@ -272,7 +265,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
     /// <summary>
@@ -309,7 +301,6 @@ namespace PlayFab
             }
 
         }
-            
     }
 
 }

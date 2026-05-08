@@ -1258,7 +1258,7 @@ namespace PlayFab.InteropWrapper.Services
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementClientGetPlayFabIDsFromXboxLiveIDsGetResultSize"/>
         /// and <see cref="PFAccountManagementClientGetPlayFabIDsFromXboxLiveIDsGetResult"/> to get the result.
         /// </remarks>
@@ -1327,8 +1327,9 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithAndroidDeviceIDAsync, ClientUnlinkAndroidDeviceIDAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_LINKED_DEVICE_ALREADY_CLAIMED or any of the global PlayFab Service errors.
-        /// See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_LINKED_DEVICE_ALREADY_CLAIMED
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkAndroidDeviceIDAsync(
             PFEntityHandle entityHandle,
@@ -1375,9 +1376,10 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithAppleAsync, ClientUnlinkAppleAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_APPLE_NOT_ENABLED_FOR_TITLE, E_PF_INVALID_IDENTITY_PROVIDER_ID, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED,
-        /// E_PF_TOKEN_SIGNING_KEY_NOT_FOUND or any of the global PlayFab Service errors. See doc page "Handling
-        /// PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_APPLE_NOT_ENABLED_FOR_TITLE,
+        /// E_PF_INVALID_IDENTITY_PROVIDER_ID, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED, E_PF_TOKEN_SIGNING_KEY_NOT_FOUND
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkAppleAsync(
             PFEntityHandle entityHandle,
@@ -1473,8 +1475,9 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithCustomIDAsync, ClientUnlinkCustomIDAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED or any of the global PlayFab Service
-        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkCustomIDAsync(
             PFEntityHandle entityHandle,
@@ -1529,9 +1532,10 @@ namespace PlayFab.InteropWrapper.Services
         /// Title ID. See also ClientLoginWithFacebookAsync, ClientUnlinkFacebookAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_NOT_FOUND, E_PF_FACEBOOK_API_ERROR,
-        /// E_PF_INVALID_FACEBOOK_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service
-        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_ACCOUNT_NOT_FOUND,
+        /// E_PF_FACEBOOK_API_ERROR, E_PF_INVALID_FACEBOOK_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of
+        /// the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
+        /// handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkFacebookAccountAsync(
             PFEntityHandle entityHandle,
@@ -1578,9 +1582,9 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithFacebookInstantGamesIdAsync, ClientUnlinkFacebookInstantGamesIdAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_FACEBOOK_INSTANT_GAMES_AUTH_NOT_CONFIGURED_FOR_TITLE, E_PF_INVALID_FACEBOOK_INSTANT_GAMES_SIGNATURE,
-        /// E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED or any of the global PlayFab Service errors. See doc page "Handling
-        /// PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_FACEBOOK_INSTANT_GAMES_AUTH_NOT_CONFIGURED_FOR_TITLE,
+        /// E_PF_INVALID_FACEBOOK_INSTANT_GAMES_SIGNATURE, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED or any of the
+        /// global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkFacebookInstantGamesIdAsync(
             PFEntityHandle entityHandle,
@@ -1631,9 +1635,9 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientUnlinkGameCenterAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_GAME_CENTER_AUTHENTICATION_FAILED, E_PF_INVALID_GAME_CENTER_AUTH_REQUEST,
-        /// E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service errors. See doc page "Handling
-        /// PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_GAME_CENTER_AUTHENTICATION_FAILED,
+        /// E_PF_INVALID_GAME_CENTER_AUTH_REQUEST, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab
+        /// Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkGameCenterAccountAsync(
             PFEntityHandle entityHandle,
@@ -1682,10 +1686,10 @@ namespace PlayFab.InteropWrapper.Services
         /// ClientUnlinkGoogleAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_GOOGLE_O_AUTH_ERROR, E_PF_GOOGLE_O_AUTH_NO_ID_TOKEN_INCLUDED_IN_RESPONSE,
-        /// E_PF_GOOGLE_O_AUTH_NOT_CONFIGURED_FOR_TITLE, E_PF_INVALID_GOOGLE_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED
-        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
-        /// on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_GOOGLE_O_AUTH_ERROR,
+        /// E_PF_GOOGLE_O_AUTH_NO_ID_TOKEN_INCLUDED_IN_RESPONSE, E_PF_GOOGLE_O_AUTH_NOT_CONFIGURED_FOR_TITLE,
+        /// E_PF_INVALID_GOOGLE_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service
+        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkGoogleAccountAsync(
             PFEntityHandle entityHandle,
@@ -1735,10 +1739,10 @@ namespace PlayFab.InteropWrapper.Services
         /// ClientUnlinkGooglePlayGamesServicesAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_GOOGLE_O_AUTH_ERROR, E_PF_GOOGLE_O_AUTH_NOT_CONFIGURED_FOR_TITLE,
-        /// E_PF_INVALID_GOOGLE_PLAY_GAMES_SERVER_AUTH_CODE, E_PF_INVALID_GOOGLE_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED
-        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
-        /// on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_GOOGLE_O_AUTH_ERROR,
+        /// E_PF_GOOGLE_O_AUTH_NOT_CONFIGURED_FOR_TITLE, E_PF_INVALID_GOOGLE_PLAY_GAMES_SERVER_AUTH_CODE, E_PF_INVALID_GOOGLE_TOKEN,
+        /// E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service errors. See doc page "Handling
+        /// PlayFab Errors" for more details on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkGooglePlayGamesServicesAccountAsync(
             PFEntityHandle entityHandle,
@@ -1785,8 +1789,9 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithIOSDeviceIDAsync, ClientUnlinkIOSDeviceIDAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_LINKED_DEVICE_ALREADY_CLAIMED or any of the global PlayFab Service errors.
-        /// See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_LINKED_DEVICE_ALREADY_CLAIMED
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkIOSDeviceIDAsync(
             PFEntityHandle entityHandle,
@@ -1833,9 +1838,9 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithKongregateAsync, ClientUnlinkKongregateAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_FEATURE_NOT_CONFIGURED_FOR_TITLE, E_PF_INVALID_KONGREGATE_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED
-        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
-        /// on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_FEATURE_NOT_CONFIGURED_FOR_TITLE,
+        /// E_PF_INVALID_KONGREGATE_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED or any of the global PlayFab Service
+        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkKongregateAsync(
             PFEntityHandle entityHandle,
@@ -1882,9 +1887,9 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithNintendoServiceAccountAsync, ClientUnlinkNintendoServiceAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_INVALID_IDENTITY_PROVIDER_ID, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED,
-        /// E_PF_NINTENDO_SWITCH_NOT_ENABLED_FOR_TITLE or any of the global PlayFab Service errors. See doc page
-        /// "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_INVALID_IDENTITY_PROVIDER_ID,
+        /// E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED, E_PF_NINTENDO_SWITCH_NOT_ENABLED_FOR_TITLE or any of the global
+        /// PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkNintendoServiceAccountAsync(
             PFEntityHandle entityHandle,
@@ -1931,8 +1936,9 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithNintendoSwitchDeviceIdAsync, ClientUnlinkNintendoSwitchDeviceIdAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED or any of the global PlayFab Service
-        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkNintendoSwitchDeviceIdAsync(
             PFEntityHandle entityHandle,
@@ -1980,9 +1986,9 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithOpenIdConnectAsync, ClientUnlinkOpenIdConnectAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_INVALID_IDENTITY_PROVIDER_ID, E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED
-        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
-        /// on error handling.
+        /// the async result will be E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_INVALID_IDENTITY_PROVIDER_ID,
+        /// E_PF_LINKED_IDENTIFIER_ALREADY_CLAIMED or any of the global PlayFab Service errors. See doc page "Handling
+        /// PlayFab Errors" for more details on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkOpenIdConnectAsync(
             PFEntityHandle entityHandle,
@@ -2030,9 +2036,10 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithPSNAsync, ClientUnlinkPSNAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_INVALID_PSN_AUTH_CODE, E_PF_INVALID_PSN_AUTH_CODE,
-        /// E_PF_INVALID_PSN_ISSUER_ID, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED, E_PF_PSN_INACCESSIBLE or any of the
-        /// global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_INVALID_PSN_AUTH_CODE,
+        /// E_PF_INVALID_PSN_AUTH_CODE, E_PF_INVALID_PSN_ISSUER_ID, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED, E_PF_PSN_INACCESSIBLE
+        /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkPSNAccountAsync(
             PFEntityHandle entityHandle,
@@ -2085,9 +2092,10 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithSteamAsync, ClientUnlinkSteamAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_INVALID_STEAM_TICKET, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED,
-        /// E_PF_STEAM_NOT_ENABLED_FOR_TITLE, E_PF_STEAM_USER_NOT_FOUND or any of the global PlayFab Service errors.
-        /// See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_INVALID_STEAM_TICKET,
+        /// E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED, E_PF_STEAM_NOT_ENABLED_FOR_TITLE, E_PF_STEAM_USER_NOT_FOUND or
+        /// any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
+        /// on error handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkSteamAccountAsync(
             PFEntityHandle entityHandle,
@@ -2134,13 +2142,14 @@ namespace PlayFab.InteropWrapper.Services
         /// See also ClientLoginWithTwitchAsync, ClientUnlinkTwitchAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
-        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_FEATURE_NOT_CONFIGURED_FOR_TITLE, E_PF_INVALID_TWITCH_TOKEN,
-        /// E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED, E_PF_TWITCH_RESPONSE_ERROR or any of the global PlayFab Service
-        /// errors. See doc page "Handling PlayFab Errors" for more details on error handling.
+        /// the async result will be E_PF_ACCOUNT_ALREADY_LINKED, E_PF_ACCOUNT_LINKED_TO_A_BANNED_PLAYER, E_PF_FEATURE_NOT_CONFIGURED_FOR_TITLE,
+        /// E_PF_INVALID_TWITCH_TOKEN, E_PF_LINKED_ACCOUNT_ALREADY_CLAIMED, E_PF_TWITCH_RESPONSE_ERROR or any
+        /// of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
+        /// handling.
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientLinkTwitchAsync(
             PFEntityHandle entityHandle,
-            PFAccountManagementLinkTwitchAccountRequest request
+            PFAccountManagementClientLinkTwitchAccountRequest request
         )
         {
             TaskCompletionSource<PFResult> completionSource = new();
@@ -2157,8 +2166,8 @@ namespace PlayFab.InteropWrapper.Services
                 });
 
                 using DisposableBuffer disposableBuffer = new();
-                Interop.PFAccountManagementLinkTwitchAccountRequest* requestInterop = stackalloc Interop.PFAccountManagementLinkTwitchAccountRequest[1];
-                PFAccountManagementLinkTwitchAccountRequest.ToInterop(request, requestInterop, disposableBuffer);
+                Interop.PFAccountManagementClientLinkTwitchAccountRequest* requestInterop = stackalloc Interop.PFAccountManagementClientLinkTwitchAccountRequest[1];
+                PFAccountManagementClientLinkTwitchAccountRequest.ToInterop(request, requestInterop, disposableBuffer);
 
                 int hr = Interop.Methods.PFAccountManagementClientLinkTwitchAsync(entityHandle.Handle, requestInterop, (Interop.XAsyncBlock*)asyncBlock.Handle);
 
@@ -2179,7 +2188,7 @@ namespace PlayFab.InteropWrapper.Services
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// See also ClientLoginWithXboxAsync, ClientUnlinkXboxAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
@@ -2586,7 +2595,7 @@ namespace PlayFab.InteropWrapper.Services
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientUnlinkFacebookAccountAsync(
             PFEntityHandle entityHandle,
-            PFAccountManagementUnlinkFacebookAccountRequest request
+            PFAccountManagementClientUnlinkFacebookAccountRequest request
         )
         {
             TaskCompletionSource<PFResult> completionSource = new();
@@ -2603,8 +2612,8 @@ namespace PlayFab.InteropWrapper.Services
                 });
 
                 using DisposableBuffer disposableBuffer = new();
-                Interop.PFAccountManagementUnlinkFacebookAccountRequest* requestInterop = stackalloc Interop.PFAccountManagementUnlinkFacebookAccountRequest[1];
-                PFAccountManagementUnlinkFacebookAccountRequest.ToInterop(request, requestInterop, disposableBuffer);
+                Interop.PFAccountManagementClientUnlinkFacebookAccountRequest* requestInterop = stackalloc Interop.PFAccountManagementClientUnlinkFacebookAccountRequest[1];
+                PFAccountManagementClientUnlinkFacebookAccountRequest.ToInterop(request, requestInterop, disposableBuffer);
 
                 int hr = Interop.Methods.PFAccountManagementClientUnlinkFacebookAccountAsync(entityHandle.Handle, requestInterop, (Interop.XAsyncBlock*)asyncBlock.Handle);
 
@@ -2635,7 +2644,7 @@ namespace PlayFab.InteropWrapper.Services
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientUnlinkFacebookInstantGamesIdAsync(
             PFEntityHandle entityHandle,
-            PFAccountManagementUnlinkFacebookInstantGamesIdRequest request
+            PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest request
         )
         {
             TaskCompletionSource<PFResult> completionSource = new();
@@ -2652,8 +2661,8 @@ namespace PlayFab.InteropWrapper.Services
                 });
 
                 using DisposableBuffer disposableBuffer = new();
-                Interop.PFAccountManagementUnlinkFacebookInstantGamesIdRequest* requestInterop = stackalloc Interop.PFAccountManagementUnlinkFacebookInstantGamesIdRequest[1];
-                PFAccountManagementUnlinkFacebookInstantGamesIdRequest.ToInterop(request, requestInterop, disposableBuffer);
+                Interop.PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest* requestInterop = stackalloc Interop.PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest[1];
+                PFAccountManagementClientUnlinkFacebookInstantGamesIdRequest.ToInterop(request, requestInterop, disposableBuffer);
 
                 int hr = Interop.Methods.PFAccountManagementClientUnlinkFacebookInstantGamesIdAsync(entityHandle.Handle, requestInterop, (Interop.XAsyncBlock*)asyncBlock.Handle);
 
@@ -3167,7 +3176,7 @@ namespace PlayFab.InteropWrapper.Services
         /// </remarks>
         public static Task<PFResult> PFAccountManagementClientUnlinkTwitchAsync(
             PFEntityHandle entityHandle,
-            PFAccountManagementUnlinkTwitchAccountRequest request
+            PFAccountManagementClientUnlinkTwitchAccountRequest request
         )
         {
             TaskCompletionSource<PFResult> completionSource = new();
@@ -3184,8 +3193,8 @@ namespace PlayFab.InteropWrapper.Services
                 });
 
                 using DisposableBuffer disposableBuffer = new();
-                Interop.PFAccountManagementUnlinkTwitchAccountRequest* requestInterop = stackalloc Interop.PFAccountManagementUnlinkTwitchAccountRequest[1];
-                PFAccountManagementUnlinkTwitchAccountRequest.ToInterop(request, requestInterop, disposableBuffer);
+                Interop.PFAccountManagementClientUnlinkTwitchAccountRequest* requestInterop = stackalloc Interop.PFAccountManagementClientUnlinkTwitchAccountRequest[1];
+                PFAccountManagementClientUnlinkTwitchAccountRequest.ToInterop(request, requestInterop, disposableBuffer);
 
                 int hr = Interop.Methods.PFAccountManagementClientUnlinkTwitchAsync(entityHandle.Handle, requestInterop, (Interop.XAsyncBlock*)asyncBlock.Handle);
 
@@ -3206,7 +3215,7 @@ namespace PlayFab.InteropWrapper.Services
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// See also ClientLinkXboxAccountAsync.
         ///
         /// Call <see cref="XAsyncGetStatus"/> to get the status of the operation. If the service call is unsuccessful,
@@ -3363,16 +3372,16 @@ namespace PlayFab.InteropWrapper.Services
         }
 
         /// <summary>
-        /// Bans users by PlayFab ID with optional IP address, or MAC address for the provided game.
+        /// Bans users by PlayFab ID with optional IP address for the provided game.
         /// </summary>
         /// <param name="titleEntityHandle">PFEntityHandle for a title Entity obtained using PFAuthenticationGetEntityWithSecretKeyAsync.</param>
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFAccountManagementBanUsersResult.</returns>
         /// <remarks>
         /// This API is available on Windows, Linux, and macOS.
-        /// The existence of each user will not be verified. When banning by IP or MAC address, multiple players
-        /// may be affected, so use this feature with caution. Returns information about the new bans. See also
-        /// ServerGetUserBansAsync, ServerRevokeAllBansForUserAsync, ServerRevokeBansAsync, ServerUpdateBansAsync.
+        /// The existence of each user will not be verified. When banning by IP, multiple players may be affected,
+        /// so use this feature with caution. Returns information about the new bans. See also ServerGetUserBansAsync,
+        /// ServerRevokeAllBansForUserAsync, ServerRevokeBansAsync, ServerUpdateBansAsync.
         ///
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementServerBanUsersGetResultSize"/>
         /// and <see cref="PFAccountManagementServerBanUsersGetResult"/> to get the result.
@@ -5693,7 +5702,7 @@ namespace PlayFab.InteropWrapper.Services
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFAccountManagementGetTitlePlayersFromProviderIDsResponse.</returns>
         /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
+        /// This API is available on all platforms.
         /// Given a collection of Xbox IDs (XUIDs), returns all title player accounts.
         ///
         /// When the asynchronous task is complete, call <see cref="PFAccountManagementGetTitlePlayersFromXboxLiveIDsGetResultSize"/>

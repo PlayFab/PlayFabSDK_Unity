@@ -23,11 +23,11 @@ namespace PlayFab
         /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
         /// on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsAcceptGroupApplicationAsync(
+        public Task<PFResult> GroupsAcceptGroupApplicationAsync(
             PFGroupsAcceptGroupApplicationRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsAcceptGroupApplicationAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsAcceptGroupApplicationAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -47,11 +47,11 @@ namespace PlayFab
         /// E_PF_ROLE_DOES_NOT_EXIST or any of the global PlayFab Service errors. See doc page "Handling PlayFab
         /// Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsAcceptGroupInvitationAsync(
+        public Task<PFResult> GroupsAcceptGroupInvitationAsync(
             PFGroupsAcceptGroupInvitationRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsAcceptGroupInvitationAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsAcceptGroupInvitationAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -71,11 +71,11 @@ namespace PlayFab
         /// the async result will be E_PF_ROLE_DOES_NOT_EXIST or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsAddMembersAsync(
+        public Task<PFResult> GroupsAddMembersAsync(
             PFGroupsAddMembersRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsAddMembersAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsAddMembersAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -96,11 +96,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsApplyToGroupGetResultSize"/> and
         /// <see cref="PFGroupsApplyToGroupGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsApplyToGroupResponse>> GroupsApplyToGroupAsync(
+        public Task<PFResult<PFGroupsApplyToGroupResponse>> GroupsApplyToGroupAsync(
             PFGroupsApplyToGroupRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsApplyToGroupAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsApplyToGroupAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -119,11 +119,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsBlockEntityAsync(
+        public Task<PFResult> GroupsBlockEntityAsync(
             PFGroupsBlockEntityRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsBlockEntityAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsBlockEntityAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -142,11 +142,11 @@ namespace PlayFab
         /// the async result will be E_PF_ROLE_DOES_NOT_EXIST or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsChangeMemberRoleAsync(
+        public Task<PFResult> GroupsChangeMemberRoleAsync(
             PFGroupsChangeMemberRoleRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsChangeMemberRoleAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsChangeMemberRoleAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -163,11 +163,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsCreateGroupGetResultSize"/> and <see
         /// cref="PFGroupsCreateGroupGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsCreateGroupResponse>> GroupsCreateGroupAsync(
+        public Task<PFResult<PFGroupsCreateGroupResponse>> GroupsCreateGroupAsync(
             PFGroupsCreateGroupRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsCreateGroupAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsCreateGroupAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -184,11 +184,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsCreateRoleGetResultSize"/> and <see
         /// cref="PFGroupsCreateRoleGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsCreateGroupRoleResponse>> GroupsCreateRoleAsync(
+        public Task<PFResult<PFGroupsCreateGroupRoleResponse>> GroupsCreateRoleAsync(
             PFGroupsCreateGroupRoleRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsCreateRoleAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsCreateRoleAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -207,11 +207,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsDeleteGroupAsync(
+        public Task<PFResult> GroupsDeleteGroupAsync(
             PFGroupsDeleteGroupRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsDeleteGroupAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsDeleteGroupAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -228,11 +228,11 @@ namespace PlayFab
         /// or any of the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details
         /// on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsDeleteRoleAsync(
+        public Task<PFResult> GroupsDeleteRoleAsync(
             PFGroupsDeleteRoleRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsDeleteRoleAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsDeleteRoleAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -248,11 +248,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsGetGroupGetResultSize"/> and <see
         /// cref="PFGroupsGetGroupGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsGetGroupResponse>> GroupsGetGroupAsync(
+        public Task<PFResult<PFGroupsGetGroupResponse>> GroupsGetGroupAsync(
             PFGroupsGetGroupRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsGetGroupAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsGetGroupAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -273,11 +273,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsInviteToGroupGetResultSize"/> and
         /// <see cref="PFGroupsInviteToGroupGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsInviteToGroupResponse>> GroupsInviteToGroupAsync(
+        public Task<PFResult<PFGroupsInviteToGroupResponse>> GroupsInviteToGroupAsync(
             PFGroupsInviteToGroupRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsInviteToGroupAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsInviteToGroupAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -293,11 +293,11 @@ namespace PlayFab
         ///
         /// When the asynchronous task is complete, call <see cref="PFGroupsIsMemberGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsIsMemberResponse>> GroupsIsMemberAsync(
+        public Task<PFResult<PFGroupsIsMemberResponse>> GroupsIsMemberAsync(
             PFGroupsIsMemberRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsIsMemberAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsIsMemberAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -314,11 +314,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsListGroupApplicationsGetResultSize"/>
         /// and <see cref="PFGroupsListGroupApplicationsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsListGroupApplicationsResponse>> GroupsListGroupApplicationsAsync(
+        public Task<PFResult<PFGroupsListGroupApplicationsResponse>> GroupsListGroupApplicationsAsync(
             PFGroupsListGroupApplicationsRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsListGroupApplicationsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsListGroupApplicationsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -334,11 +334,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsListGroupBlocksGetResultSize"/> and
         /// <see cref="PFGroupsListGroupBlocksGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsListGroupBlocksResponse>> GroupsListGroupBlocksAsync(
+        public Task<PFResult<PFGroupsListGroupBlocksResponse>> GroupsListGroupBlocksAsync(
             PFGroupsListGroupBlocksRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsListGroupBlocksAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsListGroupBlocksAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -356,11 +356,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsListGroupInvitationsGetResultSize"/>
         /// and <see cref="PFGroupsListGroupInvitationsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsListGroupInvitationsResponse>> GroupsListGroupInvitationsAsync(
+        public Task<PFResult<PFGroupsListGroupInvitationsResponse>> GroupsListGroupInvitationsAsync(
             PFGroupsListGroupInvitationsRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsListGroupInvitationsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsListGroupInvitationsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -377,11 +377,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsListGroupMembersGetResultSize"/>
         /// and <see cref="PFGroupsListGroupMembersGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsListGroupMembersResponse>> GroupsListGroupMembersAsync(
+        public Task<PFResult<PFGroupsListGroupMembersResponse>> GroupsListGroupMembersAsync(
             PFGroupsListGroupMembersRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsListGroupMembersAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsListGroupMembersAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -399,11 +399,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsListMembershipGetResultSize"/> and
         /// <see cref="PFGroupsListMembershipGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsListMembershipResponse>> GroupsListMembershipAsync(
+        public Task<PFResult<PFGroupsListMembershipResponse>> GroupsListMembershipAsync(
             PFGroupsListMembershipRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsListMembershipAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsListMembershipAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -421,11 +421,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsListMembershipOpportunitiesGetResultSize"/>
         /// and <see cref="PFGroupsListMembershipOpportunitiesGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsListMembershipOpportunitiesResponse>> GroupsListMembershipOpportunitiesAsync(
+        public Task<PFResult<PFGroupsListMembershipOpportunitiesResponse>> GroupsListMembershipOpportunitiesAsync(
             PFGroupsListMembershipOpportunitiesRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsListMembershipOpportunitiesAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsListMembershipOpportunitiesAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -445,11 +445,11 @@ namespace PlayFab
         /// the async result will be E_PF_GROUP_APPLICATION_NOT_FOUND or any of the global PlayFab Service errors.
         /// See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsRemoveGroupApplicationAsync(
+        public Task<PFResult> GroupsRemoveGroupApplicationAsync(
             PFGroupsRemoveGroupApplicationRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsRemoveGroupApplicationAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsRemoveGroupApplicationAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -469,11 +469,11 @@ namespace PlayFab
         /// the async result will be E_PF_GROUP_INVITATION_NOT_FOUND or any of the global PlayFab Service errors.
         /// See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsRemoveGroupInvitationAsync(
+        public Task<PFResult> GroupsRemoveGroupInvitationAsync(
             PFGroupsRemoveGroupInvitationRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsRemoveGroupInvitationAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsRemoveGroupInvitationAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -490,11 +490,11 @@ namespace PlayFab
         /// the async result will be E_PF_ROLE_DOES_NOT_EXIST or any of the global PlayFab Service errors. See
         /// doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsRemoveMembersAsync(
+        public Task<PFResult> GroupsRemoveMembersAsync(
             PFGroupsRemoveMembersRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsRemoveMembersAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsRemoveMembersAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -511,11 +511,11 @@ namespace PlayFab
         /// the async result will be one of global PlayFab Service errors. See doc page "Handling PlayFab Errors"
         /// for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> GroupsUnblockEntityAsync(
+        public Task<PFResult> GroupsUnblockEntityAsync(
             PFGroupsUnblockEntityRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsUnblockEntityAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsUnblockEntityAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -532,11 +532,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsUpdateGroupGetResultSize"/> and <see
         /// cref="PFGroupsUpdateGroupGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsUpdateGroupResponse>> GroupsUpdateGroupAsync(
+        public Task<PFResult<PFGroupsUpdateGroupResponse>> GroupsUpdateGroupAsync(
             PFGroupsUpdateGroupRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsUpdateGroupAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsUpdateGroupAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -552,11 +552,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFGroupsUpdateRoleGetResultSize"/> and <see
         /// cref="PFGroupsUpdateRoleGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFGroupsUpdateGroupRoleResponse>> GroupsUpdateRoleAsync(
+        public Task<PFResult<PFGroupsUpdateGroupRoleResponse>> GroupsUpdateRoleAsync(
             PFGroupsUpdateGroupRoleRequest request
         )
         {
-            return await InteropWrapper.Services.PFGroups.PFGroupsUpdateRoleAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFGroups.PFGroupsUpdateRoleAsync(InteropHandle, request);
         }
     }
 }

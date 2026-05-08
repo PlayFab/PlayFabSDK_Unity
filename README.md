@@ -23,7 +23,7 @@ This package includes the complete PlayFab API suite:
 Before integrating the PlayFab Unity SDK into your project, ensure you have the following:
 
 ### Software Requirements
-- **GDK 2510** (Gaming Development Kit) installed
+- **GDK 2604** (Gaming Development Kit) installed
 - **Unity 6**
 - **PlayFab Account** with a configured title
 
@@ -59,7 +59,7 @@ This package depends on the **Microsoft GDK Discovery** package (`com.unity.micr
 
 ### Windows 64-bit (Win64) Development
 
-XUser auth support is provided via the **Microsoft GDK** 1.4.4+ package (`com.unity.microsoft.gdk`) which must be installed separately. Version 1.4.4 of that package does not have bespoke support for GDK 2510 and will log a warning to that effect, but this can be safely ignored for auth purposes.
+XUser auth support is provided via the **Microsoft GDK** 1.4.4+ package (`com.unity.microsoft.gdk`) which must be installed separately. Version 1.4.4 of that package does not have bespoke support for GDK 2604 and will log a warning to that effect, but this can be safely ignored for auth purposes.
 
 ## Preprocessor Directives
 
@@ -77,7 +77,8 @@ The PlayFab Unity package provides access to the following services:
 - **Game Saves**: Cloud save functionality (requires XUser authentication)
 - **Groups**: Guild and clan functionality
 - **Inventory**: Manage virtual items and currencies
-- **Multiplayer**: Matchmaking and session management
+- **Multiplayer**: Lobby management, matchmaking, and session management
+- **Party**: Real-time networking, voice chat, and text communication
 - **Player Data**: Save and retrieve player-specific data
 - **Statistics & Leaderboards**: Track and display player achievements
 
@@ -99,7 +100,15 @@ The code examples cover:
 - Xbox and Custom ID authentication
 - Service initialization and configuration
 - PlayFab Game Saves implementation
+- PlayFab Multiplayer lobby lifecycle
+- PlayFab Party networking and messaging
 - Proper cleanup and resource management
+
+### Async API Pattern
+
+PlayFab SDK async methods return `Task<PFResult>` or `Task<PFResult<T>>` and should be awaited from Unity code. Avoid blocking on SDK tasks with `.Result`, `.Wait()`, or `.GetAwaiter().GetResult()` on the Unity main thread, because continuations may need the Unity `SynchronizationContext`.
+
+Most public SDK wrappers directly return the inner native interop task. Authentication login wrappers are the main exception: they remain `async` internally so they can await the native login result and wrap the returned entity handle into `PFEntity` or `PFPlayerEntity` before returning to callers. Those internal awaits intentionally avoid capturing the Unity `SynchronizationContext`.
 
 ## Additional Resources
 

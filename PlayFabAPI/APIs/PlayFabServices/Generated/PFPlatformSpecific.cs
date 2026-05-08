@@ -23,11 +23,11 @@ namespace PlayFab
         /// the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> PlatformSpecificClientAndroidDevicePushNotificationRegistrationAsync(
+        public Task<PFResult> PlatformSpecificClientAndroidDevicePushNotificationRegistrationAsync(
             PFPlatformSpecificAndroidDevicePushNotificationRegistrationRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlatformSpecific.PFPlatformSpecificClientAndroidDevicePushNotificationRegistrationAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlatformSpecific.PFPlatformSpecificClientAndroidDevicePushNotificationRegistrationAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -44,11 +44,11 @@ namespace PlayFab
         /// the global PlayFab Service errors. See doc page "Handling PlayFab Errors" for more details on error
         /// handling.
         /// </remarks>
-        public async Task<PFResult> PlatformSpecificClientRegisterForIOSPushNotificationAsync(
+        public Task<PFResult> PlatformSpecificClientRegisterForIOSPushNotificationAsync(
             PFPlatformSpecificRegisterForIOSPushNotificationRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlatformSpecific.PFPlatformSpecificClientRegisterForIOSPushNotificationAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlatformSpecific.PFPlatformSpecificClientRegisterForIOSPushNotificationAsync(InteropHandle, request);
         }
     }
 
@@ -64,11 +64,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFPlatformSpecificServerAwardSteamAchievementGetResultSize"/>
         /// and <see cref="PFPlatformSpecificServerAwardSteamAchievementGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFPlatformSpecificAwardSteamAchievementResult>> PlatformSpecificServerAwardSteamAchievementAsync(
+        public Task<PFResult<PFPlatformSpecificAwardSteamAchievementResult>> PlatformSpecificServerAwardSteamAchievementAsync(
             PFPlatformSpecificAwardSteamAchievementRequest request
         )
         {
-            return await InteropWrapper.Services.PFPlatformSpecific.PFPlatformSpecificServerAwardSteamAchievementAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFPlatformSpecific.PFPlatformSpecificServerAwardSteamAchievementAsync(InteropHandle, request);
         }
     }
 }

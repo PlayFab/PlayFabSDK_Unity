@@ -20,11 +20,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryAddInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryAddInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryAddInventoryItemsResponse>> InventoryAddInventoryItemsAsync(
+        public Task<PFResult<PFInventoryAddInventoryItemsResponse>> InventoryAddInventoryItemsAsync(
             PFInventoryAddInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryAddInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryAddInventoryItemsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -40,11 +40,11 @@ namespace PlayFab
         /// the async result will be E_PF_INVENTORY_COLLECTION_DELETION_DISALLOWED or any of the global PlayFab
         /// Service errors. See doc page "Handling PlayFab Errors" for more details on error handling.
         /// </remarks>
-        public async Task<PFResult> InventoryDeleteInventoryCollectionAsync(
+        public Task<PFResult> InventoryDeleteInventoryCollectionAsync(
             PFInventoryDeleteInventoryCollectionRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryDeleteInventoryCollectionAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryDeleteInventoryCollectionAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -60,11 +60,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryDeleteInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryDeleteInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryDeleteInventoryItemsResponse>> InventoryDeleteInventoryItemsAsync(
+        public Task<PFResult<PFInventoryDeleteInventoryItemsResponse>> InventoryDeleteInventoryItemsAsync(
             PFInventoryDeleteInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryDeleteInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryDeleteInventoryItemsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -83,11 +83,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryExecuteInventoryOperationsGetResultSize"/>
         /// and <see cref="PFInventoryExecuteInventoryOperationsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryExecuteInventoryOperationsResponse>> InventoryExecuteInventoryOperationsAsync(
+        public Task<PFResult<PFInventoryExecuteInventoryOperationsResponse>> InventoryExecuteInventoryOperationsAsync(
             PFInventoryExecuteInventoryOperationsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryExecuteInventoryOperationsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryExecuteInventoryOperationsAsync(InteropHandle, request);
         }
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_SERVER
@@ -108,11 +108,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryExecuteTransferOperationsGetResultSize"/>
         /// and <see cref="PFInventoryExecuteTransferOperationsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryExecuteTransferOperationsResponse>> InventoryExecuteTransferOperationsAsync(
+        public Task<PFResult<PFInventoryExecuteTransferOperationsResponse>> InventoryExecuteTransferOperationsAsync(
             PFInventoryExecuteTransferOperationsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryExecuteTransferOperationsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryExecuteTransferOperationsAsync(InteropHandle, request);
         }
 #endif
 
@@ -130,11 +130,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryGetInventoryCollectionIdsGetResultSize"/>
         /// and <see cref="PFInventoryGetInventoryCollectionIdsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryGetInventoryCollectionIdsResponse>> InventoryGetInventoryCollectionIdsAsync(
+        public Task<PFResult<PFInventoryGetInventoryCollectionIdsResponse>> InventoryGetInventoryCollectionIdsAsync(
             PFInventoryGetInventoryCollectionIdsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryGetInventoryCollectionIdsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryGetInventoryCollectionIdsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -150,11 +150,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryGetInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryGetInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryGetInventoryItemsResponse>> InventoryGetInventoryItemsAsync(
+        public Task<PFResult<PFInventoryGetInventoryItemsResponse>> InventoryGetInventoryItemsAsync(
             PFInventoryGetInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryGetInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryGetInventoryItemsAsync(InteropHandle, request);
         }
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_SERVER
@@ -171,41 +171,20 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryGetInventoryOperationStatusGetResultSize"/>
         /// and <see cref="PFInventoryGetInventoryOperationStatusGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryGetInventoryOperationStatusResponse>> InventoryGetInventoryOperationStatusAsync(
+        public Task<PFResult<PFInventoryGetInventoryOperationStatusResponse>> InventoryGetInventoryOperationStatusAsync(
             PFInventoryGetInventoryOperationStatusRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryGetInventoryOperationStatusAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryGetInventoryOperationStatusAsync(InteropHandle, request);
         }
 #endif
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX || UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX || UNITY_SERVER
         /// <summary>
-        /// Gets the access tokens.
-        /// </summary>
-        /// <param name="request">Populated request object.</param>
-        /// <returns>A task which will provide the result code for this API operation and a PFInventoryGetMicrosoftStoreAccessTokensResponse.</returns>
-        /// <remarks>
-        /// This API is available on Windows, Linux, and macOS.
-        /// Gets the access tokens for Microsoft Store authentication.
-        ///
-        /// When the asynchronous task is complete, call <see cref="PFInventoryGetMicrosoftStoreAccessTokensGetResultSize"/>
-        /// and <see cref="PFInventoryGetMicrosoftStoreAccessTokensGetResult"/> to get the result.
-        /// </remarks>
-        public async Task<PFResult<PFInventoryGetMicrosoftStoreAccessTokensResponse>> InventoryGetMicrosoftStoreAccessTokensAsync(
-            PFInventoryGetMicrosoftStoreAccessTokensRequest request
-        )
-        {
-            return await InteropWrapper.Services.PFInventory.PFInventoryGetMicrosoftStoreAccessTokensAsync(InteropHandle, request);
-        }
-#endif
-
-#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX || UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX || UNITY_SERVER
-        /// <summary>
-        /// Get transaction history for a player. Up to 250 Events can be returned at once. You can use continuation
-        /// tokens to paginate through results that return greater than the limit. Getting transaction history
-        /// has a lower RPS limit than getting a Player's inventory with Player Entities having a limit of 30
-        /// requests in 300 seconds.
+        /// Get transaction history for a player. Up to 50 Events can be returned at once (or 250 with response
+        /// compression enabled). You can use continuation tokens to paginate through results that return greater
+        /// than the limit. Getting transaction history has a lower RPS limit than getting a Player's inventory
+        /// with Player Entities having a limit of 30 requests in 300 seconds.
         /// </summary>
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFInventoryGetTransactionHistoryResponse.</returns>
@@ -216,11 +195,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryGetTransactionHistoryGetResultSize"/>
         /// and <see cref="PFInventoryGetTransactionHistoryGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryGetTransactionHistoryResponse>> InventoryGetTransactionHistoryAsync(
+        public Task<PFResult<PFInventoryGetTransactionHistoryResponse>> InventoryGetTransactionHistoryAsync(
             PFInventoryGetTransactionHistoryRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryGetTransactionHistoryAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryGetTransactionHistoryAsync(InteropHandle, request);
         }
 #endif
 
@@ -237,11 +216,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryPurchaseInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryPurchaseInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryPurchaseInventoryItemsResponse>> InventoryPurchaseInventoryItemsAsync(
+        public Task<PFResult<PFInventoryPurchaseInventoryItemsResponse>> InventoryPurchaseInventoryItemsAsync(
             PFInventoryPurchaseInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryPurchaseInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryPurchaseInventoryItemsAsync(InteropHandle, request);
         }
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_IOS || UNITY_SERVER
@@ -257,11 +236,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryRedeemAppleAppStoreInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryRedeemAppleAppStoreInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryRedeemAppleAppStoreInventoryItemsResponse>> InventoryRedeemAppleAppStoreInventoryItemsAsync(
+        public Task<PFResult<PFInventoryRedeemAppleAppStoreInventoryItemsResponse>> InventoryRedeemAppleAppStoreInventoryItemsAsync(
             PFInventoryRedeemAppleAppStoreInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryRedeemAppleAppStoreInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryRedeemAppleAppStoreInventoryItemsAsync(InteropHandle, request);
         }
 #endif
 
@@ -278,17 +257,18 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryRedeemGooglePlayInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryRedeemGooglePlayInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryRedeemGooglePlayInventoryItemsResponse>> InventoryRedeemGooglePlayInventoryItemsAsync(
+        public Task<PFResult<PFInventoryRedeemGooglePlayInventoryItemsResponse>> InventoryRedeemGooglePlayInventoryItemsAsync(
             PFInventoryRedeemGooglePlayInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryRedeemGooglePlayInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryRedeemGooglePlayInventoryItemsAsync(InteropHandle, request);
         }
 #endif
 
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT || UNITY_STANDALONE_LINUX || UNITY_EDITOR_LINUX || UNITY_STANDALONE_OSX || UNITY_EDITOR_OSX || UNITY_SERVER
         /// <summary>
-        /// Redeem items.
+        /// Redeem items from the Microsoft Store. Supported entitlement types are Developer Manager Consumable
+        /// and Durable.
         /// </summary>
         /// <param name="request">Populated request object.</param>
         /// <returns>A task which will provide the result code for this API operation and a PFInventoryRedeemMicrosoftStoreInventoryItemsResponse.</returns>
@@ -299,11 +279,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryRedeemMicrosoftStoreInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryRedeemMicrosoftStoreInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryRedeemMicrosoftStoreInventoryItemsResponse>> InventoryRedeemMicrosoftStoreInventoryItemsAsync(
+        public Task<PFResult<PFInventoryRedeemMicrosoftStoreInventoryItemsResponse>> InventoryRedeemMicrosoftStoreInventoryItemsAsync(
             PFInventoryRedeemMicrosoftStoreInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryRedeemMicrosoftStoreInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryRedeemMicrosoftStoreInventoryItemsAsync(InteropHandle, request);
         }
 #endif
 
@@ -320,11 +300,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryRedeemNintendoEShopInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryRedeemNintendoEShopInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryRedeemNintendoEShopInventoryItemsResponse>> InventoryRedeemNintendoEShopInventoryItemsAsync(
+        public Task<PFResult<PFInventoryRedeemNintendoEShopInventoryItemsResponse>> InventoryRedeemNintendoEShopInventoryItemsAsync(
             PFInventoryRedeemNintendoEShopInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryRedeemNintendoEShopInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryRedeemNintendoEShopInventoryItemsAsync(InteropHandle, request);
         }
 #endif
 
@@ -341,11 +321,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryRedeemPlayStationStoreInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryRedeemPlayStationStoreInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryRedeemPlayStationStoreInventoryItemsResponse>> InventoryRedeemPlayStationStoreInventoryItemsAsync(
+        public Task<PFResult<PFInventoryRedeemPlayStationStoreInventoryItemsResponse>> InventoryRedeemPlayStationStoreInventoryItemsAsync(
             PFInventoryRedeemPlayStationStoreInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryRedeemPlayStationStoreInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryRedeemPlayStationStoreInventoryItemsAsync(InteropHandle, request);
         }
 #endif
 
@@ -362,11 +342,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryRedeemSteamInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryRedeemSteamInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryRedeemSteamInventoryItemsResponse>> InventoryRedeemSteamInventoryItemsAsync(
+        public Task<PFResult<PFInventoryRedeemSteamInventoryItemsResponse>> InventoryRedeemSteamInventoryItemsAsync(
             PFInventoryRedeemSteamInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryRedeemSteamInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryRedeemSteamInventoryItemsAsync(InteropHandle, request);
         }
 #endif
 
@@ -383,11 +363,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventorySubtractInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventorySubtractInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventorySubtractInventoryItemsResponse>> InventorySubtractInventoryItemsAsync(
+        public Task<PFResult<PFInventorySubtractInventoryItemsResponse>> InventorySubtractInventoryItemsAsync(
             PFInventorySubtractInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventorySubtractInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventorySubtractInventoryItemsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -407,11 +387,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryTransferInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryTransferInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryTransferInventoryItemsResponse>> InventoryTransferInventoryItemsAsync(
+        public Task<PFResult<PFInventoryTransferInventoryItemsResponse>> InventoryTransferInventoryItemsAsync(
             PFInventoryTransferInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryTransferInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryTransferInventoryItemsAsync(InteropHandle, request);
         }
 
         /// <summary>
@@ -427,11 +407,11 @@ namespace PlayFab
         /// When the asynchronous task is complete, call <see cref="PFInventoryUpdateInventoryItemsGetResultSize"/>
         /// and <see cref="PFInventoryUpdateInventoryItemsGetResult"/> to get the result.
         /// </remarks>
-        public async Task<PFResult<PFInventoryUpdateInventoryItemsResponse>> InventoryUpdateInventoryItemsAsync(
+        public Task<PFResult<PFInventoryUpdateInventoryItemsResponse>> InventoryUpdateInventoryItemsAsync(
             PFInventoryUpdateInventoryItemsRequest request
         )
         {
-            return await InteropWrapper.Services.PFInventory.PFInventoryUpdateInventoryItemsAsync(InteropHandle, request);
+            return InteropWrapper.Services.PFInventory.PFInventoryUpdateInventoryItemsAsync(InteropHandle, request);
         }
     }
 }
