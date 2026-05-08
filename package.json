@@ -14,7 +14,8 @@
   "dependencies": {
     "com.unity.microsoft.gdk.discovery": "1.1.0"
   },
-  "license": "MIT",
+  "license": "See LICENSE.txt",
+  "documentationUrl": "https://github.com/PlayFab/PlayFabSDK_Unity/blob/main/README.md",
   "repository": {
     "url": "",
     "type": "git"
@@ -25,7 +26,6 @@
     "README.md.meta",
     "LICENSE.txt",
     "LICENSE.txt.meta",
-    "Documentation~",
     "PlayFabAPI",
     "PlayFabAPI.meta",
     "PlayFabTools",
