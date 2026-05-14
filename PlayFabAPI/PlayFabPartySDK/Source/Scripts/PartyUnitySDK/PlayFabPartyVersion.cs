@@ -4,8 +4,8 @@ namespace PlayFab.Party
 {
     internal static class Version
     {
-        public static readonly string PartyNativeVersion = "Default";
-        public static readonly string PartyUnityVersion = "Default";
+        // TODO: Revert version values once stamping through automation is enabled
+        public static readonly string PartyUnityVersion = "3.0.0-preview";
     }
 }
 #endif

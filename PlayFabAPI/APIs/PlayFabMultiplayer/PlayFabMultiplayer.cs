@@ -1048,7 +1048,6 @@ namespace PlayFab.Multiplayer
                     { "AppName", Application.productName },
                     { "AppVersion", Application.version },
                     { "ClientInstanceId", gameSessionID },
-                    { "MultiplayerVersion", Version.MultiplayerNativeVersion },
                     { "MultiplayerUnityVersion", Version.MultiplayerUnityVersion },
                     { "UnityVersion", Application.unityVersion }
                 };

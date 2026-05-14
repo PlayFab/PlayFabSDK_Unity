@@ -1,130 +1,103 @@
 # PlayFab Unity SDK
 
-A comprehensive Unity SDK for PlayFab services, providing seamless integration with PlayFab's services for game development in Unity.
+The **PlayFab Unity SDK** is a Unity package (`microsoft.playfab.sdk`) that projects the native PlayFab libraries into C#. It provides Unity-friendly access to PlayFab Core, Services, Game Save, Multiplayer, and Party APIs from one package.
 
-## Overview
+> **Note:** This SDK replaces the legacy [PlayFab Unity SDK](https://github.com/PlayFab/UnitySDK). If you are migrating from the legacy SDK, start with the [Migration Guide](Documents~/MigrationGuide.md).
 
-This package includes the complete PlayFab API suite:
+## Documentation
 
-- **PlayFab Core** - Essential PlayFab services and authentication
-- **PlayFab GameSave** - Cloud save functionality for cross-platform progression (currently available for PC and Xbox)
-- **PlayFab Services** - Additional PlayFab services
-- **PlayFab Multiplayer** - Multiplayer networking and matchmaking
-- **PlayFab Party** - Voice and text communication services
+| Document | Description |
+|---|---|
+| [Quickstart](Documents~/Quickstart.md) | Make a first PlayFab API call from Unity. |
+| [Installation Guide](Documents~/Installation.md) | Detailed package, dependency, and GDK setup. |
+| [Migration Guide](Documents~/MigrationGuide.md) | Move from the legacy callback-based Unity SDK to this SDK. |
+| [API Overview](Documents~/ApiOverview.md) | SDK lifecycle, resource ownership, and service areas. |
+| [Party and Multiplayer Setup](Documents~/PartyAndMultiplayer.md) | Prerequisites and first setup steps for networking, voice, chat, lobby, and matchmaking. |
+| [Troubleshooting](Documents~/Troubleshooting.md) | Common setup and runtime issues. |
+
+## Requirements
+
+| Requirement | Notes |
+|---|---|
+| Unity 6 | Package metadata targets Unity 6000.0 or later. |
+| GDK 2604 or later | Required for the current Win64 and Xbox package scope. |
+| PlayFab title | Create or select a title in [PlayFab Game Manager](https://developer.playfab.com). |
+| `com.unity.microsoft.gdk.discovery` | Package dependency; installed automatically by Unity Package Manager. |
+| `com.unity.microsoft.gdk` and `com.unity.microsoft.gdk.tools` | Optional Unity packages, currently validated with 1.5.1, required for XUser authentication and Xbox/GDK project configuration. |
+
+## Platform Support
+
+| Platform | Status | Notes |
+|---|---|---|
+| Win64 | Supported | Windows desktop builds use GDK binaries. XUser authentication requires the Unity GDK package. |
+| Xbox | Supported | Requires GDK setup and Xbox configuration. |
+
+## What's Included
+
+- **PlayFab Core** - Initialization, service configuration, authentication, entity handles, tracing, and event pipeline APIs.
+- **PlayFab Services** - Account Management, Catalog, CloudScript, Friends, Groups, Inventory, Player Data, Profiles, Statistics, Leaderboards, and related service APIs.
+- **PlayFab Game Save** - Cloud save APIs for Win64 and Xbox using `PFLocalUser`.
+- **PlayFab Multiplayer** - Lobby and matchmaking APIs.
+- **PlayFab Party** - Real-time networking, voice, text chat, transcription, and translation APIs.
 
 ## Package Structure
 
-- `PlayFabAPI/` - PlayFab API projections for native libraries
-- `PlayFabTools/` - Unity Editor tools and utilities
-- `Samples~/` - Sample scenes for the SDK
-
-## Prerequisites
-
-Before integrating the PlayFab Unity SDK into your project, ensure you have the following:
-
-### Software Requirements
-- **GDK 2604** (Gaming Development Kit) installed
-- **Unity 6**
-- **PlayFab Account** with a configured title
-
-### Platform Support
-The plugin currently officially supports the following platforms:
-- **Win64** (Windows Desktop for Xbox's or other storefronts)
-- **Xbox**
+| Path | Contents |
+|---|---|
+| `PlayFabAPI/` | C# API, interop wrapper, and P/Invoke layers for the native PlayFab libraries. |
+| `PlayFabTools/` | Unity Editor tooling for GDK binary discovery, selection, and plugin import settings. |
+| `Samples~/` | Importable Unity samples for Login, Game Save, Multiplayer, Party, and Party tests. |
+| `Documents~/` | Public documentation for package users. |
 
 ## Installation
 
-There are two ways to install this package in your Unity project. Installing directly from this repo's git URL is quicker. However, if you're building Multiplayer/Party functionality for PlayStation or Switch, you'll need to follow the steps for installing via a local tarball.
+Install the package through Unity Package Manager:
 
-### Install via Git URL
+1. Open **Window > Package Manager**.
+2. Select **+ > Install package from git URL...** and paste this repository's git URL.
+3. If you need an offline or custom package, clone the repository, run `packTarball.ps1`, then choose **+ > Install package from tarball...** and select the generated `.tgz`.
 
-1. Copy the git URL for this repo
-2. In Unity, open the Package Manager (Window > Package Manager)
-3. Click the "+" button and select "Install package from git URL..."
-4. Paste the git URL
+See the [Installation Guide](Documents~/Installation.md) for dependency details, GDK setup, verification steps, and upgrade guidance.
 
-### Install via Local Tarball
+## GDK Binaries and XGameRuntime
 
-1. Clone this repository and update submodules (ensure you have been granted access to the relevant platform submodules)
-2. Run packTarball.ps1 at the root level of the repository which will generate a `.tgz` package with the integrated platform components
-3. In Unity, open the Package Manager (Window > Package Manager)
-4. Click the "+" button and select "Install package from tarball..."
-5. Select the generated `.tgz` file
+The package uses the GDK Discovery dependency to find installed GDKs and copy native binaries for Win64 and Xbox. Use **PlayFab > Change GDK** in the Unity menu to choose a specific GDK installation when more than one is available.
 
-## Dependencies
+On Windows/GDK, the title owns the XGameRuntime lifecycle. Call `PlayFab.XGameRuntime.Initialize()` before any PlayFab API, then call `PlayFab.XGameRuntime.Uninitialize()` only after all PlayFab cleanup has completed.
 
-This package depends on the **Microsoft GDK Discovery** package (`com.unity.microsoft.gdk.discovery`) which should automatically install when this package is added to your project.
+## Samples
 
-## Important Platform Considerations
+Import samples from the package details page in Unity Package Manager:
 
-### Windows 64-bit (Win64) Development
+| Sample | Description |
+|---|---|
+| PlayFab Login | Initializes the SDK, creates a service config, and logs in with Custom ID or XUser. |
+| PlayFab Game Save | Creates a local user, initializes Game Save, syncs, and uploads save data. |
+| PlayFab Multiplayer | Demonstrates lobby creation, lobby search, property updates, event processing, and cleanup. |
+| PlayFab Party | Demonstrates Party manager setup, player registration, network creation, chat, data messages, and cleanup. |
+| PlayFab Party Tests | Importable Party test suite. |
 
-XUser auth support is provided via the **Microsoft GDK** 1.4.4+ package (`com.unity.microsoft.gdk`) which must be installed separately. Version 1.4.4 of that package does not have bespoke support for GDK 2604 and will log a warning to that effect, but this can be safely ignored for auth purposes.
+## Async API Pattern
 
-## Preprocessor Directives
+PlayFab SDK async methods return `Task<PFResult>` or `Task<PFResult<T>>` and should be awaited from Unity code. Avoid blocking SDK tasks with `.Result`, `.Wait()`, or `.GetAwaiter().GetResult()` on the Unity main thread.
 
-The PlayFab Unity package uses Unity's platform preprocessor directives to conditionally compile features based on platform support and available authentication methods. It also utilizes the `MICROSOFT_GDK_SUPPORT` directive to enable XUser auth and also the new game saves feature.
+Most public SDK wrappers return the inner native interop task directly. Authentication login wrappers are the main exception: they await native login internally so they can wrap returned native entity handles into `PFEntity` or `PFPlayerEntity`.
 
-## Available Services
+## Resource Lifetime
 
-The PlayFab Unity package provides access to the following services:
-
-- **Account Management**: Player account operations
-- **Authentication**: Player login and identity management
-- **Catalog**: Game economy and item management
-- **Cloud Script**: Execute server-side logic
-- **Friends**: Social features and friend lists
-- **Game Saves**: Cloud save functionality (requires XUser authentication)
-- **Groups**: Guild and clan functionality
-- **Inventory**: Manage virtual items and currencies
-- **Multiplayer**: Lobby management, matchmaking, and session management
-- **Party**: Real-time networking, voice chat, and text communication
-- **Player Data**: Save and retrieve player-specific data
-- **Statistics & Leaderboards**: Track and display player achievements
-
-## Getting Started
-
-After installation, the PlayFab tools will be available in the Unity Editor under the PlayFab menu. Configure your PlayFab settings and begin integrating PlayFab services into your game.
-
-For detailed documentation and API references, visit the [PlayFab Documentation](https://docs.microsoft.com/gaming/playfab/).
-
-### Getting Binaries
-
-For Win64/Xbox platforms, the package will automatically pull the necessary binaries from your latest GDK installation. Use **PlayFab > Change GDK** from the menu to choose which GDK to pull binaries from if there are multiple installs.
-
-### Getting Started with Code
-
-For detailed implementation examples, configuration samples, and step-by-step code walkthroughs, import the included sample scenes into your project via the Unity Package Manager.
-
-The code examples cover:
-- Xbox and Custom ID authentication
-- Service initialization and configuration
-- PlayFab Game Saves implementation
-- PlayFab Multiplayer lobby lifecycle
-- PlayFab Party networking and messaging
-- Proper cleanup and resource management
-
-### Async API Pattern
-
-PlayFab SDK async methods return `Task<PFResult>` or `Task<PFResult<T>>` and should be awaited from Unity code. Avoid blocking on SDK tasks with `.Result`, `.Wait()`, or `.GetAwaiter().GetResult()` on the Unity main thread, because continuations may need the Unity `SynchronizationContext`.
-
-Most public SDK wrappers directly return the inner native interop task. Authentication login wrappers are the main exception: they remain `async` internally so they can await the native login result and wrap the returned entity handle into `PFEntity` or `PFPlayerEntity` before returning to callers. Those internal awaits intentionally avoid capturing the Unity `SynchronizationContext`.
+`PFServiceConfig`, `PFEntity` subclasses such as `PFPlayerEntity`, `PFLocalUser`, and Game Save provider objects wrap native handles and must be disposed when no longer needed. `PFServices.UninitializeAsync()` and `PFCore.UninitializeAsync()` invalidate all outstanding handles; release references and recreate them after the next initialization.
 
 ## Additional Resources
 
-- [PlayFab Documentation](https://docs.microsoft.com/gaming/playfab/)
-- [PlayFab REST API Reference](https://docs.microsoft.com/rest/api/playfab/)
+- [PlayFab Unity SDK Overview](https://learn.microsoft.com/en-us/gaming/playfab/sdks/unified-unity/overview)
+- [PlayFab Unified SDK Overview](https://learn.microsoft.com/gaming/playfab/sdks/unified-sdk/overview)
+- [PlayFab Documentation](https://learn.microsoft.com/gaming/playfab/)
+- [PlayFab REST API Reference](https://learn.microsoft.com/rest/api/playfab/)
 - [Unity GDK Package Documentation](https://docs.unity3d.com/Packages/com.unity.microsoft.gdk@latest)
 - [Unity GDK Tools Package Documentation](https://docs.unity3d.com/Packages/com.unity.microsoft.gdk.tools@latest)
+- [GDK Documentation](https://learn.microsoft.com/gaming/gdk/)
+- [Microsoft Game Dev Discord](https://discord.com/invite/msftgamedev)
 
-## Troubleshooting
+## License
 
-### Common Issues
-
-1. **Authentication Failures**: Verify your Title ID is correct in configuration
-2. **Missing MicrosoftGame.config**: Ensure you've copied the config file for builds using XUser auth
-3. **Game Saves Not Working**: Verify you're using Win64 or Xbox platform targets with the Unity GDK Package
-4. **Unable to add XUser**: If `Unity.XGamingRuntime.SDK.XUserAddAsync()` from the GDK package returns an error, verify you're following all steps from the GDK and GDK Tools packages' instructions and double check:
-   - **Missing Xbox Configuration**: Ensure Xbox-specific configuration is properly set in your Microsoft Game Config
-   - **Wrong Sandbox**: If using a sandbox account, verify you're in the correct sandbox using the [XblPCSandbox utility](https://learn.microsoft.com/en-us/gaming/gdk/docs/tools/tools-services/live-pc-sandbox-switcher)
-   - **Not Logged In**: Make sure you're logged in with your Xbox test account in both the Microsoft Store and Xbox app
+See [LICENSE.txt](LICENSE.txt) for license information.
