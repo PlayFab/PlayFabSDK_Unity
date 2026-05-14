@@ -18,10 +18,12 @@ Use this method when Unity can access the public repository directly.
 
 1. In Unity, open **Window > Package Manager**.
 2. Select **+ > Install package from git URL...**.
-3. Paste the PlayFab Unity SDK repository URL.
+3. Paste `https://github.com/PlayFab/PlayFabSDK_Unity.git`.
 4. Click **Install**.
 
 Unity resolves the package dependency on `com.unity.microsoft.gdk.discovery` automatically.
+
+The `.git` suffix is required. If you paste `https://github.com/PlayFab/PlayFabSDK_Unity` without `.git`, Unity treats the value as a package name and reports it as invalid.
 
 ### Method 2: Install via Local Tarball
 
@@ -128,6 +130,6 @@ Remove **PlayFab SDK** from Package Manager. Unity may keep `com.unity.microsoft
 | GDK binaries are not loading | Verify GDK 2604 or later is installed, then use **PlayFab > Change GDK** to select it. |
 | XUser APIs are missing | Install `com.unity.microsoft.gdk` and confirm `MICROSOFT_GDK_SUPPORT` is defined for the target platform. |
 | Xbox configuration errors | Install `com.unity.microsoft.gdk.tools` and verify `MicrosoftGame.config` and sandbox setup. |
-| Package does not resolve | Confirm Unity can reach the repository URL and the Unity Package Manager registry. |
+| Package does not resolve | Confirm Unity can reach `https://github.com/PlayFab/PlayFabSDK_Unity.git` and the Unity Package Manager registry. |
 
 For runtime issues, see [Troubleshooting](Troubleshooting.md).

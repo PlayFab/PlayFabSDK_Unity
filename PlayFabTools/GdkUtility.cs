@@ -14,11 +14,18 @@ namespace PlayFab.Tools
     {
         public int GdkEdition;
     }
+
+    [System.Serializable]
+    internal class LegacyGdkVersionJson
+    {
+        public int Edition;
+    }
     
     [InitializeOnLoad]
     public static class GdkUtility
     {
         private static bool s_isInitialized = false;
+        private static bool s_hasWarnedMissingPreferredGdk = false;
         private static GdkEditionFileWatcher s_gdkEditionFileWatcher;
 
         static GdkUtility()
@@ -130,7 +137,7 @@ namespace PlayFab.Tools
         
         /// <summary>
         /// Tries to get the currently selected GDK path from the GdkEdition.json file using the discovery package
-        /// Falls back to the latest GDK if the file is not found, cannot be parsed, or the specified edition is not available
+        /// Falls back to the package's preferred GDK, or the latest installed GDK when preferred is unavailable
         /// </summary>
         private static bool TryGetSelectedGdkPath(out string gdkPath)
         {
@@ -145,6 +152,8 @@ namespace PlayFab.Tools
                     Debug.LogWarning("[PlayFab.Tools.GdkUtility] No GDK installations found via discovery package");
                     return false;
                 }
+
+                WarnIfPreferredGdkMissing(discoveredGdks.Select(gdk => gdk.Edition));
                 
                 // Try to read the GdkEdition.json file to get the selected edition
                 string gdkEditionJsonPath = Path.Combine(GdkConstants.TargetGdkPluginPath, GdkConstants.GdkEditionJsonFileName);
@@ -155,11 +164,11 @@ namespace PlayFab.Tools
                     try
                     {
                         string jsonContent = File.ReadAllText(gdkEditionJsonPath);
-                        var gdkEditionData = JsonUtility.FromJson<GdkVersionJson>(jsonContent);
+                        int selectedGdkEdition = ReadSelectedGdkEdition(jsonContent);
 
-                        if (gdkEditionData != null)
+                        if (selectedGdkEdition > 0)
                         {
-                            selectedEdition = gdkEditionData.GdkEdition;
+                            selectedEdition = selectedGdkEdition;
                             
                             // Find the GDK with the matching edition
                             foreach (var gdk in discoveredGdks)
@@ -171,32 +180,34 @@ namespace PlayFab.Tools
                                 }
                             }
                             
-                            Debug.LogWarning($"[PlayFab.Tools.GdkUtility] GDK edition {selectedEdition} not found in discovered GDKs, using latest installed GDK");
+                            Debug.LogWarning($"[PlayFab.Tools.GdkUtility] GDK edition {selectedEdition} not found in discovered GDKs, using default GDK");
                         }
                         else
                         {
-                            Debug.LogWarning("[PlayFab.Tools.GdkUtility] Failed to parse GdkEdition.json, using latest installed GDK");
+                            Debug.Log("[PlayFab.Tools.GdkUtility] GdkEdition.json did not contain a valid GDK edition, using default GDK");
                         }
                     }
                     catch (Exception ex)
                     {
-                        Debug.LogWarning($"[PlayFab.Tools.GdkUtility] Error reading GdkEdition.json: {ex.Message}, using latest installed GDK");
+                        Debug.LogWarning($"[PlayFab.Tools.GdkUtility] Error reading GdkEdition.json: {ex.Message}, using default GDK");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning("[PlayFab.Tools.GdkUtility] GdkEdition.json file not found, using latest installed GDK");
+                    Debug.Log("[PlayFab.Tools.GdkUtility] GdkEdition.json file not found, using default GDK");
                 }
                 
-                // Fall back to the latest GDK
-                var gdksList = discoveredGdks.ToList();
-                var latestGdk = discoveredGdks.OrderByDescending(gdk => gdk.Edition).FirstOrDefault();
+                // Prefer the package's validated GDK, then fall back to the latest installed GDK.
+                var fallbackGdk = discoveredGdks
+                    .OrderByDescending(gdk => gdk.Edition == GdkConstants.PreferredGdkEdition)
+                    .ThenByDescending(gdk => gdk.Edition)
+                    .FirstOrDefault();
                 
-                if (latestGdk.Path != null)
+                if (fallbackGdk.Path != null)
                 {
-                    gdkPath = Path.Combine(latestGdk.Path, latestGdk.Edition.ToString());
+                    gdkPath = Path.Combine(fallbackGdk.Path, fallbackGdk.Edition.ToString());
 
-                    var jsonData = new GdkVersionJson { GdkEdition = latestGdk.Edition };
+                    var jsonData = new GdkVersionJson { GdkEdition = fallbackGdk.Edition };
                     string jsonContent = JsonUtility.ToJson(jsonData, true);
                 
                     File.WriteAllText(gdkEditionJsonPath, jsonContent);
@@ -211,6 +222,40 @@ namespace PlayFab.Tools
                 Debug.LogError($"[PlayFab.Tools.GdkUtility] Error getting GDK path: {ex.Message}");
                 return false;
             }
+        }
+
+        internal static int ReadSelectedGdkEdition(string jsonContent)
+        {
+            var gdkEditionData = JsonUtility.FromJson<GdkVersionJson>(jsonContent);
+            if (gdkEditionData != null && gdkEditionData.GdkEdition > 0)
+            {
+                return gdkEditionData.GdkEdition;
+            }
+
+            var legacyGdkEditionData = JsonUtility.FromJson<LegacyGdkVersionJson>(jsonContent);
+            if (legacyGdkEditionData != null && legacyGdkEditionData.Edition > 0)
+            {
+                return legacyGdkEditionData.Edition;
+            }
+
+            return -1;
+        }
+
+        private static void WarnIfPreferredGdkMissing(IEnumerable<int> discoveredEditions)
+        {
+            var editions = discoveredEditions
+                .Distinct()
+                .OrderByDescending(edition => edition)
+                .ToList();
+
+            if (s_hasWarnedMissingPreferredGdk || editions.Contains(GdkConstants.PreferredGdkEdition))
+            {
+                return;
+            }
+
+            string installedEditions = string.Join(", ", editions);
+            Debug.LogWarning($"[PlayFab.Tools.GdkUtility] Preferred GDK edition {GdkConstants.PreferredGdkEdition} was not found in discovered GDKs ({installedEditions}); using the selected or latest installed GDK. Install GDK edition {GdkConstants.PreferredGdkEdition} for the validated PlayFab SDK configuration.");
+            s_hasWarnedMissingPreferredGdk = true;
         }
         
         /// <summary>
@@ -232,7 +277,7 @@ namespace PlayFab.Tools
         }
         
         /// <summary>
-        /// Subscribes to the GDK file watcher service to monitor for GDK edition changes
+        /// Initializes the selected GDK edition file when the project does not have one yet.
         /// </summary>
         private static void InitializeGdkEditionJson()
         {
@@ -240,17 +285,19 @@ namespace PlayFab.Tools
             
             if (!File.Exists(gdkEditionJsonPath))
             {
-                // Get latest available GDK edition using the discovery package API
+                // Get the default GDK edition using the discovery package API
                 var discoveredGdks = GdkEnumerator.DiscoveredGdks;
                 if (discoveredGdks != null && discoveredGdks.Any())
                 {
-                    // Find the latest edition (highest edition number)
-                    var latestGdk = discoveredGdks.OrderByDescending(gdk => gdk.Edition).FirstOrDefault();
+                    var fallbackGdk = discoveredGdks
+                        .OrderByDescending(gdk => gdk.Edition == GdkConstants.PreferredGdkEdition)
+                        .ThenByDescending(gdk => gdk.Edition)
+                        .FirstOrDefault();
                     
-                    if (latestGdk.Path != null)
+                    if (fallbackGdk.Path != null)
                     {
                         // Create the JSON content
-                        var gdkEditionData = new { Edition = latestGdk.Edition };
+                        var gdkEditionData = new GdkVersionJson { GdkEdition = fallbackGdk.Edition };
                         string jsonContent = JsonUtility.ToJson(gdkEditionData, true);
                         
                         // Write the JSON file
