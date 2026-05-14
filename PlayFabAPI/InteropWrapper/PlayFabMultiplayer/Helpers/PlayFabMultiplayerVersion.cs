@@ -5,8 +5,8 @@ namespace PlayFab.Multiplayer
 {
     internal static class Version
     {
-        public static readonly string MultiplayerNativeVersion = "Default";
-        public static readonly string MultiplayerUnityVersion = "Default";
+        // TODO: Revert version values once stamping through automation is enabled
+        public static readonly string MultiplayerUnityVersion = "3.0.0-preview";
     }
 }
 #endif

@@ -1056,7 +1056,6 @@ namespace PlayFab.Party
                     { "AppName", Application.productName },
                     { "AppVersion", Application.version },
                     { "ClientInstanceId", gameSessionID },
-                    { "PartyVersion", Version.PartyNativeVersion },
                     { "PartyUnityVersion", Version.PartyUnityVersion },
                     { "UnityVersion", Application.unityVersion }
                 };
