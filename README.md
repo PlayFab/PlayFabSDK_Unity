@@ -54,7 +54,7 @@ The **PlayFab Unity SDK** is a Unity package (`microsoft.playfab.sdk`) that proj
 Install the package through Unity Package Manager:
 
 1. Open **Window > Package Manager**.
-2. Select **+ > Install package from git URL...** and paste this repository's git URL.
+2. Select **+ > Install package from git URL...** and paste `https://github.com/PlayFab/PlayFabSDK_Unity.git`.
 3. If you need an offline or custom package, clone the repository, run `packTarball.ps1`, then choose **+ > Install package from tarball...** and select the generated `.tgz`.
 
 See the [Installation Guide](Documents~/Installation.md) for dependency details, GDK setup, verification steps, and upgrade guidance.

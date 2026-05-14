@@ -6,7 +6,7 @@ This guide covers common installation, GDK, authentication, Game Save, and lifec
 
 ### SDK not appearing in Package Manager
 
-- Verify the git URL is correct and reachable from your development machine.
+- Verify the git URL is `https://github.com/PlayFab/PlayFabSDK_Unity.git` and reachable from your development machine. The `.git` suffix is required for Unity Package Manager git installs.
 - Open **Window > General > Console** and check for package resolution errors.
 - Confirm the project uses Unity 6 (6000.0 or later).
 

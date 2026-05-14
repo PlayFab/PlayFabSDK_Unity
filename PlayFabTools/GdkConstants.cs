@@ -15,6 +15,11 @@ namespace PlayFab.Tools
         /// GDK edition JSON file name
         /// </summary>
         public const string GdkEditionJsonFileName = "GdkEdition.json";
+
+        /// <summary>
+        /// Preferred GDK edition for default binary selection.
+        /// </summary>
+        public const int PreferredGdkEdition = 260400;
         
         /// <summary>
         /// List of required GDK binaries that need to be copied and configured

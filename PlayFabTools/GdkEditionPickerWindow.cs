@@ -138,8 +138,7 @@ namespace PlayFab.Tools
             try
             {
                 string jsonContent = File.ReadAllText(jsonPath);
-                var jsonData = JsonUtility.FromJson<GdkVersionJson>(jsonContent);
-                return jsonData?.GdkEdition ?? -1;
+                return GdkUtility.ReadSelectedGdkEdition(jsonContent);
             }
             catch (Exception ex)
             {

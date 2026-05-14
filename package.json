@@ -17,7 +17,7 @@
   "license": "See LICENSE.txt",
   "documentationUrl": "https://github.com/PlayFab/PlayFabSDK_Unity/blob/main/README.md",
   "repository": {
-    "url": "",
+    "url": "https://github.com/PlayFab/PlayFabSDK_Unity.git",
     "type": "git"
   },
   "files": [
