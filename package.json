@@ -1,7 +1,7 @@
 {
   "name": "microsoft.playfab.sdk",
   "displayName": "PlayFab SDK",
-  "version": "3.0.0-preview",
+  "version": "3.0.0",
   "author": "Microsoft",
   "unity": "6000.0",
   "description": "PlayFab SDK is a package that contains projections for native PlayFab APIs.",
