@@ -654,9 +654,16 @@ namespace PlayFab.Party
             Debug.LogWarning(warningMessage);
         }
 
+        // GC allocation fix: per-frame code checks this before it builds log text, so no text
+        // is made when info logging is off. _LogInfo uses the same rule.
+        internal static bool _IsInfoLogEnabled()
+        {
+            return _logLevel >= LogLevelType.Verbose;
+        }
+
         internal static void _LogInfo(string infoMessage)
         {
-            if (_logLevel < LogLevelType.Verbose)
+            if (!_IsInfoLogEnabled())
             {
                 return;
             }
@@ -1937,7 +1944,12 @@ namespace PlayFab.Party
                 {
                     foreach (PARTY_STATE_CHANGE stateChange in _partyStateChanges)
                     {
-                        _LogInfo("Party State change: " + stateChange.StateChangeType.ToString());
+                        // GC allocation fix: this runs for every state change. Check the level before building
+                        // the text, so no string and no boxed enum are made at the default level (Minimal).
+                        if (_IsInfoLogEnabled())
+                        {
+                            _LogInfo("Party State change: " + stateChange.StateChangeType.ToString());
+                        }
                         switch (stateChange.StateChangeType)
                         {
                             case PARTY_STATE_CHANGE_TYPE.PARTY_STATE_CHANGE_TYPE_REGIONS_CHANGED:

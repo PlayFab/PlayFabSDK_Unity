@@ -1213,7 +1213,12 @@ namespace PlayFab.Multiplayer
             {
                 foreach (InteropWrapper.Multiplayer.PFLobbyStateChange stateChange in lobbyStateChanges.StateChanges)
                 {
-                    LogInfo("Lobby State change: " + stateChange.StateChangeType.ToString());
+                    // GC allocation fix: this runs for every state change. Check the level before building
+                    // the text, so no string and no boxed enum are made at the default level (Minimal).
+                    if (IsInfoLogEnabled())
+                    {
+                        LogInfo("Lobby State change: " + stateChange.StateChangeType.ToString());
+                    }
                     switch (stateChange.StateChangeType)
                     {
                         case InteropWrapper.Multiplayer.PFLobbyStateChangeType.CreateAndJoinLobbyCompleted:
@@ -1424,7 +1429,12 @@ namespace PlayFab.Multiplayer
             {
                 foreach (InteropWrapper.Multiplayer.PFMatchmakingStateChange stateChange in matchmakingStateChanges.StateChanges)
                 {
-                    LogInfo("Matchmaking State change: " + stateChange.StateChangeType.ToString());
+                    // GC allocation fix: this runs for every state change. Check the level before building
+                    // the text, so no string and no boxed enum are made at the default level (Minimal).
+                    if (IsInfoLogEnabled())
+                    {
+                        LogInfo("Matchmaking State change: " + stateChange.StateChangeType.ToString());
+                    }
                     switch (stateChange.StateChangeType)
                     {
                         case InteropWrapper.Multiplayer.PFMatchmakingStateChangeType.TicketStatusChanged:
@@ -1939,9 +1949,16 @@ namespace PlayFab.Multiplayer
 #endif
         }
 
+        // GC allocation fix: per-frame code checks this before it builds log text, so no text
+        // is made when info logging is off. LogInfo uses the same rule.
+        internal static bool IsInfoLogEnabled()
+        {
+            return logLevel >= LogLevelType.Verbose;
+        }
+
         internal static void LogInfo(string infoMessage)
         {
-            if (logLevel < LogLevelType.Verbose)
+            if (!IsInfoLogEnabled())
             {
                 return;
             }
