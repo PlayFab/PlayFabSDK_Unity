@@ -29,7 +29,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 using PartyCSharpSDK;
 using PartyXBLCSharpSDK;
@@ -684,16 +683,27 @@ namespace PlayFab.Party
             return startsWithSequence;
         }
 
+        // GC allocation fix: this runs for every received data message, so the prefix is compared in place, without
+        // allocating. A message shorter than the prefix, or of 128 bytes or more, is never an internal message.
         private bool IsInternalMessage(IntPtr messageBuffer, uint messageSize)
         {
-            if (messageSize > 0 &&
-                messageSize < _INTERNAL_EXCHANGE_MESSAGE_BUFFER_SIZE)
+            int prefixLength = _INTERNAL_EXCHANGE_REQUEST_MESSAGE_PREFIX.Length;
+            if (messageSize < prefixLength ||
+                messageSize >= _INTERNAL_EXCHANGE_MESSAGE_BUFFER_SIZE)
             {
-                byte[] internalXuidExchangeMessageBuffer = new byte[_INTERNAL_EXCHANGE_MESSAGE_BUFFER_SIZE];
-                Marshal.Copy(messageBuffer, internalXuidExchangeMessageBuffer, 0, (int)messageSize);
-                return _StartsWithSequence(internalXuidExchangeMessageBuffer, Encoding.ASCII.GetBytes(_INTERNAL_EXCHANGE_REQUEST_MESSAGE_PREFIX));
+                return false;
             }
-            return false;
+
+            for (int i = 0; i < prefixLength; i++)
+            {
+                // The prefix is ASCII, so each char is exactly one byte.
+                if (Marshal.ReadByte(messageBuffer, i) != _INTERNAL_EXCHANGE_REQUEST_MESSAGE_PREFIX[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private PlayFabPlayer GetPlayerByEntityId(string entityId)
