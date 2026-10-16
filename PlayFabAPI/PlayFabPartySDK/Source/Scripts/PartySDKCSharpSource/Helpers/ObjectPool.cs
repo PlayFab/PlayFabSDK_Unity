@@ -95,6 +95,25 @@ namespace PartyCSharpSDK
             return (T)result;
         }
 
+        // GC allocation fix: the state-change pumps get a list here once per frame. Retrieve<T>() runs the
+        // List<T> constructor again through reflection: in IL2CPP each call makes a new empty ParameterInfo[],
+        // and the constructor drops the list's array, so the next Add makes a new one. This method reuses a
+        // pooled list without reflection and keeps its array.
+        internal List<T> RetrieveList<T>()
+        {
+            List<Object> pooled = pools[typeof(List<T>)].objects;
+            Int32 ct = pooled.Count;
+            if (ct == 0)
+            {
+                return new List<T>();
+            }
+
+            List<T> list = (List<T>)pooled[ct - 1];
+            pooled.RemoveAt(ct - 1);
+            list.Clear();
+            return list;
+        }
+
         public void Return(Object o)
         {
             Type key = o.GetType();

@@ -299,7 +299,8 @@ namespace PlayFab.InteropWrapper.Multiplayer
         {
             uint stateChangeCount = 0;
 
-            collection.StateChanges = ObjPool.Retrieve<List<PFMatchmakingStateChange>>();
+            // GC allocation fix: runs every frame; RetrieveList reuses a pooled list without reflection.
+            collection.StateChanges = ObjPool.RetrieveList<PFMatchmakingStateChange>();
             unsafe
             {
                 PlayFab.Interop.Multiplayer.PFMatchmakingStateChange** rawStateChanges = null;

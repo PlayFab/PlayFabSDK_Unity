@@ -203,7 +203,8 @@ namespace PartyCSharpSDK
 
             UInt32 stateChangeCount;
             IntPtr rawStateChanges;
-            stateChanges = objectPool.Retrieve<List<PARTY_STATE_CHANGE>>();
+            // GC allocation fix: runs every frame; RetrieveList reuses a pooled list without reflection.
+            stateChanges = objectPool.RetrieveList<PARTY_STATE_CHANGE>();
             err = PFPInterop.PartyStartProcessingStateChanges(handle.InteropHandle, out stateChangeCount, out rawStateChanges);
             if (PartyError.SUCCEEDED(err) && stateChangeCount > 0)
             {
@@ -222,7 +223,8 @@ namespace PartyCSharpSDK
                         // CSharp wrapper, which will all be of the basic PARTY_STATE_CHANGE type
                         if (unsupportStateChanges == null)
                         {
-                            unsupportStateChanges = objectPool.Retrieve<List<PARTY_STATE_CHANGE>>();
+                            // GC allocation fix: reuse a pooled list without reflection (see RetrieveList).
+                            unsupportStateChanges = objectPool.RetrieveList<PARTY_STATE_CHANGE>();
                         }
 
                         unsupportStateChanges.Add(stateChangeObj);
