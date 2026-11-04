@@ -182,13 +182,19 @@ namespace PlayFab.InteropWrapper.Core
                 return _interopCallback;
             }
             
-            internal unsafe void InteropPInvokeCallback(void* context, Interop.PFUploadedEvent** eventPipelineUploadedEvents, ulong eventPipelineUploadedEventsCount)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFEventPipelineBatchUploadSucceededEventHandler))]
+            internal static unsafe void InteropPInvokeCallback(void* context, Interop.PFUploadedEvent** eventPipelineUploadedEvents, ulong eventPipelineUploadedEventsCount)
+            {
+                _PFEventPipelineBatchUploadSucceededEventHandlerManager.HandleCallback(context, eventPipelineUploadedEvents, eventPipelineUploadedEventsCount);
+            }
+
+            private unsafe void HandleCallback(void* context, Interop.PFUploadedEvent** eventPipelineUploadedEvents, ulong eventPipelineUploadedEventsCount)
             {
                 IntPtr id = new(context);
                 if (!InternalContextToCallbackId.ContainsKey(id)) return;
                 if (!CallbackIdToHandler.ContainsKey(InternalContextToCallbackId[id])) return;
 
-                var uploadedEvents = WrapperHelpers.InteropToArray(*eventPipelineUploadedEvents, eventPipelineUploadedEventsCount, elem => new PFUploadedEvent(elem));
+                var uploadedEvents = WrapperHelpers.InteropPointerArrayToArray(eventPipelineUploadedEvents, eventPipelineUploadedEventsCount, elem => new PFUploadedEvent(elem));
 
                 IssueEventCallback(InternalContextToCallbackId[id], uploadedEvents);
             }
@@ -218,15 +224,23 @@ namespace PlayFab.InteropWrapper.Core
                 return _interopCallback;
             }
             
-            internal unsafe void InteropPInvokeCallback(void* context, int translatedUploadError, sbyte* errorMessage, Interop.PFEvent** eventPipelineFailedEvents, ulong failedEventsCount)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFEventPipelineBatchUploadFailedEventHandler))]
+            internal static unsafe void InteropPInvokeCallback(void* context, int translatedUploadError, sbyte* errorMessage, Interop.PFEvent** eventPipelineFailedEvents, ulong failedEventsCount)
+            {
+                _PFEventPipelineBatchUploadFailedEventHandlerManager.HandleCallback(context, translatedUploadError, errorMessage, eventPipelineFailedEvents, failedEventsCount);
+            }
+
+            private unsafe void HandleCallback(void* context, int translatedUploadError, sbyte* errorMessage, Interop.PFEvent** eventPipelineFailedEvents, ulong failedEventsCount)
             {
                 IntPtr id = new(context);
                 if (!InternalContextToCallbackId.ContainsKey(id)) return;
                 if (!CallbackIdToHandler.ContainsKey(InternalContextToCallbackId[id])) return;
 
-                var failedEvents = WrapperHelpers.InteropToArray(*eventPipelineFailedEvents, failedEventsCount, elem => new PFEvent(elem));
+                var failedEvents = WrapperHelpers.InteropPointerArrayToArray(eventPipelineFailedEvents, failedEventsCount, elem => new PFEvent(elem));
 
-                IssueEventCallback(id, translatedUploadError, WrapperHelpers.InteropToString(errorMessage), failedEvents);
+                // PlayFab Kit patch: look up the handler by its callback ID, as the success handler does.
+                // The internal context is not a key of CallbackIdToHandler, so the lookup threw inside a native callback.
+                IssueEventCallback(InternalContextToCallbackId[id], translatedUploadError, WrapperHelpers.InteropToString(errorMessage), failedEvents);
             }
 
             internal void AddPipeline(PFEventPipelineHandle eventPipelineHandle, PFEventPipelineBatchUploadFailedEventHandler callback, object context, IntPtr internalContext)

@@ -11,12 +11,14 @@ namespace PartyCSharpSDK
         {
             internal Int32 limit;
             internal ConstructorInfo ctor;
+            internal Boolean canReuse;
             internal List<Object> objects;
 
-            internal Pool(Int32 limit, ConstructorInfo ctor)
+            internal Pool(Int32 limit, ConstructorInfo ctor, Boolean canReuse)
             {
                 this.limit = limit;
                 this.ctor = ctor;
+                this.canReuse = canReuse;
                 objects = new List<Object>();
             }
         }
@@ -39,7 +41,9 @@ namespace PartyCSharpSDK
             ConstructorInfo ctor = t.GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, ctorTypes, null);
             if (ctor != null)
             {
-                pools[t] = new Pool(maxLimit, ctor);
+                // A constructor with parameters carries the native handle or state-change data for this use.
+                // Construct a fresh wrapper instead of relying on runtime-specific constructor reinvocation.
+                pools[t] = new Pool(maxLimit, ctor, ctorTypes.Length == 0);
             }
             else
             {
@@ -75,7 +79,7 @@ namespace PartyCSharpSDK
                 Pool pool = pools[key];
                 ConstructorInfo ctor = pool.ctor;
                 Int32 ct = pool.objects.Count;
-                if (ct > 0)
+                if (pool.canReuse && ct > 0)
                 {
                     result = pool.objects[ct - 1];
                     pool.objects.RemoveAt(ct - 1);
@@ -98,7 +102,7 @@ namespace PartyCSharpSDK
         public void Return(Object o)
         {
             Type key = o.GetType();
-            if (pools.ContainsKey(key) && pools[key].objects.Count < pools[key].limit)
+            if (pools.ContainsKey(key) && pools[key].canReuse && pools[key].objects.Count < pools[key].limit)
             {
                 Pool pool = pools[key];
                 if (pool.objects.Count < pool.limit)

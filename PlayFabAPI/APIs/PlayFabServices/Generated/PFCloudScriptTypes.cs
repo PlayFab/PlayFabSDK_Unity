@@ -291,7 +291,7 @@ namespace PlayFab
 
             HttpRequestsIssued = interop.httpRequestsIssued;
 
-            Logs = (interop.logs == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.logs, interop.logsCount, elem => new PFCloudScriptLogStatement(elem));
+            Logs = (interop.logs == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.logs, interop.logsCount, elem => new PFCloudScriptLogStatement(elem));
 
             LogsTooLarge = (interop.logsTooLarge == null) ? null : InteropWrapper.WrapperHelpers.InteropToBool(*interop.logsTooLarge);
 

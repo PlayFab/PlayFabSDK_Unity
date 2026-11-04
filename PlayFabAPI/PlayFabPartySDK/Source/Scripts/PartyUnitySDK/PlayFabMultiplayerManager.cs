@@ -1050,7 +1050,7 @@ namespace PlayFab.Party
                 Dictionary<string, object> payload = new()
                 {
                     { "OSName", SystemInfo.operatingSystem },
-                    { "DeviceMake", SystemInfo.deviceName },
+                    { "DeviceMake", "redacted" }, // PlayFab Kit patch: a fixed text, because SystemInfo.deviceName holds the name of the computer.
                     { "DeviceModel", SystemInfo.deviceModel },
                     { "Platform", Application.platform },
                     { "AppName", Application.productName },

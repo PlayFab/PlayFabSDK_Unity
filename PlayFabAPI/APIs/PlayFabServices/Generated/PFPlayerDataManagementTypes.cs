@@ -112,7 +112,7 @@ namespace PlayFab
         internal unsafe PFPlayerDataManagementClientDeletePlayerCustomPropertiesResult(Interop.PFPlayerDataManagementClientDeletePlayerCustomPropertiesResult interop)
         {
 
-            DeletedProperties = (interop.deletedProperties == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.deletedProperties, interop.deletedPropertiesCount, elem => new PFPlayerDataManagementDeletedPropertyDetails(elem));
+            DeletedProperties = (interop.deletedProperties == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.deletedProperties, interop.deletedPropertiesCount, elem => new PFPlayerDataManagementDeletedPropertyDetails(elem));
 
             PropertiesVersion = interop.propertiesVersion;
 
@@ -302,7 +302,7 @@ namespace PlayFab
         internal unsafe PFPlayerDataManagementClientListPlayerCustomPropertiesResult(Interop.PFPlayerDataManagementClientListPlayerCustomPropertiesResult interop)
         {
 
-            Properties = (interop.properties == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.properties, interop.propertiesCount, elem => new PFPlayerDataManagementCustomPropertyDetails(elem));
+            Properties = (interop.properties == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.properties, interop.propertiesCount, elem => new PFPlayerDataManagementCustomPropertyDetails(elem));
 
             PropertiesVersion = interop.propertiesVersion;
 
@@ -573,7 +573,7 @@ namespace PlayFab
         internal unsafe PFPlayerDataManagementServerDeletePlayerCustomPropertiesResult(Interop.PFPlayerDataManagementServerDeletePlayerCustomPropertiesResult interop)
         {
 
-            DeletedProperties = (interop.deletedProperties == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.deletedProperties, interop.deletedPropertiesCount, elem => new PFPlayerDataManagementDeletedPropertyDetails(elem));
+            DeletedProperties = (interop.deletedProperties == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.deletedProperties, interop.deletedPropertiesCount, elem => new PFPlayerDataManagementDeletedPropertyDetails(elem));
 
             PlayFabId = (interop.playFabId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.playFabId);
 
@@ -720,7 +720,7 @@ namespace PlayFab
 
             PlayFabId = (interop.playFabId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.playFabId);
 
-            Properties = (interop.properties == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.properties, interop.propertiesCount, elem => new PFPlayerDataManagementCustomPropertyDetails(elem));
+            Properties = (interop.properties == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.properties, interop.propertiesCount, elem => new PFPlayerDataManagementCustomPropertyDetails(elem));
 
             PropertiesVersion = interop.propertiesVersion;
 

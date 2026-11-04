@@ -1055,7 +1055,7 @@ namespace PlayFab
         internal unsafe PFGroupsListGroupApplicationsResponse(Interop.PFGroupsListGroupApplicationsResponse interop)
         {
 
-            Applications = (interop.applications == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.applications, interop.applicationsCount, elem => new PFGroupsGroupApplication(elem));
+            Applications = (interop.applications == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.applications, interop.applicationsCount, elem => new PFGroupsGroupApplication(elem));
 
         }
     }
@@ -1146,7 +1146,7 @@ namespace PlayFab
         internal unsafe PFGroupsListGroupBlocksResponse(Interop.PFGroupsListGroupBlocksResponse interop)
         {
 
-            BlockedEntities = (interop.blockedEntities == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.blockedEntities, interop.blockedEntitiesCount, elem => new PFGroupsGroupBlock(elem));
+            BlockedEntities = (interop.blockedEntities == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.blockedEntities, interop.blockedEntitiesCount, elem => new PFGroupsGroupBlock(elem));
 
         }
     }
@@ -1275,7 +1275,7 @@ namespace PlayFab
         internal unsafe PFGroupsListGroupInvitationsResponse(Interop.PFGroupsListGroupInvitationsResponse interop)
         {
 
-            Invitations = (interop.invitations == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.invitations, interop.invitationsCount, elem => new PFGroupsGroupInvitation(elem));
+            Invitations = (interop.invitations == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.invitations, interop.invitationsCount, elem => new PFGroupsGroupInvitation(elem));
 
         }
     }
@@ -1337,7 +1337,7 @@ namespace PlayFab
         internal unsafe PFGroupsEntityMemberRole(Interop.PFGroupsEntityMemberRole interop)
         {
 
-            Members = (interop.members == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.members, interop.membersCount, elem => new PFGroupsEntityWithLineage(elem));
+            Members = (interop.members == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.members, interop.membersCount, elem => new PFGroupsEntityWithLineage(elem));
 
             RoleId = (interop.roleId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.roleId);
 
@@ -1381,7 +1381,7 @@ namespace PlayFab
         internal unsafe PFGroupsListGroupMembersResponse(Interop.PFGroupsListGroupMembersResponse interop)
         {
 
-            Members = (interop.members == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.members, interop.membersCount, elem => new PFGroupsEntityMemberRole(elem));
+            Members = (interop.members == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.members, interop.membersCount, elem => new PFGroupsEntityMemberRole(elem));
 
         }
     }
@@ -1499,7 +1499,7 @@ namespace PlayFab
 
             ProfileVersion = interop.profileVersion;
 
-            Roles = (interop.roles == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.roles, interop.rolesCount, elem => new PFGroupsGroupRole(elem));
+            Roles = (interop.roles == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.roles, interop.rolesCount, elem => new PFGroupsGroupRole(elem));
 
         }
 
@@ -1542,7 +1542,7 @@ namespace PlayFab
         internal unsafe PFGroupsListMembershipResponse(Interop.PFGroupsListMembershipResponse interop)
         {
 
-            Groups = (interop.groups == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.groups, interop.groupsCount, elem => new PFGroupsGroupWithRoles(elem));
+            Groups = (interop.groups == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.groups, interop.groupsCount, elem => new PFGroupsGroupWithRoles(elem));
 
         }
     }
@@ -1603,9 +1603,9 @@ namespace PlayFab
         internal unsafe PFGroupsListMembershipOpportunitiesResponse(Interop.PFGroupsListMembershipOpportunitiesResponse interop)
         {
 
-            Applications = (interop.applications == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.applications, interop.applicationsCount, elem => new PFGroupsGroupApplication(elem));
+            Applications = (interop.applications == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.applications, interop.applicationsCount, elem => new PFGroupsGroupApplication(elem));
 
-            Invitations = (interop.invitations == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.invitations, interop.invitationsCount, elem => new PFGroupsGroupInvitation(elem));
+            Invitations = (interop.invitations == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.invitations, interop.invitationsCount, elem => new PFGroupsGroupInvitation(elem));
 
         }
     }

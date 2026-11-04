@@ -420,7 +420,7 @@ namespace PlayFab
 
             Objects = (interop.objects == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.objects, interop.objectsCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), new PFProfilesEntityDataObject(*pair.value)));
 
-            Permissions = (interop.permissions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.permissions, interop.permissionsCount, elem => new PFProfilesEntityPermissionStatement(elem));
+            Permissions = (interop.permissions == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.permissions, interop.permissionsCount, elem => new PFProfilesEntityPermissionStatement(elem));
 
             Statistics = (interop.statistics == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.statistics, interop.statisticsCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), new PFEntityStatisticValue(*pair.value)));
 
@@ -599,7 +599,7 @@ namespace PlayFab
         internal unsafe PFProfilesGetEntityProfilesResponse(Interop.PFProfilesGetEntityProfilesResponse interop)
         {
 
-            Profiles = (interop.profiles == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.profiles, interop.profilesCount, elem => new PFProfilesEntityProfileBody(elem));
+            Profiles = (interop.profiles == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.profiles, interop.profilesCount, elem => new PFProfilesEntityProfileBody(elem));
 
         }
     }
@@ -811,7 +811,7 @@ namespace PlayFab
         internal unsafe PFProfilesSetEntityProfilePolicyResponse(Interop.PFProfilesSetEntityProfilePolicyResponse interop)
         {
 
-            Permissions = (interop.permissions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.permissions, interop.permissionsCount, elem => new PFProfilesEntityPermissionStatement(elem));
+            Permissions = (interop.permissions == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.permissions, interop.permissionsCount, elem => new PFProfilesEntityPermissionStatement(elem));
 
         }
     }

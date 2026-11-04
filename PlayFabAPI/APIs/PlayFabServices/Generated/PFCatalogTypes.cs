@@ -376,7 +376,7 @@ namespace PlayFab
         internal unsafe PFCatalogCatalogPrice(Interop.PFCatalogCatalogPrice interop)
         {
 
-            Amounts = (interop.amounts == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.amounts, interop.amountsCount, elem => new PFCatalogCatalogPriceAmount(elem));
+            Amounts = (interop.amounts == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.amounts, interop.amountsCount, elem => new PFCatalogCatalogPriceAmount(elem));
 
             UnitAmount = (interop.unitAmount == null) ? null : *interop.unitAmount;
 
@@ -422,7 +422,7 @@ namespace PlayFab
         internal unsafe PFCatalogCatalogPriceOptions(Interop.PFCatalogCatalogPriceOptions interop)
         {
 
-            Prices = (interop.prices == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.prices, interop.pricesCount, elem => new PFCatalogCatalogPrice(elem));
+            Prices = (interop.prices == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.prices, interop.pricesCount, elem => new PFCatalogCatalogPrice(elem));
 
         }
 
@@ -962,7 +962,7 @@ namespace PlayFab
         internal unsafe PFCatalogCatalogPriceOverride(Interop.PFCatalogCatalogPriceOverride interop)
         {
 
-            Amounts = (interop.amounts == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.amounts, interop.amountsCount, elem => new PFCatalogCatalogPriceAmountOverride(elem));
+            Amounts = (interop.amounts == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.amounts, interop.amountsCount, elem => new PFCatalogCatalogPriceAmountOverride(elem));
 
         }
 
@@ -992,7 +992,7 @@ namespace PlayFab
         internal unsafe PFCatalogCatalogPriceOptionsOverride(Interop.PFCatalogCatalogPriceOptionsOverride interop)
         {
 
-            Prices = (interop.prices == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.prices, interop.pricesCount, elem => new PFCatalogCatalogPriceOverride(elem));
+            Prices = (interop.prices == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.prices, interop.pricesCount, elem => new PFCatalogCatalogPriceOverride(elem));
 
         }
 
@@ -1232,9 +1232,9 @@ namespace PlayFab
         internal unsafe PFCatalogCatalogItem(Interop.PFCatalogCatalogItem interop)
         {
 
-            AlternateIds = (interop.alternateIds == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.alternateIds, interop.alternateIdsCount, elem => new PFCatalogCatalogAlternateId(elem));
+            AlternateIds = (interop.alternateIds == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.alternateIds, interop.alternateIdsCount, elem => new PFCatalogCatalogAlternateId(elem));
 
-            Contents = (interop.contents == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.contents, interop.contentsCount, elem => new PFCatalogContent(elem));
+            Contents = (interop.contents == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.contents, interop.contentsCount, elem => new PFCatalogContent(elem));
 
             ContentType = (interop.contentType == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.contentType);
 
@@ -1242,7 +1242,7 @@ namespace PlayFab
 
             CreatorEntity = (interop.creatorEntity == null) ? null : new(*interop.creatorEntity);
 
-            DeepLinks = (interop.deepLinks == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.deepLinks, interop.deepLinksCount, elem => new PFCatalogDeepLink(elem));
+            DeepLinks = (interop.deepLinks == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.deepLinks, interop.deepLinksCount, elem => new PFCatalogDeepLink(elem));
 
             DefaultStackId = (interop.defaultStackId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.defaultStackId);
 
@@ -1258,11 +1258,11 @@ namespace PlayFab
 
             Id = (interop.id == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.id);
 
-            Images = (interop.images == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.images, interop.imagesCount, elem => new PFCatalogImage(elem));
+            Images = (interop.images == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.images, interop.imagesCount, elem => new PFCatalogImage(elem));
 
             IsHidden = (interop.isHidden == null) ? null : InteropWrapper.WrapperHelpers.InteropToBool(*interop.isHidden);
 
-            ItemReferences = (interop.itemReferences == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.itemReferences, interop.itemReferencesCount, elem => new PFCatalogCatalogItemReference(elem));
+            ItemReferences = (interop.itemReferences == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.itemReferences, interop.itemReferencesCount, elem => new PFCatalogCatalogItemReference(elem));
 
             Keywords = (interop.keywords == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.keywords, interop.keywordsCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), new PFCatalogKeywordSet(*pair.value)));
 
@@ -1659,7 +1659,7 @@ namespace PlayFab
         internal unsafe PFCatalogCreateUploadUrlsResponse(Interop.PFCatalogCreateUploadUrlsResponse interop)
         {
 
-            UploadUrls = (interop.uploadUrls == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.uploadUrls, interop.uploadUrlsCount, elem => new PFCatalogUploadUrlMetadata(elem));
+            UploadUrls = (interop.uploadUrls == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.uploadUrls, interop.uploadUrlsCount, elem => new PFCatalogUploadUrlMetadata(elem));
 
         }
     }
@@ -2026,7 +2026,7 @@ namespace PlayFab
         internal unsafe PFCatalogReviewConfig(Interop.PFCatalogReviewConfig interop)
         {
 
-            CategoryRatings = (interop.categoryRatings == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.categoryRatings, interop.categoryRatingsCount, elem => new PFCatalogCategoryRatingConfig(elem));
+            CategoryRatings = (interop.categoryRatings == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.categoryRatings, interop.categoryRatingsCount, elem => new PFCatalogCategoryRatingConfig(elem));
 
         }
 
@@ -2153,13 +2153,13 @@ namespace PlayFab
         internal unsafe PFCatalogCatalogConfig(Interop.PFCatalogCatalogConfig interop)
         {
 
-            AdminEntities = (interop.adminEntities == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.adminEntities, interop.adminEntitiesCount, elem => new PFEntityKey(elem));
+            AdminEntities = (interop.adminEntities == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.adminEntities, interop.adminEntitiesCount, elem => new PFEntityKey(elem));
 
             Catalog = (interop.catalog == null) ? null : new(*interop.catalog);
 
-            DeepLinkFormats = (interop.deepLinkFormats == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.deepLinkFormats, interop.deepLinkFormatsCount, elem => new PFCatalogDeepLinkFormat(elem));
+            DeepLinkFormats = (interop.deepLinkFormats == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.deepLinkFormats, interop.deepLinkFormatsCount, elem => new PFCatalogDeepLinkFormat(elem));
 
-            DisplayPropertyIndexInfos = (interop.displayPropertyIndexInfos == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.displayPropertyIndexInfos, interop.displayPropertyIndexInfosCount, elem => new PFCatalogDisplayPropertyIndexInfo(elem));
+            DisplayPropertyIndexInfos = (interop.displayPropertyIndexInfos == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.displayPropertyIndexInfos, interop.displayPropertyIndexInfosCount, elem => new PFCatalogDisplayPropertyIndexInfo(elem));
 
             File = (interop.file == null) ? null : new(*interop.file);
 
@@ -2171,7 +2171,7 @@ namespace PlayFab
 
             Review = (interop.review == null) ? null : new(*interop.review);
 
-            ReviewerEntities = (interop.reviewerEntities == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.reviewerEntities, interop.reviewerEntitiesCount, elem => new PFEntityKey(elem));
+            ReviewerEntities = (interop.reviewerEntities == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.reviewerEntities, interop.reviewerEntitiesCount, elem => new PFEntityKey(elem));
 
             UserGeneratedContent = (interop.userGeneratedContent == null) ? null : new(*interop.userGeneratedContent);
 
@@ -2437,7 +2437,7 @@ namespace PlayFab
 
             ContinuationToken = (interop.continuationToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.continuationToken);
 
-            Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
+            Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
 
         }
     }
@@ -2526,7 +2526,7 @@ namespace PlayFab
 
             ContinuationToken = (interop.continuationToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.continuationToken);
 
-            Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
+            Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
 
         }
     }
@@ -2937,7 +2937,7 @@ namespace PlayFab
         internal unsafe PFCatalogGetItemContainersResponse(Interop.PFCatalogGetItemContainersResponse interop)
         {
 
-            Containers = (interop.containers == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.containers, interop.containersCount, elem => new PFCatalogCatalogItem(elem));
+            Containers = (interop.containers == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.containers, interop.containersCount, elem => new PFCatalogCatalogItem(elem));
 
             ContinuationToken = (interop.continuationToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.continuationToken);
 
@@ -3181,7 +3181,7 @@ namespace PlayFab
 
             ContinuationToken = (interop.continuationToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.continuationToken);
 
-            Reviews = (interop.reviews == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.reviews, interop.reviewsCount, elem => new PFCatalogReview(elem));
+            Reviews = (interop.reviews == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.reviews, interop.reviewsCount, elem => new PFCatalogReview(elem));
 
         }
     }
@@ -3340,7 +3340,7 @@ namespace PlayFab
         internal unsafe PFCatalogGetItemsResponse(Interop.PFCatalogGetItemsResponse interop)
         {
 
-            Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
+            Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
 
         }
     }
@@ -3825,7 +3825,7 @@ namespace PlayFab
 
             ContinuationToken = (interop.continuationToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.continuationToken);
 
-            Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
+            Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.items, interop.itemsCount, elem => new PFCatalogCatalogItem(elem));
 
         }
     }

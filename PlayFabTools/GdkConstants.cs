@@ -36,6 +36,27 @@ namespace PlayFab.Tools
             "XGameRuntime.Thunks.dll",
             "xgameruntime.dll"
         };
+#if UNITY_GAMECORE
+
+        // Keep console binaries separate so the Windows plugin rules do not match them.
+
+        /// <summary>
+        /// Target plugin path for the console builds of the GDK binaries
+        /// </summary>
+        public const string TargetGdkConsolePluginPath = "Assets/Plugins/ConsoleGDK";
+
+        /// <summary>
+        /// List of the console GDK binaries that need to be copied and configured for the XBOX consoles
+        /// </summary>
+        public static readonly string[] RequiredGdkConsoleBinaries = new string[]
+        {
+            "Party.dll",
+            "PlayFabCore.dll",
+            "PlayFabGameSave.dll",
+            "PlayFabMultiplayer.dll",
+            "PlayFabServices.dll"
+        };
+#endif
     }
 }
 #endif

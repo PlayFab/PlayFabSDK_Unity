@@ -417,7 +417,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromBattleNetAccountIdsResult(Interop.PFAccountManagementGetPlayFabIDsFromBattleNetAccountIdsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementBattleNetAccountPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementBattleNetAccountPlayFabIdPair(elem));
 
         }
     }
@@ -499,7 +499,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromFacebookIDsResult(Interop.PFAccountManagementGetPlayFabIDsFromFacebookIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementFacebookPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementFacebookPlayFabIdPair(elem));
 
         }
     }
@@ -581,7 +581,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult(Interop.PFAccountManagementGetPlayFabIDsFromFacebookInstantGamesIdsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementFacebookInstantGamesPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementFacebookInstantGamesPlayFabIdPair(elem));
 
         }
     }
@@ -663,7 +663,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromGameCenterIDsResult(Interop.PFAccountManagementGetPlayFabIDsFromGameCenterIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementGameCenterPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementGameCenterPlayFabIdPair(elem));
 
         }
     }
@@ -745,7 +745,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromGoogleIDsResult(Interop.PFAccountManagementGetPlayFabIDsFromGoogleIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementGooglePlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementGooglePlayFabIdPair(elem));
 
         }
     }
@@ -827,7 +827,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult(Interop.PFAccountManagementGetPlayFabIDsFromGooglePlayGamesPlayerIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementGooglePlayGamesPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementGooglePlayGamesPlayFabIdPair(elem));
 
         }
     }
@@ -909,7 +909,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromKongregateIDsResult(Interop.PFAccountManagementGetPlayFabIDsFromKongregateIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementKongregatePlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementKongregatePlayFabIdPair(elem));
 
         }
     }
@@ -991,7 +991,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult(Interop.PFAccountManagementGetPlayFabIDsFromNintendoServiceAccountIdsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementNintendoServiceAccountPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementNintendoServiceAccountPlayFabIdPair(elem));
 
         }
     }
@@ -1073,7 +1073,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult(Interop.PFAccountManagementGetPlayFabIDsFromNintendoSwitchDeviceIdsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementNintendoSwitchPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementNintendoSwitchPlayFabIdPair(elem));
 
         }
     }
@@ -1167,7 +1167,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult(Interop.PFAccountManagementGetPlayFabIDsFromPSNAccountIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementPSNAccountPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementPSNAccountPlayFabIdPair(elem));
 
         }
     }
@@ -1261,7 +1261,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromPSNOnlineIDsResult(Interop.PFAccountManagementGetPlayFabIDsFromPSNOnlineIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementPSNOnlinePlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementPSNOnlinePlayFabIdPair(elem));
 
         }
     }
@@ -1346,7 +1346,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromSteamIDsResult(Interop.PFAccountManagementGetPlayFabIDsFromSteamIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementSteamPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementSteamPlayFabIdPair(elem));
 
         }
     }
@@ -1428,7 +1428,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromSteamNamesResult(Interop.PFAccountManagementGetPlayFabIDsFromSteamNamesResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementSteamNamePlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementSteamNamePlayFabIdPair(elem));
 
         }
     }
@@ -1510,7 +1510,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromTwitchIDsResult(Interop.PFAccountManagementGetPlayFabIDsFromTwitchIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementTwitchPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementTwitchPlayFabIdPair(elem));
 
         }
     }
@@ -1602,7 +1602,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult(Interop.PFAccountManagementGetPlayFabIDsFromXboxLiveIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementXboxLiveAccountPlayFabIdPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementXboxLiveAccountPlayFabIdPair(elem));
 
         }
     }
@@ -3497,7 +3497,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementBanUsersResult(Interop.PFAccountManagementBanUsersResult interop)
         {
 
-            BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
+            BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
 
         }
     }
@@ -3606,7 +3606,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetServerCustomIDsFromPlayFabIDsResult(Interop.PFAccountManagementGetServerCustomIDsFromPlayFabIDsResult interop)
         {
 
-            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.data, interop.dataCount, elem => new PFAccountManagementServerCustomIDPlayFabIDPair(elem));
+            Data = (interop.data == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.data, interop.dataCount, elem => new PFAccountManagementServerCustomIDPlayFabIDPair(elem));
 
         }
     }
@@ -3685,7 +3685,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementGetUserBansResult(Interop.PFAccountManagementGetUserBansResult interop)
         {
 
-            BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
+            BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
 
         }
     }
@@ -4202,7 +4202,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementRevokeAllBansForUserResult(Interop.PFAccountManagementRevokeAllBansForUserResult interop)
         {
 
-            BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
+            BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
 
         }
     }
@@ -4242,7 +4242,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementRevokeBansResult(Interop.PFAccountManagementRevokeBansResult interop)
         {
 
-            BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
+            BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
 
         }
     }
@@ -4740,7 +4740,7 @@ namespace PlayFab
         internal unsafe PFAccountManagementUpdateBansResult(Interop.PFAccountManagementUpdateBansResult interop)
         {
 
-            BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
+            BanData = (interop.banData == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.banData, interop.banDataCount, elem => new PFAccountManagementBanInfo(elem));
 
         }
     }

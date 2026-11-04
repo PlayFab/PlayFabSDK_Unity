@@ -174,7 +174,7 @@ namespace PlayFab
         internal unsafe PFPlatformSpecificAwardSteamAchievementResult(Interop.PFPlatformSpecificAwardSteamAchievementResult interop)
         {
 
-            AchievementResults = (interop.achievementResults == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.achievementResults, interop.achievementResultsCount, elem => new PFPlatformSpecificAwardSteamAchievementItem(elem));
+            AchievementResults = (interop.achievementResults == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.achievementResults, interop.achievementResultsCount, elem => new PFPlatformSpecificAwardSteamAchievementItem(elem));
 
         }
     }

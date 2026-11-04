@@ -72,7 +72,7 @@ namespace PlayFab
         internal unsafe PFSegmentsGetPlayerSegmentsResult(Interop.PFSegmentsGetPlayerSegmentsResult interop)
         {
 
-            Segments = (interop.segments == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.segments, interop.segmentsCount, elem => new PFSegmentsGetSegmentResult(elem));
+            Segments = (interop.segments == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.segments, interop.segmentsCount, elem => new PFSegmentsGetSegmentResult(elem));
 
         }
     }
@@ -199,7 +199,7 @@ namespace PlayFab
         internal unsafe PFSegmentsGetAllSegmentsResult(Interop.PFSegmentsGetAllSegmentsResult interop)
         {
 
-            Segments = (interop.segments == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.segments, interop.segmentsCount, elem => new PFSegmentsGetSegmentResult(elem));
+            Segments = (interop.segments == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.segments, interop.segmentsCount, elem => new PFSegmentsGetSegmentResult(elem));
 
         }
     }

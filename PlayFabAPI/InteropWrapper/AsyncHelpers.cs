@@ -96,6 +96,7 @@ namespace PlayFab.InteropWrapper
             Marshal.FreeHGlobal(block.Handle);
         }
 
+        [AOT.MonoPInvokeCallback(typeof(Interop.XAsyncCompletionRoutine))]
         private static void AsyncBlockCallback(Interop.XAsyncBlockPtr block)
         {
             Interop.XAsyncBlock asyncBlock = (Interop.XAsyncBlock)Marshal.PtrToStructure(block.Handle, typeof(Interop.XAsyncBlock));

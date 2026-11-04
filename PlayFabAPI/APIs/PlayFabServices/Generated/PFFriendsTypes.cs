@@ -324,7 +324,7 @@ namespace PlayFab
         internal unsafe PFFriendsGetFriendsListResult(Interop.PFFriendsGetFriendsListResult interop)
         {
 
-            Friends = (interop.friends == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.friends, interop.friendsCount, elem => new PFFriendsFriendInfo(elem));
+            Friends = (interop.friends == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.friends, interop.friendsCount, elem => new PFFriendsFriendInfo(elem));
 
         }
     }

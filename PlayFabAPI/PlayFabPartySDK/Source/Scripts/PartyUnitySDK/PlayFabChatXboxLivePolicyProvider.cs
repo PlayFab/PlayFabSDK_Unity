@@ -85,6 +85,7 @@ namespace PlayFab.Party._Internal
         private const string _ErrorMessageCouldNotGetXuid = "Could not get a XUID.";
         private const string _ErrorMessageCouldNotGetXboxLiveToken = "Could not get an Xbox Live token.";
         private const string _ErrorMessageXboxLiveSignInFailed = "Xbox Live sign in failed.";
+        private const string _ErrorMessageCannotCreateLocalUserFromXboxLiveLogin = "Xbox Live sign-in to PlayFab completed, but SDK 3.0.0 cannot create a Party local user from an entity ID and an entity token. Call PlayFabMultiplayerManager.SetPlayer with a signed-in PFPlayerEntity instead.";
 
         public static PlayFabChatXboxLivePolicyProvider Get()
         {
@@ -100,7 +101,8 @@ namespace PlayFab.Party._Internal
             PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:PlayFabChatXboxLivePolicyProvider()");
 
             _multiplayerManager = PlayFabMultiplayerManager.Get();
-            string titleId = PlayFabSettings.staticSettings.TitleId;
+            // Use the title ID that the manager passes to PartyInitialize.
+            string titleId = _multiplayerManager.TitleId;
 
             _playerChatPermissions = new Dictionary<PlayFabPlayer, PARTY_XBL_CHAT_PERMISSION_INFO>(new PlayerComparator());
             _queuedCreateRemoteXboxLiveChatUserOps = new List<QueuedCreateRemoteXboxLiveChatUserOp>();
@@ -498,12 +500,10 @@ namespace PlayFab.Party._Internal
         {
             PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:OnPlayFabLoginSuccess(), EntityId: " + loginResult.entityId);
 
-            EntityKey entityKey = new EntityKey()
-            {
-                Id = loginResult.entityId,
-                Type = "title_player_account"
-            };
-            _multiplayerManager._CreateLocalUser(entityKey, loginResult.titlePlayerEntityToken);
+            // SDK 3.0.0 creates the Party local user only from a PFEntity
+            // (PlayFabMultiplayerManager.CreateLocalUser), and no SDK 3.0.0 API makes a PFEntity
+            // from an entity ID and an entity token.
+            PlayFabMultiplayerManager._LogError(_ErrorMessageCannotCreateLocalUserFromXboxLiveLogin);
         }
 
         private void SignInSilentlyComplete(int hresult, XUserHandle userHandle)

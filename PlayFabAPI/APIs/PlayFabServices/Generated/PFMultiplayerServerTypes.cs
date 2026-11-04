@@ -220,7 +220,7 @@ namespace PlayFab
 
             AliasName = (interop.aliasName == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.aliasName);
 
-            BuildSelectionCriteria = (interop.buildSelectionCriteria == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.buildSelectionCriteria, interop.buildSelectionCriteriaCount, elem => new PFMultiplayerServerBuildSelectionCriterion(elem));
+            BuildSelectionCriteria = (interop.buildSelectionCriteria == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.buildSelectionCriteria, interop.buildSelectionCriteriaCount, elem => new PFMultiplayerServerBuildSelectionCriterion(elem));
 
         }
     }
@@ -248,7 +248,7 @@ namespace PlayFab
         internal unsafe PFMultiplayerServerListBuildAliasesResponse(Interop.PFMultiplayerServerListBuildAliasesResponse interop)
         {
 
-            BuildAliases = (interop.buildAliases == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.buildAliases, interop.buildAliasesCount, elem => new PFMultiplayerServerBuildAliasDetailsResponse(elem));
+            BuildAliases = (interop.buildAliases == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.buildAliases, interop.buildAliasesCount, elem => new PFMultiplayerServerBuildAliasDetailsResponse(elem));
 
             PageSize = interop.pageSize;
 
@@ -417,7 +417,7 @@ namespace PlayFab
         internal unsafe PFMultiplayerServerDynamicStandbySettings(Interop.PFMultiplayerServerDynamicStandbySettings interop)
         {
 
-            DynamicFloorMultiplierThresholds = (interop.dynamicFloorMultiplierThresholds == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.dynamicFloorMultiplierThresholds, interop.dynamicFloorMultiplierThresholdsCount, elem => new PFMultiplayerServerDynamicStandbyThreshold(elem));
+            DynamicFloorMultiplierThresholds = (interop.dynamicFloorMultiplierThresholds == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.dynamicFloorMultiplierThresholds, interop.dynamicFloorMultiplierThresholdsCount, elem => new PFMultiplayerServerDynamicStandbyThreshold(elem));
 
             IsEnabled = InteropWrapper.WrapperHelpers.InteropToBool(interop.isEnabled);
 
@@ -541,7 +541,7 @@ namespace PlayFab
 
             IsEnabled = InteropWrapper.WrapperHelpers.InteropToBool(interop.isEnabled);
 
-            ScheduleList = (interop.scheduleList == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.scheduleList, interop.scheduleListCount, elem => new PFMultiplayerServerSchedule(elem));
+            ScheduleList = (interop.scheduleList == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.scheduleList, interop.scheduleListCount, elem => new PFMultiplayerServerSchedule(elem));
 
         }
 
@@ -736,7 +736,7 @@ namespace PlayFab
 
             Metadata = (interop.metadata == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.metadata, interop.metadataCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), InteropWrapper.WrapperHelpers.InteropToString(pair.value)));
 
-            RegionConfigurations = (interop.regionConfigurations == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.regionConfigurations, interop.regionConfigurationsCount, elem => new PFMultiplayerServerBuildRegion(elem));
+            RegionConfigurations = (interop.regionConfigurations == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.regionConfigurations, interop.regionConfigurationsCount, elem => new PFMultiplayerServerBuildRegion(elem));
 
         }
 
@@ -798,7 +798,7 @@ namespace PlayFab
         internal unsafe PFMultiplayerServerListBuildSummariesResponse(Interop.PFMultiplayerServerListBuildSummariesResponse interop)
         {
 
-            BuildSummaries = (interop.buildSummaries == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.buildSummaries, interop.buildSummariesCount, elem => new PFMultiplayerServerBuildSummary(elem));
+            BuildSummaries = (interop.buildSummaries == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.buildSummaries, interop.buildSummariesCount, elem => new PFMultiplayerServerBuildSummary(elem));
 
             PageSize = interop.pageSize;
 
@@ -921,7 +921,7 @@ namespace PlayFab
 
             PageSize = interop.pageSize;
 
-            QosServers = (interop.qosServers == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.qosServers, interop.qosServersCount, elem => new PFMultiplayerServerQosServer(elem));
+            QosServers = (interop.qosServers == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.qosServers, interop.qosServersCount, elem => new PFMultiplayerServerQosServer(elem));
 
             SkipToken = (interop.skipToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.skipToken);
 
@@ -1230,7 +1230,7 @@ namespace PlayFab
 
             BuildId = (interop.buildId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.buildId);
 
-            ConnectedPlayers = (interop.connectedPlayers == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.connectedPlayers, interop.connectedPlayersCount, elem => new PFMultiplayerServerConnectedPlayer(elem));
+            ConnectedPlayers = (interop.connectedPlayers == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.connectedPlayers, interop.connectedPlayersCount, elem => new PFMultiplayerServerConnectedPlayer(elem));
 
             FQDN = (interop.fQDN == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.fQDN);
 
@@ -1238,9 +1238,9 @@ namespace PlayFab
 
             LastStateTransitionTime = (interop.lastStateTransitionTime == null) ? null : *interop.lastStateTransitionTime;
 
-            Ports = (interop.ports == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.ports, interop.portsCount, elem => new PFMultiplayerServerPort(elem));
+            Ports = (interop.ports == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.ports, interop.portsCount, elem => new PFMultiplayerServerPort(elem));
 
-            PublicIPV4Addresses = (interop.publicIPV4Addresses == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.publicIPV4Addresses, interop.publicIPV4AddressesCount, elem => new PFMultiplayerServerPublicIpAddress(elem));
+            PublicIPV4Addresses = (interop.publicIPV4Addresses == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.publicIPV4Addresses, interop.publicIPV4AddressesCount, elem => new PFMultiplayerServerPublicIpAddress(elem));
 
             Region = (interop.region == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.region);
 

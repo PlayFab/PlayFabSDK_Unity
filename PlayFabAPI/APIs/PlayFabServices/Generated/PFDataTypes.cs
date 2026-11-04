@@ -631,7 +631,7 @@ namespace PlayFab
 
             ProfileVersion = interop.profileVersion;
 
-            UploadDetails = (interop.uploadDetails == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.uploadDetails, interop.uploadDetailsCount, elem => new PFDataInitiateFileUploadMetadata(elem));
+            UploadDetails = (interop.uploadDetails == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.uploadDetails, interop.uploadDetailsCount, elem => new PFDataInitiateFileUploadMetadata(elem));
 
         }
     }
@@ -836,7 +836,7 @@ namespace PlayFab
 
             ProfileVersion = interop.profileVersion;
 
-            SetResults = (interop.setResults == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.setResults, interop.setResultsCount, elem => new PFDataSetObjectInfo(elem));
+            SetResults = (interop.setResults == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.setResults, interop.setResultsCount, elem => new PFDataSetObjectInfo(elem));
 
         }
     }

@@ -75,6 +75,35 @@ namespace PlayFab.Tools
                 importer.SaveAndReimport();
             }
         }
+#if UNITY_GAMECORE
+
+        /// <summary>
+        /// PlayFab Kit patch: configures a console copy of a required binary before its first import, for the XBOX
+        /// consoles only. So the Editor never sees two libraries with the same name: the Editor and Windows players load
+        /// the copies of the windows\bin\x64 folder.
+        /// </summary>
+        void OnPreprocessAsset()
+        {
+            if (!GdkConstants.RequiredGdkConsoleBinaries.Contains(Path.GetFileName(assetPath)) ||
+                !assetPath.StartsWith(GdkConstants.TargetGdkConsolePluginPath + "/", System.StringComparison.Ordinal))
+            {
+                return;
+            }
+
+            var importer = assetImporter as PluginImporter;
+            if (importer == null)
+            {
+                Debug.LogWarning($"Could not get PluginImporter for console GDK binary: {assetPath}");
+                return;
+            }
+
+            importer.SetCompatibleWithAnyPlatform(false);
+            importer.SetCompatibleWithEditor(false);
+            importer.SetCompatibleWithPlatform(BuildTarget.StandaloneWindows64, false);
+            importer.SetCompatibleWithPlatform(BuildTarget.GameCoreXboxSeries, true);
+            importer.SetCompatibleWithPlatform(BuildTarget.GameCoreXboxOne, true);
+        }
+#endif
     }
 }
 #endif

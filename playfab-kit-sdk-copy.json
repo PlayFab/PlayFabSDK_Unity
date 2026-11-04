@@ -1,0 +1,24 @@
+{
+  "tool": "patches/playfab-sdk-3.0.0/New-PatchedSdkCopy.ps1",
+  "sourceCommit": "70e412497470e453ac2ee4b272d6a11aa7ef2267",
+  "patchFiles": [
+    "o12-xbox-live-policy-provider.patch",
+    "gil034-telemetry-callbacks.patch",
+    "gil037-telemetry-failure-callback.patch",
+    "gil047-party-library-name.patch",
+    "gil036-pointer-arrays.patch",
+    "gil025-async-block-callback.patch",
+    "sec05-device-make.patch",
+    "gil083-console-async-library.patch",
+    "gil085-console-libraries.patch",
+    "gil088-console-work-queue.patch",
+    "gil090-party-object-pool.patch",
+    "gil092-party-state-change-size.patch",
+    "gil093-party-finish-failed-batch.patch",
+    "gil094-party-unsupported-state-change.patch"
+  ],
+  "patchSha256": "558e372630b8cf4a7b86b683c11774720357ba6d922d166af4f19fe3b949cb03",
+  "publicationNotes": "Patch comments were revised for publication. Executable C# source is unchanged from the fourteen-patch set. Package metadata identifies this as a development build.",
+  "contentSha256": "634e125702c2bd7639025adeafc63736814c8288e6e302b4392e58043adf0481",
+  "fileCount": 2520
+}

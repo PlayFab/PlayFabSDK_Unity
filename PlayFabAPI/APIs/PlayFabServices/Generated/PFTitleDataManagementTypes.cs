@@ -227,7 +227,7 @@ namespace PlayFab
         internal unsafe PFTitleDataManagementGetTitleNewsResult(Interop.PFTitleDataManagementGetTitleNewsResult interop)
         {
 
-            News = (interop.news == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.news, interop.newsCount, elem => new PFTitleDataManagementTitleNewsItem(elem));
+            News = (interop.news == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.news, interop.newsCount, elem => new PFTitleDataManagementTitleNewsItem(elem));
 
         }
     }

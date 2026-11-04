@@ -7,8 +7,12 @@ namespace PartyCSharpSDK.Interop
 {
     partial class PFPInterop
     {
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
-        const string ThunkDllName = "PartyGDK";
+#if (MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+        // Match the Party.dll name used by the SDK's plugin setup.
+        const string ThunkDllName = "Party";
+#elif MICROSOFT_GDK_SUPPORT && !UNITY_EDITOR
+        // Match the Party.dll name used by the SDK's plugin setup.
+        const string ThunkDllName = "Party";
 #elif UNITY_SWITCH && !UNITY_EDITOR
         const string ThunkDllName = "Party";
 #elif UNITY_IOS && !UNITY_EDITOR

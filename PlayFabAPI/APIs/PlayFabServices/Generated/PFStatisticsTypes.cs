@@ -420,7 +420,7 @@ namespace PlayFab
 
             AggregationSources = (interop.aggregationSources == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.aggregationSources, interop.aggregationSourcesCount);
 
-            Columns = (interop.columns == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.columns, interop.columnsCount, elem => new PFStatisticsStatisticColumn(elem));
+            Columns = (interop.columns == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.columns, interop.columnsCount, elem => new PFStatisticsStatisticColumn(elem));
 
             Created = interop.created;
 
@@ -501,7 +501,7 @@ namespace PlayFab
         internal unsafe PFStatisticsStatisticColumnCollection(Interop.PFStatisticsStatisticColumnCollection interop)
         {
 
-            Columns = (interop.columns == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.columns, interop.columnsCount, elem => new PFStatisticsStatisticColumn(elem));
+            Columns = (interop.columns == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.columns, interop.columnsCount, elem => new PFStatisticsStatisticColumn(elem));
 
         }
 
@@ -677,7 +677,7 @@ namespace PlayFab
 
             EntityKey = (interop.entityKey == null) ? null : new(*interop.entityKey);
 
-            Statistics = (interop.statistics == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.statistics, interop.statisticsCount, elem => new PFStatisticsEntityStatisticValue(elem));
+            Statistics = (interop.statistics == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.statistics, interop.statisticsCount, elem => new PFStatisticsEntityStatisticValue(elem));
 
         }
 
@@ -721,7 +721,7 @@ namespace PlayFab
 
             ColumnDetails = (interop.columnDetails == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.columnDetails, interop.columnDetailsCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), new PFStatisticsStatisticColumnCollection(*pair.value)));
 
-            EntitiesStatistics = (interop.entitiesStatistics == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.entitiesStatistics, interop.entitiesStatisticsCount, elem => new PFStatisticsEntityStatistics(elem));
+            EntitiesStatistics = (interop.entitiesStatistics == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.entitiesStatistics, interop.entitiesStatisticsCount, elem => new PFStatisticsEntityStatistics(elem));
 
         }
     }
@@ -890,7 +890,7 @@ namespace PlayFab
 
             AggregationSources = (interop.aggregationSources == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.aggregationSources, interop.aggregationSourcesCount);
 
-            Columns = (interop.columns == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.columns, interop.columnsCount, elem => new PFStatisticsStatisticColumn(elem));
+            Columns = (interop.columns == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.columns, interop.columnsCount, elem => new PFStatisticsStatisticColumn(elem));
 
             Created = interop.created;
 
@@ -1000,7 +1000,7 @@ namespace PlayFab
 
             SkipToken = (interop.skipToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.skipToken);
 
-            StatisticDefinitions = (interop.statisticDefinitions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.statisticDefinitions, interop.statisticDefinitionsCount, elem => new PFStatisticsStatisticDefinition(elem));
+            StatisticDefinitions = (interop.statisticDefinitions == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.statisticDefinitions, interop.statisticDefinitionsCount, elem => new PFStatisticsStatisticDefinition(elem));
 
         }
     }

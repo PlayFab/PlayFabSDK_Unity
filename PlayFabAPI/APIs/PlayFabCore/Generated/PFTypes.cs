@@ -1913,7 +1913,7 @@ namespace PlayFab
 
             NintendoSwitchDeviceIdInfo = (interop.nintendoSwitchDeviceIdInfo == null) ? null : new(*interop.nintendoSwitchDeviceIdInfo);
 
-            OpenIdInfo = (interop.openIdInfo == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.openIdInfo, interop.openIdInfoCount, elem => new PFUserOpenIdInfo(elem));
+            OpenIdInfo = (interop.openIdInfo == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.openIdInfo, interop.openIdInfoCount, elem => new PFUserOpenIdInfo(elem));
 
             PlayFabId = (interop.playFabId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.playFabId);
 
@@ -2787,7 +2787,7 @@ namespace PlayFab
 
             OverrideExpiration = (interop.overrideExpiration == null) ? null : *interop.overrideExpiration;
 
-            Subscriptions = (interop.subscriptions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.subscriptions, interop.subscriptionsCount, elem => new PFSubscriptionModel(elem));
+            Subscriptions = (interop.subscriptions == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.subscriptions, interop.subscriptionsCount, elem => new PFSubscriptionModel(elem));
 
         }
 
@@ -3102,13 +3102,13 @@ namespace PlayFab
         internal unsafe PFPlayerProfileModel(Interop.PFPlayerProfileModel interop)
         {
 
-            AdCampaignAttributions = (interop.adCampaignAttributions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.adCampaignAttributions, interop.adCampaignAttributionsCount, elem => new PFAdCampaignAttributionModel(elem));
+            AdCampaignAttributions = (interop.adCampaignAttributions == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.adCampaignAttributions, interop.adCampaignAttributionsCount, elem => new PFAdCampaignAttributionModel(elem));
 
             AvatarUrl = (interop.avatarUrl == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.avatarUrl);
 
             BannedUntil = (interop.bannedUntil == null) ? null : *interop.bannedUntil;
 
-            ContactEmailAddresses = (interop.contactEmailAddresses == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.contactEmailAddresses, interop.contactEmailAddressesCount, elem => new PFContactEmailInfoModel(elem));
+            ContactEmailAddresses = (interop.contactEmailAddresses == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.contactEmailAddresses, interop.contactEmailAddressesCount, elem => new PFContactEmailInfoModel(elem));
 
             Created = (interop.created == null) ? null : *interop.created;
 
@@ -3118,11 +3118,11 @@ namespace PlayFab
 
             LastLogin = (interop.lastLogin == null) ? null : *interop.lastLogin;
 
-            LinkedAccounts = (interop.linkedAccounts == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.linkedAccounts, interop.linkedAccountsCount, elem => new PFLinkedPlatformAccountModel(elem));
+            LinkedAccounts = (interop.linkedAccounts == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.linkedAccounts, interop.linkedAccountsCount, elem => new PFLinkedPlatformAccountModel(elem));
 
-            Locations = (interop.locations == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.locations, interop.locationsCount, elem => new PFLocationModel(elem));
+            Locations = (interop.locations == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.locations, interop.locationsCount, elem => new PFLocationModel(elem));
 
-            Memberships = (interop.memberships == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.memberships, interop.membershipsCount, elem => new PFMembershipModel(elem));
+            Memberships = (interop.memberships == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.memberships, interop.membershipsCount, elem => new PFMembershipModel(elem));
 
             Origination = (interop.origination == null) ? null : (PFLoginIdentityProvider?)(*interop.origination);
 
@@ -3130,17 +3130,17 @@ namespace PlayFab
 
             PublisherId = (interop.publisherId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.publisherId);
 
-            PushNotificationRegistrations = (interop.pushNotificationRegistrations == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.pushNotificationRegistrations, interop.pushNotificationRegistrationsCount, elem => new PFPushNotificationRegistrationModel(elem));
+            PushNotificationRegistrations = (interop.pushNotificationRegistrations == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.pushNotificationRegistrations, interop.pushNotificationRegistrationsCount, elem => new PFPushNotificationRegistrationModel(elem));
 
-            Statistics = (interop.statistics == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.statistics, interop.statisticsCount, elem => new PFStatisticModel(elem));
+            Statistics = (interop.statistics == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.statistics, interop.statisticsCount, elem => new PFStatisticModel(elem));
 
-            Tags = (interop.tags == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.tags, interop.tagsCount, elem => new PFTagModel(elem));
+            Tags = (interop.tags == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.tags, interop.tagsCount, elem => new PFTagModel(elem));
 
             TitleId = (interop.titleId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.titleId);
 
             TotalValueToDateInUSD = (interop.totalValueToDateInUSD == null) ? null : *interop.totalValueToDateInUSD;
 
-            ValuesToDate = (interop.valuesToDate == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.valuesToDate, interop.valuesToDateCount, elem => new PFValueToDateModel(elem));
+            ValuesToDate = (interop.valuesToDate == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.valuesToDate, interop.valuesToDateCount, elem => new PFValueToDateModel(elem));
 
         }
 
@@ -3463,7 +3463,7 @@ namespace PlayFab
 
             CharacterId = (interop.characterId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.characterId);
 
-            Inventory = (interop.inventory == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.inventory, interop.inventoryCount, elem => new PFItemInstance(elem));
+            Inventory = (interop.inventory == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.inventory, interop.inventoryCount, elem => new PFItemInstance(elem));
 
         }
 
@@ -3609,13 +3609,13 @@ namespace PlayFab
 
             AccountInfo = (interop.accountInfo == null) ? null : new(*interop.accountInfo);
 
-            CharacterInventories = (interop.characterInventories == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.characterInventories, interop.characterInventoriesCount, elem => new PFCharacterInventory(elem));
+            CharacterInventories = (interop.characterInventories == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.characterInventories, interop.characterInventoriesCount, elem => new PFCharacterInventory(elem));
 
-            CharacterList = (interop.characterList == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.characterList, interop.characterListCount, elem => new PFCharacterResult(elem));
+            CharacterList = (interop.characterList == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.characterList, interop.characterListCount, elem => new PFCharacterResult(elem));
 
             PlayerProfile = (interop.playerProfile == null) ? null : new(*interop.playerProfile);
 
-            PlayerStatistics = (interop.playerStatistics == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.playerStatistics, interop.playerStatisticsCount, elem => new PFStatisticValue(elem));
+            PlayerStatistics = (interop.playerStatistics == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.playerStatistics, interop.playerStatisticsCount, elem => new PFStatisticValue(elem));
 
             TitleData = (interop.titleData == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.titleData, interop.titleDataCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), InteropWrapper.WrapperHelpers.InteropToString(pair.value)));
 
@@ -3623,7 +3623,7 @@ namespace PlayFab
 
             UserDataVersion = interop.userDataVersion;
 
-            UserInventory = (interop.userInventory == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.userInventory, interop.userInventoryCount, elem => new PFItemInstance(elem));
+            UserInventory = (interop.userInventory == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.userInventory, interop.userInventoryCount, elem => new PFItemInstance(elem));
 
             UserReadOnlyData = (interop.userReadOnlyData == null) ? null : InteropWrapper.WrapperHelpers.InteropToDictionary(interop.userReadOnlyData, interop.userReadOnlyDataCount, pair => (InteropWrapper.WrapperHelpers.InteropToString(pair.key), new PFUserDataRecord(*pair.value)));
 
@@ -3794,7 +3794,7 @@ namespace PlayFab
         internal unsafe PFTreatmentAssignment(Interop.PFTreatmentAssignment interop)
         {
 
-            Variables = (interop.variables == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.variables, interop.variablesCount, elem => new PFVariable(elem));
+            Variables = (interop.variables == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.variables, interop.variablesCount, elem => new PFVariable(elem));
 
             Variants = (interop.variants == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.variants, interop.variantsCount);
 

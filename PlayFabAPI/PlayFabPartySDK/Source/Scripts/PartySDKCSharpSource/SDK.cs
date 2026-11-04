@@ -207,31 +207,40 @@ namespace PartyCSharpSDK
             err = PFPInterop.PartyStartProcessingStateChanges(handle.InteropHandle, out stateChangeCount, out rawStateChanges);
             if (PartyError.SUCCEEDED(err) && stateChangeCount > 0)
             {
-                List<PARTY_STATE_CHANGE> unsupportStateChanges = null;
-                IntPtr* arrayPtr = (IntPtr*)rawStateChanges.ToPointer();
-                for (Int32 i = 0; i < stateChangeCount; i++)
+                try
                 {
-                    PARTY_STATE_CHANGE stateChangeObj = PARTY_STATE_CHANGE.CreateFromPtr(arrayPtr[i]);
-                    if (stateChangeObj.GetType() != typeof(PARTY_STATE_CHANGE))
+                    List<PARTY_STATE_CHANGE> unsupportStateChanges = null;
+                    IntPtr* arrayPtr = (IntPtr*)rawStateChanges.ToPointer();
+                    for (Int32 i = 0; i < stateChangeCount; i++)
                     {
-                        stateChanges.Add(stateChangeObj);
-                    }
-                    else
-                    {
-                        // Remove and immediately finish processing state changes that aren't supported by the
-                        // CSharp wrapper, which will all be of the basic PARTY_STATE_CHANGE type
-                        if (unsupportStateChanges == null)
+                        PARTY_STATE_CHANGE stateChangeObj = PARTY_STATE_CHANGE.CreateFromPtr(arrayPtr[i]);
+                        if (stateChangeObj.GetType() != typeof(PARTY_STATE_CHANGE))
                         {
-                            unsupportStateChanges = objectPool.Retrieve<List<PARTY_STATE_CHANGE>>();
+                            stateChanges.Add(stateChangeObj);
                         }
+                        else
+                        {
+                            // Remove and immediately finish processing state changes that aren't supported by the
+                            // CSharp wrapper, which will all be of the basic PARTY_STATE_CHANGE type
+                            if (unsupportStateChanges == null)
+                            {
+                                unsupportStateChanges = objectPool.Retrieve<List<PARTY_STATE_CHANGE>>();
+                            }
 
-                        unsupportStateChanges.Add(stateChangeObj);
+                            unsupportStateChanges.Add(stateChangeObj);
+                        }
+                    }
+
+                    if (unsupportStateChanges != null)
+                    {
+                        err = PartyFinishProcessingStateChanges(handle, unsupportStateChanges);
                     }
                 }
-
-                if (unsupportStateChanges != null)
+                catch
                 {
-                    err = PartyFinishProcessingStateChanges(handle, unsupportStateChanges);
+                    // The caller finishes only a batch that this call returns, so finish the batch here. Party needs every state change finished.
+                    PFPInterop.PartyFinishProcessingStateChanges(handle.InteropHandle, stateChangeCount, rawStateChanges);
+                    throw;
                 }
             }
 

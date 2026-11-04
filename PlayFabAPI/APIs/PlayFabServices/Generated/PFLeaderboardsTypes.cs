@@ -565,13 +565,13 @@ namespace PlayFab
         internal unsafe PFLeaderboardsGetEntityLeaderboardResponse(Interop.PFLeaderboardsGetEntityLeaderboardResponse interop)
         {
 
-            Columns = (interop.columns == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.columns, interop.columnsCount, elem => new PFLeaderboardsLeaderboardColumn(elem));
+            Columns = (interop.columns == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.columns, interop.columnsCount, elem => new PFLeaderboardsLeaderboardColumn(elem));
 
             EntryCount = interop.entryCount;
 
             NextReset = (interop.nextReset == null) ? null : *interop.nextReset;
 
-            Rankings = (interop.rankings == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.rankings, interop.rankingsCount, elem => new PFLeaderboardsEntityLeaderboardEntry(elem));
+            Rankings = (interop.rankings == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.rankings, interop.rankingsCount, elem => new PFLeaderboardsEntityLeaderboardEntry(elem));
 
             Version = interop.version;
 
@@ -789,7 +789,7 @@ namespace PlayFab
         internal unsafe PFLeaderboardsGetLeaderboardDefinitionResponse(Interop.PFLeaderboardsGetLeaderboardDefinitionResponse interop)
         {
 
-            Columns = InteropWrapper.WrapperHelpers.InteropToArray(*interop.columns, interop.columnsCount, elem => new PFLeaderboardsLeaderboardColumn(elem))!;
+            Columns = InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.columns, interop.columnsCount, elem => new PFLeaderboardsLeaderboardColumn(elem))!;
 
             Created = interop.created;
 
@@ -1010,7 +1010,7 @@ namespace PlayFab
         internal unsafe PFLeaderboardsLeaderboardDefinition(Interop.PFLeaderboardsLeaderboardDefinition interop)
         {
 
-            Columns = InteropWrapper.WrapperHelpers.InteropToArray(*interop.columns, interop.columnsCount, elem => new PFLeaderboardsLeaderboardColumn(elem))!;
+            Columns = InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.columns, interop.columnsCount, elem => new PFLeaderboardsLeaderboardColumn(elem))!;
 
             Created = interop.created;
 
@@ -1088,7 +1088,7 @@ namespace PlayFab
         internal unsafe PFLeaderboardsListLeaderboardDefinitionsResponse(Interop.PFLeaderboardsListLeaderboardDefinitionsResponse interop)
         {
 
-            LeaderboardDefinitions = (interop.leaderboardDefinitions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.leaderboardDefinitions, interop.leaderboardDefinitionsCount, elem => new PFLeaderboardsLeaderboardDefinition(elem));
+            LeaderboardDefinitions = (interop.leaderboardDefinitions == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.leaderboardDefinitions, interop.leaderboardDefinitionsCount, elem => new PFLeaderboardsLeaderboardDefinition(elem));
 
             PageSize = interop.pageSize;
 

@@ -653,7 +653,7 @@ namespace PlayFab
 
             NewStackValues = (interop.newStackValues == null) ? null : new(*interop.newStackValues);
 
-            PriceAmounts = (interop.priceAmounts == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.priceAmounts, interop.priceAmountsCount, elem => new PFInventoryPurchasePriceAmount(elem));
+            PriceAmounts = (interop.priceAmounts == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.priceAmounts, interop.priceAmountsCount, elem => new PFInventoryPurchasePriceAmount(elem));
 
             StoreId = (interop.storeId == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.storeId);
 
@@ -1539,7 +1539,7 @@ namespace PlayFab
 
             ETag = (interop.eTag == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.eTag);
 
-            Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.items, interop.itemsCount, elem => new PFInventoryInventoryItem(elem));
+            Items = (interop.items == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.items, interop.itemsCount, elem => new PFInventoryInventoryItem(elem));
 
         }
     }
@@ -2109,7 +2109,7 @@ namespace PlayFab
 
             ItemType = (interop.itemType == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.itemType);
 
-            Operations = (interop.operations == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.operations, interop.operationsCount, elem => new PFInventoryTransactionOperation(elem));
+            Operations = (interop.operations == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.operations, interop.operationsCount, elem => new PFInventoryTransactionOperation(elem));
 
             OperationType = (interop.operationType == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.operationType);
 
@@ -2211,7 +2211,7 @@ namespace PlayFab
 
             ContinuationToken = (interop.continuationToken == null) ? null : InteropWrapper.WrapperHelpers.InteropToString(interop.continuationToken);
 
-            Transactions = (interop.transactions == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.transactions, interop.transactionsCount, elem => new PFInventoryTransaction(elem));
+            Transactions = (interop.transactions == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.transactions, interop.transactionsCount, elem => new PFInventoryTransaction(elem));
 
         }
     }
@@ -2598,9 +2598,9 @@ namespace PlayFab
         internal unsafe PFInventoryRedeemAppleAppStoreInventoryItemsResponse(Interop.PFInventoryRedeemAppleAppStoreInventoryItemsResponse interop)
         {
 
-            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
+            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
 
-            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
+            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
 
             TransactionIds = (interop.transactionIds == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.transactionIds, interop.transactionIdsCount);
 
@@ -2727,9 +2727,9 @@ namespace PlayFab
         internal unsafe PFInventoryRedeemGooglePlayInventoryItemsResponse(Interop.PFInventoryRedeemGooglePlayInventoryItemsResponse interop)
         {
 
-            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
+            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
 
-            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
+            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
 
             TransactionIds = (interop.transactionIds == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.transactionIds, interop.transactionIdsCount);
 
@@ -2817,9 +2817,9 @@ namespace PlayFab
         internal unsafe PFInventoryRedeemMicrosoftStoreInventoryItemsResponse(Interop.PFInventoryRedeemMicrosoftStoreInventoryItemsResponse interop)
         {
 
-            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
+            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
 
-            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
+            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
 
             TransactionIds = (interop.transactionIds == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.transactionIds, interop.transactionIdsCount);
 
@@ -2904,9 +2904,9 @@ namespace PlayFab
         internal unsafe PFInventoryRedeemNintendoEShopInventoryItemsResponse(Interop.PFInventoryRedeemNintendoEShopInventoryItemsResponse interop)
         {
 
-            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
+            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
 
-            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
+            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
 
             TransactionIds = (interop.transactionIds == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.transactionIds, interop.transactionIdsCount);
 
@@ -3012,9 +3012,9 @@ namespace PlayFab
         internal unsafe PFInventoryRedeemPlayStationStoreInventoryItemsResponse(Interop.PFInventoryRedeemPlayStationStoreInventoryItemsResponse interop)
         {
 
-            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
+            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
 
-            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
+            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
 
             TransactionIds = (interop.transactionIds == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.transactionIds, interop.transactionIdsCount);
 
@@ -3089,9 +3089,9 @@ namespace PlayFab
         internal unsafe PFInventoryRedeemSteamInventoryItemsResponse(Interop.PFInventoryRedeemSteamInventoryItemsResponse interop)
         {
 
-            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
+            Failed = (interop.failed == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.failed, interop.failedCount, elem => new PFInventoryRedemptionFailure(elem));
 
-            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropToArray(*interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
+            Succeeded = (interop.succeeded == null) ? null : InteropWrapper.WrapperHelpers.InteropPointerArrayToArray(interop.succeeded, interop.succeededCount, elem => new PFInventoryRedemptionSuccess(elem));
 
             TransactionIds = (interop.transactionIds == null) ? null : InteropWrapper.WrapperHelpers.InteropToStringArray(interop.transactionIds, interop.transactionIdsCount);
 

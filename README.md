@@ -1,5 +1,7 @@
 # PlayFab Unity SDK
 
+> **Development branch:** This branch contains fixes on top of SDK 3.0.0 for Unity NetRumble. It is not an approved SDK release. The changes cover AOT callbacks, native pointer arrays, telemetry privacy, GDK library loading, console plugin setup and work queues, and Party state-change handling. No native libraries or console add-on packages are included. Console builds still require the appropriate licensed SDKs and Unity modules.
+
 The **PlayFab Unity SDK** is a Unity package (`microsoft.playfab.sdk`) that projects the native PlayFab libraries into C#. It provides Unity-friendly access to PlayFab Core, Services, Game Save, Multiplayer, and Party APIs from one package.
 
 > **Note:** This SDK replaces the legacy [PlayFab Unity SDK](https://github.com/PlayFab/UnitySDK). If you are migrating from the legacy SDK, start with the [Migration Guide](Documents~/MigrationGuide.md).
