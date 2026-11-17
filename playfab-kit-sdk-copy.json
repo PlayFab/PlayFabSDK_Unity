@@ -18,7 +18,7 @@
     "gil094-party-unsupported-state-change.patch"
   ],
   "patchSha256": "558e372630b8cf4a7b86b683c11774720357ba6d922d166af4f19fe3b949cb03",
-  "publicationNotes": "Patch comments were revised for publication. Executable C# source is unchanged from the fourteen-patch set. Package metadata identifies this as a development build.",
-  "contentSha256": "634e125702c2bd7639025adeafc63736814c8288e6e302b4392e58043adf0481",
-  "fileCount": 2520
+  "publicationNotes": "Patch comments were revised for publication. The fourteen-patch set also has a guard that returns empty strings for failed voice chat transcriptions without reading their native string pointers. Package metadata identifies this as a development build.",
+  "contentSha256": "2e21fd77f7056ed04eba7031f7eb4f7371cccec3ceb093ad6f9f7c174d67b1fc",
+  "fileCount": 2522
 }

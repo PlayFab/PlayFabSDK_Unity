@@ -1374,8 +1374,10 @@ namespace PartyCSharpSDK
                 stateChangeConverted.receiverChatControlCount,
                 SDK.objectPool);
             this.sourceType = stateChangeConverted.sourceType;
-            this.languageCode = Converters.PtrToStringUTF8(stateChangeConverted.languageCode);
-            this.transcription = Converters.PtrToStringUTF8(stateChangeConverted.transcription);
+            // Failed transcriptions can contain unset string pointers in some Party builds.
+            bool succeeded = this.result == PARTY_STATE_CHANGE_RESULT.PARTY_STATE_CHANGE_RESULT_SUCCEEDED;
+            this.languageCode = succeeded ? Converters.PtrToStringUTF8(stateChangeConverted.languageCode) : String.Empty;
+            this.transcription = succeeded ? Converters.PtrToStringUTF8(stateChangeConverted.transcription) : String.Empty;
             this.type = stateChangeConverted.type;
             this.translations = Converters.PtrToClassListFromPool<PARTY_TRANSLATION, Interop.PARTY_TRANSLATION>(
                 stateChangeConverted.translations,
