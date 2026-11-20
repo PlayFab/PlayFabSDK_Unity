@@ -1,6 +1,13 @@
 # PlayFab Unity SDK
 
-> **Development branch:** This branch contains fixes on top of SDK 3.0.0 for Unity NetRumble. It is not an approved SDK release. The changes cover AOT callbacks, native pointer arrays, telemetry privacy, GDK library loading, console plugin setup and work queues, and Party state-change handling. No native libraries or console add-on packages are included. Console builds still require the appropriate licensed SDKs and Unity modules.
+[![Latest release][badge-release]][link-release]
+[![License: MIT][badge-license]][link-license]
+[![Unity 6000.0+][badge-unity]][link-unity]
+[![Microsoft GDK 2604+][badge-gdk]][link-gdk]
+[![Documentation on Microsoft Learn][badge-docs]][link-docs]
+[![Visit our Blog][badge-blog]][link-blog]
+[![Join us on Discord][badge-discord]][link-discord]
+[![PRs welcome][badge-prs]][link-prs]
 
 The **PlayFab Unity SDK** is a Unity package (`microsoft.playfab.sdk`) that projects the native PlayFab libraries into C#. It provides Unity-friendly access to PlayFab Core, Services, Game Save, Multiplayer, and Party APIs from one package.
 
@@ -98,8 +105,26 @@ Most public SDK wrappers return the inner native interop task directly. Authenti
 - [Unity GDK Package Documentation](https://docs.unity3d.com/Packages/com.unity.microsoft.gdk@latest)
 - [Unity GDK Tools Package Documentation](https://docs.unity3d.com/Packages/com.unity.microsoft.gdk.tools@latest)
 - [GDK Documentation](https://learn.microsoft.com/gaming/gdk/)
-- [Microsoft Game Dev Discord](https://discord.com/invite/msftgamedev)
+- [Microsoft Game Dev Discord](https://aka.ms/msftgamedevdiscord)
 
 ## License
 
 See [LICENSE.txt](LICENSE.txt) for license information.
+
+<!-- Badge image and link definitions -->
+[badge-release]: https://img.shields.io/github/v/release/PlayFab/PlayFabSDK_Unity?label=release&color=107C10
+[link-release]: https://github.com/PlayFab/PlayFabSDK_Unity/releases
+[badge-license]: https://img.shields.io/github/license/PlayFab/PlayFabSDK_Unity?color=107C10
+[link-license]: LICENSE.txt
+[badge-unity]: https://img.shields.io/badge/Unity-6000.0%2B-000000?logo=unity&logoColor=white
+[link-unity]: https://unity.com/
+[badge-gdk]: https://img.shields.io/badge/Microsoft%20GDK-2604%2B-107C10
+[link-gdk]: https://github.com/microsoft/GDK/releases
+[badge-docs]: https://img.shields.io/badge/docs-Microsoft%20Learn-0078D4
+[link-docs]: https://learn.microsoft.com/xbox/playfab/sdks/unified-unity/overview
+[badge-blog]: https://img.shields.io/badge/Visit%20our-Blog-FFA500?logo=rss&logoColor=white
+[link-blog]: https://developer.microsoft.com/en-us/games/articles/
+[badge-discord]: https://img.shields.io/badge/Join%20us%20on-Discord-7289DA?logo=discord&logoColor=white
+[link-discord]: https://aka.ms/msftgamedevdiscord
+[badge-prs]: https://img.shields.io/badge/PRs-welcome-d6336c
+[link-prs]: https://github.com/PlayFab/PlayFabSDK_Unity/pulls

@@ -238,8 +238,6 @@ namespace PlayFab.InteropWrapper.Core
 
                 var failedEvents = WrapperHelpers.InteropPointerArrayToArray(eventPipelineFailedEvents, failedEventsCount, elem => new PFEvent(elem));
 
-                // PlayFab Kit patch: look up the handler by its callback ID, as the success handler does.
-                // The internal context is not a key of CallbackIdToHandler, so the lookup threw inside a native callback.
                 IssueEventCallback(InternalContextToCallbackId[id], translatedUploadError, WrapperHelpers.InteropToString(errorMessage), failedEvents);
             }
 

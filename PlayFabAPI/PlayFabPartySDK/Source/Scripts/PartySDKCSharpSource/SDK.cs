@@ -203,13 +203,13 @@ namespace PartyCSharpSDK
 
             UInt32 stateChangeCount;
             IntPtr rawStateChanges;
-            stateChanges = objectPool.Retrieve<List<PARTY_STATE_CHANGE>>();
+            stateChanges = objectPool.RetrieveList<PARTY_STATE_CHANGE>();
             err = PFPInterop.PartyStartProcessingStateChanges(handle.InteropHandle, out stateChangeCount, out rawStateChanges);
             if (PartyError.SUCCEEDED(err) && stateChangeCount > 0)
             {
+                List<PARTY_STATE_CHANGE> unsupportStateChanges = null;
                 try
                 {
-                    List<PARTY_STATE_CHANGE> unsupportStateChanges = null;
                     IntPtr* arrayPtr = (IntPtr*)rawStateChanges.ToPointer();
                     for (Int32 i = 0; i < stateChangeCount; i++)
                     {
@@ -224,23 +224,29 @@ namespace PartyCSharpSDK
                             // CSharp wrapper, which will all be of the basic PARTY_STATE_CHANGE type
                             if (unsupportStateChanges == null)
                             {
-                                unsupportStateChanges = objectPool.Retrieve<List<PARTY_STATE_CHANGE>>();
+                                unsupportStateChanges = objectPool.RetrieveList<PARTY_STATE_CHANGE>();
                             }
 
                             unsupportStateChanges.Add(stateChangeObj);
                         }
                     }
-
-                    if (unsupportStateChanges != null)
-                    {
-                        err = PartyFinishProcessingStateChanges(handle, unsupportStateChanges);
-                    }
                 }
                 catch
                 {
-                    // The caller finishes only a batch that this call returns, so finish the batch here. Party needs every state change finished.
+                    ReturnStateChangesToPool(stateChanges);
+                    stateChanges = null;
+                    if (unsupportStateChanges != null)
+                    {
+                        ReturnStateChangesToPool(unsupportStateChanges);
+                    }
+
                     PFPInterop.PartyFinishProcessingStateChanges(handle.InteropHandle, stateChangeCount, rawStateChanges);
                     throw;
+                }
+
+                if (unsupportStateChanges != null)
+                {
+                    err = PartyFinishProcessingStateChanges(handle, unsupportStateChanges);
                 }
             }
 
@@ -262,11 +268,9 @@ namespace PartyCSharpSDK
             for (Int32 i = 0; i < stateChanges.Count; i++)
             {
                 stateChangeIds[i] = stateChanges[i].StateChangeId;
-                stateChanges[i].Cleanup();
             }
 
-            stateChanges.Clear();
-            objectPool.Return(stateChanges);
+            ReturnStateChangesToPool(stateChanges);
 
             err = PFPInterop.PartyFinishProcessingStateChanges(
                 handle.InteropHandle,
@@ -274,6 +278,17 @@ namespace PartyCSharpSDK
                 new IntPtr(stateChangeIds));
 
             return err;
+        }
+
+        private static void ReturnStateChangesToPool(List<PARTY_STATE_CHANGE> stateChanges)
+        {
+            for (Int32 i = 0; i < stateChanges.Count; i++)
+            {
+                stateChanges[i].Cleanup();
+            }
+
+            stateChanges.Clear();
+            objectPool.Return(stateChanges);
         }
 
         public static UInt32 PartyDestroyLocalUser(

@@ -58,7 +58,7 @@ namespace PlayFab.InteropWrapper.Multiplayer
         {
             uint stateChangeCount = 0;
 
-            collection.StateChanges = ObjPool.Retrieve<List<PFLobbyStateChange>>();
+            collection.StateChanges = ObjPool.RetrieveList<PFLobbyStateChange>();
             unsafe
             {
                 PlayFab.Interop.Multiplayer.PFLobbyStateChange** rawStateChanges = null;

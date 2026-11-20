@@ -40,7 +40,11 @@ namespace PartyXBLCSharpSDK
                     break;
                 default:
                     Debug.WriteLine(String.Format("Unhandle type {0}\n", stateChangeUnion.stateChange.stateChangeType));
-                    Debugger.Break();
+                    if (Debugger.IsAttached)
+                    {
+                        Debugger.Break();
+                    }
+
                     result = new PARTY_XBL_STATE_CHANGE(stateChangeUnion.stateChange.stateChangeType, stateChangePtr);
                     break;
             }

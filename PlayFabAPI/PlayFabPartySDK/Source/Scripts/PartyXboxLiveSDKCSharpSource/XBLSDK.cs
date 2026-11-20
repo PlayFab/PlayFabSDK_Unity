@@ -260,6 +260,7 @@ namespace PartyXBLCSharpSDK
                 return PartyError.InvalidArg;
             }
 
+            UInt32 stateChangeCount = (UInt32)stateChanges.Count;
             IntPtr* stateChangeIds = stackalloc IntPtr[stateChanges.Count];
             for (Int32 i = 0; i < stateChanges.Count; i++)
             {
@@ -271,7 +272,7 @@ namespace PartyXBLCSharpSDK
 
             err = PartyXblInterop.PartyXblFinishProcessingStateChanges(
                 handle.InteropHandle,
-                (UInt32)stateChanges.Count,
+                stateChangeCount,
                 new IntPtr(stateChangeIds));
 
             return err;

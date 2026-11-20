@@ -61,7 +61,11 @@ namespace PlayFab.InteropWrapper.Multiplayer
 
                 default:
                     Debug.Write(string.Format("Unhandle type {0}\n", stateChangeUnion.stateChange.stateChangeType));
-                    Debugger.Break();
+                    if (Debugger.IsAttached)
+                    {
+                        Debugger.Break();
+                    }
+
                     result = new PFMatchmakingStateChange(wrapperChangeType, stateChangePtr);
                     break;
             }

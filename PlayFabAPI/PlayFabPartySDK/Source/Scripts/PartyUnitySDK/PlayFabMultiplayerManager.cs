@@ -22,19 +22,21 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT && !UNITY_EDITOR
 #define BUILD_XBL_PLUGIN
 #endif
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 using PartyCSharpSDK;
 using PartyXBLCSharpSDK;
 using PlayFab.Party._Internal;
 using UnityEngine;
+#if MICROSOFT_GDK_SUPPORT
+using XGR = Unity.XGamingRuntime;
+#endif
 #if UNITY_EDITOR
 using UnityEditor.Compilation;
 using UnityEditor;
@@ -110,6 +112,11 @@ namespace PlayFab.Party
         private const string _ErrorMessageTooManyRecipients = "Too many recipients.";
         private const string _ErrorMessageCannotCallAPINotConnectedToNetwork = "You need to connect to a network before you can call this method.";
         private const string _ErrorMessageMissingMultiplayerManagerPrefab = "PlayFabMultiplayerManager Prefab not found. You need to add the PlayFabMultiplayerManager prefab to your scene.";
+        private const string _ErrorMessageMissingXboxUser = "No Xbox user is set, so Xbox Live chat privacy, the Xbox user ID, and Xbox accessibility settings are not available. Call SetPlayer(player, xboxUser) instead of SetPlayer(player), with the Xbox user that signed in the player.";
+        private const string _ErrorMessagePlayerAlreadySet = "A player is already set. To set a different player, call Suspend() and Resume() first.";
+        private const string _ErrorMessageCouldNotDuplicatePlayer = "Could not duplicate the player entity handle.";
+        internal const string _ErrorMessageCouldNotDuplicateXboxUser = "Could not duplicate the Xbox user handle.";
+        private const string _ErrorMessageCouldNotStartXboxLiveChatUser = "Could not create the Xbox Live local chat user for the Xbox user, so Xbox Live chat privacy cannot be applied. The network operation stopped.";
 
         private const uint _c_ErrorFailedToFindResourceSpecified = 6;
         private const uint _c_ErrorAlreadyInitialized = 4101;
@@ -125,6 +132,9 @@ namespace PlayFab.Party
 
         public string TitleId = string.Empty;
         private PFPlayerEntity _player = null;
+#if BUILD_XBL_PLUGIN && MICROSOFT_GDK_SUPPORT
+        private XGR.XUserHandle _xboxUser = null;
+#endif
 
         private void Awake()
         {
@@ -477,8 +487,39 @@ namespace PlayFab.Party
             {
                 throw new ArgumentNullException("player");
             }
-            _player = player;
+            ThrowIfPlayerIsSet();
+            _player = DuplicatePlayer(player);
         }
+
+#if MICROSOFT_GDK_SUPPORT
+        public void SetPlayer(PFPlayerEntity player, XGR.XUserHandle xboxUser)
+        {
+            if (player == null)
+            {
+                throw new ArgumentNullException("player");
+            }
+            if (xboxUser == null)
+            {
+                throw new ArgumentNullException("xboxUser");
+            }
+            ThrowIfPlayerIsSet();
+#if BUILD_XBL_PLUGIN
+            XGR.XUserHandle xboxUserCopy = DuplicateXboxUser(xboxUser);
+            try
+            {
+                _player = DuplicatePlayer(player);
+            }
+            catch
+            {
+                XGR.SDK.XUserCloseHandle(xboxUserCopy);
+                throw;
+            }
+            _xboxUser = xboxUserCopy;
+#else
+            _player = DuplicatePlayer(player);
+#endif
+        }
+#endif
 
         /// <summary>
         /// Resumes Party after it has been suspended.
@@ -654,9 +695,14 @@ namespace PlayFab.Party
             Debug.LogWarning(warningMessage);
         }
 
+        internal static bool _IsInfoLogEnabled()
+        {
+            return _logLevel >= LogLevelType.Verbose;
+        }
+
         internal static void _LogInfo(string infoMessage)
         {
-            if (_logLevel < LogLevelType.Verbose)
+            if (!_IsInfoLogEnabled())
             {
                 return;
             }
@@ -684,16 +730,27 @@ namespace PlayFab.Party
             return startsWithSequence;
         }
 
+        // GC allocation fix: this runs for every received data message, so the prefix is compared in place, without
+        // allocating. A message shorter than the prefix, or of 128 bytes or more, is never an internal message.
         private bool IsInternalMessage(IntPtr messageBuffer, uint messageSize)
         {
-            if (messageSize > 0 &&
-                messageSize < _INTERNAL_EXCHANGE_MESSAGE_BUFFER_SIZE)
+            int prefixLength = _INTERNAL_EXCHANGE_REQUEST_MESSAGE_PREFIX.Length;
+            if (messageSize < prefixLength ||
+                messageSize >= _INTERNAL_EXCHANGE_MESSAGE_BUFFER_SIZE)
             {
-                byte[] internalXuidExchangeMessageBuffer = new byte[_INTERNAL_EXCHANGE_MESSAGE_BUFFER_SIZE];
-                Marshal.Copy(messageBuffer, internalXuidExchangeMessageBuffer, 0, (int)messageSize);
-                return _StartsWithSequence(internalXuidExchangeMessageBuffer, Encoding.ASCII.GetBytes(_INTERNAL_EXCHANGE_REQUEST_MESSAGE_PREFIX));
+                return false;
             }
-            return false;
+
+            for (int i = 0; i < prefixLength; i++)
+            {
+                // The prefix is ASCII, so each char is exactly one byte.
+                if (Marshal.ReadByte(messageBuffer, i) != _INTERNAL_EXCHANGE_REQUEST_MESSAGE_PREFIX[i])
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private PlayFabPlayer GetPlayerByEntityId(string entityId)
@@ -883,6 +940,7 @@ namespace PlayFab.Party
         {
             if (_playFabMultiplayerManagerState <= _InternalPlayFabMultiplayerManagerState.NotInitialized)
             {
+                ReleasePlayer();
                 return;
             }
 
@@ -916,11 +974,7 @@ namespace PlayFab.Party
             _localDeviceHandle = null;
             _localEndPointHandle = null;
             _localChatControlHandle = null;
-            if (_player is not null)
-            {
-                _player.Dispose();
-                _player = null;
-            }
+            ReleasePlayer();
         }
 
         private PARTY_NETWORK_DESCRIPTOR GetNetworkDescriptorFromNetworkId(string networkId)
@@ -951,6 +1005,70 @@ namespace PlayFab.Party
                 _platformPolicyProvider.ProcessQueuedOperations();
             }
         }
+
+        private void ThrowIfPlayerIsSet()
+        {
+            if (_player != null)
+            {
+                throw new InvalidOperationException(_ErrorMessagePlayerAlreadySet);
+            }
+        }
+
+        private static PFPlayerEntity DuplicatePlayer(PFPlayerEntity player)
+        {
+            PFResult<PFPlayerEntity> playerCopy = player.Duplicate();
+            if (playerCopy.Failed())
+            {
+                throw new ExternalException($"{_ErrorMessageCouldNotDuplicatePlayer} HRESULT: 0x{playerCopy.HResult:X8}", playerCopy.HResult);
+            }
+            return playerCopy.Result;
+        }
+
+        private void ReleasePlayer()
+        {
+#if BUILD_XBL_PLUGIN && MICROSOFT_GDK_SUPPORT
+            if (_xboxUser != null)
+            {
+                XGR.SDK.XUserCloseHandle(_xboxUser);
+                _xboxUser = null;
+            }
+#endif
+            if (_player is not null)
+            {
+                _player.Dispose();
+                _player = null;
+            }
+        }
+
+#if BUILD_XBL_PLUGIN && MICROSOFT_GDK_SUPPORT
+        private static XGR.XUserHandle DuplicateXboxUser(XGR.XUserHandle xboxUser)
+        {
+            int hr = XGR.SDK.XUserDuplicateHandle(xboxUser, out XGR.XUserHandle xboxUserCopy);
+            if (hr < 0 || xboxUserCopy == null)
+            {
+                throw new ExternalException($"{_ErrorMessageCouldNotDuplicateXboxUser} HRESULT: 0x{hr:X8}", hr);
+            }
+            return xboxUserCopy;
+        }
+
+        private bool TryStartXboxLiveChatUser(PlayFabMultiplayerManagerErrorType errorType)
+        {
+            if (_xboxUser == null)
+            {
+                _LogError(unchecked((uint)HRESULT.E_FAIL), _ErrorMessageMissingXboxUser,
+                    new PlayFabMultiplayerManagerErrorArgs(HRESULT.E_FAIL, _ErrorMessageMissingXboxUser, errorType));
+                return false;
+            }
+            if (_platformPolicyProvider is PlayFabChatXboxLivePolicyProvider xboxLivePolicyProvider &&
+                !xboxLivePolicyProvider.SetLocalXboxUser(_xboxUser))
+            {
+                _LogError(unchecked((uint)HRESULT.E_FAIL), _ErrorMessageCouldNotStartXboxLiveChatUser,
+                    new PlayFabMultiplayerManagerErrorArgs(HRESULT.E_FAIL, _ErrorMessageCouldNotStartXboxLiveChatUser, errorType));
+                return false;
+            }
+            return true;
+        }
+#endif
 
         public void CreateLocalUser(PFEntity entity)
         {
@@ -1050,7 +1168,7 @@ namespace PlayFab.Party
                 Dictionary<string, object> payload = new()
                 {
                     { "OSName", SystemInfo.operatingSystem },
-                    { "DeviceMake", "redacted" }, // PlayFab Kit patch: a fixed text, because SystemInfo.deviceName holds the name of the computer.
+                    { "DeviceMake", SystemInfo.deviceName },
                     { "DeviceModel", SystemInfo.deviceModel },
                     { "Platform", Application.platform },
                     { "AppName", Application.productName },
@@ -1086,26 +1204,33 @@ namespace PlayFab.Party
             }
         }
 
-        private void CreateAndJoinNetworkImplStart(PlayFabNetworkConfiguration networkConfiguration)
+        private bool CreateAndJoinNetworkImplStart(PlayFabNetworkConfiguration networkConfiguration)
         {
             _LogInfo("PlayFabMultiplayerManager:CreateAndJoinNetworkImplStart()");
 
             if (networkConfiguration == null)
             {
                 _LogError(_ErrorMessageMissingNetworkConfiguration);
-                return;
+                return false;
             }
 
             if (_player != null)
             {
+#if BUILD_XBL_PLUGIN && MICROSOFT_GDK_SUPPORT
+                if (!TryStartXboxLiveChatUser(PlayFabMultiplayerManagerErrorType.NetworkCreateError))
+                {
+                    return false;
+                }
+#endif
                 CreateLocalUser(_player);
             }
             else
             {
                 _LogError("Player entity is missing");
-                return;
+                return false;
             }
             CreateAndJoinNetworkImplComplete(networkConfiguration);
+            return true;
         }
 
         private void CreateAndJoinNetworkImplComplete(PlayFabNetworkConfiguration networkConfiguration)
@@ -1149,26 +1274,33 @@ namespace PlayFab.Party
                 ));
         }
 
-        private void JoinNetworkImplStart(string networkId)
+        private bool JoinNetworkImplStart(string networkId)
         {
             _LogInfo("PlayFabMultiplayerManager:JoinNetworkImplStart");
 
             if (string.IsNullOrEmpty(networkId))
             {
                 _LogError(_ErrorMessageMissingNetworkId);
-                return;
+                return false;
             }
 
             if (_player != null)
             {
+#if BUILD_XBL_PLUGIN && MICROSOFT_GDK_SUPPORT
+                if (!TryStartXboxLiveChatUser(PlayFabMultiplayerManagerErrorType.NetworkJoinError))
+                {
+                    return false;
+                }
+#endif
                 CreateLocalUser(_player);
             }
             else
             {
                 _LogError("Player entity is missing");
-                return;
+                return false;
             }
             JoinNetworkImplComplete(networkId);
+            return true;
         }
 
         private void JoinNetworkImplComplete(string networkId)
@@ -1296,7 +1428,7 @@ namespace PlayFab.Party
         {
             _LogInfo("PlayFabMultiplayerManager:SetUserSettings()");
 
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT && !UNITY_EDITOR
             if (string.IsNullOrEmpty(LocalPlayer.PlatformSpecificUserId))
             {
                 _platformPolicyProvider.CreateOrUpdatePlatformUser(LocalPlayer, true);
@@ -1937,7 +2069,12 @@ namespace PlayFab.Party
                 {
                     foreach (PARTY_STATE_CHANGE stateChange in _partyStateChanges)
                     {
-                        _LogInfo("Party State change: " + stateChange.StateChangeType.ToString());
+                        // GC allocation fix: this runs for every state change. Check the level before building
+                        // the text, so no string and no boxed enum are made at the default level (Minimal).
+                        if (_IsInfoLogEnabled())
+                        {
+                            _LogInfo("Party State change: " + stateChange.StateChangeType.ToString());
+                        }
                         switch (stateChange.StateChangeType)
                         {
                             case PARTY_STATE_CHANGE_TYPE.PARTY_STATE_CHANGE_TYPE_REGIONS_CHANGED:
@@ -2610,6 +2747,7 @@ namespace PlayFab.Party
         private class CreateAndJoinPartyTask : WorkTask
         {
             private PlayFabNetworkConfiguration _networkConfiguration;
+            private bool _started;
 
             public CreateAndJoinPartyTask(PlayFabNetworkConfiguration networkConfiguration)
             {
@@ -2620,14 +2758,14 @@ namespace PlayFab.Party
             {
                 Debug.Log("Task: CreateAndJoinPartyTask");
                 var mpManager = PlayFabMultiplayerManager.Get();
-                mpManager.CreateAndJoinNetworkImplStart(_networkConfiguration);
+                _started = mpManager.CreateAndJoinNetworkImplStart(_networkConfiguration);
                 return true;
             }
 
             public override bool Run()
             {
                 var mpManager = PlayFabMultiplayerManager.Get();
-                if(mpManager.IsConnectedToNetworkState())
+                if(!_started || mpManager.IsConnectedToNetworkState())
                 {
                     return true;
                 }
@@ -2642,6 +2780,7 @@ namespace PlayFab.Party
         private class JoinPartyTask : WorkTask
         {
             private string _networkId;
+            private bool _started;
 
             public JoinPartyTask(string networkId)
             {
@@ -2654,7 +2793,7 @@ namespace PlayFab.Party
                 var mpManager = PlayFabMultiplayerManager.Get();
                 if(!mpManager.IsConnectedToNetworkState())
                 {
-                    mpManager.JoinNetworkImplStart(_networkId);
+                    _started = mpManager.JoinNetworkImplStart(_networkId);
                     return true;
                 }
                 return false;
@@ -2663,7 +2802,7 @@ namespace PlayFab.Party
             public override bool Run()
             {
                 var mpManager = PlayFabMultiplayerManager.Get();
-                if(mpManager.IsConnectedToNetworkState())
+                if(!_started || mpManager.IsConnectedToNetworkState())
                 {
                     return true;
                 }

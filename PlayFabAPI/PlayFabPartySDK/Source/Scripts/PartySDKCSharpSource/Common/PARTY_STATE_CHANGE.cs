@@ -176,7 +176,6 @@ namespace PartyCSharpSDK
                 case PARTY_STATE_CHANGE_TYPE.PARTY_STATE_CHANGE_TYPE_DATA_BUFFERS_RETURNED:
                 default:
                     Debug.Write(String.Format("Unhandle type {0}\n", stateChangeUnion.stateChange.stateChangeType));
-                    // IL2CPP turns Debugger.Break() into a breakpoint exception that ends a player without a debugger.
                     if (Debugger.IsAttached)
                     {
                         Debugger.Break();
@@ -189,8 +188,6 @@ namespace PartyCSharpSDK
             return result;
         }
 
-        // Party guarantees only the bytes of the structure that the type names, so CreateFromPtr reads only those bytes.
-        // Each size is the size of the structure that the matching case of CreateFromPtr hands to its wrapper.
         private static readonly Dictionary<PARTY_STATE_CHANGE_TYPE, Int32> eventByteCounts = new Dictionary<PARTY_STATE_CHANGE_TYPE, Int32>
         {
             { PARTY_STATE_CHANGE_TYPE.PARTY_STATE_CHANGE_TYPE_REGIONS_CHANGED, Marshal.SizeOf(typeof(Interop.PARTY_REGIONS_CHANGED_STATE_CHANGE)) },
@@ -246,14 +243,12 @@ namespace PartyCSharpSDK
         private static readonly Int32 typeByteCount = Marshal.SizeOf(typeof(Interop.PARTY_STATE_CHANGE));
         private static readonly Int32 unionByteCount = Marshal.SizeOf(typeof(PARTY_STATE_CHANGE_UNION));
 
-        // A type without an entry has no wrapper that reads more than the type.
         internal static Int32 EventByteCount(PARTY_STATE_CHANGE_TYPE stateChangeType)
         {
             Int32 byteCount;
             return eventByteCounts.TryGetValue(stateChangeType, out byteCount) ? byteCount : typeByteCount;
         }
 
-        // Marshal.PtrToStructure would copy the whole union, which is larger than every event but the largest.
         private static unsafe PARTY_STATE_CHANGE_UNION ReadUnion(IntPtr stateChangePtr)
         {
             if (stateChangePtr == IntPtr.Zero)

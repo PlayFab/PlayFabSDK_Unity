@@ -22,7 +22,7 @@
  * DEALINGS IN THE SOFTWARE.
  */
 
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT && !UNITY_EDITOR
 #define BUILD_XBL_PLUGIN
 #endif
 
@@ -32,16 +32,6 @@ using System.Runtime.InteropServices;
 using System.Text;
 using PartyCSharpSDK;
 using PartyXBLCSharpSDK;
-
-#if !MICROSOFT_GDK_SUPPORT && (MICROSOFT_GAME_CORE || UNITY_GAMECORE)
-using UnityEngine.GameCore;
-using XGR = UnityEngine.GameCore;
-#endif
-
-#if MICROSOFT_GAME_CORE
-using XGamingRuntime;
-using XGR = XGamingRuntime;
-#endif
 
 #if MICROSOFT_GDK_SUPPORT
 using Unity.XGamingRuntime;
@@ -81,11 +71,8 @@ namespace PlayFab.Party._Internal
         private const string _XUID_EXCHANGE_RESPONSE_MESSAGE_PREFIX = "PFP-XBL-XUID-RESPONSE";
         private const int _E_GAMEUSER_RESOLVE_USER_ISSUE_REQUIRED = -1994108670;
 
-        private const string _ErrorMessageGamingRuntimeNotInitialized = "Gaming Runtime not initialized. You need to call SDK.XGameRuntimeInitialize()";
         private const string _ErrorMessageCouldNotGetXuid = "Could not get a XUID.";
         private const string _ErrorMessageCouldNotGetXboxLiveToken = "Could not get an Xbox Live token.";
-        private const string _ErrorMessageXboxLiveSignInFailed = "Xbox Live sign in failed.";
-        private const string _ErrorMessageCannotCreateLocalUserFromXboxLiveLogin = "Xbox Live sign-in to PlayFab completed, but SDK 3.0.0 cannot create a Party local user from an entity ID and an entity token. Call PlayFabMultiplayerManager.SetPlayer with a signed-in PFPlayerEntity instead.";
 
         public static PlayFabChatXboxLivePolicyProvider Get()
         {
@@ -101,7 +88,6 @@ namespace PlayFab.Party._Internal
             PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:PlayFabChatXboxLivePolicyProvider()");
 
             _multiplayerManager = PlayFabMultiplayerManager.Get();
-            // Use the title ID that the manager passes to PartyInitialize.
             string titleId = _multiplayerManager.TitleId;
 
             _playerChatPermissions = new Dictionary<PlayFabPlayer, PARTY_XBL_CHAT_PERMISSION_INFO>(new PlayerComparator());
@@ -130,26 +116,53 @@ namespace PlayFab.Party._Internal
             _XUID_EXCHANGE_REQUEST_AS_BYTES = null;
             _XUID_EXCHANGE_RESPONSE_AS_BYTES = null;
             _xblLocalChatUserHandle = null;
+            if (_xblLocalUserHandle != null)
+            {
+                XGR.SDK.XUserCloseHandle(_xblLocalUserHandle);
+                _xblLocalUserHandle = null;
+            }
             _xblPartyHandle = null;
             return succeeded;
         }
 
-        public void SignIn()
+        public bool SetLocalXboxUser(XUserHandle xboxUser)
         {
-            PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:SignIn()");
+            PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:SetLocalXboxUser()");
 
-            try
+            if (_xblLocalChatUserHandle != null)
             {
-                XGR.SDK.XUserAddAsync(XUserAddOptions.AddDefaultUserSilently, SignInSilentlyComplete);
+                return true;
             }
-            catch (NullReferenceException)
+
+            ulong xuid;
+            int hr = XGR.SDK.XUserGetId(xboxUser, out xuid);
+            if (!HrSucceeded(hr))
             {
-                PlayFabMultiplayerManager._LogError(_ErrorMessageGamingRuntimeNotInitialized);
+                PlayFabMultiplayerManager._LogError($"{_ErrorMessageCouldNotGetXuid} HRESULT: 0x{hr:X8}");
+                return false;
             }
-            catch (Exception ex)
+
+            XUserHandle localUserHandle;
+            hr = XGR.SDK.XUserDuplicateHandle(xboxUser, out localUserHandle);
+            if (!HrSucceeded(hr))
             {
-                PlayFabMultiplayerManager._LogError(ex.Message);
+                PlayFabMultiplayerManager._LogError($"{PlayFabMultiplayerManager._ErrorMessageCouldNotDuplicateXboxUser} HRESULT: 0x{hr:X8}");
+                return false;
             }
+
+            if (Succeeded(XBLSDK.PartyXblCreateLocalChatUser(
+                    _xblPartyHandle,
+                    xuid,
+                    null,
+                    out _xblLocalChatUserHandle
+                )))
+            {
+                _xblLocalUserHandle = localUserHandle;
+                return true;
+            }
+
+            XGR.SDK.XUserCloseHandle(localUserHandle);
+            return false;
         }
 
         public void CreateOrUpdatePlatformUser(PlayFabPlayer player, bool isLocal)
@@ -159,7 +172,7 @@ namespace PlayFab.Party._Internal
             if (isLocal)
             {
                 ulong xuid;
-                if (HrSucceeded(XGR.SDK.XUserGetId(_xblLocalUserHandle, out xuid)))
+                if (_xblLocalUserHandle != null && HrSucceeded(XGR.SDK.XUserGetId(_xblLocalUserHandle, out xuid)))
                 {
                     player._platformSpecificUserId = xuid.ToString();
                 }
@@ -174,7 +187,7 @@ namespace PlayFab.Party._Internal
         {
             PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:GetChatPermissions()");
 
-            PARTY_CHAT_PERMISSION_OPTIONS chatPermissions = _CHAT_PERMISSIONS_ALL;
+            PARTY_CHAT_PERMISSION_OPTIONS chatPermissions = PARTY_CHAT_PERMISSION_OPTIONS.PARTY_CHAT_PERMISSION_OPTIONS_NONE;
             if (_playerChatPermissions.ContainsKey(targetPlayer))
             {
                 chatPermissions = _playerChatPermissions[targetPlayer].ChatPermissionMask;
@@ -269,7 +282,7 @@ namespace PlayFab.Party._Internal
 
             // Broadcast XUID to other endpoints in the network.
             ulong xuid;
-            if (HrSucceeded(XGR.SDK.XUserGetId(_xblLocalUserHandle, out xuid)))
+            if (_xblLocalUserHandle != null && HrSucceeded(XGR.SDK.XUserGetId(_xblLocalUserHandle, out xuid)))
             {
                 string xuidMessageString = _XUID_EXCHANGE_REQUEST_MESSAGE_PREFIX + ":" + xuid;
                 byte[] xuidMessageBytes = Encoding.ASCII.GetBytes(xuidMessageString);
@@ -313,11 +326,10 @@ namespace PlayFab.Party._Internal
                             {
                                 var stateChangeConverted = (PARTY_XBL_TOKEN_AND_SIGNATURE_REQUESTED_STATE_CHANGE)stateChange;
                                 TrackableGetXTokenCompletedWrapper trackableGetXTokenCompletedWrapper = new TrackableGetXTokenCompletedWrapper();
+                                trackableGetXTokenCompletedWrapper.provider = this;
                                 trackableGetXTokenCompletedWrapper.correlationId = stateChangeConverted.correlationId;
                                 trackableGetXTokenCompletedWrapper.url = stateChangeConverted.url;
                                 trackableGetXTokenCompletedWrapper.method = stateChangeConverted.method;
-                                trackableGetXTokenCompletedWrapper.headers = stateChangeConverted.headers;
-                                trackableGetXTokenCompletedWrapper.body = stateChangeConverted.body;
                                 XUserGetTokenAndSignatureOptions options = XUserGetTokenAndSignatureOptions.None;
                                 if (stateChangeConverted.allUsers)
                                 {
@@ -347,36 +359,16 @@ namespace PlayFab.Party._Internal
                                 {
                                     body = null;
                                 }
-                                XGR.SDK.XUserGetTokenAndSignatureUtf16Async(
-                                        _xblLocalUserHandle,
-                                        options,
-                                        stateChangeConverted.method,
-                                        stateChangeConverted.url,
-                                        headers,
-                                        body,
-                                        trackableGetXTokenCompletedWrapper.CompleteGetXToken
-                                        );
+                                trackableGetXTokenCompletedWrapper.options = options;
+                                trackableGetXTokenCompletedWrapper.headers = headers;
+                                trackableGetXTokenCompletedWrapper.body = body;
+                                trackableGetXTokenCompletedWrapper.RequestToken();
                                 break;
                             }
                         case PARTY_XBL_STATE_CHANGE_TYPE.PARTY_XBL_STATE_CHANGE_TYPE_CREATE_LOCAL_CHAT_USER_COMPLETED:
                             {
                                 var stateChangeConverted = (PARTY_XBL_CREATE_LOCAL_CHAT_USER_COMPLETED_STATE_CHANGE)stateChange;
                                 _multiplayerManager.InternalCheckStateChangeSucceededOrLogErrorIfFailed(stateChangeConverted.result, stateChangeConverted.errorDetail);
-                                break;
-                            }
-                        case PARTY_XBL_STATE_CHANGE_TYPE.PARTY_XBL_STATE_CHANGE_TYPE_LOGIN_TO_PLAYFAB_COMPLETED:
-                            {
-                                var stateChangeConverted = (PARTY_XBL_LOGIN_TO_PLAYFAB_COMPLETED_STATE_CHANGE)stateChange;
-                                if (_multiplayerManager.InternalCheckStateChangeSucceededOrLogErrorIfFailed(stateChangeConverted.result, stateChangeConverted.errorDetail))
-                                {
-                                    OnPlayFabLoginSuccess(stateChangeConverted);
-                                }
-                                else
-                                {
-                                    // playfab login failed, reset manager to its previous state to allow retries
-                                    _multiplayerManager._SetPlayFabMultiplayerManagerInternalState(PlayFabMultiplayerManager._InternalPlayFabMultiplayerManagerState.Initialized);
-                                    _multiplayerManager.DropCurrentQueuedOps();
-                                }
                                 break;
                             }
                         case PARTY_XBL_STATE_CHANGE_TYPE.PARTY_XBL_STATE_CHANGE_TYPE_LOCAL_CHAT_USER_DESTROYED:
@@ -467,19 +459,27 @@ namespace PlayFab.Party._Internal
             }
 
             PARTY_XBL_CHAT_PERMISSION_INFO chatPermissionInfo;
-            Succeeded(XBLSDK.PartyXblLocalChatUserGetRequiredChatPermissionInfo(
+            if (Succeeded(XBLSDK.PartyXblLocalChatUserGetRequiredChatPermissionInfo(
                     localXblChatUser,
                     targetXblChatUser,
                     out chatPermissionInfo
-                ));
+                )))
+            {
+                _playerChatPermissions[targetPlayer] = chatPermissionInfo;
+            }
+            else
+            {
+                _playerChatPermissions.Remove(targetPlayer);
+            }
+
+            var permissionsQuery = GetChatPermissions(targetPlayer);
 
             Succeeded(PartyCSharpSDK.SDK.PartyChatControlSetPermissions(
                     localPlayer._chatControlHandle,
                     targetPlayer._chatControlHandle,
-                    chatPermissionInfo.ChatPermissionMask
+                    permissionsQuery
                 ));
 
-            var permissionsQuery = chatPermissionInfo.ChatPermissionMask;
             bool mute = permissionsQuery != _CHAT_PERMISSIONS_ALL;
             foreach (var playerKeyPair in _multiplayerManager.RemotePlayers)
             {
@@ -489,60 +489,6 @@ namespace PlayFab.Party._Internal
                     playerKeyPair.IsMuted = mute;
                     break;
                 }
-            }
-            if (!_playerChatPermissions.ContainsKey(targetPlayer))
-            {
-                _playerChatPermissions.Add(targetPlayer, chatPermissionInfo);
-            }
-        }
-
-        private void OnPlayFabLoginSuccess(PARTY_XBL_LOGIN_TO_PLAYFAB_COMPLETED_STATE_CHANGE loginResult)
-        {
-            PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:OnPlayFabLoginSuccess(), EntityId: " + loginResult.entityId);
-
-            // SDK 3.0.0 creates the Party local user only from a PFEntity
-            // (PlayFabMultiplayerManager.CreateLocalUser), and no SDK 3.0.0 API makes a PFEntity
-            // from an entity ID and an entity token.
-            PlayFabMultiplayerManager._LogError(_ErrorMessageCannotCreateLocalUserFromXboxLiveLogin);
-        }
-
-        private void SignInSilentlyComplete(int hresult, XUserHandle userHandle)
-        {
-            if (HrSucceeded(hresult))
-            {
-                _xblLocalUserHandle = userHandle;
-            }
-            else
-            {
-                PlayFabMultiplayerManager._LogError(_ErrorMessageXboxLiveSignInFailed);
-            }
-
-            ulong xuid;
-            int hr = 0;
-            hr = XGR.SDK.XUserGetId(_xblLocalUserHandle, out xuid);
-
-            PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:SignInSilentlyComplete(), XUID: " + xuid);
-
-            if (HrSucceeded(hresult))
-            {
-                if (_xblLocalChatUserHandle == null)
-                {
-                    Succeeded(XBLSDK.PartyXblCreateLocalChatUser(
-                       _xblPartyHandle,
-                       xuid,
-                       null,
-                       out _xblLocalChatUserHandle
-                   ));
-                }
-
-                Succeeded(XBLSDK.PartyXblLoginToPlayFab(
-                    _xblLocalChatUserHandle,
-                    null
-                ));
-            }
-            else
-            {
-                PlayFabMultiplayerManager._LogError(_ErrorMessageCouldNotGetXuid);
             }
         }
 
@@ -640,57 +586,94 @@ namespace PlayFab.Party._Internal
 
         private class TrackableGetXTokenCompletedWrapper
         {
+            public PlayFabChatXboxLivePolicyProvider provider;
             public uint correlationId;
+            public XUserGetTokenAndSignatureOptions options;
             public string method;
             public string url;
+            public XUserGetTokenAndSignatureUtf16HttpHeader[] headers;
             public byte[] body;
-            public PARTY_XBL_HTTP_HEADER[] headers;
 
-            private static bool _pendingResolveIssueWithUICallback;
+            private bool _resolveIssueWithUIAttempted;
 
-            public void CompleteGetXToken(int hresult, XUserGetTokenAndSignatureUtf16Data tokenData)
+            public void RequestToken()
+            {
+                if (provider._xblLocalUserHandle == null)
+                {
+                    PlayFabMultiplayerManager._LogError(_ErrorMessageCouldNotGetXboxLiveToken);
+                    CompleteRequest(false, null, null);
+                    return;
+                }
+
+                XGR.SDK.XUserGetTokenAndSignatureUtf16Async(
+                        provider._xblLocalUserHandle,
+                        options,
+                        method,
+                        url,
+                        headers,
+                        body,
+                        CompleteGetXToken
+                        );
+            }
+
+            private void CompleteGetXToken(int hresult, XUserGetTokenAndSignatureUtf16Data tokenData)
             {
                 PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:CompleteGetXToken(), hr: " + hresult);
 
                 if (hresult >= 0)
                 {
-                    Get().Succeeded(XBLSDK.PartyXblCompleteGetTokenAndSignatureRequest(
-                        Get()._xblPartyHandle,
-                        correlationId,
-                        true,
-                        tokenData.Token,
-                        tokenData.Signature
-                        ));
+                    CompleteRequest(true, tokenData.Token, tokenData.Signature);
                 }
-                else if (hresult == _E_GAMEUSER_RESOLVE_USER_ISSUE_REQUIRED)
+                else if (hresult == _E_GAMEUSER_RESOLVE_USER_ISSUE_REQUIRED && !_resolveIssueWithUIAttempted)
                 {
-                    // We need to resolve
+                    _resolveIssueWithUIAttempted = true;
                     XGR.SDK.XUserResolveIssueWithUiUtf16Async(
-                            Get()._xblLocalUserHandle,
+                            provider._xblLocalUserHandle,
                             url,
-                            _ResolveUserIssueWithUICompleted
+                            ResolveUserIssueWithUICompleted
                         );
                 }
                 else
                 {
                     PlayFabMultiplayerManager._LogError(_ErrorMessageCouldNotGetXboxLiveToken);
+                    CompleteRequest(false, null, null);
                 }
             }
 
-            private void _ResolveUserIssueWithUICompleted(int hresult)
+            private void ResolveUserIssueWithUICompleted(int hresult)
             {
-                PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:_ResolveUserIssueWithUICompleted(), hr: " + hresult);
+                PlayFabMultiplayerManager._LogInfo("PlayFabChatXboxLivePolicyProvider:ResolveUserIssueWithUICompleted(), hr: " + hresult);
 
-                if (_pendingResolveIssueWithUICallback)
+                if (provider._xblPartyHandle == null)
                 {
                     return;
                 }
-                _pendingResolveIssueWithUICallback = true;
 
-                if (Get().HrSucceeded(hresult))
+                if (provider.HrSucceeded(hresult))
                 {
-                    Get().SignIn();
+                    RequestToken();
                 }
+                else
+                {
+                    PlayFabMultiplayerManager._LogError(_ErrorMessageCouldNotGetXboxLiveToken);
+                    CompleteRequest(false, null, null);
+                }
+            }
+
+            private void CompleteRequest(bool succeeded, string token, string signature)
+            {
+                if (provider._xblPartyHandle == null)
+                {
+                    return;
+                }
+
+                provider.Succeeded(XBLSDK.PartyXblCompleteGetTokenAndSignatureRequest(
+                    provider._xblPartyHandle,
+                    correlationId,
+                    succeeded,
+                    token,
+                    signature
+                    ));
             }
         }
 

@@ -2,8 +2,7 @@ namespace PlayFab.Interop
 {
     public static unsafe partial class Methods
     {
-#if UNITY_GAMECORE && !UNITY_EDITOR
-        // Match the native-library mapping in Unity's GDK package for console players.
+#if MICROSOFT_GDK_SUPPORT && (UNITY_GAMECORE_XBOXSERIES || UNITY_GAMECORE_XBOXONE) && !UNITY_EDITOR
         private const string XGameRuntimeLibName = "__Internal";
 #else
         private const string XGameRuntimeLibName = "XGameRuntime.Thunks";

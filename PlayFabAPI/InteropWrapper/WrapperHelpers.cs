@@ -239,10 +239,6 @@ namespace PlayFab.InteropWrapper
             return array;
         }
 
-        // PlayFab Kit patch: many arrays in the native SDK's answers are arrays of pointers (const T* const*).
-        // InteropToArray reads structs that lie one after the other, so it read each item after the first one from
-        // the wrong memory. This helper reads each pointer, then the struct that it points to. A null pointer gives the
-        // default value, so a malformed answer cannot fault inside the SDK's native callback.
         internal static unsafe TWrapper[]? InteropPointerArrayToArray<TInterop, TWrapper>(TInterop** arrayPtr, ulong count, Func<TInterop, TWrapper> convert)
             where TInterop : unmanaged
             where TWrapper : struct

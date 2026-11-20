@@ -299,7 +299,7 @@ namespace PlayFab.InteropWrapper.Multiplayer
         {
             uint stateChangeCount = 0;
 
-            collection.StateChanges = ObjPool.Retrieve<List<PFMatchmakingStateChange>>();
+            collection.StateChanges = ObjPool.RetrieveList<PFMatchmakingStateChange>();
             unsafe
             {
                 PlayFab.Interop.Multiplayer.PFMatchmakingStateChange** rawStateChanges = null;

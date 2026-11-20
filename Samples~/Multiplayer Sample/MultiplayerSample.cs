@@ -279,8 +279,11 @@ public class MultiplayerSample : MonoBehaviour
             // Create a persistent GameObject to host the event processor.
             // DontDestroyOnLoad is handled inside PlayfabMultiplayerEventProcessor.Awake().
             var processorGo = new GameObject("PlayFabMultiplayerEventProcessor");
+            // Defer Awake until the event processor has its Title ID.
+            processorGo.SetActive(false);
             _eventProcessor = processorGo.AddComponent<PlayfabMultiplayerEventProcessor>();
             _eventProcessor.PlayFabTitleID = TitleId;
+            processorGo.SetActive(true);
         }
 
         // Register event handlers so we can bridge callbacks to async/await

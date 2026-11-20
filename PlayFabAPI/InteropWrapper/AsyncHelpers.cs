@@ -103,12 +103,21 @@ namespace PlayFab.InteropWrapper
             GCHandle callbackHandle = GCHandle.FromIntPtr(asyncBlock.context);
             var ab = callbackHandle.Target as UnmanagedCallback<Interop.XAsyncCompletionRoutine, Interop.XAsyncCompletionRoutine>;
 
-            // invoke user callback
-            ab?.userCallback(block);
-
-            // clean up pinned GC content
-            callbackHandle.Free();
-            Marshal.FreeHGlobal(block.Handle);
+            try
+            {
+                // invoke user callback
+                ab?.userCallback(block);
+            }
+            catch (Exception exception)
+            {
+                UnityEngine.Debug.LogException(exception);
+            }
+            finally
+            {
+                // clean up pinned GC content
+                callbackHandle.Free();
+                Marshal.FreeHGlobal(block.Handle);
+            }
         }
     }
 }

@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT
+
 using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -148,11 +150,19 @@ namespace PlayFab.InteropWrapper.GameSave
                 return _interopCallback;
             }
 
-            internal unsafe void InteropPInvokeCallback(IntPtr localUserHandle, Interop.PFGameSaveFilesSyncState syncState, void* context)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFGameSaveFilesUiProgressCallback))]
+            internal static unsafe void InteropPInvokeCallback(IntPtr localUserHandle, Interop.PFGameSaveFilesSyncState syncState, void* context)
+            {
+                _PFGameSaveFilesUiProgressCallbackManager.HandleCallback(localUserHandle, syncState, context);
+            }
+
+            private unsafe void HandleCallback(IntPtr localUserHandle, Interop.PFGameSaveFilesSyncState syncState, void* context)
             {
                 if (Callback == null) return;
 
-                IssueEventCallback(new PFLocalUser(new(localUserHandle)), (PFGameSaveFilesSyncState)syncState);
+                if (!PFGameSaveFiles.TryDuplicateLocalUserForCallback(localUserHandle, out PFLocalUser localUser)) return;
+
+                IssueEventCallback(localUser, (PFGameSaveFilesSyncState)syncState);
             }
 
             private unsafe void IssueEventCallback(PFLocalUser localUser, PFGameSaveFilesSyncState syncState)
@@ -176,11 +186,19 @@ namespace PlayFab.InteropWrapper.GameSave
                 return _interopCallback;
             }
 
-            internal unsafe void InteropPInvokeCallback(IntPtr localUserHandle, Interop.PFGameSaveFilesSyncState syncState, int error, void* context)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFGameSaveFilesUiSyncFailedCallback))]
+            internal static unsafe void InteropPInvokeCallback(IntPtr localUserHandle, Interop.PFGameSaveFilesSyncState syncState, int error, void* context)
+            {
+                _PFGameSaveFilesUiSyncFailedCallbackManager.HandleCallback(localUserHandle, syncState, error, context);
+            }
+
+            private unsafe void HandleCallback(IntPtr localUserHandle, Interop.PFGameSaveFilesSyncState syncState, int error, void* context)
             {
                 if (Callback == null) return;
 
-                IssueEventCallback(new PFLocalUser(new(localUserHandle)), (PFGameSaveFilesSyncState)syncState, error);
+                if (!PFGameSaveFiles.TryDuplicateLocalUserForCallback(localUserHandle, out PFLocalUser localUser)) return;
+
+                IssueEventCallback(localUser, (PFGameSaveFilesSyncState)syncState, error);
             }
 
             private unsafe void IssueEventCallback(PFLocalUser localUser, PFGameSaveFilesSyncState syncState, int error)
@@ -204,14 +222,22 @@ namespace PlayFab.InteropWrapper.GameSave
                 return _interopCallback;
             }
 
-            internal unsafe void InteropPInvokeCallback(IntPtr localUserHandle, Interop.PFGameSaveDescriptor* localGameSave, Interop.PFGameSaveDescriptor* remoteGameSave, void* context)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFGameSaveFilesUiActiveDeviceContentionCallback))]
+            internal static unsafe void InteropPInvokeCallback(IntPtr localUserHandle, Interop.PFGameSaveDescriptor* localGameSave, Interop.PFGameSaveDescriptor* remoteGameSave, void* context)
+            {
+                _PFGameSaveFilesUiActiveDeviceContentionCallbackManager.HandleCallback(localUserHandle, localGameSave, remoteGameSave, context);
+            }
+
+            private unsafe void HandleCallback(IntPtr localUserHandle, Interop.PFGameSaveDescriptor* localGameSave, Interop.PFGameSaveDescriptor* remoteGameSave, void* context)
             {
                 if (Callback == null) return;
 
                 var localGameSaveWrapper = new PFGameSaveDescriptor(*localGameSave);
                 var remoteGameSaveWrapper = new PFGameSaveDescriptor(*remoteGameSave);
 
-                IssueEventCallback(new PFLocalUser(new(localUserHandle)), localGameSaveWrapper, remoteGameSaveWrapper);
+                if (!PFGameSaveFiles.TryDuplicateLocalUserForCallback(localUserHandle, out PFLocalUser localUser)) return;
+
+                IssueEventCallback(localUser, localGameSaveWrapper, remoteGameSaveWrapper);
             }
 
             private unsafe void IssueEventCallback(PFLocalUser localUser, PFGameSaveDescriptor localGameSave, PFGameSaveDescriptor remoteGameSave)
@@ -235,14 +261,22 @@ namespace PlayFab.InteropWrapper.GameSave
                 return _interopCallback;
             }
 
-            internal unsafe void InteropPInvokeCallback(IntPtr localUserHandle, Interop.PFGameSaveDescriptor* localGameSave, Interop.PFGameSaveDescriptor* remoteGameSave, void* context)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFGameSaveFilesUiConflictCallback))]
+            internal static unsafe void InteropPInvokeCallback(IntPtr localUserHandle, Interop.PFGameSaveDescriptor* localGameSave, Interop.PFGameSaveDescriptor* remoteGameSave, void* context)
+            {
+                _PFGameSaveFilesUiConflictCallbackManager.HandleCallback(localUserHandle, localGameSave, remoteGameSave, context);
+            }
+
+            private unsafe void HandleCallback(IntPtr localUserHandle, Interop.PFGameSaveDescriptor* localGameSave, Interop.PFGameSaveDescriptor* remoteGameSave, void* context)
             {
                 if (Callback == null) return;
 
                 var localGameSaveWrapper = new PFGameSaveDescriptor(*localGameSave);
                 var remoteGameSaveWrapper = new PFGameSaveDescriptor(*remoteGameSave);
 
-                IssueEventCallback(new PFLocalUser(new(localUserHandle)), localGameSaveWrapper, remoteGameSaveWrapper);
+                if (!PFGameSaveFiles.TryDuplicateLocalUserForCallback(localUserHandle, out PFLocalUser localUser)) return;
+
+                IssueEventCallback(localUser, localGameSaveWrapper, remoteGameSaveWrapper);
             }
 
             private unsafe void IssueEventCallback(PFLocalUser localUser, PFGameSaveDescriptor localGameSave, PFGameSaveDescriptor remoteGameSave)
@@ -266,11 +300,19 @@ namespace PlayFab.InteropWrapper.GameSave
                 return _interopCallback;
             }
 
-            internal unsafe void InteropPInvokeCallback(IntPtr localUserHandle, ulong requiredBytes, void* context)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFGameSaveFilesUiOutOfStorageCallback))]
+            internal static unsafe void InteropPInvokeCallback(IntPtr localUserHandle, ulong requiredBytes, void* context)
+            {
+                _PFGameSaveFilesUiOutOfStorageCallbackManager.HandleCallback(localUserHandle, requiredBytes, context);
+            }
+
+            private unsafe void HandleCallback(IntPtr localUserHandle, ulong requiredBytes, void* context)
             {
                 if (Callback == null) return;
 
-                IssueEventCallback(new PFLocalUser(new(localUserHandle)), requiredBytes);
+                if (!PFGameSaveFiles.TryDuplicateLocalUserForCallback(localUserHandle, out PFLocalUser localUser)) return;
+
+                IssueEventCallback(localUser, requiredBytes);
             }
 
             private unsafe void IssueEventCallback(PFLocalUser localUser, ulong requiredBytes)
@@ -281,3 +323,5 @@ namespace PlayFab.InteropWrapper.GameSave
         }
     }
 }
+
+#endif

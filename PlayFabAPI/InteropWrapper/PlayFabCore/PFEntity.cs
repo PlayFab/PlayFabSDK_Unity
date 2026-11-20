@@ -198,7 +198,13 @@ namespace PlayFab.InteropWrapper.Core
             private readonly Dictionary<IntPtr, ulong> IdToToken = new();
             private Interop.PFEntityTokenExpiredEventHandler _interopCallback;
 
-            internal unsafe void InteropPInvokeCallback(void* context, Interop.PFEntityKey* entityKey)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFEntityTokenExpiredEventHandler))]
+            internal static unsafe void InteropPInvokeCallback(void* context, Interop.PFEntityKey* entityKey)
+            {
+                _PFEntityTokenExpiredEventHandlerManager.HandleCallback(context, entityKey);
+            }
+
+            private unsafe void HandleCallback(void* context, Interop.PFEntityKey* entityKey)
             {
                 IntPtr id = new(context);
                 if (!CallbackIdToHandler.ContainsKey(id)) return;
@@ -251,7 +257,13 @@ namespace PlayFab.InteropWrapper.Core
             private readonly Dictionary<IntPtr, ulong> IdToToken = new();
             private Interop.PFEntityTokenRefreshedEventHandler _interopCallback;
 
-            internal unsafe void InteropPInvokeCallback(void* context, Interop.PFEntityKey* entityKey, Interop.PFEntityToken* newToken)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFEntityTokenRefreshedEventHandler))]
+            internal static unsafe void InteropPInvokeCallback(void* context, Interop.PFEntityKey* entityKey, Interop.PFEntityToken* newToken)
+            {
+                _PFEntityTokenRefreshedEventHandlerManager.HandleCallback(context, entityKey, newToken);
+            }
+
+            private unsafe void HandleCallback(void* context, Interop.PFEntityKey* entityKey, Interop.PFEntityToken* newToken)
             {
                 IntPtr id = new(context);
                 if (!CallbackIdToHandler.ContainsKey(id)) return;

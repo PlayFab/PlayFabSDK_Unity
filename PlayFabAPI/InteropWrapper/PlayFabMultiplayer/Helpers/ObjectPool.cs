@@ -35,7 +35,10 @@
             else
             {
                 Debug.WriteLine(string.Format("Failed to get constructor for type {0}!\n", t));
-                Debugger.Break();
+                if (Debugger.IsAttached)
+                {
+                    Debugger.Break();
+                }
             }
         }
 
@@ -80,10 +83,31 @@
             else
             {
                 Debug.WriteLine(string.Format("Need to add type with AddEntry first!\n"));
-                Debugger.Break();
+                if (Debugger.IsAttached)
+                {
+                    Debugger.Break();
+                }
             }
 
             return (T)result;
+        }
+
+        // GC allocation fix: Retrieve<T>() runs the List<T> constructor again through reflection. In IL2CPP, each of
+        // those calls allocates a new empty ParameterInfo[], and the constructor drops the list's array, so the next
+        // Add allocates a new one. This method reuses a pooled list without reflection and keeps its array.
+        internal List<T> RetrieveList<T>()
+        {
+            List<object> pooled = this.pools[typeof(List<T>)].Objects;
+            int ct = pooled.Count;
+            if (ct == 0)
+            {
+                return new List<T>();
+            }
+
+            List<T> list = (List<T>)pooled[ct - 1];
+            pooled.RemoveAt(ct - 1);
+            list.Clear();
+            return list;
         }
 
         public void Return(object o)

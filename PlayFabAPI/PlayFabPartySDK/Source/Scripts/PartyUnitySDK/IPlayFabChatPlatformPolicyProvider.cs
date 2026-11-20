@@ -35,7 +35,6 @@ namespace PlayFab.Party._Internal
     /// </summary>
     internal interface IPlayFabChatPlatformPolicyProvider
     {
-        void SignIn();
         void SendPlatformSpecificUserId(List<PlayFabPlayer> targetPlayers);
         PARTY_VOICE_CHAT_TRANSCRIPTION_OPTIONS GetPlatformUserChatTranscriptionPreferences();
         bool IsTextToSpeechEnabled();

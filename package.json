@@ -1,10 +1,10 @@
 {
   "name": "microsoft.playfab.sdk",
   "displayName": "PlayFab SDK",
-  "version": "3.0.0-netrumble.1",
+  "version": "3.0.0-preview",
   "author": "Microsoft",
   "unity": "6000.0",
-  "description": "Development build of the PlayFab SDK with Unity NetRumble fixes. Not an approved release.",
+  "description": "PlayFab SDK is a package that contains projections for native PlayFab APIs.",
   "keywords": [
     "microsoft",
     "playfab",
@@ -22,8 +22,6 @@
   },
   "files": [
     "package.json.meta",
-    "playfab-kit-sdk-copy.json",
-    "playfab-kit-sdk-copy.json.meta",
     "README.md",
     "README.md.meta",
     "LICENSE.txt",

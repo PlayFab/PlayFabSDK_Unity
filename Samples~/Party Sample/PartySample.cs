@@ -505,6 +505,7 @@ public class PartySample : MonoBehaviour
         if (_multiplayerManager != null)
         {
             _multiplayerManager.OnError -= OnPartyError;
+            _multiplayerManager.Suspend();
         }
 
         // Dispose of the player entity if we have one

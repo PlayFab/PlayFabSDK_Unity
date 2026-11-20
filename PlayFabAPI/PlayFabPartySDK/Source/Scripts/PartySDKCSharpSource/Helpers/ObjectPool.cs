@@ -11,14 +11,12 @@ namespace PartyCSharpSDK
         {
             internal Int32 limit;
             internal ConstructorInfo ctor;
-            internal Boolean canReuse;
             internal List<Object> objects;
 
-            internal Pool(Int32 limit, ConstructorInfo ctor, Boolean canReuse)
+            internal Pool(Int32 limit, ConstructorInfo ctor)
             {
                 this.limit = limit;
                 this.ctor = ctor;
-                this.canReuse = canReuse;
                 objects = new List<Object>();
             }
         }
@@ -41,14 +39,15 @@ namespace PartyCSharpSDK
             ConstructorInfo ctor = t.GetConstructor(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, ctorTypes, null);
             if (ctor != null)
             {
-                // A constructor with parameters carries the native handle or state-change data for this use.
-                // Construct a fresh wrapper instead of relying on runtime-specific constructor reinvocation.
-                pools[t] = new Pool(maxLimit, ctor, ctorTypes.Length == 0);
+                pools[t] = new Pool(maxLimit, ctor);
             }
             else
             {
                 Debug.WriteLine(String.Format("Failed to get constructor for type {0}!\n", t));
-                Debugger.Break();
+                if (Debugger.IsAttached)
+                {
+                    Debugger.Break();
+                }
             }
         }
 
@@ -79,7 +78,7 @@ namespace PartyCSharpSDK
                 Pool pool = pools[key];
                 ConstructorInfo ctor = pool.ctor;
                 Int32 ct = pool.objects.Count;
-                if (pool.canReuse && ct > 0)
+                if (ct > 0)
                 {
                     result = pool.objects[ct - 1];
                     pool.objects.RemoveAt(ct - 1);
@@ -93,16 +92,37 @@ namespace PartyCSharpSDK
             else
             {
                 Debug.WriteLine(String.Format("Need to add type with AddEntry first!\n"));
-                Debugger.Break();
+                if (Debugger.IsAttached)
+                {
+                    Debugger.Break();
+                }
             }
 
             return (T)result;
         }
 
+        // GC allocation fix: Retrieve<T>() runs the List<T> constructor again through reflection. In IL2CPP, each of
+        // those calls allocates a new empty ParameterInfo[], and the constructor drops the list's array, so the next
+        // Add allocates a new one. This method reuses a pooled list without reflection and keeps its array.
+        internal List<T> RetrieveList<T>()
+        {
+            List<Object> pooled = pools[typeof(List<T>)].objects;
+            Int32 ct = pooled.Count;
+            if (ct == 0)
+            {
+                return new List<T>();
+            }
+
+            List<T> list = (List<T>)pooled[ct - 1];
+            pooled.RemoveAt(ct - 1);
+            list.Clear();
+            return list;
+        }
+
         public void Return(Object o)
         {
             Type key = o.GetType();
-            if (pools.ContainsKey(key) && pools[key].canReuse && pools[key].objects.Count < pools[key].limit)
+            if (pools.ContainsKey(key) && pools[key].objects.Count < pools[key].limit)
             {
                 Pool pool = pools[key];
                 if (pool.objects.Count < pool.limit)

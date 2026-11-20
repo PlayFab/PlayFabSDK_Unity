@@ -207,27 +207,25 @@ namespace PlayFab.InteropWrapper.Multiplayer
             return System.Text.Encoding.UTF8.GetString(arr, index, count).TrimEnd(new char[] { '\0' });
         }
 
-        internal static string PtrToStringUTF8(IntPtr rawPtr)
+        internal static unsafe string PtrToStringUTF8(IntPtr rawPtr)
         {
             if (rawPtr == IntPtr.Zero)
             {
                 return null;
             }
 
-            List<byte> bytes = new List<byte>();
-            while (true)
+            int length = 0;
+            while (Marshal.ReadByte(rawPtr, length) != 0)
             {
-                byte b = Marshal.ReadByte(rawPtr);
-                if (b == 0)
-                {
-                    break;
-                }
-
-                bytes.Add(b);
-                rawPtr = rawPtr.Offset(1);
+                length++;
             }
 
-            return System.Text.Encoding.UTF8.GetString(bytes.ToArray());
+            if (length == 0)
+            {
+                return string.Empty;
+            }
+
+            return System.Text.Encoding.UTF8.GetString((byte*)rawPtr, length);
         }
 
         internal static ClassType PtrToClass<ClassType, InteropStructType>(IntPtr rawPtr, Func<InteropStructType, ClassType> ctor)

@@ -69,27 +69,25 @@ namespace PartyCSharpSDK
             return System.Text.Encoding.UTF8.GetString(arr, index, count).TrimEnd(new char[] { '\0' });
         }
 
-        public static string PtrToStringUTF8(IntPtr rawPtr)
+        public static unsafe string PtrToStringUTF8(IntPtr rawPtr)
         {
             if (rawPtr == IntPtr.Zero)
             {
                 return null;
             }
 
-            List<Byte> bytes = new List<Byte>();
-            while (true)
+            Int32 length = 0;
+            while (Marshal.ReadByte(rawPtr, length) != 0)
             {
-                Byte b = Marshal.ReadByte(rawPtr);
-                if (b == 0)
-                {
-                    break;
-                }
-
-                bytes.Add(b);
-                rawPtr = rawPtr.OffsetPF(1);
+                length++;
             }
 
-            return System.Text.Encoding.UTF8.GetString(bytes.ToArray());
+            if (length == 0)
+            {
+                return string.Empty;
+            }
+
+            return System.Text.Encoding.UTF8.GetString((Byte*)rawPtr, length);
         }
 
         public static ClassType PtrToClass<ClassType, InteropStructType>(IntPtr rawPtr, Func<InteropStructType, ClassType> ctor)

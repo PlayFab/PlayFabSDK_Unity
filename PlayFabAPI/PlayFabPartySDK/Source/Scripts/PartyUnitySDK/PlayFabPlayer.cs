@@ -41,7 +41,7 @@ namespace PlayFab.Party
         internal PARTY_ENDPOINT_HANDLE _endPointHandle;
         internal PARTY_CHAT_CONTROL_HANDLE _chatControlHandle;
         internal bool _mutedByPlatform;
-#if (MICROSOFT_GDK_SUPPORT || MICROSOFT_GAME_CORE || UNITY_GAMECORE) && !UNITY_EDITOR
+#if MICROSOFT_GDK_SUPPORT && !UNITY_EDITOR
         internal PARTY_XBL_CHAT_USER_HANDLE _xblChatUserHandle;
 #endif
 

@@ -219,7 +219,13 @@ namespace PlayFab.InteropWrapper.Core
                 return _interopCallback;
             }
 
-            internal unsafe int InteropPInvokeCallback(IntPtr localUserHandle, IntPtr serviceConfigHandle, IntPtr existingEntityHandle, Interop.XAsyncBlock* block)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFLocalUserLoginHandler))]
+            internal static unsafe int InteropPInvokeCallback(IntPtr localUserHandle, IntPtr serviceConfigHandle, IntPtr existingEntityHandle, Interop.XAsyncBlock* block)
+            {
+                return _PFLocalUserLoginHandlerManager.HandleCallback(localUserHandle, serviceConfigHandle, existingEntityHandle, block);
+            }
+
+            private unsafe int HandleCallback(IntPtr localUserHandle, IntPtr serviceConfigHandle, IntPtr existingEntityHandle, Interop.XAsyncBlock* block)
             {
                 if (!TryGetCallbackIdForLocalUser(new(localUserHandle), out IntPtr callbackId) ||
                     !CallbackIdToHandler.ContainsKey(callbackId))
@@ -227,13 +233,58 @@ namespace PlayFab.InteropWrapper.Core
                     return HRESULT.E_PF_INVALIDHANDLE;
                 }
 
-                var localUser = new PlayFab.PFLocalUser(new(localUserHandle));
-                var serviceConfig = new PlayFab.PFServiceConfig(new(serviceConfigHandle));
-                var existingPlayer = existingEntityHandle == IntPtr.Zero ? null
-                                                                         : new PlayFab.PFPlayerEntity(new(existingEntityHandle), null);
-                var handlerContext = new PFLocalUserLoginHandlerContext(new Interop.XAsyncBlockPtr(new IntPtr(block)));
+                PFLocalUserHandle duplicatedLocalUser = default;
+                PFServiceConfigHandle duplicatedServiceConfig = default;
+                PFEntityHandle duplicatedEntity = default;
+                PlayFab.PFLocalUser localUser = null;
+                PlayFab.PFServiceConfig serviceConfig = null;
+                PlayFab.PFPlayerEntity existingPlayer = null;
+                bool callbackInvoked = false;
 
-                return IssueEventCallback(callbackId, localUser, serviceConfig, existingPlayer, handlerContext);
+                try
+                {
+                    PFResult<PFLocalUserHandle> localUserResult = PFLocalUserDuplicateHandle(
+                        new PFLocalUserHandle(localUserHandle));
+                    if (localUserResult.Failed()) return localUserResult.HResult;
+                    duplicatedLocalUser = localUserResult.Result;
+                    localUser = new PlayFab.PFLocalUser(duplicatedLocalUser);
+
+                    int hr = PFServiceConfig.PFServiceConfigDuplicateHandle(
+                        new PFServiceConfigHandle(serviceConfigHandle),
+                        out PFServiceConfigHandle serviceConfigCopy);
+                    if (HRESULT.Failed(hr)) return hr;
+                    duplicatedServiceConfig = serviceConfigCopy;
+                    serviceConfig = new PlayFab.PFServiceConfig(duplicatedServiceConfig);
+
+                    if (existingEntityHandle != IntPtr.Zero)
+                    {
+                        PFResult<PFEntityHandle> entityResult = PFEntity.PFEntityDuplicateHandle(
+                            new PFEntityHandle(existingEntityHandle));
+                        if (entityResult.Failed()) return entityResult.HResult;
+                        duplicatedEntity = entityResult.Result;
+                        existingPlayer = new PlayFab.PFPlayerEntity(duplicatedEntity, null);
+                    }
+
+                    var handlerContext = new PFLocalUserLoginHandlerContext(new Interop.XAsyncBlockPtr(new IntPtr(block)));
+
+                    callbackInvoked = true;
+                    
+                    return IssueEventCallback(callbackId, localUser, serviceConfig, existingPlayer, handlerContext);
+                }
+                finally
+                {
+                    if (!callbackInvoked)
+                    {
+                        if (existingPlayer != null) existingPlayer.Dispose();
+                        else if (duplicatedEntity.Handle != IntPtr.Zero) PFEntity.PFEntityCloseHandle(duplicatedEntity);
+
+                        if (serviceConfig != null) serviceConfig.Dispose();
+                        else if (duplicatedServiceConfig.Handle != IntPtr.Zero) PFServiceConfig.PFServiceConfigCloseHandle(duplicatedServiceConfig);
+
+                        if (localUser != null) localUser.Dispose();
+                        else if (duplicatedLocalUser.Handle != IntPtr.Zero) PFLocalUserCloseHandle(duplicatedLocalUser);
+                    }
+                }
             }
 
             internal void AddLocalUserHandler(IntPtr callbackId, PFLocalUserLoginHandler callback)

@@ -38,10 +38,10 @@ The prefab is included in the package at `PlayFabAPI/PlayFabPartySDK/Prefabs/Pla
 4. Log in and keep the returned `PFPlayerEntity`.
 5. Add or instantiate `PlayFabMultiplayerManager` from `PlayFabAPI/PlayFabPartySDK/Prefabs/PlayFabMultiplayerManager.prefab`.
 6. Call `PlayFabMultiplayerManager.Get()` and subscribe to `OnError` and network events needed by your game.
-7. Call `SetPlayer(playerEntity)` before Party network operations.
-8. Create a Party network or join one by Network ID. Hosts typically share the Network ID through PlayFab Lobby, matchmaking, or another title-managed channel.
+7. Call `SetPlayer(playerEntity)` before Party network operations. In Xbox and Windows GDK players that sign in with XUser, call `SetPlayer(playerEntity, xUser)` with that XUser instead. Party then applies Xbox Live chat privacy, the Xbox user ID, and Xbox accessibility settings for that user. The manager keeps its own copies of these handles, so you still dispose yours in step 10. Call `SetPlayer` once: a second call throws `InvalidOperationException`. After `Suspend()` and `Resume()`, call `SetPlayer` again before the next network operation.
+8. Create a Party network or join one by Network ID. Hosts typically share the Network ID through PlayFab Lobby, matchmaking, or another title-managed channel. In GDK players, supply the XUser from step 7 before creating or joining a network. A missing XUser or a failed Xbox Live chat user request stops the operation. `OnError` reports `NetworkCreateError` or `NetworkJoinError`. Chat permissions remain disabled until Xbox Live returns permissions for the remote player. A failed permission query disables that player's chat permissions and reports `OnError`.
 9. Use the manager APIs for voice, chat, and data messages.
-10. Leave the network, dispose PlayFab handles, and then uninitialize PlayFab and XGameRuntime.
+10. Leave the network, then call `Suspend()` on the manager so that Party closes its handles. Then dispose your PlayFab handles and uninitialize PlayFab and XGameRuntime.
 
 Example manager setup:
 
@@ -57,7 +57,12 @@ if (manager == null)
 }
 
 manager.OnError += OnPartyError;
+#if MICROSOFT_GDK_SUPPORT
+// xUser is the XUserHandle that signed in playerEntity, for example through AuthenticationLoginWithXUserAsync.
+manager.SetPlayer(playerEntity, xUser);
+#else
 manager.SetPlayer(playerEntity);
+#endif
 ```
 
 The importable **PlayFab Party** sample demonstrates manager setup, player registration, network creation, chat messages, data messages, and cleanup.

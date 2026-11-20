@@ -14,7 +14,7 @@ namespace PartyCSharpSDK.Interop
     {
         private unsafe fixed Byte networkIdentifier[PartyConstants.c_networkIdentifierStringLength + 1]; // char networkIdentifier[PartyConstants.c_networkIdentifierStringLength + 1]
         private unsafe fixed Byte regionName[PartyConstants.c_maxRegionNameStringLength + 1]; // char regionName[PartyConstants.c_maxRegionNameStringLength + 1]
-        private unsafe fixed Byte opaqueConnectionInformation[PartyConstants.c_opaqueConnectionInformationByteCount + 1]; // Byte opaqueConnectionInformation[PartyConstants.c_opaqueConnectionInformationByteCount + 1]
+        private unsafe fixed Byte opaqueConnectionInformation[PartyConstants.c_opaqueConnectionInformationByteCount];
 
         internal string GetNetworkIdentifier() { unsafe { fixed (Byte* ptr = this.networkIdentifier) { return Converters.BytePointerToString(ptr, PartyConstants.c_networkIdentifierStringLength + 1); } } }
         internal string GetRegionName() { unsafe { fixed (Byte* ptr = this.regionName) { return Converters.BytePointerToString(ptr, PartyConstants.c_maxRegionNameStringLength + 1); } } }
@@ -24,8 +24,8 @@ namespace PartyCSharpSDK.Interop
             {
                 fixed (Byte* ptr = this.opaqueConnectionInformation)
                 {
-                    Byte[] bytes = new Byte[PartyConstants.c_opaqueConnectionInformationByteCount + 1];
-                    Marshal.Copy(source: (IntPtr)ptr, destination: bytes, startIndex: 0, length: PartyConstants.c_opaqueConnectionInformationByteCount + 1);
+                    Byte[] bytes = new Byte[PartyConstants.c_opaqueConnectionInformationByteCount];
+                    Marshal.Copy(source: (IntPtr)ptr, destination: bytes, startIndex: 0, length: PartyConstants.c_opaqueConnectionInformationByteCount);
                     return bytes;
                 }
             }
@@ -51,7 +51,7 @@ namespace PartyCSharpSDK.Interop
             {
                 fixed (Byte* ptr = this.opaqueConnectionInformation)
                 {
-                    Marshal.Copy(publicObject.OpaqueConnectionInformation, 0, (IntPtr)ptr, PartyConstants.c_opaqueConnectionInformationByteCount + 1);
+                    Marshal.Copy(publicObject.OpaqueConnectionInformation, 0, (IntPtr)ptr, PartyConstants.c_opaqueConnectionInformationByteCount);
                 }
             }
         }

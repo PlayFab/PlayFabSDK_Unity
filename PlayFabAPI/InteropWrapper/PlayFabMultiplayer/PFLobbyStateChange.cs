@@ -141,7 +141,11 @@ namespace PlayFab.InteropWrapper.Multiplayer
 
                 default:
                     Debug.Write(String.Format("Unhandle type {0}\n", stateChangeUnion.stateChange.stateChangeType));
-                    Debugger.Break();
+                    if (Debugger.IsAttached)
+                    {
+                        Debugger.Break();
+                    }
+
                     result = new PFLobbyStateChange(wrapperChangeType, stateChangePtr);
                     break;
             }
@@ -198,7 +202,7 @@ namespace PlayFab.InteropWrapper.Multiplayer
 #if CSHARP_7_OR_LATER
                 ref readonly Interop.Multiplayer.PFLobbyJoinLobbyCompletedStateChange stateChangeConverted = ref stateChangeUnion.joinCompleted;
 #else
-                Interop.Multiplayer.PFLobbyJoinCompletedStateChange stateChangeConverted = stateChangeUnion.joinCompleted;
+                Interop.Multiplayer.PFLobbyJoinLobbyCompletedStateChange stateChangeConverted = stateChangeUnion.joinCompleted;
 #endif
                 this.result = stateChangeConverted.result;
                 Interop.PFEntityKey newMember = stateChangeConverted.newMember;
@@ -341,7 +345,7 @@ namespace PlayFab.InteropWrapper.Multiplayer
 #if CSHARP_7_OR_LATER
                 ref readonly Interop.Multiplayer.PFLobbyLeaveLobbyCompletedStateChange stateChangeConverted = ref stateChangeUnion.leaveCompleted;
 #else
-                Interop.Multiplayer.PFLobbyLeaveCompletedStateChange stateChangeConverted = stateChangeUnion.leaveCompleted;
+                Interop.Multiplayer.PFLobbyLeaveLobbyCompletedStateChange stateChangeConverted = stateChangeUnion.leaveCompleted;
 #endif
                 this.localUser = new PFEntityKey(*stateChangeConverted.localUser);
                 this.asyncContext = null;
@@ -488,7 +492,7 @@ namespace PlayFab.InteropWrapper.Multiplayer
 #if CSHARP_7_OR_LATER
                 ref readonly Interop.Multiplayer.PFLobbyJoinArrangedLobbyCompletedStateChange stateChangeConverted = ref stateChangeUnion.arrangedJoinCompleted;
 #else
-                Interop.Multiplayer.PFLobbyArrangedJoinCompletedStateChange stateChangeConverted = stateChangeUnion.arrangedJoinCompleted;
+                Interop.Multiplayer.PFLobbyJoinArrangedLobbyCompletedStateChange stateChangeConverted = stateChangeUnion.arrangedJoinCompleted;
 #endif
                 this.result = stateChangeConverted.result;
                 Interop.PFEntityKey newMember = stateChangeConverted.newMember;

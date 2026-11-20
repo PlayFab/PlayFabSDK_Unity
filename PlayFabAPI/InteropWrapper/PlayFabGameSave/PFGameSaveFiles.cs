@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN || MICROSOFT_GDK_SUPPORT
+
 using System;
 using System.Threading.Tasks;
 
@@ -253,6 +255,23 @@ namespace PlayFab.InteropWrapper.GameSave
             return completionSource.Task;
         }
 
+        internal static bool TryDuplicateLocalUserForCallback(IntPtr localUserHandle, out PFLocalUser localUser)
+        {
+            PFResult<PFLocalUserHandle> result = Core.PFLocalUser.PFLocalUserDuplicateHandle(
+                new PFLocalUserHandle(localUserHandle));
+
+            if (result.Failed())
+            {
+                string message = $"PFLocalUserDuplicateHandle failed for a GameSave callback: 0x{result.HResult:X8}.";
+                UnityEngine.Debug.LogError(message);
+                localUser = null;
+                return false;
+            }
+
+            localUser = new PFLocalUser(result.Result);
+            return true;
+        }
+
         private static readonly PFGameSaveFilesActiveDeviceChangedCallbackManager _PFGameSaveFilesActiveDeviceChangedCallbackManager = new();
 
         private class PFGameSaveFilesActiveDeviceChangedCallbackManager :
@@ -260,13 +279,21 @@ namespace PlayFab.InteropWrapper.GameSave
         {
             private Interop.PFGameSaveFilesActiveDeviceChangedCallback _interopCallback;
 
-            internal unsafe void InteropPInvokeCallback(IntPtr localUserHandle, Interop.PFGameSaveDescriptor* activeDevice, void* context)
+            [AOT.MonoPInvokeCallback(typeof(Interop.PFGameSaveFilesActiveDeviceChangedCallback))]
+            internal static unsafe void InteropPInvokeCallback(IntPtr localUserHandle, Interop.PFGameSaveDescriptor* activeDevice, void* context)
+            {
+                _PFGameSaveFilesActiveDeviceChangedCallbackManager.HandleCallback(localUserHandle, activeDevice, context);
+            }
+
+            private unsafe void HandleCallback(IntPtr localUserHandle, Interop.PFGameSaveDescriptor* activeDevice, void* context)
             {
                 if (Callback == null) return;
 
                 var activeDeviceWrapper = new PFGameSaveDescriptor(*activeDevice);
 
-                IssueEventCallback(new PFLocalUser(new(localUserHandle)), activeDeviceWrapper);
+                if (!TryDuplicateLocalUserForCallback(localUserHandle, out PFLocalUser localUser)) return;
+
+                IssueEventCallback(localUser, activeDeviceWrapper);
             }
 
             internal PFResult AddCallback(PFGameSaveFilesActiveDeviceChangedCallback callback, object context)
@@ -295,3 +322,5 @@ namespace PlayFab.InteropWrapper.GameSave
         }
     }
 }
+
+#endif
