@@ -416,7 +416,109 @@ namespace PlayFab.Tools
                     Debug.LogError($"[PlayFab.Tools.GdkUtility] Required binary not found: {sourcePath}");
                 }
             }
+#if UNITY_GAMECORE
+
+            // PlayFab Kit patch: a console player needs the console builds too.
+            CopyGdkConsoleBinaries(overwrite);
+#endif
         }
+#if UNITY_GAMECORE
+
+        // PlayFab Kit patch: copies the console builds of the PlayFab and Party libraries into TargetGdkConsolePluginPath,
+        // from the xbox\bin\x64 folder of the GDK that Unity's console module builds the player with.
+        // GdkBinaryAssetProcessor marks each copy for the XBOX consoles only.
+        private static void CopyGdkConsoleBinaries(bool overwrite)
+        {
+            string gdkPath = GetConsoleGdkPath();
+
+            if (string.IsNullOrEmpty(gdkPath))
+            {
+                return;
+            }
+
+            string binPath = Path.Combine(gdkPath, "xbox", "bin", "x64");
+            Directory.CreateDirectory(GdkConstants.TargetGdkConsolePluginPath);
+
+            foreach (var binaryName in GdkConstants.RequiredGdkConsoleBinaries)
+            {
+                string sourcePath = Path.Combine(binPath, binaryName);
+                string destPath = Path.Combine(GdkConstants.TargetGdkConsolePluginPath, binaryName);
+
+                if (File.Exists(destPath) && !overwrite)
+                {
+                    continue;
+                }
+
+                try
+                {
+                    WriteConsoleBinaryMeta(destPath + ".meta");
+                    File.Copy(sourcePath, destPath, true);
+                }
+                catch (Exception ex) when (ex is FileNotFoundException || ex is DirectoryNotFoundException)
+                {
+                    Debug.LogError($"[PlayFab.Tools.GdkUtility] Required console binary not found: {sourcePath}. A console player needs the GDK with Xbox extensions.");
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError($"[PlayFab.Tools.GdkUtility] Failed to copy console binary {binaryName}: {ex.Message}");
+                }
+            }
+        }
+
+        // PlayFab Kit patch: the .meta file of a console copy, a native plugin for the XBOX consoles only, written before
+        // Unity first sees the copy. Without it, Unity's first look at the copy finds two libraries with the same name for
+        // the Editor. A .meta file that exists stays as it is, and GdkBinaryAssetProcessor keeps its platforms.
+        private static void WriteConsoleBinaryMeta(string metaPath)
+        {
+            try
+            {
+                using (var stream = new FileStream(metaPath, FileMode.CreateNew, FileAccess.Write))
+                using (var writer = new StreamWriter(stream, new System.Text.UTF8Encoding(false)))
+                {
+                    writer.Write("fileFormatVersion: 2\nguid: " + Guid.NewGuid().ToString("N") + "\nPluginImporter:\n  externalObjects: {}\n" +
+                        "  serializedVersion: 3\n  iconMap: {}\n  executionOrder: {}\n  defineConstraints: []\n  isPreloaded: 0\n" +
+                        "  isOverridable: 0\n  isExplicitlyReferenced: 0\n  validateReferences: 1\n  platformData:\n" +
+                        "    Any:\n      enabled: 0\n      settings: {}\n    Editor:\n      enabled: 0\n      settings: {}\n" +
+                        "    GameCoreScarlett:\n      enabled: 1\n      settings: {}\n    GameCoreXboxOne:\n      enabled: 1\n      settings: {}\n" +
+                        "  userData:\n  assetBundleName:\n  assetBundleVariant:\n");
+                }
+            }
+            catch (IOException) when (File.Exists(metaPath))
+            {
+                // Unity or an earlier copy made it.
+            }
+        }
+
+        // PlayFab Kit patch: the folder of the GDK edition that Unity's console module requires for the active build
+        // target, or null. The module's GameCoreUtils.GetRequiredGdkEdition is read by reflection, as Unity's GDK packages do.
+        private static string GetConsoleGdkPath()
+        {
+            int edition;
+
+            try
+            {
+                var utils = Type.GetType("UnityEditor.GameCore.GameCoreUtils, UnityEditor.GameCoreCommon.Extensions");
+                var method = utils?.GetMethod("GetRequiredGdkEdition", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static);
+                edition = method == null ? -1 : (int)method.Invoke(null, new object[] { EditorUserBuildSettings.activeBuildTarget });
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"[PlayFab.Tools.GdkUtility] Could not read the GDK edition of the console module: {ex.Message}");
+                return null;
+            }
+
+            foreach (var gdk in GdkEnumerator.DiscoveredGdks)
+            {
+                if (gdk.Edition == edition)
+                {
+                    return Path.Combine(gdk.Path, gdk.Edition.ToString());
+                }
+            }
+
+            Debug.LogError($"[PlayFab.Tools.GdkUtility] The console module requires GDK edition {edition}, which is not installed, so no console binary was copied.");
+            return null;
+        }
+#endif
     }
 }
 #endif

@@ -9,6 +9,8 @@
 [![Join us on Discord][badge-discord]][link-discord]
 [![PRs welcome][badge-prs]][link-prs]
 
+> **Development branch:** This branch mirrors the main branch of the PlayFab Unity SDK source at bdd174c, and it adds fixes for Unity NetRumble that are not in that source yet: telemetry privacy, the console plugin setup, the console Multiplayer work queue, and Party object reuse under IL2CPP. It is not an approved SDK release. No native libraries or console add-on packages are included. Console builds still require the appropriate licensed SDKs and Unity modules.
+
 The **PlayFab Unity SDK** is a Unity package (`microsoft.playfab.sdk`) that projects the native PlayFab libraries into C#. It provides Unity-friendly access to PlayFab Core, Services, Game Save, Multiplayer, and Party APIs from one package.
 
 > **Note:** This SDK replaces the legacy [PlayFab Unity SDK](https://github.com/PlayFab/UnitySDK). If you are migrating from the legacy SDK, start with the [Migration Guide](Documents~/MigrationGuide.md).

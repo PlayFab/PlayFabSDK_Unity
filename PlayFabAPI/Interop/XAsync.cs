@@ -112,6 +112,15 @@ namespace PlayFab.Interop
         [DllImport(XGameRuntimeLibName, CallingConvention = CallingConvention.StdCall)]
         public static extern byte XTaskQueueDispatch(XTaskQueueHandle queue, XTaskQueuePort port, uint timeoutInMs);
 
+#if UNITY_GAMECORE && !UNITY_EDITOR
+        [DllImport(XGameRuntimeLibName, CallingConvention = CallingConvention.StdCall)]
+        internal static extern int XTaskQueueTerminate(
+            XTaskQueueHandle queue,
+            [MarshalAs(UnmanagedType.I1)] bool wait,
+            IntPtr callbackContext,
+            IntPtr callback);
+#endif
+
         //STDAPI XAsyncBegin(
         //    _Inout_ XAsyncBlock* asyncBlock,
         //    _In_opt_ void* context,
